@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to OOP, Classes, and Objects in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .example-code {
+            background-color: #f4f4f4;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Introduction to Object-Oriented Programming (OOP)</h1>
+    <p>Object-Oriented Programming (OOP) is a paradigm in Python and many other languages where everything is represented as objects. OOP organizes code in a way that groups data (attributes) and behavior (methods) into individual objects. The concept behind OOP is to create reusable and modular pieces of software by breaking problems down into entities (classes and objects).</p>
+
+    <h2>Key Principles of OOP</h2>
+    <ul>
+        <li><strong>Encapsulation:</strong> This principle hides the internal state of the object and only exposes certain aspects to the outside world, typically through methods.</li>
+        <li><strong>Abstraction:</strong> It focuses on hiding the complex details and showing only the essential features of the object.</li>
+        <li><strong>Inheritance:</strong> Allows a new class to inherit attributes and methods from another class, promoting code reuse.</li>
+        <li><strong>Polymorphism:</strong> Enables using the same method or function in different ways for different data types or classes.</li>
+    </ul>
+
+    <h2>What is a Class?</h2>
+    <p>A <strong>class</strong> in Python is a blueprint or template for creating objects. It defines attributes (variables) and methods (functions) that the objects created from the class can use. Classes allow us to model real-world entities in our programs.</p>
+
+    <h3>Defining a Class in Python</h3>
+    <p>You can define a class in Python using the <code>class</code> keyword, followed by the class name and a colon. The class name should start with a capital letter by convention.</p>
+
+    <div class="example-code">
+        <code>
+        class Car:
+            # Class attributes and methods go here
+            pass  # Use pass to define an empty class
+        </code>
+    </div>
+
+    <p>In this case, we have defined a simple class named <code>Car</code>. The <code>pass</code> statement is used because we haven't added any attributes or methods yet.</p>
+
+    <h2>What is an Object?</h2>
+    <p>An <strong>object</strong> is an instance of a class. Once a class is defined, we can create objects from it. Each object can have its own attributes and behaviors defined by the class. For example, if <code>Car</code> is a class, then each specific car you create is an object of the <code>Car</code> class.</p>
+
+    <h3>Creating an Object (Instance) of a Class</h3>
+    <p>To create an object, you simply call the class as if it were a function. This is known as <strong>instantiation</strong>, which creates an instance of the class.</p>
+
+    <div class="example-code">
+        <code>
+        car1 = Car()  # Create an instance of the Car class
+        </code>
+    </div>
+
+    <p>Here, <code>car1</code> is an instance of the <code>Car</code> class. The class acts as a blueprint, and the object <code>car1</code> is an actual car based on that blueprint.</p>
+
+    <h2>Class Attributes and Methods</h2>
+    <p>A class typically contains two types of members:</p>
+    <ul>
+        <li><strong>Attributes:</strong> Variables that store information about the object.</li>
+        <li><strong>Methods:</strong> Functions that define behaviors of the object.</li>
+    </ul>
+
+    <h3>Example: Adding Attributes and Methods to a Class</h3>
+    <div class="example-code">
+        <code>
+        class Car:
+            # The constructor method to initialize the object
+            def __init__(self, brand, model, year):
+                self.brand = brand
+                self.model = model
+                self.year = year
+
+            # A method to display car details
+            def display_info(self):
+                print(f"Car: {self.brand} {self.model}, Year: {self.year}")
+
+        # Create an object (instance) of the class
+        car1 = Car("Toyota", "Camry", 2020)
+
+        # Call the method
+        car1.display_info()
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Constructor:</strong> The <code>__init__()</code> method is a special method (called the constructor) that is automatically invoked when an object is created. It initializes the attributes of the object.</li>
+        <li><strong>Attributes:</strong> In the example, <code>brand</code>, <code>model</code>, and <code>year</code> are attributes that store information about each car object.</li>
+        <li><strong>Methods:</strong> The <code>display_info()</code> method defines behavior and displays the details of the car object when called.</li>
+        <li><strong>Object:</strong> The object <code>car1</code> is created by passing values to the class <code>Car</code>, and it holds the specific details of a Toyota Camry from 2020.</li>
+    </ul>
+
+    <h2>The <code>self</code> Keyword in Python</h2>
+    <p>The <code>self</code> keyword is an important part of object-oriented programming in Python. It refers to the current instance of the class. By using <code>self</code>, we can access attributes and methods of the class from within the class itself.</p>
+
+    <p>When defining methods in a class, <code>self</code> must be the first parameter. It is automatically passed to the method when the method is called on an object.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        class Dog:
+            def __init__(self, name, breed):
+                self.name = name  # Attribute
+                self.breed = breed  # Attribute
+
+            def bark(self):
+                print(f"{self.name} is barking!")  # Method using self
+
+        # Create an instance of the Dog class
+        dog1 = Dog("Buddy", "Golden Retriever")
+
+        # Call the bark method
+        dog1.bark()
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <p>In this example, the <code>Dog</code> class has two attributes, <code>name</code> and <code>breed</code>. The <code>bark()</code> method uses the <code>self</code> keyword to refer to the current instance, allowing it to access the <code>name</code> attribute. When we call <code>dog1.bark()</code>, the output will be <code>Buddy is barking!</code>.</p>
+
+    <h2>More on Object Creation</h2>
+    <p>Once we have a class defined, we can create as many objects (instances) as needed. Each object will have its own set of attributes based on the class definition.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        # Create multiple instances of the Car class
+        car1 = Car("Honda", "Accord", 2018)
+        car2 = Car("Ford", "Mustang", 2021)
+
+        # Call the method for each object
+        car1.display_info()  # Output: Car: Honda Accord, Year: 2018
+        car2.display_info()  # Output: Car: Ford Mustang, Year: 2021
+        </code>
+    </div>
+
+    <p>Here, we created two objects: <code>car1</code> (a Honda Accord from 2018) and <code>car2</code> (a Ford Mustang from 2021). Each object has its own unique attribute values but shares the same behavior through the <code>display_info()</code> method.</p>
+
+    <h2>Summary of OOP in Python</h2>
+    <p>In Python, classes and objects are used to model real-world entities. The principles of OOP help to make code more modular, reusable, and easier to maintain. The key concepts include:</p>
+    <ul>
+        <li><strong>Class:</strong> A blueprint for creating objects.</li>
+        <li><strong>Object:</strong> An instance of a class with its own attributes and behaviors.</li>
+        <li><strong>self:</strong> Refers to the current instance and allows access to class attributes and methods.</li>
+        <li><strong>Encapsulation, Inheritance, Polymorphism:</strong> Key principles that provide structure and flexibility in OOP.</li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Data Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1, h2 {
+            color: #007bff;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 10px;
+            display: block;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+            white-space: pre-wrap;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Python Data Types</h1>
+
+    <p>In Python, every value has a type. Data types determine the kind of operations you can perform on a value and how the value is stored in memory. Python has several built-in data types that can be classified into different categories.</p>
+
+    <h2>1. Numeric Data Types</h2>
+    <p>Python supports three types of numeric values:</p>
+    
+    <ul>
+        <li><strong>Integer (<code>int</code>)</strong>: Whole numbers, positive or negative, without a decimal point.</li>
+        <li><strong>Float (<code>float</code>)</strong>: Numbers with a decimal point or in exponential (scientific) notation.</li>
+        <li><strong>Complex (<code>complex</code>)</strong>: Numbers with a real and imaginary part, written as <code>a + bj</code>, where <code>a</code> is the real part and <code>b</code> is the imaginary part.</li>
+    </ul>
+
+    <h3>Examples of Numeric Data Types:</h3>
+    <code>
+        # Integer<br>
+        x = 10  # Positive integer<br>
+        y = -5  # Negative integer<br><br>
+
+        # Float<br>
+        a = 3.14  # Decimal point<br>
+        b = 1e3  # Exponential notation (1000.0)<br><br>
+
+        # Complex<br>
+        c = 3 + 5j  # Complex number with real part 3 and imaginary part 5<br>
+        print(c.real)  # Output: 3.0<br>
+        print(c.imag)  # Output: 5.0
+    </code>
+
+    <h2>2. Sequence Data Types</h2>
+    <p>Sequences are ordered collections of items. Python has three types of sequences:</p>
+
+    <ul>
+        <li><strong>String (<code>str</code>)</strong>: A sequence of characters, defined using either single, double, or triple quotes.</li>
+        <li><strong>List (<code>list</code>)</strong>: An ordered, mutable collection of items. Lists can contain elements of different types.</li>
+        <li><strong>Tuple (<code>tuple</code>)</strong>: An ordered, immutable collection of items. Once defined, the elements of a tuple cannot be changed.</li>
+    </ul>
+
+    <h3>Examples of Sequence Data Types:</h3>
+    <code>
+        # String<br>
+        s = "Hello, World!"  # String with double quotes<br>
+        print(s[0])  # Output: 'H' (strings are indexed)<br><br>
+
+        # List<br>
+        fruits = ["apple", "banana", "cherry"]  # List of strings<br>
+        fruits[1] = "blueberry"  # Lists are mutable<br>
+        print(fruits)  # Output: ['apple', 'blueberry', 'cherry']<br><br>
+
+        # Tuple<br>
+        colors = ("red", "green", "blue")  # Tuple of strings<br>
+        print(colors[0])  # Output: 'red'<br>
+        # colors[1] = "yellow"  # Error! Tuples are immutable
+    </code>
+
+    <h2>3. Boolean Data Type</h2>
+    <p><strong>Boolean (<code>bool</code>)</strong> values represent truth values in Python. A boolean value can either be <code>True</code> or <code>False</code>. Boolean values are commonly used in conditional statements and logical operations.</p>
+
+    <h3>Example of Boolean Data Type:</h3>
+    <code>
+        is_active = True  # Boolean value<br>
+        print(is_active)  # Output: True<br><br>
+
+        # Boolean in conditional statements<br>
+        if is_active:<br>
+            print("The account is active.")  # Output: The account is active.
+    </code>
+
+    <h2>4. Set Data Type</h2>
+    <p><strong>Set (<code>set</code>)</strong> is an unordered collection of unique items. Sets do not allow duplicate values and are mutable, meaning you can add or remove items from them.</p>
+
+    <h3>Example of Set Data Type:</h3>
+    <code>
+        # Create a set<br>
+        my_set = {1, 2, 3, 4, 4}  # Duplicate values are ignored<br>
+        print(my_set)  # Output: {1, 2, 3, 4}<br><br>
+
+        # Adding and removing items<br>
+        my_set.add(5)  # Add an item<br>
+        print(my_set)  # Output: {1, 2, 3, 4, 5}<br>
+        my_set.remove(2)  # Remove an item<br>
+        print(my_set)  # Output: {1, 3, 4, 5}
+    </code>
+
+    <h2>5. Dictionary Data Type</h2>
+    <p><strong>Dictionary (<code>dict</code>)</strong> is an unordered collection of key-value pairs. Each key must be unique, and values can be accessed by their keys. Dictionaries are mutable, allowing you to change, add, or remove key-value pairs.</p>
+
+    <h3>Example of Dictionary Data Type:</h3>
+    <code>
+        # Create a dictionary<br>
+        person = {"name": "John", "age": 25, "city": "New York"}<br>
+        print(person["name"])  # Output: John<br><br>
+
+        # Adding and updating key-value pairs<br>
+        person["email"] = "john@example.com"  # Add a new key-value pair<br>
+        person["age"] = 26  # Update the value for the key 'age'<br>
+        print(person)  # Output: {'name': 'John', 'age': 26, 'city': 'New York', 'email': 'john@example.com'}
+    </code>
+
+    <h2>6. None Data Type</h2>
+    <p><strong>None</strong> is a special constant in Python that represents the absence of a value or a null value. It's often used as a placeholder or default value.</p>
+
+    <h3>Example of None Data Type:</h3>
+    <code>
+        x = None  # Assigning None to a variable<br>
+        print(x)  # Output: None<br><br>
+
+        if x is None:<br>
+            print("x has no value.")  # Output: x has no value.
+    </code>
+
+    <h2>7. Type Checking</h2>
+    <p>To check the type of a variable, you can use the built-in <code>type()</code> function. This function returns the type of the given object.</p>
+
+    <h3>Example of Type Checking:</h3>
+    <code>
+        x = 42<br>
+        print(type(x))  # Output: <class 'int'><br><br>
+
+        y = [1, 2, 3]<br>
+        print(type(y))  # Output: <class 'list'>
+    </code>
+
+    <h2>8. Type Casting</h2>
+    <p>Python allows you to convert one data type to another, a process called type casting. You can cast data types using built-in functions like <code>int()</code>, <code>float()</code>, <code>str()</code>, and <code>list()</code>.</p>
+
+    <h3>Example of Type Casting:</h3>
+    <code>
+        x = 3.14<br>
+        y = int(x)  # Converts float to int<br>
+        print(y)  # Output: 3<br><br>
+
+        a = "123"<br>
+        b = int(a)  # Converts string to int<br>
+        print(b)  # Output: 123
+    </code>
+
+    <h2>Conclusion</h2>
+    <p>Understanding Python data types is essential for writing efficient and effective programs. Python offers a wide range of data types, from simple types like integers and strings to more complex types like lists, dictionaries, and sets. Knowing when and how to use each type will help you work more effectively with data in your Python programs.</p>
+
+</body>
+</html>

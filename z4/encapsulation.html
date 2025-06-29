@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encapsulation in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .example-code {
+            background-color: #f4f4f4;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Encapsulation in Python</h1>
+    <p><strong>Encapsulation</strong> is one of the fundamental principles of Object-Oriented Programming (OOP), which involves wrapping data (variables) and methods (functions) together as a single unit or class. Encapsulation helps protect the internal state of an object by restricting access to some of its components and only exposing a selected set of functionalities to the outside world. This ensures that the data is hidden and cannot be altered accidentally or without intention.</p>
+
+    <h2>Key Concepts of Encapsulation in Python</h2>
+    <ul>
+        <li><strong>Public Access:</strong> Members (attributes and methods) are accessible from outside the class.</li>
+        <li><strong>Protected Access:</strong> Members are marked as protected using a single underscore (_), indicating that they should not be accessed directly outside the class or by derived classes.</li>
+        <li><strong>Private Access:</strong> Members are marked as private using a double underscore (__), indicating that they are strictly restricted and cannot be accessed outside the class.</li>
+    </ul>
+
+    <h2>Why Use Encapsulation?</h2>
+    <p>Encapsulation helps in data hiding, which means that the sensitive data of an object can be hidden from the external world. It provides the following benefits:</p>
+    <ul>
+        <li><strong>Data Security:</strong> Protects data from being accidentally modified by unauthorized users or programs.</li>
+        <li><strong>Data Integrity:</strong> Ensures that the internal state of an object can only be changed through well-defined methods.</li>
+        <li><strong>Modularity:</strong> Makes code easier to manage by isolating specific parts and allowing updates or changes without affecting other parts of the system.</li>
+    </ul>
+
+    <h2>Encapsulation in Python</h2>
+    <p>In Python, encapsulation is achieved by defining class members with specific levels of access: public, protected, or private. By default, all class attributes and methods are public unless explicitly defined as protected or private.</p>
+
+    <h3>Example of Public, Protected, and Private Members</h3>
+    <p>In the example below, we define a class <code>Person</code> with public, protected, and private attributes:</p>
+
+    <div class="example-code">
+        <code>
+        class Person:
+            def __init__(self, name, age):
+                self.name = name  # Public attribute
+                self._age = age   # Protected attribute
+                self.__ssn = "123-45-6789"  # Private attribute
+
+            def display_info(self):
+                print(f"Name: {self.name}, Age: {self._age}, SSN: {self.__ssn}")
+
+            def _protected_method(self):
+                print("This is a protected method.")
+
+            def __private_method(self):
+                print("This is a private method.")
+
+        # Create an instance of the Person class
+        person = Person("John", 30)
+
+        # Accessing public attribute
+        print(person.name)  # Output: John
+
+        # Accessing protected attribute (can be accessed, but discouraged)
+        print(person._age)  # Output: 30
+
+        # Accessing private attribute (will raise an AttributeError)
+        try:
+            print(person.__ssn)
+        except AttributeError as e:
+            print(e)  # Output: 'Person' object has no attribute '__ssn'
+
+        # Accessing private attribute using name mangling
+        print(person._Person__ssn)  # Output: 123-45-6789
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Public Attribute (name):</strong> The attribute <code>name</code> is public and can be accessed freely from outside the class.</li>
+        <li><strong>Protected Attribute (_age):</strong> The attribute <code>_age</code> is protected. It can be accessed from outside the class but should be treated with caution. It is intended for use within the class and its subclasses.</li>
+        <li><strong>Private Attribute (__ssn):</strong> The attribute <code>__ssn</code> is private and cannot be accessed directly from outside the class. Attempting to access it will result in an error. However, it can still be accessed using "name mangling" by prefixing it with <code>_ClassName</code>.</li>
+        <li><strong>Protected and Private Methods:</strong> The methods <code>_protected_method</code> and <code>__private_method</code> demonstrate how methods can also be protected or private.</li>
+    </ul>
+
+    <h2>Encapsulation Using Getters and Setters</h2>
+    <p>Encapsulation also involves restricting direct access to an attribute while allowing controlled access through getter and setter methods. This ensures that data is validated or processed before being accessed or modified.</p>
+
+    <h3>Example: Using Getters and Setters</h3>
+    <p>In this example, we define getter and setter methods for a private attribute <code>__balance</code> in a class <code>BankAccount</code>:</p>
+
+    <div class="example-code">
+        <code>
+        class BankAccount:
+            def __init__(self, balance):
+                self.__balance = balance  # Private attribute
+
+            # Getter method
+            def get_balance(self):
+                return self.__balance
+
+            # Setter method
+            def set_balance(self, amount):
+                if amount < 0:
+                    print("Invalid amount. Balance cannot be negative.")
+                else:
+                    self.__balance = amount
+
+        # Create an instance of BankAccount
+        account = BankAccount(5000)
+
+        # Accessing the balance using the getter method
+        print("Current Balance:", account.get_balance())  # Output: Current Balance: 5000
+
+        # Updating the balance using the setter method
+        account.set_balance(10000)
+        print("Updated Balance:", account.get_balance())  # Output: Updated Balance: 10000
+
+        # Attempting to set an invalid balance
+        account.set_balance(-500)  # Output: Invalid amount. Balance cannot be negative.
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Private Attribute (__balance):</strong> The attribute <code>__balance</code> is private and cannot be accessed directly. We use getter and setter methods to interact with it.</li>
+        <li><strong>Getter Method:</strong> The <code>get_balance()</code> method is used to retrieve the value of the private attribute <code>__balance</code>.</li>
+        <li><strong>Setter Method:</strong> The <code>set_balance()</code> method is used to update the value of <code>__balance</code>. It also includes validation to ensure that the balance cannot be negative.</li>
+    </ul>
+
+    <h2>Advantages of Encapsulation</h2>
+    <ul>
+        <li><strong>Data Protection:</strong> Encapsulation allows you to protect important data by controlling access to it.</li>
+        <li><strong>Modularity:</strong> It promotes modular code by isolating the implementation details and exposing only the necessary parts.</li>
+        <li><strong>Flexibility and Maintainability:</strong> Changes made to the internal implementation of a class do not affect the external code that uses the class.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Encapsulation is a powerful concept in Object-Oriented Programming that helps protect an object's internal state from outside interference. It ensures that sensitive data is hidden and can only be accessed or modified in a controlled manner through public methods. By promoting data security, integrity, and modularity, encapsulation enhances the overall robustness of the code.</p>
+
+</body>
+</html>

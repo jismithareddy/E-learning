@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Input and Output Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #f0f0f0;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python Input and Output Functions</h1>
+
+    <h2>1. Input Function: </h2>
+    <p>The input() function is used to take input from the user in Python. It reads input as a string and stores it in a variable. You can also provide a prompt to display a message to the user.</p>
+    
+    <h3>Syntax</h3>
+    <code>
+        input(prompt)
+    </code>
+    <ul>
+        <li><strong>prompt</strong> (Optional): A string displayed as a message to the user before input is taken.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <code>
+        name = input("Enter your name: ")<br>
+        print("Hello, " + name + "!")
+    </code>
+    <p>Here, the user is prompted to enter their name. The input is stored in the <code>name</code> variable, and then the program greets the user by their name.</p>
+
+    <h2>2. Type Conversion in Input</h2>
+    <p>By default, the input() function returns the input as a string. If you need the input in a different data type like an integer or float, you must use type casting.</p>
+
+    <h3>Example:</h3>
+    <code>
+        age = input("Enter your age: ")  # Input is a string<br>
+        age = int(age)  # Convert string to integer<br>
+        print("You are", age, "years old.")
+    </code>
+    <p>Here, the user enters their age as a string, but it is converted to an integer using the <code>int()</code> function before printing.</p>
+
+    <h2>3. Output Function: <code>print()</code></h2>
+    <p>The print()function is used to display output to the console. It can take multiple values, separated by commas, and outputs them as strings.</p>
+
+    <h3>Syntax</h3>
+    <code>
+        print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+    </code>
+
+    <ul>
+        <li><strong>objects</strong>: The values to print. Multiple values can be separated by commas.</li>
+        <li><strong>sep</strong>: The separator between values. Default is a space.</li>
+        <li><strong>end</strong>: The string appended after the last value. Default is a newline.</li>
+        <li><strong>file</strong>: The output stream. Default is the console.</li>
+        <li><strong>flush</strong>: If <code>True</code>, forces the stream to flush immediately.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <code>
+        print("Hello", "World", sep=", ", end="!")  # Output: Hello, World!
+    </code>
+    <p>In this example, <code>sep</code> is set to <code>, </code> to separate "Hello" and "World" with a comma, and <code>end</code> is set to <code>!</code> instead of the default newline.</p>
+
+    <h2>4. Formatting Output</h2>
+    <p>Python offers several ways to format output, including string concatenation, the <code>format()</code> method, and f-strings (for Python 3.6+).</p>
+
+    <h3>String Concatenation</h3>
+    <code>
+        name = "Alice"<br>
+        age = 25<br>
+        print("My name is " + name + " and I am " + str(age) + " years old.")
+    </code>
+    <p>In this example, string concatenation is used to build the output message. The integer <code>age</code> is converted to a string before concatenation.</p>
+
+    <h3>Using <code>format()</code> Method</h3>
+    <code>
+        name = "Alice"<br>
+        age = 25<br>
+        print("My name is {} and I am {} years old.".format(name, age))
+    </code>
+    <p>The <code>format()</code> method is a cleaner and more flexible way to format output. It replaces placeholders <code>{}</code> with the respective variables.</p>
+
+    <h3>Using f-Strings</h3>
+    <code>
+        name = "Alice"<br>
+        age = 25<br>
+        print(f"My name is {name} and I am {age} years old.")
+    </code>
+    <p>f-Strings (available from Python 3.6) allow variables to be embedded directly in string literals, making them easier to read and write.</p>
+
+    <h2>5. Writing Output to Files</h2>
+    <p>Using the <code>file</code> parameter in the <code>print()</code> function, you can write output to a file instead of the console.</p>
+
+    <h3>Example:</h3>
+    <code>
+        with open("output.txt", "w") as f:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("Hello, file!", file=f)
+    </code>
+    <p>This code opens the file <code>output.txt</code> in write mode and writes the string "Hello, file!" to it.</p>
+
+    <h2>6. Flushing Output</h2>
+    <p>Normally, output is buffered, meaning it may not appear immediately. You can force immediate output by setting the <code>flush</code> parameter to <code>True</code>.</p>
+
+    <h3>Example:</h3>
+    <code>
+        import time<br>
+        print("Loading...", end="", flush=True)<br>
+        time.sleep(2)<br>
+        print(" Done!")
+    </code>
+    <p>In this example, the message "Loading..." is printed immediately due to <code>flush=True</code>. The program then waits for 2 seconds before printing " Done!".</p>
+
+    <h2>Conclusion</h2>
+    <p>The <code>input()</code> and <code>print()</code> functions are fundamental for interacting with users in Python. Using them, you can gather input, display output, format the data, and even write to files. Mastering these functions is essential for building interactive Python applications.</p>
+
+</body>
+</html>

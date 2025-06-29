@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorators in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .example-code {
+            background-color: #f4f4f4;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Decorators in Python</h1>
+    <p><strong>Decorators</strong> are a powerful and elegant tool in Python that allow you to modify the behavior of a function or method. They are often used to add functionality to existing functions without modifying their code directly. A decorator is essentially a function that takes another function as an argument and returns a new function that can enhance or modify the original one.</p>
+
+    <h2>Key Concepts of Decorators</h2>
+    <ul>
+        <li><strong>Function as First-Class Objects:</strong> In Python, functions are first-class objects, meaning they can be passed as arguments to other functions.</li>
+        <li><strong>Higher-Order Functions:</strong> A decorator is a higher-order function because it takes a function as an argument and returns a new function that enhances or alters the behavior of the original function.</li>
+        <li><strong>Syntax of Decorators:</strong> Decorators are often used with the "@" symbol, making them syntactically cleaner and more readable.</li>
+    </ul>
+
+    <h2>How Decorators Work</h2>
+    <p>Decorators are defined as functions that return other functions. They can be applied to any function or method. The decorator function accepts the original function as an argument and returns a modified version of it. Here's a basic example of how decorators work:</p>
+
+    <div class="example-code">
+        <code>
+        # Simple decorator function
+        def my_decorator(func):
+            def wrapper():
+                print("Before calling the function.")
+                func()
+                print("After calling the function.")
+            return wrapper
+
+        # Function to be decorated
+        def say_hello():
+            print("Hello!")
+
+        # Applying the decorator
+        decorated_function = my_decorator(say_hello)
+        decorated_function()
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>my_decorator:</strong> The decorator function <code>my_decorator</code> takes another function <code>func</code> as an argument. Inside it, another function <code>wrapper</code> is defined which modifies the behavior of <code>func</code>.</li>
+        <li><strong>Wrapper Function:</strong> The <code>wrapper</code> function executes code before and after calling the original function <code>func</code>.</li>
+        <li><strong>Function Call:</strong> Instead of calling <code>say_hello</code> directly, it is passed through the decorator <code>my_decorator</code>, which returns a new function that behaves differently.</li>
+    </ul>
+
+    <h2>Using Decorators with the @ Symbol</h2>
+    <p>Python allows the use of the "@" symbol to apply decorators in a more concise and readable way. Here's how it can be done:</p>
+
+    <div class="example-code">
+        <code>
+        # Decorator function
+        def my_decorator(func):
+            def wrapper():
+                print("Before calling the function.")
+                func()
+                print("After calling the function.")
+            return wrapper
+
+        # Applying the decorator using @ symbol
+        @my_decorator
+        def say_hello():
+            print("Hello!")
+
+        # Calling the decorated function
+        say_hello()
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>@my_decorator:</strong> The decorator is applied to the <code>say_hello</code> function using the <code>@my_decorator</code> syntax. This is equivalent to <code>say_hello = my_decorator(say_hello)</code>.</li>
+        <li><strong>Function Call:</strong> Now when we call <code>say_hello()</code>, the behavior is modified by the decorator, which adds print statements before and after the original function is executed.</li>
+    </ul>
+
+    <h2>Passing Arguments to Decorators</h2>
+    <p>In many cases, you may want to pass arguments to the decorator or the decorated function. This can be done by defining the decorator to accept arbitrary arguments:</p>
+
+    <div class="example-code">
+        <code>
+        # Decorator that accepts arguments
+        def my_decorator(func):
+            def wrapper(*args, **kwargs):
+                print("Before calling the function.")
+                result = func(*args, **kwargs)
+                print("After calling the function.")
+                return result
+            return wrapper
+
+        # Function to be decorated that accepts arguments
+        @my_decorator
+        def say_hello(name):
+            print(f"Hello, {name}!")
+
+        # Calling the function with arguments
+        say_hello("John")
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Passing Arguments:</strong> The decorator <code>my_decorator</code> uses <code>*args</code> and <code>**kwargs</code> to pass any number of positional and keyword arguments to the wrapped function <code>func</code>.</li>
+        <li><strong>Function with Arguments:</strong> The function <code>say_hello</code> accepts an argument <code>name</code>. When called, the decorator allows passing this argument through the wrapper, which ensures the correct behavior of the decorated function.</li>
+    </ul>
+
+    <h2>Chaining Decorators</h2>
+    <p>It is also possible to apply multiple decorators to a single function. This is called chaining decorators. Decorators are applied from the innermost to the outermost:</p>
+
+    <div class="example-code">
+        <code>
+        # Decorator 1
+        def decorator_1(func):
+            def wrapper():
+                print("Decorator 1")
+                func()
+            return wrapper
+
+        # Decorator 2
+        def decorator_2(func):
+            def wrapper():
+                print("Decorator 2")
+                func()
+            return wrapper
+
+        # Applying both decorators
+        @decorator_1
+        @decorator_2
+        def say_hello():
+            print("Hello!")
+
+        say_hello()
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Decorator Order:</strong> When chaining decorators, <code>decorator_2</code> is applied first, followed by <code>decorator_1</code>. This is because decorators are executed from the bottom up (innermost to outermost).</li>
+        <li><strong>Function Call:</strong> The output shows the messages from both decorators before the actual function execution.</li>
+    </ul>
+
+    <h2>Built-in Decorators in Python</h2>
+    <p>Python provides several built-in decorators such as <code>@staticmethod</code>, <code>@classmethod</code>, and <code>@property</code>. These are used to modify the behavior of methods in a class. Here’s a brief look at some of them:</p>
+
+    <ul>
+        <li><strong>@staticmethod:</strong> Defines a static method that doesn't require access to the instance or class itself.</li>
+        <li><strong>@classmethod:</strong> Defines a class method that takes the class as the first argument instead of the instance.</li>
+        <li><strong>@property:</strong> Allows a method to be accessed like an attribute, providing a way to define read-only properties.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Decorators in Python are a powerful tool for modifying and enhancing the behavior of functions or methods. They promote code reuse and separation of concerns, allowing functionality to be added to functions dynamically. Understanding how to define and use decorators can significantly improve the flexibility and maintainability of your Python programs.</p>
+
+</body>
+</html>

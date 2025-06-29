@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .example-code {
+            background-color: #f4f4f4;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Inheritance in Python</h1>
+    <p><strong>Inheritance</strong> is a fundamental concept in Object-Oriented Programming (OOP) that allows a class (called the <em>child class</em> or <em>derived class</em>) to inherit properties and behaviors (attributes and methods) from another class (called the <em>parent class</em> or <em>base class</em>). This enables code reusability and the creation of hierarchical relationships between classes.</p>
+
+    <h2>Key Concepts of Inheritance</h2>
+    <ul>
+        <li><strong>Parent Class (Base Class):</strong> The class whose properties and methods are inherited by another class.</li>
+        <li><strong>Child Class (Derived Class):</strong> The class that inherits from the parent class and may override or extend its functionality.</li>
+        <li><strong>Single Inheritance:</strong> A child class inherits from only one parent class.</li>
+        <li><strong>Multiple Inheritance:</strong> A child class inherits from multiple parent classes.</li>
+        <li><strong>Multilevel Inheritance:</strong> A class is derived from another derived class, forming a chain of inheritance.</li>
+        <li><strong>Hierarchical Inheritance:</strong> Multiple child classes inherit from a single parent class.</li>
+    </ul>
+
+    <h2>Why Use Inheritance?</h2>
+    <ul>
+        <li><strong>Code Reusability:</strong> Inheritance allows you to reuse the functionality of existing classes, avoiding code duplication.</li>
+        <li><strong>Extensibility:</strong> You can extend or modify the behavior of a base class without changing its original implementation.</li>
+        <li><strong>Maintainability:</strong> It makes code easier to maintain, as changes in the base class automatically apply to all derived classes.</li>
+    </ul>
+
+    <h2>Single Inheritance in Python</h2>
+    <p>In single inheritance, a child class inherits properties and methods from a single parent class. Here's an example:</p>
+
+    <div class="example-code">
+        <code>
+        # Parent class
+        class Animal:
+            def __init__(self, name):
+                self.name = name
+
+            def speak(self):
+                return f"{self.name} makes a sound."
+
+        # Child class
+        class Dog(Animal):
+            def speak(self):
+                return f"{self.name} barks."
+
+        # Create an object of the Dog class
+        my_dog = Dog("Buddy")
+        print(my_dog.speak())  # Output: Buddy barks.
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Parent Class (Animal):</strong> The class <code>Animal</code> defines a constructor (<code>__init__()</code>) and a method <code>speak()</code> to represent a general animal behavior.</li>
+        <li><strong>Child Class (Dog):</strong> The class <code>Dog</code> inherits from <code>Animal</code> and overrides the <code>speak()</code> method to provide a specific behavior for dogs.</li>
+        <li><strong>Method Overriding:</strong> The child class can redefine or override methods from the parent class, as shown in the <code>speak()</code> method of the <code>Dog</code> class.</li>
+    </ul>
+
+    <h2>Multiple Inheritance in Python</h2>
+    <p>In multiple inheritance, a class can inherit properties and methods from more than one parent class. Here's an example:</p>
+
+    <div class="example-code">
+        <code>
+        # Parent class 1
+        class Flyable:
+            def fly(self):
+                return "This animal can fly."
+
+        # Parent class 2
+        class Swimmable:
+            def swim(self):
+                return "This animal can swim."
+
+        # Child class inheriting from both Flyable and Swimmable
+        class Duck(Flyable, Swimmable):
+            pass
+
+        # Create an object of the Duck class
+        my_duck = Duck()
+        print(my_duck.fly())  # Output: This animal can fly.
+        print(my_duck.swim())  # Output: This animal can swim.
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Multiple Parent Classes:</strong> The class <code>Duck</code> inherits from both <code>Flyable</code> and <code>Swimmable</code>, gaining the ability to fly and swim.</li>
+        <li><strong>Multiple Inheritance:</strong> In Python, a class can inherit from multiple parent classes, as demonstrated in the example.</li>
+    </ul>
+
+    <h2>Multilevel Inheritance in Python</h2>
+    <p>In multilevel inheritance, a class is derived from another derived class, forming a chain of inheritance. Here's an example:</p>
+
+    <div class="example-code">
+        <code>
+        # Base class
+        class Animal:
+            def __init__(self, name):
+                self.name = name
+
+        # Derived class 1
+        class Mammal(Animal):
+            def speak(self):
+                return f"{self.name} makes a sound."
+
+        # Derived class 2
+        class Dog(Mammal):
+            def speak(self):
+                return f"{self.name} barks."
+
+        # Create an object of the Dog class
+        my_dog = Dog("Buddy")
+        print(my_dog.speak())  # Output: Buddy barks.
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Multilevel Inheritance:</strong> The class <code>Dog</code> inherits from <code>Mammal</code>, which in turn inherits from <code>Animal</code>. This creates a chain of inheritance.</li>
+        <li><strong>Inheritance Hierarchy:</strong> In multilevel inheritance, each level of the hierarchy inherits from the previous level, allowing for more specialized behaviors as we go down the chain.</li>
+    </ul>
+
+    <h2>Hierarchical Inheritance in Python</h2>
+    <p>In hierarchical inheritance, multiple child classes inherit from a single parent class. Here's an example:</p>
+
+    <div class="example-code">
+        <code>
+        # Parent class
+        class Animal:
+            def __init__(self, name):
+                self.name = name
+
+            def speak(self):
+                return f"{self.name} makes a sound."
+
+        # Child class 1
+        class Dog(Animal):
+            def speak(self):
+                return f"{self.name} barks."
+
+        # Child class 2
+        class Cat(Animal):
+            def speak(self):
+                return f"{self.name} meows."
+
+        # Create objects of the Dog and Cat classes
+        my_dog = Dog("Buddy")
+        my_cat = Cat("Whiskers")
+
+        print(my_dog.speak())  # Output: Buddy barks.
+        print(my_cat.speak())  # Output: Whiskers meows.
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Hierarchical Inheritance:</strong> Both the <code>Dog</code> and <code>Cat</code> classes inherit from the <code>Animal</code> class, but each defines its own behavior.</li>
+        <li><strong>Code Reusability:</strong> The common properties and methods of the <code>Animal</code> class are reused in both the <code>Dog</code> and <code>Cat</code> classes.</li>
+    </ul>
+
+    <h2>Types of Methods in Inheritance</h2>
+    <ul>
+        <li><strong>Instance Methods:</strong> These are the most common methods and can access both instance and class attributes.</li>
+        <li><strong>Class Methods:</strong> These are defined using the <code>@classmethod</code> decorator and operate on class variables rather than instance variables.</li>
+        <li><strong>Static Methods:</strong> Defined using the <code>@staticmethod</code> decorator, these methods do not depend on instance or class variables and are mainly utility functions.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Inheritance is a powerful concept in Python that allows for code reuse and creating complex relationships between classes. It enables more modular, maintainable, and readable code. Depending on your design needs, you can use single, multiple, multilevel, or hierarchical inheritance to model real-world problems effectively.</p>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Variables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1, h2 {
+            color: #007bff;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 10px;
+            display: block;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+            white-space: pre-wrap;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Python Variables</h1>
+
+    <h2>1. What is a Variable?</h2>
+    <p>In Python, a <strong>variable</strong> is a name that refers to a value stored in memory. Variables are used to store data such as numbers, strings, or objects that can be manipulated throughout the program. Unlike many programming languages, Python does not require an explicit declaration of variables before they are used.</p>
+
+    <code>
+        x = 5  # 'x' is a variable storing the value 5<br>
+        name = "Alice"  # 'name' is a variable storing the string "Alice"
+    </code>
+
+    <h2>2. Variable Naming Rules</h2>
+    <p>There are certain rules and conventions to follow when naming variables in Python:</p>
+    <ul>
+        <li><strong>Start with a letter or underscore:</strong> A variable name must begin with a letter (a-z, A-Z) or an underscore (_). It cannot start with a number.</li>
+        <li><strong>Case-sensitive:</strong> Python is case-sensitive, meaning <code>myVariable</code> and <code>myvariable</code> are considered different variables.</li>
+        <li><strong>No special characters:</strong> Only letters, numbers, and underscores are allowed. Special characters such as <code>@</code>, <code>$</code>, and <code>%</code> are not permitted.</li>
+        <li><strong>Avoid keywords:</strong> Don't use Python reserved keywords (like <code>if</code>, <code>while</code>, <code>def</code>) as variable names.</li>
+    </ul>
+
+    <h3>Examples of valid and invalid variable names:</h3>
+    <code>
+        # Valid variable names:<br>
+        my_variable = 10<br>
+        _hidden_value = 20<br>
+        user1 = "John"<br><br>
+        # Invalid variable names:<br>
+        1stName = "Invalid"  # Cannot start with a number<br>
+        my-variable = 100  # Dashes are not allowed<br>
+        def = "invalid"  # Reserved keywords cannot be used
+    </code>
+
+    <h2>3. Assigning Values to Variables</h2>
+    <p>In Python, the assignment operator <code>=</code> is used to assign a value to a variable. The value can be changed at any time by assigning a new value to the same variable.</p>
+
+    <code>
+        age = 25  # Assign the integer 25 to the variable 'age'<br>
+        age = 30  # Now 'age' is updated to 30
+    </code>
+
+    <h2>4. Dynamic Typing in Python</h2>
+    <p>Python is a dynamically typed language, which means you don’t need to declare the data type of a variable explicitly. The type is automatically determined based on the value assigned to the variable. You can also change the type of a variable by assigning a value of a different type to the same variable.</p>
+
+    <code>
+        x = 10  # 'x' is an integer<br>
+        x = "Hello"  # Now 'x' is a string<br>
+        x = 5.5  # Now 'x' is a float
+    </code>
+
+    <h2>5. Data Types of Variables</h2>
+    <p>Python supports various data types that can be stored in variables. The main built-in types are:</p>
+
+    <ul>
+        <li><strong>Integer (<code>int</code>):</strong> Represents whole numbers, such as 1, -5, 42.</li>
+        <li><strong>Float (<code>float</code>):</strong> Represents decimal numbers, such as 3.14, 0.001, -23.5.</li>
+        <li><strong>String (<code>str</code>):</strong> Represents sequences of characters, such as "Hello" or 'World'. Strings can be created using either single quotes (<code>' '</code>) or double quotes (<code>" "</code>).</li>
+        <li><strong>Boolean (<code>bool</code>):</strong> Represents True or False values, used in logical operations and conditions.</li>
+        <li><strong>List (<code>list</code>):</strong> A collection of ordered, mutable elements, like <code>[1, 2, 3]</code> or <code>["apple", "banana"]</code>.</li>
+        <li><strong>Tuple (<code>tuple</code>):</strong> An ordered, immutable collection, such as <code>(1, 2, 3)</code> or <code>("red", "green")</code>.</li>
+        <li><strong>Dictionary (<code>dict</code>):</strong> A collection of key-value pairs, like <code>{"name": "John", "age": 25}</code>.</li>
+    </ul>
+
+    <h3>Example of different data types:</h3>
+    <code>
+        age = 25  # Integer<br>
+        price = 19.99  # Float<br>
+        name = "Alice"  # String<br>
+        is_active = True  # Boolean<br>
+        colors = ["red", "green", "blue"]  # List<br>
+        person = {"name": "John", "age": 25}  # Dictionary
+    </code>
+
+    <h2>6. Multiple Assignments</h2>
+    <p>In Python, you can assign values to multiple variables in a single line. This is particularly useful for initializing multiple variables with related values.</p>
+
+    <code>
+        x, y, z = 5, 10, 15  # Multiple variables in one line<br>
+        print(x, y, z)  # Output: 5 10 15
+    </code>
+
+    <h2>7. Constants</h2>
+    <p>Although Python does not have built-in constant types, it's a convention to use all-uppercase variable names to define constants. These values should not be changed throughout the program.</p>
+
+    <code>
+        PI = 3.14159  # Treat as a constant<br>
+        GRAVITY = 9.8
+    </code>
+
+    <h2>8. Deleting Variables</h2>
+    <p>If you want to delete a variable, you can use the <code>del</code> keyword. Once deleted, the variable will no longer be available.</p>
+
+    <code>
+        name = "Alice"<br>
+        del name  # Deletes the variable 'name'<br>
+        print(name)  # This will raise an error, as 'name' is deleted
+    </code>
+
+    <h2>9. Type Conversion</h2>
+    <p>Python allows you to convert one data type to another, known as type casting. The most common type conversion functions are:</p>
+    <ul>
+        <li><code>int()</code>: Converts to an integer</li>
+        <li><code>float()</code>: Converts to a float</li>
+        <li><code>str()</code>: Converts to a string</li>
+        <li><code>list()</code>: Converts to a list</li>
+    </ul>
+
+    <h3>Example of type conversion:</h3>
+    <code>
+        x = 10.5<br>
+        y = int(x)  # Converts float to integer<br>
+        print(y)  # Output: 10<br><br>
+
+        a = "123"<br>
+        b = int(a)  # Converts string to integer<br>
+        print(b)  # Output: 123
+    </code>
+
+    <h2>Conclusion</h2>
+    <p>Python variables are a fundamental concept that allows developers to store and manipulate data. With dynamic typing, flexible naming rules, and various data types, Python makes it easy to work with variables. Remember to follow naming conventions and choose meaningful names to make your code more readable and maintainable.</p>
+
+</body>
+</html>

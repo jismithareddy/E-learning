@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Statements in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .example-code {
+            background-color: #f0f0f0;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Conditional Statements in Python</h1>
+
+    <p>Conditional statements allow us to execute a block of code based on whether a condition is true or false. Python provides three primary conditional statements:</p>
+    <ul>
+        <li><strong>if</strong> statement</li>
+        <li><strong>elif</strong> statement (else if)</li>
+        <li><strong>else</strong> statement</li>
+    </ul>
+
+    <h2>1. The <strong>if</strong> Statement</h2>
+    <p>The <strong>if</strong> statement is used to check a condition. If the condition evaluates to <strong>True</strong>, the code block inside the <strong>if</strong> statement is executed.</p>
+
+    <h3>Syntax:</h3>
+    <div class="example-code">
+        if condition:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute if condition is true
+    </div>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        x = 10<br>
+        if x > 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is greater than 5")
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        x is greater than 5
+    </div>
+
+    <h2>2. The <strong>elif</strong> Statement</h2>
+    <p>When using the <strong>if</strong> statement, you can check additional conditions using the <strong>elif</strong> (short for "else if") statement. If the <strong>if</strong> condition is false, the <strong>elif</strong> condition is checked, and so on.</p>
+
+    <h3>Syntax:</h3>
+    <div class="example-code">
+        if condition_1:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute if condition_1 is true<br>
+        elif condition_2:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute if condition_2 is true
+    </div>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        x = 10<br>
+        if x > 15:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is greater than 15")<br>
+        elif x > 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is greater than 5 but less than or equal to 15")
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        x is greater than 5 but less than or equal to 15
+    </div>
+
+    <h2>3. The <strong>else</strong> Statement</h2>
+    <p>The <strong>else</strong> statement is used when all the preceding <strong>if</strong> and <strong>elif</strong> conditions are false. The code block inside the <strong>else</strong> statement is executed when none of the conditions are true.</p>
+
+    <h3>Syntax:</h3>
+    <div class="example-code">
+        if condition_1:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute if condition_1 is true<br>
+        elif condition_2:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute if condition_2 is true<br>
+        else:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute if all conditions are false
+    </div>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        x = 3<br>
+        if x > 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is greater than 5")<br>
+        elif x == 3:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is equal to 3")<br>
+        else:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is less than 3")
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        x is equal to 3
+    </div>
+
+    <h2>4. Nested Conditional Statements</h2>
+    <p>Conditional statements can be nested inside other conditional statements. This allows you to check multiple levels of conditions.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        x = 7<br>
+        if x > 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if x < 10:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("x is between 5 and 10")<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("x is greater than or equal to 10")<br>
+        else:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is less than or equal to 5")
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        x is between 5 and 10
+    </div>
+
+    <h2>5. Using Logical Operators in Conditional Statements</h2>
+    <p>You can combine conditions using logical operators such as <strong>and</strong>, <strong>or</strong>, and <strong>not</strong> in conditional statements.</p>
+
+    <h3>Logical Operators:</h3>
+    <ul>
+        <li><strong>and</strong>: Returns <strong>True</strong> if both conditions are true.</li>
+        <li><strong>or</strong>: Returns <strong>True</strong> if at least one of the conditions is true.</li>
+        <li><strong>not</strong>: Reverses the result, returning <strong>True</strong> if the condition is false, and vice versa.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        x = 5<br>
+        if x > 3 and x < 10:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is between 3 and 10")<br>
+        elif x == 3 or x == 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is either 3 or 5")<br>
+        else:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("x is not between 3 and 10")
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        x is either 3 or 5
+    </div>
+
+    <h2>6. The <strong>if-else</strong> Shortcut (Ternary Operator)</h2>
+    <p>Python supports a shorthand version of <strong>if-else</strong> statements, known as the ternary operator. This allows you to write simple conditional expressions in a single line.</p>
+
+    <h3>Syntax:</h3>
+    <div class="example-code">
+        result = value_if_true if condition else value_if_false
+    </div>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        x = 10<br>
+        result = "x is greater than 5" if x > 5 else "x is less than or equal to 5"<br>
+        print(result)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        x is greater than 5
+    </div>
+
+    <h2>7. Conclusion</h2>
+    <p>Conditional statements are an essential part of Python programming, allowing you to control the flow of execution based on dynamic conditions. By using <strong>if</strong>, <strong>elif</strong>, and <strong>else</strong>, along with logical operators, you can build complex decision-making processes into your Python programs.</p>
+
+</body>
+</html>

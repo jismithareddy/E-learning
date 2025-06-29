@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .example-code {
+            background-color: #f0f0f0;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Functions in Python</h1>
+
+    <p>Functions are blocks of reusable code that allow you to perform specific tasks. They are one of the core components of Python programming, enabling code modularity and reuse.</p>
+
+    <h2>1. What is a Function?</h2>
+    <p>A <strong>function</strong> is a block of code that only runs when it is called. You can pass data, known as <strong>parameters</strong>, into a function, and it can return data as a result.</p>
+
+    <p>Functions help to break down large programs into smaller, manageable parts, making the code easier to read, maintain, and debug.</p>
+
+    <h2>2. Syntax of a Function</h2>
+    <p>The basic syntax of a function in Python is:</p>
+    <div class="example-code">
+        def function_name(parameters):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# block of code<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;return value
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>def:</strong> The keyword used to define a function.</li>
+        <li><strong>function_name:</strong> The name you use to call the function later.</li>
+        <li><strong>parameters:</strong> Optional input values you can pass into the function. These are also called arguments.</li>
+        <li><strong>return:</strong> This keyword is used to return a result from the function. It is optional if the function doesn't need to return any value.</li>
+    </ul>
+
+    <h2>3. Example of a Simple Function</h2>
+    <p>Here is an example of a simple function that adds two numbers and returns the sum:</p>
+    <div class="example-code">
+        def add_numbers(a, b):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;return a + b<br><br>
+        result = add_numbers(5, 3)<br>
+        print(result)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        8
+    </div>
+
+    <p>In this example, the function <strong>add_numbers</strong> takes two parameters, <strong>a</strong> and <strong>b</strong>, and returns their sum. When we call the function with arguments 5 and 3, it returns 8.</p>
+
+    <h2>4. Function Parameters</h2>
+    <p>Functions can accept different types of parameters. These are the values you pass into a function when calling it. Here are some types of parameters:</p>
+
+    <h3>4.1. Positional Parameters</h3>
+    <p>Positional parameters are the most common type. The order in which arguments are passed to the function matters.</p>
+
+    <div class="example-code">
+        def greet(name, age):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("Hello", name, "You are", age, "years old.")<br><br>
+        greet("Alice", 25)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        Hello Alice You are 25 years old.
+    </div>
+
+    <p>In this example, the order of <strong>name</strong> and <strong>age</strong> matters. The function <strong>greet</strong> will print the greeting message with the values in the same order as they are passed.</p>
+
+    <h3>4.2. Keyword Parameters</h3>
+    <p>Keyword parameters allow you to pass arguments by explicitly naming them, which makes the order less important.</p>
+
+    <div class="example-code">
+        def greet(name, age):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("Hello", name, "You are", age, "years old.")<br><br>
+        greet(age=25, name="Alice")
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        Hello Alice You are 25 years old.
+    </div>
+
+    <p>In this case, the parameters <strong>age</strong> and <strong>name</strong> are passed by their names, so the order doesn't matter.</p>
+
+    <h3>4.3. Default Parameters</h3>
+    <p>You can provide default values for parameters. If the function is called without a value for that parameter, it will use the default value.</p>
+
+    <div class="example-code">
+        def greet(name, age=18):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("Hello", name, "You are", age, "years old.")<br><br>
+        greet("Alice")
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        Hello Alice You are 18 years old.
+    </div>
+
+    <p>In this example, the parameter <strong>age</strong> has a default value of 18. If the function is called without providing a value for <strong>age</strong>, the default value is used.</p>
+
+    <h2>5. Return Statement</h2>
+    <p>The <strong>return</strong> statement allows a function to return a value to the caller. This value can be used in expressions or assigned to a variable.</p>
+
+    <div class="example-code">
+        def square(number):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;return number * number<br><br>
+        result = square(4)<br>
+        print(result)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        16
+    </div>
+
+    <p>In this example, the function <strong>square</strong> returns the square of a number. The value returned by the function is stored in the variable <strong>result</strong> and printed.</p>
+
+    <h2>6. Function Scope</h2>
+    <p>The scope of a variable is the region of the program where it is accessible. Variables declared inside a function are local to that function, meaning they can only be accessed within that function.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        def my_function():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;message = "Hello from function!"<br><br>
+        my_function()<br>
+        # print(message)  # This will cause an error because 'message' is local to my_function.
+    </div>
+
+    <p>If you try to print <strong>message</strong> outside of the function, it will result in an error because it is local to <strong>my_function</strong>.</p>
+
+    <h2>7. Recursion</h2>
+    <p>Recursion is when a function calls itself. This technique is useful for solving problems that can be broken down into smaller subproblems.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        def factorial(n):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if n == 0:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return n * factorial(n - 1)<br><br>
+        print(factorial(5))
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        120
+    </div>
+
+    <p>In this example, the function <strong>factorial</strong> calls itself until the base case (n == 0) is met. This calculates the factorial of a number.</p>
+
+    <h2>8. Lambda Functions</h2>
+    <p>Lambda functions are small, anonymous functions that are defined using the <strong>lambda</strong> keyword. They are used when you need a small function for a short period of time and do not want to formally define it using the <strong>def</strong> keyword.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        square = lambda x: x * x<br><br>
+        print(square(5))
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        25
+    </div>
+
+    <p>The lambda function <strong>square</strong> takes one parameter <strong>x</strong> and returns its square.</p>
+
+</body>
+</html>

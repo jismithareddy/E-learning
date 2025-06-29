@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Modules: Detailed Guide with Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .example-code {
+            background-color: #f0f0f0;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python Modules: Detailed Guide with Examples</h1>
+
+    <p>Python includes a rich set of built-in modules which provide functionalities such as file operations, data manipulation, mathematical calculations, and more. In this guide, we will cover some of the most commonly used modules in Python, providing detailed explanations, example code, and a breakdown of their key functions.</p>
+
+    <!-- 1. math module -->
+    <h2>1. The <code>math</code> Module</h2>
+    <p>The <strong>math</strong> module provides mathematical functions such as power, logarithmic, and trigonometric functions. It's highly useful for performing complex mathematical computations in Python.</p>
+
+    <h3>Key Functions in math Module:</h3>
+    <ul>
+        <li><strong>sqrt(x)</strong>: Returns the square root of x.</li>
+        <li><strong>pow(x, y)</strong>: Returns x raised to the power of y.</li>
+        <li><strong>factorial(x)</strong>: Returns the factorial of x.</li>
+        <li><strong>sin(x)</strong>: Returns the sine of x (in radians).</li>
+        <li><strong>cos(x)</strong>: Returns the cosine of x (in radians).</li>
+        <li><strong>log(x, base)</strong>: Returns the logarithm of x to the given base.</li>
+        <li><strong>exp(x)</strong>: Returns e raised to the power of x.</li>
+        <li><strong>ceil(x)</strong>: Returns the smallest integer greater than or equal to x.</li>
+        <li><strong>floor(x)</strong>: Returns the largest integer less than or equal to x.</li>
+        <li><strong>degrees(x)</strong>: Converts radians to degrees.</li>
+    </ul>
+
+    <div class="example-code">
+        import math<br><br>
+        print(math.sqrt(16))  # Output: 4.0<br>
+        print(math.pow(2, 3))  # Output: 8.0<br>
+        print(math.factorial(5))  # Output: 120<br>
+        print(math.sin(math.pi / 2))  # Output: 1.0<br>
+        print(math.cos(math.pi))  # Output: -1.0<br>
+        print(math.log(100, 10))  # Output: 2.0<br>
+        print(math.exp(1))  # Output: 2.718281828459045<br>
+        print(math.ceil(5.7))  # Output: 6<br>
+        print(math.floor(5.7))  # Output: 5<br>
+        print(math.degrees(math.pi))  # Output: 180.0<br>
+    </div>
+
+    <!-- 2. random module -->
+    <h2>2. The <code>random</code> Module</h2>
+    <p>The <strong>random</strong> module helps generate random numbers, shuffle sequences, and select random elements from lists. It's widely used in simulations, games, and testing scenarios.</p>
+
+    <h3>Key Functions in random Module:</h3>
+    <ul>
+        <li><strong>randint(a, b)</strong>: Returns a random integer between a and b.</li>
+        <li><strong>uniform(a, b)</strong>: Returns a random float between a and b.</li>
+        <li><strong>choice(seq)</strong>: Returns a randomly selected element from a sequence.</li>
+        <li><strong>shuffle(seq)</strong>: Shuffles the sequence in place.</li>
+        <li><strong>sample(seq, k)</strong>: Returns a list of k unique elements randomly chosen from a sequence.</li>
+        <li><strong>gauss(mu, sigma)</strong>: Returns a random number from a Gaussian distribution.</li>
+        <li><strong>triangular(low, high, mode)</strong>: Returns a random number from a triangular distribution.</li>
+        <li><strong>betavariate(alpha, beta)</strong>: Returns a random number from a beta distribution.</li>
+        <li><strong>expovariate(lambd)</strong>: Returns a random number from an exponential distribution.</li>
+        <li><strong>normalvariate(mu, sigma)</strong>: Returns a random number from a normal distribution.</li>
+    </ul>
+
+    <div class="example-code">
+        import random<br><br>
+        print(random.randint(1, 100))  # Output: Random integer between 1 and 100<br>
+        print(random.uniform(1, 10))  # Output: Random float between 1 and 10<br>
+        items = ['apple', 'banana', 'cherry']<br>
+        print(random.choice(items))  # Output: Random item from list<br>
+        random.shuffle(items)<br>
+        print(items)  # Output: Shuffled list<br>
+        print(random.sample(range(1, 100), 5))  # Output: 5 unique random numbers<br>
+        print(random.gauss(0, 1))  # Output: Random number from Gaussian distribution<br>
+        print(random.triangular(0, 10, 5))  # Output: Triangular distribution<br>
+        print(random.betavariate(2, 3))  # Output: Beta distribution<br>
+        print(random.expovariate(1))  # Output: Exponential distribution<br>
+        print(random.normalvariate(0, 1))  # Output: Normal distribution<br>
+    </div>
+
+    <!-- 3. os module -->
+    <h2>3. The <code>os</code> Module</h2>
+    <p>The <strong>os</strong> module provides a way to interact with the operating system, allowing file and directory manipulation, path operations, and system-related tasks.</p>
+
+    <h3>Key Functions in os Module:</h3>
+    <ul>
+        <li><strong>getcwd()</strong>: Returns the current working directory.</li>
+        <li><strong>mkdir(path)</strong>: Creates a new directory.</li>
+        <li><strong>rename(src, dst)</strong>: Renames a file or directory.</li>
+        <li><strong>remove(path)</strong>: Removes a file.</li>
+        <li><strong>listdir(path)</strong>: Returns a list of files and directories in a given directory.</li>
+        <li><strong>path.exists(path)</strong>: Checks if a file or directory exists.</li>
+        <li><strong>path.join(path, *paths)</strong>: Joins paths to form a complete file path.</li>
+        <li><strong>path.abspath(path)</strong>: Returns the absolute path of a file.</li>
+        <li><strong>rmdir(path)</strong>: Removes an empty directory.</li>
+        <li><strong>environ</strong>: Returns a dictionary of the environment variables.</li>
+    </ul>
+
+    <div class="example-code">
+        import os<br><br>
+        print(os.getcwd())  # Output: Current working directory<br>
+        os.mkdir('new_directory')  # Creates a new directory<br>
+        os.rename('old_file.txt', 'new_file.txt')  # Renames a file<br>
+        os.remove('file_to_delete.txt')  # Deletes a file<br>
+        print(os.listdir())  # Output: List of files in the current directory<br>
+        print(os.path.exists('file.txt'))  # Output: True if file exists<br>
+        print(os.path.join('folder', 'file.txt'))  # Output: Joins paths<br>
+        print(os.path.abspath('file.txt'))  # Output: Absolute path of a file<br>
+        os.rmdir('old_directory')  # Removes a directory<br>
+        print(os.environ)  # Output: Environment variables<br>
+    </div>
+
+    <!-- 4. sys module -->
+    <h2>4. The <code>sys</code> Module</h2>
+    <p>The <strong>sys</strong> module provides access to system-specific parameters and functions. It is used for handling command-line arguments and controlling runtime parameters.</p>
+
+    <h3>Key Functions in sys Module:</h3>
+    <ul>
+        <li><strong>argv</strong>: Returns a list of command-line arguments passed to the script.</li>
+        <li><strong>exit([status])</strong>: Exits the script with an optional exit status.</li>
+        <li><strong>version</strong>: Returns the version of Python being used.</li>
+        <li><strong>platform</strong>: Returns the platform identifier (e.g., 'win32', 'linux', etc.).</li>
+        <li><strong>getsizeof(object)</strong>: Returns the memory size of an object.</li>
+        <li><strong>path</strong>: Provides access to the module search path.</li>
+    </ul>
+
+    <div class="example-code">
+        import sys<br><br>
+        print(sys.argv)  # Output: List of command-line arguments<br>
+        sys.exit(0)  # Exits the program<br>
+        print(sys.version)  # Output: Python version<br>
+        print(sys.platform)  # Output: Platform identifier<br>
+        print(sys.getsizeof('Hello'))  # Output: Memory size of the string<br>
+    </div>
+    <h2>5. The <code>datetime</code> Module</h2>
+    <p>The <strong>datetime</strong> module supplies classes for manipulating dates and times. It includes functions for working with both simple date/times and more complex operations like calculating time deltas.</p>
+
+    <h3>Key Functions in datetime Module:</h3>
+    <ul>
+        <li><strong>datetime.now()</strong>: Returns the current local date and time.</li>
+        <li><strong>datetime.date()</strong>: Returns the date part of a datetime object.</li>
+        <li><strong>datetime.time()</strong>: Returns the time part of a datetime object.</li>
+        <li><strong>datetime.strftime(format)</strong>: Formats a datetime object as a string.</li>
+        <li><strong>datetime.strptime(date_string, format)</strong>: Parses a string into a datetime object.</li>
+        <li><strong>timedelta(days, seconds, microseconds)</strong>: Represents the difference between two dates or times.</li>
+        <li><strong>datetime.today()</strong>: Returns the current local date and time.</li>
+        <li><strong>datetime.combine(date, time)</strong>: Combines a date and a time into a datetime object.</li>
+    </ul>
+
+    <div class="example-code">
+        import datetime<br><br>
+        print(datetime.datetime.now())  # Output: Current date and time<br>
+        print(datetime.date(2024, 10, 19))  # Output: 2024-10-19<br>
+        print(datetime.time(12, 30, 45))  # Output: 12:30:45<br>
+        dt = datetime.datetime(2024, 10, 19, 12, 30)<br>
+        print(dt.strftime('%Y-%m-%d %H:%M:%S'))  # Output: Formatted date string<br>
+        date_str = '2024-10-19 12:30:00'<br>
+        dt_obj = datetime.datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')<br>
+        print(dt_obj)  # Output: Parsed datetime object<br>
+        from datetime import timedelta<br>
+        delta = timedelta(days=5)<br>
+        print(datetime.datetime.now() + delta)  # Output: Date 5 days from now<br>
+        date1 = datetime.date(2024, 1, 1)<br>
+        time1 = datetime.time(10, 30)<br>
+        print(datetime.datetime.combine(date1, time1))  # Output: Combined datetime<br>
+    </div>
+
+    <!-- 6. json module -->
+    <h2>6. The <code>json</code> Module</h2>
+    <p>The <strong>json</strong> module provides a way to work with JSON (JavaScript Object Notation) data. It allows easy parsing and generation of JSON data.</p>
+
+    <h3>Key Functions in json Module:</h3>
+    <ul>
+        <li><strong>json.dumps(obj)</strong>: Converts a Python object to a JSON string.</li>
+        <li><strong>json.loads(json_string)</strong>: Parses a JSON string into a Python object.</li>
+        <li><strong>json.dump(obj, file)</strong>: Writes a Python object to a file in JSON format.</li>
+        <li><strong>json.load(file)</strong>: Reads JSON data from a file and returns it as a Python object.</li>
+    </ul>
+
+    <div class="example-code">
+        import json<br><br>
+        data = {"name": "Alice", "age": 25}<br>
+        json_data = json.dumps(data)<br>
+        print(json_data)  # Output: '{"name": "Alice", "age": 25}'<br>
+        parsed_data = json.loads(json_data)<br>
+        print(parsed_data)  # Output: {'name': 'Alice', 'age': 25}<br>
+        with open('data.json', 'w') as file:<br>
+            json.dump(data, file)<br>
+        with open('data.json', 'r') as file:<br>
+            loaded_data = json.load(file)<br>
+            print(loaded_data)  # Output: {'name': 'Alice', 'age': 25}<br>
+    </div>
+
+    <!-- 7. re module -->
+    <h2>7. The <code>re</code> Module</h2>
+    <p>The <strong>re</strong> module deals with regular expressions, which allow for pattern matching in strings. It provides various functions to search, match, and manipulate text using patterns.</p>
+
+    <h3>Key Functions in re Module:</h3>
+    <ul>
+        <li><strong>re.match(pattern, string)</strong>: Checks if the pattern matches the beginning of the string.</li>
+        <li><strong>re.search(pattern, string)</strong>: Searches the string for the first occurrence of the pattern.</li>
+        <li><strong>re.findall(pattern, string)</strong>: Returns a list of all non-overlapping matches of the pattern in the string.</li>
+        <li><strong>re.sub(pattern, repl, string)</strong>: Replaces occurrences of the pattern with a replacement string.</li>
+        <li><strong>re.split(pattern, string)</strong>: Splits the string by the occurrences of the pattern.</li>
+    </ul>
+
+    <div class="example-code">
+        import re<br><br>
+        text = "The quick brown fox jumps over the lazy dog"<br>
+        result = re.match(r"^The", text)<br>
+        print(result.group())  # Output: The<br>
+        result = re.search(r"fox", text)<br>
+        print(result.group())  # Output: fox<br>
+        words = re.findall(r"\b\w+\b", text)<br>
+        print(words)  # Output: ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']<br>
+        new_text = re.sub(r"fox", "cat", text)<br>
+        print(new_text)  # Output: The quick brown cat jumps over the lazy dog<br>
+        split_text = re.split(r"\s+", text)<br>
+        print(split_text)  # Output: ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']<br>
+    </div>
+
+    <!-- 8. itertools module -->
+    <h2>8. The <code>itertools</code> Module</h2>
+    <p>The <strong>itertools</strong> module provides functions that create iterators for efficient looping. It includes tools for working with infinite sequences, permutations, combinations, and more.</p>
+
+    <h3>Key Functions in itertools Module:</h3>
+    <ul>
+        <li><strong>count(start, step)</strong>: Returns an iterator that generates numbers starting from 'start' and increments by 'step' indefinitely.</li>
+        <li><strong>cycle(iterable)</strong>: Cycles through an iterable indefinitely.</li>
+        <li><strong>repeat(element, times)</strong>: Repeats an element a specified number of times.</li>
+        <li><strong>permutations(iterable, r)</strong>: Returns all possible permutations of an iterable of length 'r'.</li>
+        <li><strong>combinations(iterable, r)</strong>: Returns all possible combinations of an iterable of length 'r'.</li>
+        <li><strong>product(iterable, repeat)</strong>: Returns the Cartesian product of input iterables.</li>
+    </ul>
+
+    <div class="example-code">
+        import itertools<br><br>
+        count_iter = itertools.count(10, 2)<br>
+        print(next(count_iter))  # Output: 10<br>
+        print(next(count_iter))  # Output: 12<br>
+        cycle_iter = itertools.cycle([1, 2, 3])<br>
+        print(next(cycle_iter))  # Output: 1<br>
+        repeat_iter = itertools.repeat('a', 3)<br>
+        print(list(repeat_iter))  # Output: ['a', 'a', 'a']<br>
+        perm_iter = itertools.permutations([1, 2, 3])<br>
+        print(list(perm_iter))  # Output: [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]<br>
+    </div>
+     <!-- 9. collections module -->
+     <h2>9. The <code>collections</code> Module</h2>
+     <p>The <strong>collections</strong> module provides alternatives to Python’s built-in collection types, such as lists, tuples, and dictionaries. It includes specialized container datatypes like namedtuples, deques, Counter, OrderedDict, defaultdict, and ChainMap.</p>
+ 
+     <h3>Key Functions in collections Module:</h3>
+     <ul>
+         <li><strong>namedtuple()</strong>: Factory function for creating tuple subclasses with named fields.</li>
+         <li><strong>deque()</strong>: Double-ended queue that allows appending and popping from both ends.</li>
+         <li><strong>Counter()</strong>: A dict subclass for counting hashable objects.</li>
+         <li><strong>OrderedDict()</strong>: A dict subclass that remembers the order items were inserted.</li>
+         <li><strong>defaultdict()</strong>: A dict subclass that provides a default value for nonexistent keys.</li>
+         <li><strong>ChainMap()</strong>: Combines multiple dictionaries into a single, updateable view.</li>
+     </ul>
+ 
+     <div class="example-code">
+         from collections import namedtuple, deque, Counter, OrderedDict, defaultdict, ChainMap<br><br>
+         # namedtuple<br>
+         Point = namedtuple('Point', ['x', 'y'])<br>
+         p = Point(10, 20)<br>
+         print(p.x, p.y)  # Output: 10 20<br><br>
+         # deque<br>
+         d = deque([1, 2, 3])<br>
+         d.appendleft(0)<br>
+         d.append(4)<br>
+         print(d)  # Output: deque([0, 1, 2, 3, 4])<br><br>
+         # Counter<br>
+         c = Counter('gallop')<br>
+         print(c)  # Output: Counter({'g': 1, 'a': 1, 'l': 2, 'o': 1, 'p': 1})<br><br>
+         # OrderedDict<br>
+         o = OrderedDict([('a', 1), ('b', 2)])<br>
+         print(o)  # Output: OrderedDict([('a', 1), ('b', 2)])<br><br>
+         # defaultdict<br>
+         dd = defaultdict(int)<br>
+         dd['one'] += 1<br>
+         print(dd)  # Output: defaultdict(<class 'int'>, {'one': 1})<br><br>
+         # ChainMap<br>
+         dict1 = {'x': 1, 'y': 2}<br>
+         dict2 = {'z': 3}<br>
+         cm = ChainMap(dict1, dict2)<br>
+         print(cm)  # Output: ChainMap({'x': 1, 'y': 2}, {'z': 3})<br>
+     </div>
+ 
+     <!-- 10. subprocess module -->
+     <h2>10. The <code>subprocess</code> Module</h2>
+     <p>The <strong>subprocess</strong> module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.</p>
+ 
+     <h3>Key Functions in subprocess Module:</h3>
+     <ul>
+         <li><strong>subprocess.run()</strong>: Runs a command and waits for it to complete.</li>
+         <li><strong>subprocess.Popen()</strong>: Spawns a new process.</li>
+         <li><strong>subprocess.call()</strong>: Executes a command and returns the return code.</li>
+         <li><strong>subprocess.check_output()</strong>: Runs a command and returns its output.</li>
+     </ul>
+ 
+     <div class="example-code">
+         import subprocess<br><br>
+         # Running a simple command<br>
+         result = subprocess.run(['ls', '-l'], capture_output=True, text=True)<br>
+         print(result.stdout)  # Output: Command output<br><br>
+         # Running a command and capturing the output<br>
+         output = subprocess.check_output(['echo', 'Hello, World!'], text=True)<br>
+         print(output)  # Output: Hello, World!<br><br>
+         # Spawning a new process<br>
+         process = subprocess.Popen(['python3', '--version'], stdout=subprocess.PIPE)<br>
+         stdout, stderr = process.communicate()<br>
+         print(stdout.decode())  # Output: Python version info<br>
+     </div>
+ 
+     <!-- 11. sqlite3 module -->
+     <h2>11. The <code>sqlite3</code> Module</h2>
+     <p>The <strong>sqlite3</strong> module allows for interaction with SQLite databases. It provides an API for creating, reading, updating, and deleting data in SQLite databases.</p>
+ 
+     <h3>Key Functions in sqlite3 Module:</h3>
+     <ul>
+         <li><strong>sqlite3.connect()</strong>: Connects to an SQLite database file.</li>
+         <li><strong>cursor.execute()</strong>: Executes a SQL query.</li>
+         <li><strong>cursor.fetchall()</strong>: Fetches all rows of a query result.</li>
+         <li><strong>connection.commit()</strong>: Commits the transaction to the database.</li>
+         <li><strong>connection.close()</strong>: Closes the connection to the database.</li>
+     </ul>
+ 
+     <div class="example-code">
+         import sqlite3<br><br>
+         conn = sqlite3.connect('example.db')<br>
+         cursor = conn.cursor()<br>
+         cursor.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)''')<br>
+         cursor.execute("INSERT INTO users (name) VALUES ('Alice')")<br>
+         conn.commit()<br>
+         cursor.execute("SELECT * FROM users")<br>
+         rows = cursor.fetchall()<br>
+         print(rows)  # Output: [(1, 'Alice')]<br>
+         conn.close()<br>
+     </div>
+ 
+     <!-- 12. socket module -->
+     <h2>12. The <code>socket</code> Module</h2>
+     <p>The <strong>socket</strong> module provides a low-level interface for networking and communication between computers over the Internet. It allows for creating and using sockets for client-server communication.</p>
+ 
+     <h3>Key Functions in socket Module:</h3>
+     <ul>
+         <li><strong>socket.socket()</strong>: Creates a socket object.</li>
+         <li><strong>socket.bind()</strong>: Binds the socket to an address and port.</li>
+         <li><strong>socket.listen()</strong>: Sets up the socket to listen for incoming connections.</li>
+         <li><strong>socket.accept()</strong>: Accepts a connection from a client.</li>
+         <li><strong>socket.connect()</strong>: Connects the socket to a remote address.</li>
+         <li><strong>socket.send()</strong>: Sends data through the socket.</li>
+         <li><strong>socket.recv()</strong>: Receives data from the socket.</li>
+     </ul>
+ 
+     <div class="example-code">
+         import socket<br><br>
+         # Create socket object<br>
+         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>
+         # Bind the socket to a host and port<br>
+         s.bind(('localhost', 12345))<br>
+         # Listen for connections<br>
+         s.listen(1)<br>
+         print("Waiting for connection...")<br>
+         conn, addr = s.accept()<br>
+         print('Connection from', addr)<br>
+         conn.sendall(b'Hello, Client!')<br>
+         conn.close()<br>
+     </div>
+ 
+     <!-- 13. csv module -->
+     <h2>13. The <code>csv</code> Module</h2>
+     <p>The <strong>csv</strong> module provides functionality for reading and writing CSV files. It helps you easily work with CSV data in Python.</p>
+ 
+     <h3>Key Functions in csv Module:</h3>
+     <ul>
+         <li><strong>csv.reader()</strong>: Reads data from a CSV file.</li>
+         <li><strong>csv.writer()</strong>: Writes data to a CSV file.</li>
+         <li><strong>csv.DictReader()</strong>: Reads CSV files into dictionaries.</li>
+         <li><strong>csv.DictWriter()</strong>: Writes dictionaries to a CSV file.</li>
+     </ul>
+ 
+     <div class="example-code">
+         import csv<br><br>
+         with open('data.csv', mode='w', newline='') as file:<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;writer = csv.writer(file)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;writer.writerow(['Name', 'Age', 'Country'])<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;writer.writerow(['John', 28, 'USA'])<br><br>
+         with open('data.csv', mode='r') as file:<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;reader = csv.reader(file)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;for row in reader:<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(row)<br>
+     </div>
+
+</body>
+</html>
+

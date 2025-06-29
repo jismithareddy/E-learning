@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exception Handling in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .example-code {
+            background-color: #f0f0f0;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exception Handling in Python - Detailed Explanation</h1>
+    <p>Exceptions are runtime errors that can occur in a Python program. Instead of crashing the program, Python provides ways to handle these exceptions gracefully. Exception handling allows developers to manage these situations and control the program’s behavior in the presence of errors.</p>
+
+    <h2>What is an Exception?</h2>
+    <p>An exception is an event that disrupts the normal flow of the program’s instructions. It occurs during the execution of a program and can be handled using specific constructs like <code>try</code> and <code>except</code>.</p>
+
+    <h2>Basic Syntax of Exception Handling</h2>
+    <p>Python provides the following keywords for exception handling:</p>
+    <ul>
+        <li><code>try</code>: The block of code where exceptions might occur.</li>
+        <li><code>except</code>: This block handles the exception if one is raised.</li>
+        <li><code>else</code>: The code in this block is executed if no exception occurs.</li>
+        <li><code>finally</code>: This block is executed no matter what, regardless of whether an exception occurred or not.</li>
+    </ul>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        try:
+            # Code that might raise an exception
+            result = 10 / 0
+        except ZeroDivisionError:
+            # Handle the specific exception
+            print("You cannot divide by zero.")
+        else:
+            # This block will be executed if no exception occurs
+            print("Division was successful.")
+        finally:
+            # This block will always be executed
+            print("This will always execute, regardless of an exception.")
+        </code>
+    </div>
+
+    <h2>Types of Exceptions</h2>
+    <p>Python has several built-in exceptions, some of the common ones are:</p>
+    <ul>
+        <li><code>ZeroDivisionError</code>: Raised when dividing by zero.</li>
+        <li><code>ValueError</code>: Raised when a function receives the correct type but an invalid value.</li>
+        <li><code>FileNotFoundError</code>: Raised when trying to open a file that does not exist.</li>
+        <li><code>TypeError</code>: Raised when an operation or function is applied to an object of inappropriate type.</li>
+        <li><code>KeyError</code>: Raised when trying to access a dictionary with a key that does not exist.</li>
+    </ul>
+
+    <h2>Handling Multiple Exceptions</h2>
+    <p>You can handle multiple exceptions in the same block using multiple <code>except</code> clauses. Each exception is handled based on its type.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        try:
+            number = int(input("Enter a number: "))
+            result = 100 / number
+        except ValueError:
+            print("Invalid input! Please enter a number.")
+        except ZeroDivisionError:
+            print("You cannot divide by zero.")
+        </code>
+    </div>
+
+    <h2>Catching Multiple Exceptions in One Block</h2>
+    <p>You can also catch multiple exceptions using a single <code>except</code> block by specifying them as a tuple.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        try:
+            number = int(input("Enter a number: "))
+            result = 100 / number
+        except (ValueError, ZeroDivisionError) as e:
+            print(f"An error occurred: {e}")
+        </code>
+    </div>
+
+    <h2>Using the <code>else</code> Clause</h2>
+    <p>The <code>else</code> block is executed if no exception is raised. It is a good practice to use <code>else</code> for code that should run only if the <code>try</code> block is successful.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        try:
+            number = int(input("Enter a number: "))
+            result = 100 / number
+        except ZeroDivisionError:
+            print("You cannot divide by zero.")
+        except ValueError:
+            print("Invalid input!")
+        else:
+            print(f"Result: {result}")
+        </code>
+    </div>
+
+    <h2>Using the <code>finally</code> Clause</h2>
+    <p>The <code>finally</code> block is always executed, whether an exception occurs or not. It is typically used for cleanup operations, such as closing files or releasing resources.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        try:
+            file = open('example.txt', 'r')
+            content = file.read()
+            print(content)
+        except FileNotFoundError:
+            print("File not found.")
+        finally:
+            file.close()
+            print("File closed.")
+        </code>
+    </div>
+
+    <h2>Custom Exceptions</h2>
+    <p>Python allows you to create your own exceptions by deriving a new class from the built-in <code>Exception</code> class. Custom exceptions can be raised using the <code>raise</code> statement.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        # Define a custom exception
+        class CustomError(Exception):
+            def __init__(self, message):
+                self.message = message
+
+        # Raise the custom exception
+        def check_value(value):
+            if value < 0:
+                raise CustomError("Negative value is not allowed.")
+            else:
+                print("Value is acceptable.")
+
+        try:
+            check_value(-1)
+        except CustomError as e:
+            print(e.message)
+        </code>
+    </div>
+
+    <h2>The <code>raise</code> Statement</h2>
+    <p>The <code>raise</code> statement allows you to raise an exception at any point in your code. It is useful when you want to signal that an error has occurred under certain conditions.</p>
+
+    <h3>Example Code:</h3>
+    <div class="example-code">
+        <code>
+        def divide(a, b):
+            if b == 0:
+                raise ZeroDivisionError("You cannot divide by zero.")
+            return a / b
+
+        try:
+            result = divide(10, 0)
+        except ZeroDivisionError as e:
+            print(e)
+        </code>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Exception handling is a powerful feature in Python that allows you to handle errors in a graceful manner. It helps in writing more robust and fault-tolerant code by catching potential runtime errors. Use <code>try-except</code> blocks wherever there is a chance of errors, especially in file operations, user inputs, or resource-intensive operations.</p>
+
+</body>
+</html>

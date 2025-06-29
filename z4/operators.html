@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Operators</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #f0f0f0;
+            
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e78b8b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python Operators</h1>
+
+    <p>In Python, operators are special symbols used to perform operations on variables and values. There are several types of operators in Python:</p>
+    
+    <ul>
+        <li>Arithmetic Operators</li>
+        <li>Comparison (Relational) Operators</li>
+        <li>Assignment Operators</li>
+        <li>Logical Operators</li>
+        <li>Bitwise Operators</li>
+        <li>Membership Operators</li>
+        <li>Identity Operators</li>
+    </ul>
+
+    <h2>1. Arithmetic Operators</h2>
+    <p>Arithmetic operators are used to perform common mathematical operations such as addition, subtraction, multiplication, etc.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td>Addition</td>
+            <td><code>5 + 3 = 8</code></td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Subtraction</td>
+            <td><code>5 - 3 = 2</code></td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Multiplication</td>
+            <td><code>5 * 3 = 15</code></td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>Division</td>
+            <td><code>5 / 2 = 2.5</code></td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>Modulus (remainder)</td>
+            <td><code>5 % 2 = 1</code></td>
+        </tr>
+        <tr>
+            <td>**</td>
+            <td>Exponentiation (power)</td>
+            <td><code>5 ** 2 = 25</code></td>
+        </tr>
+        <tr>
+            <td>//</td>
+            <td>Floor division</td>
+            <td><code>5 // 2 = 2</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <code>
+        a = 10<br>
+        b = 3<br>
+        print("Addition:", a + b)    # Output: 13<br>
+        print("Subtraction:", a - b) # Output: 7<br>
+        print("Multiplication:", a * b) # Output: 30<br>
+        print("Division:", a / b)    # Output: 3.333<br>
+        print("Modulus:", a % b)     # Output: 1<br>
+        print("Exponentiation:", a ** b) # Output: 1000<br>
+        print("Floor Division:", a // b) # Output: 3
+    </code>
+
+    <h2>2. Comparison (Relational) Operators</h2>
+    <p>These operators compare two values and return either <code>True</code> or <code>False</code> based on the condition.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>==</td>
+            <td>Equal to</td>
+            <td><code>5 == 3 (False)</code></td>
+        </tr>
+        <tr>
+            <td>!=</td>
+            <td>Not equal to</td>
+            <td><code>5 != 3 (True)</code></td>
+        </tr>
+        <tr>
+            <td>></td>
+            <td>Greater than</td>
+            <td><code>5 > 3 (True)</code></td>
+        </tr>
+        <tr>
+            <td><</td>
+            <td>Less than</td>
+            <td><code>5 < 3 (False)</code></td>
+        </tr>
+        <tr>
+            <td>>=</td>
+            <td>Greater than or equal to</td>
+            <td><code>5 >= 3 (True)</code></td>
+        </tr>
+        <tr>
+            <td><=</td>
+            <td>Less than or equal to</td>
+            <td><code>5 <= 3 (False)</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <code>
+        a = 5<br>
+        b = 3<br>
+        print(a == b)  # False<br>
+        print(a != b)  # True<br>
+        print(a > b)   # True<br>
+        print(a < b)   # False<br>
+        print(a >= b)  # True<br>
+        print(a <= b)  # False
+    </code>
+
+    <h2>3. Assignment Operators</h2>
+    <p>Assignment operators are used to assign values to variables.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>=</td>
+            <td>Assign</td>
+            <td><code>x = 5</code></td>
+        </tr>
+        <tr>
+            <td>+=</td>
+            <td>Add and assign</td>
+            <td><code>x += 3 (x = x + 3)</code></td>
+        </tr>
+        <tr>
+            <td>-=</td>
+            <td>Subtract and assign</td>
+            <td><code>x -= 3 (x = x - 3)</code></td>
+        </tr>
+        <tr>
+            <td>*=</td>
+            <td>Multiply and assign</td>
+            <td><code>x *= 3 (x = x * 3)</code></td>
+        </tr>
+        <tr>
+            <td>/=</td>
+            <td>Divide and assign</td>
+            <td><code>x /= 3 (x = x / 3)</code></td>
+        </tr>
+        <tr>
+            <td>%=</td>
+            <td>Modulus and assign</td>
+            <td><code>x %= 3 (x = x % 3)</code></td>
+        </tr>
+        <tr>
+            <td>//=</td>
+            <td>Floor divide and assign</td>
+            <td><code>x //= 3 (x = x // 3)</code></td>
+        </tr>
+        <tr>
+            <td>**=</td>
+            <td>Exponent and assign</td>
+            <td><code>x **= 3 (x = x ** 3)</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <code>
+        x = 5<br>
+        x += 3  # x = x + 3<br>
+        print(x)  # Output: 8
+    </code>
+
+    <h2>4. Logical Operators</h2>
+    <p>Logical operators are used to combine conditional statements and return <code>True</code> or <code>False</code>.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>and</td>
+            <td>Returns True if both statements are true</td>
+            <td><code>x > 3 and x < 10 (True)</code></td>
+        </tr>
+        <tr>
+            <td>or</td>
+            <td>Returns True if one of the statements is true</td>
+            <td><code>x > 3 or x < 4 (True)</code></td>
+        </tr>
+        <tr>
+            <td>not</td>
+            <td>Reverses the result, returns False if the result is true</td>
+            <td><code>not(x > 3 and x < 10) (False)</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <code>
+        x = 5<br>
+        print(x > 3 and x < 10)  # True<br>
+        print(x > 3 or x < 4)    # True<br>
+        print(not(x > 3 and x < 10))  # False
+    </code>
+
+    <h2>5. Bitwise Operators</h2>
+    <p>Bitwise operators act on bits and perform bit-by-bit operations.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>&</td>
+            <td>Bitwise AND</td>
+            <td><code>5 & 3 = 1</code></td>
+        </tr>
+        <tr>
+            <td>|</td>
+            <td>Bitwise OR</td>
+            <td><code>5 | 3 = 7</code></td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>Bitwise XOR</td>
+            <td><code>5 ^ 3 = 6</code></td>
+        </tr>
+        <tr>
+            <td>~</td>
+            <td>Bitwise NOT</td>
+            <td><code>~5 = -6</code></td>
+        </tr>
+        <tr>
+            <td>&lt;&lt;</td>
+            <td>Left Shift</td>
+            <td><code>5 &lt;&lt; 2 = 20</code></td>
+        </tr>
+        <tr>
+            <td>&gt;&gt;</td>
+            <td>Right Shift</td>
+            <td><code>5 &gt;&gt; 2 = 1</code></td>
+        </tr>
+    </table>
+
+    <h2>6. Membership Operators</h2>
+    <p>These operators test whether a value or variable is found in a sequence (string, list, tuple, etc.).</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>in</td>
+            <td>Returns True if a value exists in the sequence</td>
+            <td><code>"a" in "apple" (True)</code></td>
+        </tr>
+        <tr>
+            <td>not in</td>
+            <td>Returns True if a value does not exist in the sequence</td>
+            <td><code>"x" not in "apple" (True)</code></td>
+        </tr>
+    </table>
+
+    <h2>7. Identity Operators</h2>
+    <p>Identity operators compare the memory location of two objects.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>is</td>
+            <td>Returns True if both variables are the same object</td>
+            <td><code>x is y</code></td>
+        </tr>
+        <tr>
+            <td>is not</td>
+            <td>Returns True if both variables are not the same object</td>
+            <td><code>x is not y</code></td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Syntax Rules and Structure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        code {
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: block;
+            margin: 10px 0;
+            border-left: 4px solid #ccc;
+            white-space: pre-wrap;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python Syntax Rules and Program Structure</h1>
+
+    <h2>1. Python Syntax Rules</h2>
+    <p>Here are the key rules to follow while writing Python code:</p>
+
+    <ul>
+        <li><strong>Indentation:</strong> In Python, indentation is crucial for defining code blocks such as functions, loops, and conditionals. It uses 4 spaces per indentation level, and incorrect indentation will lead to errors.
+            <code>
+                if x > 0:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Positive")
+            </code>
+        </li>
+
+        <li><strong>Case Sensitivity:</strong> Python is case-sensitive. This means that variables like <code>MyVar</code>, <code>myvar</code>, and <code>MYVAR</code> are treated as distinct.
+            <code>
+                myvar = 10<br>
+                MyVar = 20<br>
+                print(myvar)  # Output: 10<br>
+                print(MyVar)  # Output: 20
+            </code>
+        </li>
+
+        <li><strong>Variable Naming:</strong> Variable names must start with a letter or an underscore (<code>_</code>), followed by letters, digits, or underscores. Avoid using reserved keywords like <code>if</code>, <code>else</code>, or <code>def</code> as variable names.
+            <code>
+                valid_name = "John"<br>
+                _privateVar = 5<br>
+                # Invalid names:<br>
+                # 2ndName = "Invalid"<br>
+                # def = 10
+            </code>
+        </li>
+
+        <li><strong>Comments:</strong> Comments are ignored by Python and help explain the code. Use <code>#</code> for single-line comments and triple quotes (<code>'''...'''</code> or <code>"""..."""</code>) for multi-line comments or documentation.
+            <code>
+                # This is a single-line comment<br>
+                '''<br>
+                This is a multi-line comment<br>
+                or a docstring.<br>
+                '''
+            </code>
+        </li>
+
+        <li><strong>Statement Termination:</strong> Python does not require a semicolon (<code>;</code>) to terminate statements like other languages. Newlines automatically end a statement, but semicolons can be used to separate multiple statements on a single line.
+            <code>
+                x = 10<br>
+                y = 20<br>
+                print(x); print(y)  # Multiple statements on one line
+            </code>
+        </li>
+
+        <li><strong>Quotation Marks for Strings:</strong> Strings in Python can be enclosed in single quotes (<code>' '</code>) or double quotes (<code>" "</code>). Both are valid, but ensure consistency in string declaration.
+            <code>
+                str1 = 'Hello'<br>
+                str2 = "World"<br>
+                print(str1, str2)  # Output: Hello World
+            </code>
+        </li>
+
+        <li><strong>Whitespace and Formatting:</strong> Python encourages readable code. While you can use spaces around operators and after commas, avoid excessive or unnecessary whitespace within expressions or at the end of lines.
+            <code>
+                # Good practice:<br>
+                x = 10<br>
+                y = x + 5<br>
+                print(x, y)<br><br>
+                # Avoid excessive spacing:<br>
+                x     =  10<br>
+                y     =x  +  5
+            </code>
+        </li>
+    </ul>
+
+    <h2>2. Structure of a Python Program</h2>
+    <p>A Python program typically follows a specific structure to ensure proper functionality. Below is the basic structure of a Python program:</p>
+
+    <ol>
+        <li><strong>Shebang (Optional for Unix/Linux Systems):</strong> A shebang line tells the system which interpreter to use for the script. It's optional but commonly included in Unix/Linux environments. Windows users typically don't need this.
+            <code>
+                #!/usr/bin/env python3
+            </code>
+        </li>
+
+        <li><strong>Import Statements:</strong> This section imports necessary libraries or modules. Always place import statements at the beginning of the script.
+            <code>
+                import os<br>
+                import math
+            </code>
+        </li>
+
+        <li><strong>Global Variables (Optional):</strong> Declare any global constants or variables that need to be accessed throughout the program. Keep these declarations at the top, so they are easy to find.
+            <code>
+                PI = 3.14159  # A global constant
+            </code>
+        </li>
+
+        <li><strong>Function and Class Definitions:</strong> Define all functions and classes before using them. This section contains reusable blocks of code for performing specific tasks.
+            <code>
+                def greet(name):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Hello, " + name)<br><br>
+                class Circle:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, radius):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.radius = radius<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def area(self):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return PI * self.radius ** 2
+            </code>
+        </li>
+
+        <li><strong>Main Code:</strong> This is where the main program logic resides. You can place the program's execution inside an <code>if __name__ == "__main__":</code> block to ensure the code only runs when the file is executed as a script and not imported as a module.
+            <code>
+                if __name__ == "__main__":<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;greet("Alice")<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;circle = Circle(5)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Area of the circle:", circle.area())
+            </code>
+        </li>
+    </ol>
+
+    <p>By following this structure, you ensure that your Python programs are clean, organized, and easy to read. Python’s focus on readability, coupled with strict syntax rules, helps you write clear and error-free code.</p>
+
+</body>
+</html>

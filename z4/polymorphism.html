@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymorphism in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .example-code {
+            background-color: #f4f4f4;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Polymorphism in Python</h1>
+    <p><strong>Polymorphism</strong> is a key concept in Object-Oriented Programming (OOP) that allows different classes to implement methods that have the same name but behave differently depending on the type of object that calls the method. It allows us to define a method in a parent class and override it in child classes to perform different tasks.</p>
+
+    <h2>Key Concepts of Polymorphism</h2>
+    <ul>
+        <li><strong>Polymorphism:</strong> The ability to use the same method name to perform different tasks in different classes.</li>
+        <li><strong>Method Overriding:</strong> In polymorphism, child classes can override methods of their parent classes to provide specific implementations.</li>
+        <li><strong>Duck Typing:</strong> In Python, polymorphism is often achieved through duck typing, where the type of an object is determined by its behavior (what methods it supports) rather than its class hierarchy.</li>
+    </ul>
+
+    <h2>Why Use Polymorphism?</h2>
+    <ul>
+        <li><strong>Flexibility:</strong> Polymorphism allows you to write flexible and reusable code that can work with objects of different classes without knowing their exact types.</li>
+        <li><strong>Code Reusability:</strong> You can use polymorphic methods to avoid writing multiple functions for each object type, making the code more maintainable and scalable.</li>
+        <li><strong>Maintainability:</strong> You can easily extend the functionality of your program by adding new classes that implement the same interface or method without modifying existing code.</li>
+    </ul>
+
+    <h2>Polymorphism Using Method Overriding</h2>
+    <p>One of the most common forms of polymorphism is method overriding, where a child class provides a specific implementation of a method that was already defined in its parent class. Here's an example:</p>
+
+    <div class="example-code">
+        <code>
+        # Parent class
+        class Animal:
+            def speak(self):
+                return "This animal makes a sound."
+
+        # Child class 1
+        class Dog(Animal):
+            def speak(self):
+                return "Dog barks."
+
+        # Child class 2
+        class Cat(Animal):
+            def speak(self):
+                return "Cat meows."
+
+        # Create instances of Dog and Cat
+        dog = Dog()
+        cat = Cat()
+
+        print(dog.speak())  # Output: Dog barks.
+        print(cat.speak())  # Output: Cat meows.
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Parent Class (Animal):</strong> The class <code>Animal</code> has a method <code>speak()</code> that provides a generic behavior for animals.</li>
+        <li><strong>Child Classes (Dog and Cat):</strong> The <code>Dog</code> and <code>Cat</code> classes override the <code>speak()</code> method to provide specific behaviors for dogs and cats, respectively.</li>
+        <li><strong>Polymorphism:</strong> Even though the method <code>speak()</code> is the same in both the parent and child classes, the output is different based on the object type (either <code>Dog</code> or <code>Cat</code>).</li>
+    </ul>
+
+    <h2>Polymorphism Without Inheritance (Duck Typing)</h2>
+    <p>In Python, polymorphism can also be achieved through duck typing. This means that if an object implements a method, Python doesn't care what class the object is, as long as it has the expected behavior. Here’s an example:</p>
+
+    <div class="example-code">
+        <code>
+        # Class 1
+        class Bird:
+            def fly(self):
+                return "Bird can fly."
+
+        # Class 2
+        class Plane:
+            def fly(self):
+                return "Plane can fly."
+
+        # Function that accepts any object with a 'fly' method
+        def test_flying(obj):
+            return obj.fly()
+
+        bird = Bird()
+        plane = Plane()
+
+        print(test_flying(bird))   # Output: Bird can fly.
+        print(test_flying(plane))  # Output: Plane can fly.
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Duck Typing:</strong> Even though <code>Bird</code> and <code>Plane</code> are not related by inheritance, both implement a <code>fly()</code> method. The <code>test_flying()</code> function can take any object that has a <code>fly()</code> method, showing polymorphism in action.</li>
+        <li><strong>No Need for Inheritance:</strong> Python allows polymorphism even without a formal parent-child class relationship, as long as the object implements the required method.</li>
+    </ul>
+
+    <h2>Operator Polymorphism</h2>
+    <p>Polymorphism in Python also extends to operators, where operators can behave differently depending on the data types involved. For example, the <code>+</code> operator can be used for addition of numbers or concatenation of strings:</p>
+
+    <div class="example-code">
+        <code>
+        # Operator polymorphism with numbers
+        print(5 + 3)  # Output: 8
+
+        # Operator polymorphism with strings
+        print("Hello, " + "world!")  # Output: Hello, world!
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Numeric Operation:</strong> The <code>+</code> operator adds two numbers.</li>
+        <li><strong>String Operation:</strong> The same <code>+</code> operator concatenates two strings, showing operator overloading in Python.</li>
+    </ul>
+
+    <h2>Polymorphism with Abstract Classes</h2>
+    <p>Polymorphism can also be used with abstract base classes (ABCs), where different classes implement abstract methods. Here's an example using the <code>abc</code> module:</p>
+
+    <div class="example-code">
+        <code>
+        from abc import ABC, abstractmethod
+
+        # Abstract base class
+        class Shape(ABC):
+            @abstractmethod
+            def area(self):
+                pass
+
+        # Child class 1
+        class Circle(Shape):
+            def __init__(self, radius):
+                self.radius = radius
+
+            def area(self):
+                return 3.14 * self.radius * self.radius
+
+        # Child class 2
+        class Square(Shape):
+            def __init__(self, side):
+                self.side = side
+
+            def area(self):
+                return self.side * self.side
+
+        # Create instances of Circle and Square
+        circle = Circle(5)
+        square = Square(4)
+
+        print(circle.area())  # Output: 78.5
+        print(square.area())  # Output: 16
+        </code>
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>Abstract Base Class (Shape):</strong> The abstract base class <code>Shape</code> defines an abstract method <code>area()</code>, which must be implemented by all subclasses.</li>
+        <li><strong>Child Classes (Circle and Square):</strong> Both <code>Circle</code> and <code>Square</code> implement the <code>area()</code> method, providing specific implementations for their respective shapes.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Polymorphism is a powerful concept that allows different objects to respond to the same method call in different ways. This is achieved through method overriding, duck typing, and operator overloading in Python. Polymorphism enhances the flexibility, reusability, and scalability of your code by allowing objects of different types to be treated uniformly.</p>
+
+</body>
+</html>

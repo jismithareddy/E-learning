@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For and While Loops in Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .example-code {
+            background-color: #f0f0f0;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>For and While Loops in Python</h1>
+
+    <p>Loops are one of the most important control structures in Python. The <strong>for loop</strong> and <strong>while loop</strong> are used to repeat a block of code multiple times under certain conditions. Below, we explain both loops in detail, with examples and their usage.</p>
+
+    <h2>1. For Loops in Python</h2>
+    <p>The <strong>for loop</strong> is used to iterate over a sequence (like a list, string, or tuple) and executes a block of code for each item in the sequence.</p>
+
+    <h3>1.1. Syntax of For Loops</h3>
+    <p>The basic syntax of a <strong>for loop</strong> is:</p>
+    <div class="example-code">
+        for item in sequence:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute for each item in sequence
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>item:</strong> A variable that takes the value of the current element from the sequence during each iteration.</li>
+        <li><strong>sequence:</strong> An iterable object (like a list, tuple, string, or range) over which the loop iterates.</li>
+        <li>The block of code inside the loop is executed once for each element in the sequence.</li>
+    </ul>
+
+    <h3>1.2. Using For Loops with Lists</h3>
+    <p>Lists are a common data structure used with for loops. The loop iterates through each element in the list.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        fruits = ["apple", "banana", "cherry"]<br>
+        for fruit in fruits:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(fruit)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        apple<br>
+        banana<br>
+        cherry
+    </div>
+
+    <p>In this example, the <strong>for</strong> loop iterates over each element in the <strong>fruits</strong> list. On each iteration, the variable <strong>fruit</strong> takes the value of the current element, and the <strong>print()</strong> function outputs it.</p>
+
+    <h3>1.3. Using For Loops with Strings</h3>
+    <p>For loops can also be used to iterate over the characters of a string, treating each character as an individual item.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        word = "Python"<br>
+        for letter in word:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(letter)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        P<br>
+        y<br>
+        t<br>
+        h<br>
+        o<br>
+        n
+    </div>
+
+    <h3>1.4. Using For Loops with Ranges</h3>
+    <p>The <strong>range()</strong> function is often used with a <strong>for loop</strong> to generate a sequence of numbers. The range can be defined with a start value, a stop value, and an optional step value.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        for num in range(1, 6):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(num)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        1<br>
+        2<br>
+        3<br>
+        4<br>
+        5
+    </div>
+
+    <h3>1.5. Nested For Loops</h3>
+    <p>Sometimes you need to use a <strong>for loop</strong> inside another <strong>for loop</strong>, which is known as a nested for loop.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        for i in range(1, 4):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;for j in range(1, 4):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i, j)
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        1 1<br>
+        1 2<br>
+        1 3<br>
+        2 1<br>
+        2 2<br>
+        2 3<br>
+        3 1<br>
+        3 2<br>
+        3 3
+    </div>
+
+    <h2>2. While Loops in Python</h2>
+    <p>The <strong>while loop</strong> repeats a block of code as long as a given condition is true. It is useful when you don't know how many times you need to repeat the code, but you know the condition that will stop the loop.</p>
+
+    <h3>2.1. Syntax of While Loops</h3>
+    <p>The syntax of a <strong>while loop</strong> is:</p>
+    <div class="example-code">
+        while condition:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# code to execute while the condition is true
+    </div>
+
+    <h3>Explanation:</h3>
+    <ul>
+        <li><strong>condition:</strong> An expression that is evaluated before each iteration of the loop. If it is <strong>True</strong>, the loop executes the block of code inside it. If it is <strong>False</strong>, the loop stops.</li>
+        <li>The loop continues to execute as long as the condition remains true.</li>
+    </ul>
+
+    <h3>2.2. Example of a While Loop</h3>
+    <p>The following example demonstrates how a while loop works by repeating the process of incrementing a variable until it reaches a specific value.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        count = 1<br>
+        while count <= 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(count)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;count += 1
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        1<br>
+        2<br>
+        3<br>
+        4<br>
+        5
+    </div>
+
+    <p>In this example, the loop will execute as long as <strong>count</strong> is less than or equal to 5. After each iteration, <strong>count</strong> is incremented by 1 until the condition becomes false, and the loop stops.</p>
+
+    <h3>2.3. Infinite While Loops</h3>
+    <p>Be cautious with while loops, as they can easily become infinite loops if the condition never becomes false. An infinite loop will run indefinitely, using up system resources and potentially crashing the program.</p>
+
+    <h3>Example:</h3>
+    <div class="example-code">
+        count = 1<br>
+        while count <= 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(count)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# missing count increment leads to an infinite loop
+    </div>
+
+    <p>In this case, since the increment of <strong>count</strong> is missing, the condition will always be true, resulting in an infinite loop.</p>
+
+    <h3>2.4. Break and Continue in While Loops</h3>
+    <p>Just like in for loops, you can use <strong>break</strong> and <strong>continue</strong> statements in while loops to control the flow of execution.</p>
+
+    <h3>Break Example:</h3>
+    <div class="example-code">
+        count = 1<br>
+        while count <= 5:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if count == 3:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(count)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;count += 1
+    </div>
+
+    <h3>Output:</h3>
+    <div class="example-code">
+        1<br>
+        2<br>
+    </div>
+
+    <p>The <strong>break</strong> statement stops the loop as soon as the condition <strong>count == 3</strong> is met, exiting the loop immediately.</p>
+
+</body>
+</html>
