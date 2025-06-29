@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Options</title>
+    <style>
+        /* Basic reset for consistent look across browsers */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styling */
+        header {
+            background-color: lightgrey;
+            padding-top: 0;
+            padding-bottom: 10px;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-bottom: 10px;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .option {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 30%;
+            margin-bottom: 30%;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .option h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .option p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .option a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .option a:hover {
+            background-color: #0056b3;
+        }
+
+        .legend {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 20px;
+            color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .legend-student {
+            background-color: #5cb85c;
+        }
+
+        .legend-instructor {
+            background-color: #f0ad4e;
+        }
+
+        .image {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .image img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+            border: 3px solid #007bff;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .footer-container h1,
+        .footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container h1 {
+            font-size: 24px;
+        }
+
+        .footer-container h2 {
+            font-size: 18px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: lightblue;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Skill Craft</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Register</a>
+            <a href="#">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <div class="option">
+            <div class="legend legend-student">Student Login</div>
+            <div class="image">
+                <img src="student-image.jpg" alt="Student">
+            </div>
+            <h2>Student Login</h2>
+            <p>Login here if you're a student.</p>
+            <a href="stu-login.html">Login as Student</a>
+        </div>
+        <div class="option">
+            <div class="legend legend-instructor">Instructor Login</div>
+            <div class="image">
+                <img src="instructor-image.jpg" alt="Instructor">
+            </div>
+            <h2>Instructor Login</h2>
+            <p>Login here if you're an instructor.</p>
+            <a href="ins-login.html">Login as Instructor</a>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Email: abcd@gmail.com</h2>
+                <h2>Mobile: +91 1234567890</h2>
+                <h2>WhatsApp: +91 1234567890</h2>
+            </div>
+            <div class="footer-links">
+                <h1>Connect with Us</h1>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Skill Craft. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

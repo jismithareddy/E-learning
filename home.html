@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        header {
+            background-color: lightgrey;
+            padding-bottom: 10px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin: 0;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+        .footer-container h1, .footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        .footer-container h1 {
+            font-size: 24px;
+        }
+        .footer-container h2 {
+            font-size: 18px;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        .footer-links a:hover {
+            color: lightblue;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+        .bg-img {
+            background-image: url("student.png");
+            background-repeat: no-repeat;
+            background-position: left center;
+            width: 600px;
+            height: 900px;
+        }
+        .bg {
+            display: flex;
+            flex-direction: row;
+            background-image: url("home.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .desc {
+            margin-top: 18%;
+            position: relative;
+            left: 10px;
+        }
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            20% {
+                transform: scale(1.1);
+            }
+            40% {
+                transform: scale(1);
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .reg {
+            background-color: rgb(14, 227, 103);
+            color: indigo;
+            position: relative;
+            left: 180px;
+            right: 50px;
+            top: 50px;
+            padding: 50px;
+            text-decoration: none;
+            border-radius: 50%;
+            animation: heartbeat 1.5s infinite;
+            font-size: 16px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .about-us {
+            padding: 20px;
+            background-color: #51f176;
+            color: #333;
+            text-align: center;
+        }
+        .about-us h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .about-us p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .team-member {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .team-member h3 {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 10px;
+        }
+        .team-member p {
+            font-size: 14px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="con1">
+        <header>
+            <h1>Skill Craft</h1>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="reg-home.html">Register</a>
+                <a href="login-home.html">Login</a>
+                <a href="Aboutus.html">About Us</a>
+                <a href="#">Blog</a>
+            </nav>
+        </header>
+        <div class="bg">
+            <div class="bg-img"></div>
+            <div class="desc">
+                <h1 style="color: solid rgb(163, 13, 38);">Engage with us - Enhance Your knowledge!
+                    <br><br><br>
+                    <a href="#" class="reg">Register for free</a>
+                </h1>
+            </div>
+        </div>
+        <div class="about-us">
+            <h2>About Us</h2>
+            <p>
+                **Skill Craft** is an innovative e-learning platform designed to empower individuals with the knowledge and skills needed to excel in various fields. Our mission is to provide high-quality, accessible, and engaging educational resources that cater to learners of all ages and backgrounds.
+                <br><br>
+                Our platform was developed by a dedicated team of professionals who bring a diverse set of skills and expertise to ensure that we deliver the best learning experience possible. Here is a little more about our team:
+            </p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Venkata Siva</h3>
+                    <p>Visionary leader with a passion for educational technology and strategic development.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Sravya</h3>
+                    <p>Content expert specializing in creating engaging and effective learning materials.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Jismitha</h3>
+                    <p>Design guru ensuring that our platform is visually appealing and user-friendly.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Das</h3>
+                    <p>Tech wizard responsible for the seamless integration and functionality of our platform.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Srinidhi</h3>
+                    <p>Quality assurance specialist ensuring that our content and technology meet the highest standards.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Venkatesh</h3>
+                    <p>Marketing strategist focused on spreading the word about Skill Craft and reaching our audience.</p>
+                </div>
+            </div>
+            <p>
+                At Skill Craft, we believe in the power of learning to transform lives. Join us on this journey to unlock your full potential and achieve your goals.
+            </p>
+        </div>
+        <footer>
+            <div class="footer-container">
+                <div>
+                    <h1>Contact Us</h1>
+                    <h2>Email: abcd@gmail.com</h2>
+                    <h2>Mobile: +91 1234567890</h2>
+                    <h2>WhatsApp: +91 1234567890</h2>
+                </div>
+                <div class="footer-links">
+                    <h1>Connect with Us</h1>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Skill Craft. All rights reserved.
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

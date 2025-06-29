@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learners Academy Instructor Registration Form</title>
+    <style>
+        /* Basic reset for consistent look across browsers */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styling */
+        header {
+            background-color: lightgrey;
+            padding: 10px 0;
+            margin: 0;
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-bottom: 10px;
+            margin-left: 100px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+
+        nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url("reg-bg.png");
+            background-repeat: no-repeat;
+            background-size:contain ;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            width: 100%;
+            margin: 10px;
+            
+        }
+
+        .form-container {
+            flex: 1;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-right: 20px;
+            background-color: aqua;
+        }
+
+        .form-container legend {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-container .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="password"],
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+            background-color: transparent;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="email"]:focus,
+        .form-container input[type="password"]:focus,
+        .form-container select:focus,
+        .form-container textarea:focus {
+            border-bottom-color: #007BFF;
+            outline: none;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container input::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .image-container {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .footer-container h1,
+        .footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container h1 {
+            font-size: 24px;
+        }
+
+        .footer-container h2 {
+            font-size: 18px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: lightblue;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Skill Craft</h1>
+       
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Register</a>
+            <a href="#">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+        </nav>
+    </header>
+
+    <!-- Main Content (Form) Section -->
+    <div class="container">
+        <div class="form-container">
+            <legend>Instructor Registration Form</legend>
+            <form action="">
+                <div class="form-group">
+                    <label for="name">Enter your name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter your name" minlength="4" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Enter your Email ID</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Enter your username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" name="confirm" id="confirm" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="qualification">Qualification</label>
+                    <input type="text" name="qualification" id="qualification" placeholder="Enter your qualification" required>
+                </div>
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <input type="text" name="skills" id="skills" placeholder="Enter your skills" required>
+                </div>
+                <div class="form-group">
+                    <label for="programming-languages">Known Programming Languages</label>
+                    <input type="text" name="programming-languages" id="programming-languages" placeholder="e.g., Java, Python, C++" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+        <div class="image-container">
+            <img src="ins.png" alt="Instructor Image">
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Email: abcd@gmail.com</h2>
+                <h2>Mobile: +91 1234567890</h2>
+                <h2>WhatsApp: +91 1234567890</h2>
+            </div>
+            <div class="footer-links">
+                <h1>Connect with Us</h1>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Skill Craft. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

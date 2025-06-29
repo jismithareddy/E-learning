@@ -1,0 +1,160 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: #f1f1f1;
+    }
+    
+    header {
+        color: #fff;
+        padding: 10px;
+        text-align: left;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        gap: 20px; /* Add space between options */
+        flex-wrap: wrap; /* Allow items to wrap to next line if necessary */
+    }
+    
+    .option {
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+    
+    .option:hover {
+        transform: translateY(-5px);
+    }
+    
+    .option h2 {
+        margin-top: 0;
+        font-size: 24px;
+        color: #333;
+        text-align: center;
+    }
+    
+    .option p {
+        color: #666;
+        text-align: center;
+    }
+    
+    .option a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .option a:hover {
+        background-color: #0056b3;
+    }
+    
+    .legend {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #007bff;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 24px;
+        color: #fff;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+    
+    .legend-student {
+        background-color: #5cb85c;
+    }
+    
+    .legend-instructor {
+        background-color: #f0ad4e;
+    }
+    
+    .image {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+    .image img {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 50%;
+        border: 3px solid #007bff;
+    }
+    
+    footer {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        margin-top: auto;
+    }
+    .container {
+        display: flex;
+        justify-content: row; /* Adjust spacing as needed */
+        align-items: center;
+        margin-top: 20px;
+        flex-wrap: wrap; /* Allow items to wrap to next line if necessary */
+    }
+</style>
+
+</head>
+<body>
+<header>
+    <%@include file="header.jsp" %>
+</header>
+<div class="container">
+    <div class="option">
+        <div class="legend legend-student">Student Login</div>
+        <div class="image">
+            <img src="stu.jpg" alt="Student">
+        </div>
+        <h2>Student Login</h2>
+        <p>Login here if you're a student.</p>
+        <a href="#">Login as Student</a>
+    </div>
+    <div class="option">
+        <div class="legend legend-instructor">Instructor Login</div>
+        <div class="image">
+            <img src="ins1.jpg" alt="Instructor">
+        </div>
+        <h2>Instructor Registration</h2>
+        <p>Login here if you're an instructor.</p>
+        <a href="#">Login as Instructor</a>
+    </div>
+</div>
+<footer>
+    <%@include file="footer.jsp" %>
+</footer>
+</body>
+</html>
+
+
+

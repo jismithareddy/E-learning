@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Options</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .option h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .option p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .option a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .option a:hover {
+            background-color: #0056b3;
+        }
+
+        .legend {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 20px;
+            color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .legend-student {
+            background-color: #5cb85c;
+        }
+
+        .legend-instructor {
+            background-color: #f0ad4e;
+        }
+
+        .image {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .image img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+            border: 3px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="option">
+            <div class="legend legend-student">Student Registration</div>
+            <div class="image">
+                <img src="student-image.jpg" alt="Student">
+            </div>
+            <h2>Student Registration</h2>
+            <p>Register here if you're a student.</p>
+            <a href="#">Register as Student</a>
+        </div>
+        <div class="option">
+            <div class="legend legend-instructor">Instructor Registration</div>
+            <div class="image">
+                <img src="instructor-image.jpg" alt="Instructor">
+            </div>
+            <h2>Instructor Registration</h2>
+            <p>Register here if you're an instructor.</p>
+            <a href="#">Register as Instructor</a>
+        </div>
+    </div>
+</body>
+</html>
