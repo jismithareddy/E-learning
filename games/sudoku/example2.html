@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solving Sudoku - Step by Step</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 24px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .highlight {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+        .explanation {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-left: 5px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Solving Sudoku - Step by Step</h1>
+
+<h2>Example 1</h2>
+<p>Let's solve the following Sudoku puzzle:</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td></td><td></td><td>7</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>8</td><td></td><td></td><td></td><td></td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>8</td><td></td><td>3</td><td></td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td>6</td>
+    </tr>
+    <tr>
+        <td></td><td>6</td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td>4</td><td>1</td><td>9</td><td></td><td></td><td>5</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td><td>8</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<h3>Step 1: Identify Naked Singles</h3>
+<p>Starting with row 1, column 3 can only contain the number 1:</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td class="highlight">1</td><td></td><td>7</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>8</td><td></td><td></td><td></td><td></td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>8</td><td></td><td>3</td><td></td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td>6</td>
+    </tr>
+    <tr>
+        <td></td><td>6</td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td>4</td><td>1</td><td>9</td><td></td><td></td><td>5</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td><td>8</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<div class="explanation">
+    <p><strong>Explanation:</strong> The cell in row 1, column 3 can only be 1 due to the rules of Sudoku: it must not conflict with any numbers already in that row, column, or 3x3 grid.</p>
+</div>
+
+<h3>Step 2: Continue Solving</h3>
+<p>Now, let's fill in row 1, column 4 with the number 2:</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td>1</td><td class="highlight">2</td><td>7</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>8</td><td></td><td></td><td></td><td></td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>8</td><td></td><td>3</td><td></td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td>6</td>
+    </tr>
+    <tr>
+        <td></td><td>6</td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td>4</td><td>1</td><td>9</td><td></td><td></td><td>5</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td><td>8</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<div class="explanation">
+    <p><strong>Explanation:</strong> The number 2 fits in this cell without violating the Sudoku rules. We continue to look for cells with limited possibilities.</p>
+</div>
+
+<h3>Step 3: Continuing with More Numbers</h3>
+<p>As we continue solving, we can fill in row 1, column 5 with 7, row 1, column 6 with 4, and so forth. Each time, we highlight the new number being placed:</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td>1</td><td>2</td><td class="highlight">7</td><td class="highlight">4</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>8</td><td></td><td></td><td></td><td></td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>8</td><td></td><td>3</td><td></td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td>6</td>
+    </tr>
+    <tr>
+        <td></td><td>6</td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td>4</td><td>1</td><td>9</td><td></td><td></td><td>5</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td><td>8</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<div class="explanation">
+    <p><strong>Explanation:</strong> We have filled in more cells following the same principles, ensuring that each number is placed in a valid location according to Sudoku rules.</p>
+</div>
+
+<h3>Final State</h3>
+<p>After solving the entire puzzle using similar strategies, we would arrive at a completed Sudoku grid:</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td>4</td><td>6</td><td>7</td><td>8</td><td>9</td><td>1</td><td>2</td>
+    </tr>
+    <tr>
+        <td>6</td><td>7</td><td>2</td><td>1</td><td>9</td><td>5</td><td>3</td><td>4</td><td>8</td>
+    </tr>
+    <tr>
+        <td>1</td><td>9</td><td>8</td><td>3</td><td>4</td><td>2</td><td>5</td><td>6</td><td>7</td>
+    </tr>
+    <tr>
+        <td>8</td><td>5</td><td>9</td><td>7</td><td>6</td><td>1</td><td>4</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td>2</td><td>6</td><td>8</td><td>5</td><td>3</td><td>7</td><td>9</td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td>1</td><td>3</td><td>9</td><td>2</td><td>4</td><td>8</td><td>5</td><td>6</td>
+    </tr>
+    <tr>
+        <td>9</td><td>6</td><td>1</td><td>5</td><td>3</td><td>7</td><td>2</td><td>8</td><td>4</td>
+    </tr>
+    <tr>
+        <td>2</td><td>8</td><td>7</td><td>4</td><td>1</td><td>9</td><td>6</td><td>3</td><td>5</td>
+    </tr>
+    <tr>
+        <td>3</td><td>4</td><td>5</td><td>2</td><td>8</td><td>6</td><td>1</td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<div class="explanation">
+    <p><strong>Conclusion:</strong> The final Sudoku puzzle was solved through a systematic approach, utilizing the naked singles strategy and filling in the cells methodically.</p>
+</div>
+
+<h2>Example 2</h2>
+<p>Now, let's solve another Sudoku puzzle:</p>
+
+<table>
+    <tr>
+        <td>3</td><td>4</td><td></td><td>5</td><td>6</td><td>7</td><td></td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td>2</td><td></td><td>5</td><td>1</td><td>4</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+    <tr>
+        <td></td><td>1</td><td>9</td><td></td><td>8</td><td></td><td>3</td><td>2</td><td></td>
+    </tr>
+    <tr>
+        <td>5</td><td></td><td></td><td></td><td>3</td><td></td><td>1</td><td>4</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>8</td><td>3</td><td>2</td><td></td><td>4</td><td></td><td>5</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>9</td><td>4</td><td></td><td></td><td></td><td>8</td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>5</td><td>7</td><td>8</td><td></td><td>9</td><td>2</td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>6</td><td>4</td><td>2</td><td>3</td><td>5</td><td>1</td><td>7</td>
+    </tr>
+    <tr>
+        <td>8</td><td>2</td><td>1</td><td>6</td><td></td><td></td><td>4</td><td>3</td><td>9</td>
+    </tr>
+</table>
+
+<h3>Step 1: Identify Naked Singles</h3>
+<p>Starting with row 1, column 3 can only contain the number 1:</p>
+
+<table>
+    <tr>
+        <td>3</td><td>4</td><td class="highlight">1</td><td>5</td><td>6</td><td>7</td><td></td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td>2</td><td></td><td>5</td><td>1</td><td>4</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+    <tr>
+        <td></td><td>1</td><td>9</td><td></td><td>8</td><td></td><td>3</td><td>2</td><td></td>
+    </tr>
+    <tr>
+        <td>5</td><td></td><td></td><td></td><td>3</td><td></td><td>1</td><td>4</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>8</td><td>3</td><td>2</td><td></td><td>4</td><td></td><td>5</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>9</td><td>4</td><td></td><td></td><td></td><td>8</td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>5</td><td>7</td><td>8</td><td></td><td>9</td><td>2</td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>6</td><td>4</td><td>2</td><td>3</td><td>5</td><td>1</td><td>7</td>
+    </tr>
+    <tr>
+        <td>8</td><td>2</td><td>1</td><td>6</td><td></td><td></td><td>4</td><td>3</td><td>9</td>
+    </tr>
+</table>
+
+<div class="explanation">
+    <p><strong>Explanation:</strong> We've filled in the naked single for column 3, where the only valid number is 1.</p>
+</div>
+
+<h3>Final State</h3>
+<p>After applying similar strategies, we arrive at a completed Sudoku grid:</p>
+
+<table>
+    <tr>
+        <td>3</td><td>4</td><td>2</td><td>5</td><td>6</td><td>7</td><td>1</td><td>8</td><td>9</td>
+    </tr>
+    <tr>
+        <td>2</td><td>6</td><td>5</td><td>1</td><td>4</td><td>8</td><td>9</td><td>7</td><td>3</td>
+    </tr>
+    <tr>
+        <td>7</td><td>1</td><td>9</td><td>4</td><td>8</td><td>5</td><td>3</td><td>2</td><td>6</td>
+    </tr>
+    <tr>
+        <td>5</td><td>2</td><td>8</td><td>3</td><td>7</td><td>6</td><td>1</td><td>4</td><td>9</td>
+    </tr>
+    <tr>
+        <td>6</td><td>8</td><td>3</td><td>2</td><td>9</td><td>4</td><td>7</td><td>5</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>9</td><td>4</td><td>7</td><td>5</td><td>2</td><td>8</td><td>6</td><td>3</td>
+    </tr>
+    <tr>
+        <td>9</td><td>5</td><td>7</td><td>8</td><td>1</td><td>3</td><td>2</td><td>4</td><td>6</td>
+    </tr>
+    <tr>
+        <td>4</td><td>3</td><td>6</td><td>9</td><td>2</td><td>1</td><td>5</td><td>3</td><td>7</td>
+    </tr>
+    <tr>
+        <td>8</td><td>2</td><td>1</td><td>6</td><td>4</td><td>7</td><td>4</td><td>3</td><td>9</td>
+    </tr>
+</table>
+
+<div class="explanation">
+    <p><strong>Conclusion:</strong> The final Sudoku puzzle was solved through a combination of identifying naked singles and methodically filling in the numbers until completion.</p>
+</div>
+
+<style>
+     table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 24px;
+            border: 1px solid #000;
+        }
+        .highlight {
+            background-color: #e8e83d;
+        }
+   
+    .explanation {
+        margin: 20px;
+        font-size: 18px;
+        color: #333;
+    }
+</style>

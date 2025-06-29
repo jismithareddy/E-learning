@@ -1,0 +1,126 @@
+/* Full-page layout */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center nav bar horizontally */
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif; /* Default font */
+    background-color: #f9f9f9;
+}
+
+/* Style for the navigation bar */
+nav {
+    background-color: rgb(196, 117, 117);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    border: 2px solid rgb(16, 16, 140);
+    padding: 5px 10px;
+    color: white;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+nav a:hover {
+    background-color: rgb(16, 16, 140); /* Background change on hover */
+    color: white;
+}
+
+/* Container for the aside and main content */
+.container {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 50px); /* Adjust height based on nav bar */
+    margin-top: 20px;
+}
+
+/* Style for the aside sidebar */
+aside {
+    width: 250px;
+    background-color: #f4f4f4; /* Light gray background */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    /* Add shadow for depth */
+    overflow-y: auto;
+}
+aside h2 {
+    margin-top: 0; /* Remove top margin for heading */
+}
+aside a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+aside a:hover {
+    background-color: #ddd; /* Light gray on hover */
+}
+
+/* Main content area */
+.content {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    overflow-y: auto; /* Enable scrolling */
+}
+.content h1 {
+    margin-top: 0; /* Remove top margin for heading */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack the sidebar and content */
+        height: auto; /* Allow height to be based on content */
+    }
+
+    aside {
+        width: 100%; /* Full width for sidebar on smaller screens */
+        box-shadow: none; /* Remove shadow for a cleaner look */
+    }
+
+    .content {
+        width: 100%; /* Full width for content on smaller screens */
+    }
+}
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow-x: auto;
+}
+.desc{
+    line-height: 1.5;
+}
+.block {
+    background-color: #ffeb3b;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.inline {
+    background-color: #4caf50;
+    padding: 5px;
+    display: inline-block;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #333;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #333;
+    color: #fff;
+}

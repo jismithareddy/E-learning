@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 3px solid #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>HTML Forms Example and Explanation</h2>
+
+    <!-- Section for displaying the form code -->
+    <div class="description">
+        <h3>Code for the HTML Form:</h3>
+        <pre><code>
+&lt;form action="/submit_form" method="post"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="text" id="name" name="name" required&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="email" id="email" name="email" required&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="message"&gt;Message:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="message" name="message" rows="4" cols="50" required&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="gender"&gt;Gender:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="radio" id="male" name="gender" value="male"&gt;
+    &lt;label for="male"&gt;Male&lt;/label&gt;&lt;br&gt;
+    &lt;input type="radio" id="female" name="gender" value="female"&gt;
+    &lt;label for="female"&gt;Female&lt;/label&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="country"&gt;Country:&lt;/label&gt;&lt;br&gt;
+    &lt;select id="country" name="country"&gt;
+        &lt;option value="india"&gt;India&lt;/option&gt;
+        &lt;option value="usa"&gt;USA&lt;/option&gt;
+        &lt;option value="uk"&gt;UK&lt;/option&gt;
+        &lt;option value="other"&gt;Other&lt;/option&gt;
+    &lt;/select&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="subscribe"&gt;Subscribe to newsletter:&lt;/label&gt;
+    &lt;input type="checkbox" id="subscribe" name="subscribe" value="yes"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+        </code></pre>
+    </div>
+
+    <!-- Section for describing each part of the form -->
+    <div class="description">
+        <h3>Description of the Form Elements:</h3>
+        <p><code>&lt;form&gt;</code> tag creates an HTML form for collecting user input.</p>
+        <p><code>&lt;input type="text"&gt;</code> creates a text box for users to enter their name. The <code>required</code> attribute makes this field mandatory.</p>
+        <p><code>&lt;input type="email"&gt;</code> creates a field for email input, ensuring a valid email format.</p>
+        <p><code>&lt;textarea&gt;</code> allows users to type a message over multiple lines.</p>
+        <p><code>&lt;input type="radio"&gt;</code> creates radio buttons for gender selection, where only one option can be selected at a time.</p>
+        <p><code>&lt;select&gt;</code> creates a dropdown for choosing a country, with options like India, USA, etc.</p>
+        <p><code>&lt;input type="checkbox"&gt;</code> creates a checkbox to subscribe to the newsletter.</p>
+        <p><code>&lt;input type="submit"&gt;</code> creates the button that submits the form data to the server for processing.</p>
+    </div>
+
+</body>
+</html>

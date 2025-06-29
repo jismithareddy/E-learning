@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        /* Header */
+        header {
+            background-color: lightgrey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            margin: 0;
+        }
+        header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin: 0 100px 10px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+        }
+
+        /* Form container */
+        #m-div {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 30px auto;
+        }
+        #m-div h2 {
+            text-align: center;
+            color: #ff7e5f;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+        #c-div {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            width: 100%;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        #c-div label {
+            font-size: 18px;
+            color: #333;
+            margin-right: 10px;
+            width: 150px;
+        }
+        #c-div input {
+            width: calc(100% - 170px);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #c-div input:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+
+        /* Submit Button */
+        #m-div button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #ff6f61, #debb77);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+        #m-div button:hover {
+            background: linear-gradient(90deg, #debb77, #ff6f61);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+        .footer-container h1, .footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        .footer-container h1 {
+            font-size: 24px;
+        }
+        .footer-container h2 {
+            font-size: 18px;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        .footer-links a:hover {
+            color: lightblue;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Skill Craft</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="reg-home.html">Register</a>
+            <a href="login-home.html">Login</a>
+            <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+    </header>
+    
+    <div id="m-div">
+        <h2>Contact Us</h2>
+        <div id="c-div">
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" placeholder="Your Name">
+        </div>
+        <div id="c-div">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" placeholder="Your Email">
+        </div>
+        <div id="c-div">
+            <label for="mobile">Enter your mobile number:</label>
+            <input type="number" id="mobile" placeholder="Your Mobile Number">
+        </div>
+        <div id="c-div">
+            <label for="message">Enter your message:</label>
+            <input type="text" id="message" class="message" placeholder="Your Message">
+        </div>
+        <button onclick="sendMail()" type="submit">Submit</button>
+    </div>
+    
+    <footer id="footer">
+        <div class="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Email: abcd@gmail.com</h2>
+                <h2>Mobile: +91 1234567890</h2>
+                <h2>WhatsApp: +91 1234567890</h2>
+            </div>
+            <div class="footer-links">
+                <h1>Connect with Us</h1>
+                <a href="https://facebook.com">Facebook</a>
+                <a href="https://instagram.com">Instagram</a>
+                <a href="https://linkedin.com">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Skill Craft. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Links and Buttons Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+            color: #d14;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Displaying HTML Links and Buttons</h1>
+
+    <h2>1. HTML Links</h2>
+    <p>The <code>&lt;a&gt;</code> (anchor) tag is used to create hyperlinks that link to another page or a specific section within a page.</p>
+    <pre><code>
+&lt;a href=&quot;https://www.example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Visit Example.com&lt;/a&gt;
+    </code></pre>
+    <p>Example Link:</p>
+    <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">Visit Example.com</a>
+
+    <h3>Attributes of the <code>&lt;a&gt;</code> Tag:</h3>
+    <ul>
+        <li><code>href</code>: Specifies the URL of the page the link goes to.</li>
+        <li><code>target</code>: Specifies where to open the linked document. Common values:
+            <ul>
+                <li><code>_blank</code>: Opens the link in a new tab or window.</li>
+                <li><code>_self</code>: Opens the link in the same frame (default).</li>
+                <li><code>_parent</code>: Opens the link in the parent frame.</li>
+                <li><code>_top</code>: Opens the link in the full body of the window.</li>
+            </ul>
+        </li>
+        <li><code>rel</code>: Specifies the relationship between the current document and the linked document. Common values include:
+            <ul>
+                <li><code>noopener</code>: Prevents the new page from being able to access the window.opener property.</li>
+                <li><code>noreferrer</code>: Prevents the browser from sending the HTTP referer header.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>2. HTML Buttons</h2>
+    <p>The <code>&lt;button&gt;</code> tag is used to create clickable buttons that can trigger actions, such as submitting forms or executing JavaScript functions.</p>
+    <pre><code>
+&lt;button type=&quot;button&quot; onclick=&quot;alert('Button clicked!')&quot;&gt;Click Me&lt;/button&gt;
+    </code></pre>
+    <p>Example Button:</p>
+    <button type="button" onclick="alert('Button clicked!')">Click Me</button>
+
+    <h3>Attributes of the <code>&lt;button&gt;</code> Tag:</h3>
+    <ul>
+        <li><code>type</code>: Specifies the type of button. Possible values:
+            <ul>
+                <li><code>button</code>: A clickable button that does not submit a form.</li>
+                <li><code>submit</code>: A button that submits the form.</li>
+                <li><code>reset</code>: A button that resets the form to its initial values.</li>
+            </ul>
+        </li>
+        <li><code>onclick</code>: JavaScript event that executes when the button is clicked.</li>
+        <li><code>disabled</code>: Boolean attribute that disables the button, preventing user interaction.</li>
+    </ul>
+
+</body>
+</html>

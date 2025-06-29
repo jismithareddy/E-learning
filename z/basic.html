@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Craft Topics</title>
+    <style>
+        /* Styles from the first file */
+        #header {
+            background-color: lightgrey;
+            padding-top: 0;
+            padding-bottom: 10px;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-bottom: 10px;
+            margin-left: 100px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 0;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        #nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        #footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+        }
+        #footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        #footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+        #footer-container h1, #footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        #footer-container h1 {
+            font-size: 24px;
+        }
+        #footer-container h2 {
+            font-size: 18px;
+        }
+        #footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        #footer-links a:hover {
+            color: lightblue;
+        }
+        #footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Styles from the second file */
+        #page-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        #main-nav {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        #main-nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px 10px;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        #main-nav a:hover {
+            background-color: rgb(16, 16, 140);
+            color: white;
+        }
+        #content-container {
+            display: flex;
+            width: 100%;
+            height: calc(100% - 50px);
+            margin-top: 20px;
+        }
+        #sidebar {
+            width: 250px;
+            height: 500px; /* Set a fixed height for the sidebar */
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* Allow vertical scrolling */
+        }
+        #sidebar a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px; /* Add rounded corners */
+        }
+        #sidebar a:hover {
+            background-color: #ddd;
+        }
+        
+        /* Styles for the content div */
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            border-radius: 5px; /* Add rounded corners */
+            margin-left: 20px; /* Add some spacing from the sidebar */
+        }
+        #content h1 {
+            margin-top: 0;
+            color: orangered; /* Change color for headers */
+        }
+        #content p {
+            font-size: 18px; /* Increase font size for better readability */
+            line-height: 1.6; /* Improve line spacing */
+            color: #333; /* Set a darker text color */
+        }
+
+        @media (max-width: 768px) {
+            #content-container {
+                flex-direction: column;
+                height: auto;
+            }
+            #sidebar {
+                width: 100%;
+                box-shadow: none;
+            }
+            #main-content {
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            #main-nav a {
+                padding: 5px 8px;
+                margin: 0 5px;
+            }
+            #sidebar a {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body id="page-body">
+    <header id="header">
+        <h1>Skill Craft</h1>
+        <nav id="nav">
+            <a href="#">Home</a>
+            <a href="#">Register</a>
+            <a href="#">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+        </nav>
+    </header>
+
+    <nav id="main-nav">
+        <a href="#" class="page">Basics</a>
+        <a href="#" class="page">HTML</a>
+        <a href="#" class="page">CSS</a>
+        <a href="#" class="page">JS</a>
+        <a href="#" class="page">Python</a>
+        <a href="#" class="page">Java</a>
+        <a href="#" class="page">C</a>
+        <a href="#" class="page">SQL</a>
+    </nav>
+
+    <div id="content-container">
+        <aside id="sidebar">
+            <a onclick="loadContent('computer')" class="link">What is a computer?</a>
+            <a onclick="loadContent('key_com_computer')" class="link">Key components of a computer</a>
+            <a onclick="loadContent('all_computer')" class="link">Types of computers</a>
+            <a onclick="loadContent('use')" class="link">Common uses of computers</a>
+            <a onclick="loadContent('intro')" class="link">Introduction to programming</a>
+            <a onclick="loadContent('why')" class="link">Why programming?</a>
+            <a onclick="loadContent('comp')" class="link">Compilers & interpreters</a>
+            <a onclick="loadContent('ptypes')" class="link">Different types of programming languages</a>
+        </aside>
+         <div class="content" id="content">
+            <h1>Start Your Learning</h1>
+            <p>Go through the topics available on the left side; they will definitely enhance your knowledge about the basics of programming.</p>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div id="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Email: abcd@gmail.com</h2>
+                <h2>Mobile: +91 1234567890</h2>
+                <h2>WhatsApp: +91 1234567890</h2>
+            </div>
+            <div id="footer-links">
+                <h1>Connect with Us</h1>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div id="footer-bottom">
+            &copy; 2024 Skill Craft. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

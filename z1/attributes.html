@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Attributes Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 3px solid #333;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 40px;
+        }
+        .code-description {
+            margin-bottom: 20px;
+        }
+        .description {
+            color: #555;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>HTML Attributes</h1>
+    <p>HTML attributes provide additional information about HTML elements. They are defined within the opening tag and come in name/value pairs.</p>
+
+    <h1>Common HTML Attributes and Their Usage</h1>
+
+    <!-- ID Attribute -->
+    <div class="code-description">
+        <h2>ID Attribute</h2>
+        <pre><code>&lt;h1 id="header"&gt;This is a Heading&lt;/h1&gt;</code></pre>
+        <p class="description">The <strong>id</strong> attribute specifies a unique identifier for an HTML element. It is used for styling and scripting.</p>
+    </div>
+
+    <!-- Class Attribute -->
+    <div class="code-description">
+        <h2>Class Attribute</h2>
+        <pre><code>&lt;div class="main-content"&gt;Main Content Here&lt;/div&gt;</code></pre>
+        <p class="description">The <strong>class</strong> attribute assigns one or more class names to an element for styling with CSS or manipulation with JavaScript.</p>
+    </div>
+
+    <!-- Href Attribute -->
+    <div class="code-description">
+        <h2>Href Attribute</h2>
+        <pre><code>&lt;a href="https://www.example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+        <p class="description">The <strong>href</strong> attribute specifies the destination URL of a link (used in &lt;a&gt; elements).</p>
+    </div>
+
+    <!-- Src Attribute -->
+    <div class="code-description">
+        <h2>Src Attribute</h2>
+        <pre><code>&lt;img src="image.jpg" alt="Description of image"&gt;</code></pre>
+        <p class="description">The <strong>src</strong> attribute specifies the file path of an image (or other media) used in media elements like &lt;img&gt; and &lt;iframe&gt;.</p>
+    </div>
+
+    <!-- Alt Attribute -->
+    <div class="code-description">
+        <h2>Alt Attribute</h2>
+        <pre><code>&lt;img src="image.jpg" alt="A beautiful scenery"&gt;</code></pre>
+        <p class="description">The <strong>alt</strong> attribute provides alternative text for an image in case it cannot be displayed.</p>
+    </div>
+
+    <!-- Style Attribute -->
+    <div class="code-description">
+        <h2>Style Attribute</h2>
+        <pre><code>&lt;p style="color: red; font-size: 20px;"&gt;This is a red paragraph.&lt;/p&gt;</code></pre>
+        <p class="description">The <strong>style</strong> attribute is used for applying inline CSS styles to a specific element.</p>
+    </div>
+
+    <!-- Title Attribute -->
+    <div class="code-description">
+        <h2>Title Attribute</h2>
+        <pre><code>&lt;a href="https://www.example.com" title="Click to visit Example"&gt;Visit Example&lt;/a&gt;</code></pre>
+        <p class="description">The <strong>title</strong> attribute provides additional information about an element, often displayed as a tooltip.</p>
+    </div>
+
+    <!-- Disabled Attribute -->
+    <div class="code-description">
+        <h2>Disabled Attribute</h2>
+        <pre><code>&lt;button disabled&gt;Submit&lt;/button&gt;</code></pre>
+        <p class="description">The <strong>disabled</strong> attribute is used to disable form elements such as buttons or input fields.</p>
+    </div>
+
+    <!-- Placeholder Attribute -->
+    <div class="code-description">
+        <h2>Placeholder Attribute</h2>
+        <pre><code>&lt;input type="text" placeholder="Enter your name"&gt;</code></pre>
+        <p class="description">The <strong>placeholder</strong> attribute provides a hint to the user about the expected input within an input field.</p>
+    </div>
+
+    <!-- Required Attribute -->
+    <div class="code-description">
+        <h2>Required Attribute</h2>
+        <pre><code>&lt;input type="email" required&gt;</code></pre>
+        <p class="description">The <strong>required</strong> attribute indicates that an input field must be filled out before submitting the form.</p>
+    </div>
+
+    <!-- Value Attribute -->
+    <div class="code-description">
+        <h2>Value Attribute</h2>
+        <pre><code>&lt;input type="text" value="Default text"&gt;</code></pre>
+        <p class="description">The <strong>value</strong> attribute specifies the initial value of an input element.</p>
+    </div>
+
+    <!-- Maxlength Attribute -->
+    <div class="code-description">
+        <h2>Maxlength Attribute</h2>
+        <pre><code>&lt;input type="text" maxlength="10"&gt;</code></pre>
+        <p class="description">The <strong>maxlength</strong> attribute specifies the maximum number of characters allowed in an input field.</p>
+    </div>
+
+    <!-- Action Attribute -->
+    <div class="code-description">
+        <h2>Action Attribute</h2>
+        <pre><code>&lt;form action="submit.php"&gt;&lt;/form&gt;</code></pre>
+        <p class="description">The <strong>action</strong> attribute specifies where to send the form data when the form is submitted.</p>
+    </div>
+
+    <!-- Method Attribute -->
+    <div class="code-description">
+        <h2>Method Attribute</h2>
+        <pre><code>&lt;form method="post"&gt;&lt;/form&gt;</code></pre>
+        <p class="description">The <strong>method</strong> attribute specifies how to send form data (e.g., GET or POST).</p>
+    </div>
+
+    <!-- Target Attribute -->
+    <div class="code-description">
+        <h2>Target Attribute</h2>
+        <pre><code>&lt;a href="https://www.example.com" target="_blank"&gt;Open in a new tab&lt;/a&gt;</code></pre>
+        <p class="description">The <strong>target</strong> attribute specifies where to open the linked document (e.g., _blank opens in a new tab).</p>
+    </div>
+
+    <!-- Rel Attribute -->
+    <div class="code-description">
+        <h2>Rel Attribute</h2>
+        <pre><code>&lt;a href="https://www.example.com" rel="noopener"&gt;Visit Example&lt;/a&gt;</code></pre>
+        <p class="description">The <strong>rel</strong> attribute specifies the relationship between the current document and the linked document.</p>
+    </div>
+
+    <!-- For Attribute -->
+    <div class="code-description">
+        <h2>For Attribute</h2>
+        <pre><code>&lt;label for="username"&gt;Username:&lt;/label&gt;&lt;input type="text" id="username"&gt;</code></pre>
+        <p class="description">The <strong>for</strong> attribute associates a label with a specific input element, improving accessibility.</p>
+    </div>
+
+    <!-- Contenteditable Attribute -->
+    <div class="code-description">
+        <h2>Contenteditable Attribute</h2>
+        <pre><code>&lt;div contenteditable="true"&gt;This text can be edited by the user.&lt;/div&gt;</code></pre>
+        <p class="description">The <strong>contenteditable</strong> attribute specifies whether an element's content is editable by the user.</p>
+    </div>
+
+    <!-- Spellcheck Attribute -->
+    <div class="code-description">
+        <h2>Spellcheck Attribute</h2>
+        <pre><code>&lt;input type="text" spellcheck="true"&gt;</code></pre>
+        <p class="description">The <strong>spellcheck</strong> attribute specifies whether the element should have its spelling checked.</p>
+    </div>
+
+    <!-- Autocomplete Attribute -->
+    <div class="code-description">
+        <h2>Autocomplete Attribute</h2>
+        <pre><code>&lt;input type="email" autocomplete="on"&gt;</code></pre>
+        <p class="description">The <strong>autocomplete</strong> attribute specifies whether the browser should enable autocomplete for the input field.</p>
+    </div>
+
+    <!-- Multiple Attribute -->
+    <div class="code-description">
+        <h2>Multiple Attribute</h2>
+        <pre><code>&lt;input type="file" multiple&gt;</code></pre>
+        <p class="description">The <strong>multiple</strong> attribute allows the user to select multiple files in a file input.</p>
+    </div>
+
+    <!-- Checked Attribute -->
+    <div class="code-description">
+        <h2>Checked Attribute</h2>
+        <pre><code>&lt;input type="checkbox" checked&gt;</code></pre>
+        <p class="description">The <strong>checked</strong> attribute indicates that a checkbox or radio button is selected by default.</p>
+    </div>
+
+    <!-- Readonly Attribute -->
+    <div class="code-description">
+        <h2>Readonly Attribute</h2>
+        <pre><code>&lt;input type="text" readonly&gt;</code></pre>
+        <p class="description">The <strong>readonly</strong> attribute prevents the user from modifying the value of an input field.</p>
+    </div>
+
+    <!-- Data-* Attributes -->
+    <div class="code-description">
+        <h2>Data-* Attributes</h2>
+        <pre><code>&lt;div data-user-id="123"&gt;User Info&lt;/div&gt;</code></pre>
+        <p class="description">Custom data attributes (prefixed with <strong>data-</strong>) allow you to store extra information directly on an HTML element.</p>
+    </div>
+
+    <!-- Summary Attribute -->
+    <div class="code-description">
+        <h2>Summary Attribute</h2>
+        <pre><code>&lt;details&gt;&lt;summary&gt;More Info&lt;/summary&gt;Here is more information.&lt;/details&gt;</code></pre>
+        <p class="description">The <strong>summary</strong> attribute provides a summary or title for the <strong>details</strong> element.</p>
+    </div>
+
+</body>
+</html>

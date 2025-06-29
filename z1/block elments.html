@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block vs Inline Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .content {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        pre {
+            background-color: #c0ecaa;
+            color: #1d1313;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        h2 {
+            color: #a6c6e7;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        .block {
+            background-color: #ffeb3b;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .inline {
+            background-color: #4caf50;
+            padding: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h2>Block Elements</h2>
+        <p><strong>Definition:</strong> Block elements take up the full width available, and they always start on a new line. They are primarily used for larger chunks of content and layout purposes.</p>
+        
+        <h3>Characteristics:</h3>
+        <ul>
+            <li>Start on a new line.</li>
+            <li>Take up the entire width of the parent container (if not specified otherwise with CSS).</li>
+            <li>Can contain other block elements and inline elements.</li>
+            <li>Typically used for structural purposes in HTML.</li>
+        </ul>
+
+        <h3>Examples of Block Elements:</h3>
+        <p>&lt;div&gt;, &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;, &lt;article&gt;, &lt;section&gt;, &lt;footer&gt;, &lt;header&gt;, &lt;blockquote&gt;, etc.</p>
+
+        <h2>Inline Elements</h2>
+        <p><strong>Definition:</strong> Inline elements do not start on a new line and only take up as much width as their content. They are primarily used for formatting smaller portions of text or other elements inside block elements.</p>
+        
+        <h3>Characteristics:</h3>
+        <ul>
+            <li>Do not start on a new line.</li>
+            <li>Only take up as much width as necessary to display their content.</li>
+            <li>Can contain only other inline elements or text.</li>
+            <li>Used for formatting or embedding elements within text.</li>
+        </ul>
+
+        <h3>Examples of Inline Elements:</h3>
+        <p>&lt;span&gt;, &lt;a&gt;, &lt;img&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;input&gt;, &lt;label&gt;, &lt;b&gt;, &lt;i&gt;, &lt;abbr&gt;, etc.</p>
+
+        <h2>Comparison Between Block and Inline Elements</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Block Elements</th>
+                    <th>Inline Elements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Layout Behavior</strong></td>
+                    <td>Starts on a new line</td>
+                    <td>Does not start on a new line</td>
+                </tr>
+                <tr>
+                    <td><strong>Width</strong></td>
+                    <td>Takes up the full width of the parent container</td>
+                    <td>Only takes up as much width as needed to display the content</td>
+                </tr>
+                <tr>
+                    <td><strong>Content</strong></td>
+                    <td>Can contain both block and inline elements</td>
+                    <td>Can only contain inline elements or text</td>
+                </tr>
+                <tr>
+                    <td><strong>Use Cases</strong></td>
+                    <td>Used for structuring large parts of the document</td>
+                    <td>Used for styling or embedding content within text</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Code Example</h2>
+        <pre><code>
+&lt;!-- Example of Block Elements --&gt;
+&lt;div&gt;
+    &lt;h1&gt;This is a heading (block element)&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph (block element). It takes the full width of the container.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Example of Inline Elements --&gt;
+&lt;p&gt;This is a paragraph with &lt;strong&gt;bold text&lt;/strong&gt; and &lt;a href="#"&gt;a link&lt;/a&gt; (inline elements).&lt;/p&gt;
+        </code></pre>
+    </div>
+    <div class="code-description">
+        <h2>Block Element Code Example</h2>
+        <p>This example shows the code for block elements:</p>
+        <pre><code>&lt;div class="block"&gt;
+    This is a block element (div).
+&lt;/div&gt;
+
+&lt;p class="block"&gt;
+    This is a block element (p).
+&lt;/p&gt;
+        </code></pre>
+    </div>
+
+    <!-- Code Display Example for Inline Elements -->
+    <div class="code-description">
+        <h2>Inline Element Code Example</h2>
+        <p>This example shows the code for inline elements:</p>
+        <pre><code>&lt;span class="inline"&gt;
+    This is an inline element (span).
+&lt;/span&gt;
+
+&lt;span class="inline"&gt;
+    Another inline element (span).
+&lt;/span&gt;
+        </code></pre>
+    </div>
+
+    <!-- Visual Example Section -->
+    <h2>Visual Example: Block vs Inline Elements</h2>
+    <div class="block">
+        This is a block element (&lt;div&gt;). Block elements take up the full width available and start on a new line.
+    </div>
+
+    <p class="block">
+        This is another block element (&lt;p&gt;). It also starts on a new line and takes up the full width.
+    </p>
+
+    <p>
+        <span class="inline">This is an inline element (&lt;span&gt;).</span>
+        <span class="inline">Another inline element (&lt;span&gt;) staying on the same line.</span>
+    </p>
+
+
+</body>
+</html>

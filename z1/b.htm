@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block vs Inline Elements - Display as Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 3px solid #333;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+        }
+        .block {
+            background-color: #ffeb3b;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .inline {
+            background-color: #4caf50;
+            padding: 5px;
+            display: inline-block;
+        }
+        .code-description {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Difference Between Block and Inline Elements</h1>
+
+    <!-- Code Display Example for Block Elements -->
+    <div class="code-description">
+        <h2>Block Element Code Example</h2>
+        <p>This example shows the code for block elements:</p>
+        <pre><code>&lt;div class="block"&gt;
+    This is a block element (div).
+&lt;/div&gt;
+
+&lt;p class="block"&gt;
+    This is a block element (p).
+&lt;/p&gt;
+        </code></pre>
+    </div>
+
+    <!-- Code Display Example for Inline Elements -->
+    <div class="code-description">
+        <h2>Inline Element Code Example</h2>
+        <p>This example shows the code for inline elements:</p>
+        <pre><code>&lt;span class="inline"&gt;
+    This is an inline element (span).
+&lt;/span&gt;
+
+&lt;span class="inline"&gt;
+    Another inline element (span).
+&lt;/span&gt;
+        </code></pre>
+    </div>
+
+    <!-- Visual Example Section -->
+    <h2>Visual Example: Block vs Inline Elements</h2>
+    <div class="block">
+        This is a block element (&lt;div&gt;). Block elements take up the full width available and start on a new line.
+    </div>
+
+    <p class="block">
+        This is another block element (&lt;p&gt;). It also starts on a new line and takes up the full width.
+    </p>
+
+    <p>
+        <span class="inline">This is an inline element (&lt;span&gt;).</span>
+        <span class="inline">Another inline element (&lt;span&gt;) staying on the same line.</span>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h3 class="heading">Introduction to HTML</h3>
+    <div class="desc">
+        HTML (HyperText Markup Language) is the standard markup language used to create web pages. It's the backbone of a website, providing the structure and content that the web browser renders to the user.
+        <br> <br>
+    </div>
+
+    <h3 class="heading">History of HTML</h3>
+    <div class="desc">
+        HTML was first proposed in 1989 by Tim Berners-Lee, the inventor of the World Wide Web. The first publicly available description of HTML was published in 1991. Since then, HTML has evolved through several versions, with HTML5 being the current standard.
+    </div>
+
+    <br><br>
+
+    <div class="desc">
+        <h3>Basic HTML Components</h3>
+        <ol>
+            <li><pre>Elements:</pre> HTML consists of elements, represented by tags (<>). Tags wrap around content and apply meaning to it.</li>
+            <li><pre>Tags:</pre> Opening tag (<>) and closing tag (</>) surround content.</li>
+            <li><pre>Attributes:</pre> Provide additional information about an element (e.g., href for links).</li>
+            <li><pre>Nested elements:</pre> Elements can contain other elements.</li>
+        </ol>
+    </div>
+
+    <br><br>
+
+    <h3>Basic Structure of HTML</h3>
+    <div class="code">
+        <pre>
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+            &lt;head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                &lt;title&gt;Sample Page&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+            &lt;!-- This is a comment in HTML --&gt;
+            &lt;!-- inside of body you can write main code --&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+        </pre>
+    </div>
+
+    <div class="desc">
+        <ol>
+            <li>
+                <code>&lt;!DOCTYPE html&gt;</code>
+                <strong>Purpose:</strong> Declares the document type and version of HTML (HTML5 in this case). This helps browsers understand how to interpret the document.
+                <br><strong>Explanation:</strong> It must always be the first line in an HTML document, ensuring proper rendering by modern browsers.
+            </li>
+
+            <li>
+                <code>&lt;html lang="en"&gt;</code>
+                <strong>Purpose:</strong> Defines the root of the HTML document.
+                <br><strong>Attributes:</strong> <code>lang="en"</code> specifies the language of the content. This helps with accessibility and search engine optimization (SEO).
+                <br><strong>Explanation:</strong> All HTML code is enclosed within the <code>&lt;html&gt;</code> tag. The <code>lang</code> attribute helps tools like screen readers and search engines understand the language of the document.
+            </li>
+
+            <li>
+                <code>&lt;head&gt;</code>
+                <strong>Purpose:</strong> Contains metadata (information about the document) that is not displayed on the page itself but is crucial for how browsers and search engines handle the document.
+                <br><strong>Explanation:</strong> The content inside the <code>&lt;head&gt;</code> tag typically includes links to stylesheets, meta tags, and the document’s title.
+            </li>
+
+            <li>
+                <code>&lt;title&gt;Sample Page&lt;/title&gt;</code>
+                <strong>Purpose:</strong> Sets the title of the web page that appears in the browser tab or window.
+                <br><strong>Explanation:</strong> The <code>&lt;title&gt;</code> is displayed in the browser’s title bar or tab and is also used as the title for search engine results. It's critical for SEO and user experience.
+            </li>
+
+            <li>
+                <code>&lt;body&gt;</code>
+                <strong>Purpose:</strong> Contains the content of the HTML document that will be visible to users in the browser.
+                <br><strong>Explanation:</strong> Everything that appears on the webpage (text, images, links, etc.) goes inside the <code>&lt;body&gt;</code> tag. The content within this tag is rendered by the browser.
+            </li>
+
+            <li>
+                <code>&lt;!-- This is a comment in HTML --&gt;</code>
+                <strong>Purpose:</strong> Adds a comment in the HTML code that will not be displayed on the web page.
+                <br><strong>Explanation:</strong> Comments are used by developers to annotate or explain the code. They are helpful for documentation, reminders, or leaving notes for other developers.
+                <br><strong>Usage:</strong> <code>&lt;!-- comment --&gt;</code> is the syntax for writing comments in HTML.
+            </li>
+
+            <li>
+                <code>&lt;/body&gt;</code>
+                <strong>Purpose:</strong> Closes the <code>&lt;body&gt;</code> tag.
+                <br><strong>Explanation:</strong> Marks the end of the body section of the HTML document. All the visible content should be written before this tag.
+            </li>
+
+            <li>
+                <code>&lt;/html&gt;</code>
+                <strong>Purpose:</strong> Closes the <code>&lt;html&gt;</code> tag.
+                <br><strong>Explanation:</strong> This marks the end of the HTML document. After this tag, no more content should be written.
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

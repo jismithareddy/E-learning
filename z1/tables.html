@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tables Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+            color: #d14;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Displaying HTML Tables</h1>
+
+    <h2>1. Basic Table</h2>
+    <p>This is a simple table that uses basic HTML structure without any additional attributes.</p>
+    
+    <pre><code>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Header 1&lt;/th&gt;
+        &lt;th&gt;Header 2&lt;/th&gt;
+        &lt;th&gt;Header 3&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Data 1&lt;/td&gt;
+        &lt;td&gt;Data 2&lt;/td&gt;
+        &lt;td&gt;Data 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Data 4&lt;/td&gt;
+        &lt;td&gt;Data 5&lt;/td&gt;
+        &lt;td&gt;Data 6&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+    </code></pre>
+
+    <h3>Example Basic Table:</h3>
+    <table>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+        </tr>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+        </tr>
+        <tr>
+            <td>Data 4</td>
+            <td>Data 5</td>
+            <td>Data 6</td>
+        </tr>
+    </table>
+
+    <h3>Attributes of the Basic Table:</h3>
+    <ul>
+        <li><code>&lt;table&gt;</code>: No specific attributes used.</li>
+        <li><code>&lt;tr&gt;</code>: Defines a row in the table.</li>
+        <li><code>&lt;th&gt;</code>: Defines a header cell, which is bold and centered by default.</li>
+        <li><code>&lt;td&gt;</code>: Defines a standard data cell.</li>
+    </ul>
+
+    <h2>2. Advanced Table with Attributes</h2>
+    <p>This table uses various attributes to demonstrate its flexibility and capabilities.</p>
+    
+    <pre><code>
+&lt;table border=&quot;1&quot; cellspacing=&quot;0&quot; cellpadding=&quot;10&quot; width=&quot;100%&quot;&gt;
+    &lt;tr bgcolor=&quot;#f9f9f9&quot;&gt;
+        &lt;th colspan=&quot;2&quot; rowspan=&quot;2&quot; scope=&quot;colgroup&quot;&gt;Merged Header&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;Header 1&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&quot;2&quot; bgcolor=&quot;#e0e0e0&quot;&gt;Sub Header&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Data A&lt;/td&gt;
+        &lt;td&gt;Data B&lt;/td&gt;
+        &lt;td&gt;Data C&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+    </code></pre>
+
+    <h3>Example Advanced Table:</h3>
+    <table border="1" cellspacing="0" cellpadding="10" width="100%">
+        <tr bgcolor="#f9f9f9">
+            <th colspan="2" rowspan="2" scope="colgroup">Merged Header</th>
+            <th scope="col">Header 1</th>
+            <th scope="col">Header 2</th>
+        </tr>
+        <tr>
+            <td colspan="2" bgcolor="#e0e0e0">Sub Header</td>
+        </tr>
+        <tr>
+            <td>Data A</td>
+            <td>Data B</td>
+            <td>Data C</td>
+        </tr>
+    </table>
+
+    <h3>Attributes of the Advanced Table:</h3>
+    <ul>
+        <li><code>border</code>: Defines the width of the table border. A value of "1" creates a one-pixel border around the table.</li>
+        <li><code>cellspacing</code>: Specifies the space between the table cells. A value of "0" means no spacing between cells.</li>
+        <li><code>cellpadding</code>: Specifies the space between cell content and cell border. A value of "10" adds padding around cell content.</li>
+        <li><code>width</code>: Sets the width of the table. A value of "100%" makes the table span the full width of its container.</li>
+        <li><code>bgcolor</code>: Sets the background color of the row or cell. The color can be specified using color names or hex codes.</li>
+        <li><code>colspan</code>: Allows a header or data cell to span multiple columns. In this example, the merged header spans two columns.</li>
+        <li><code>rowspan</code>: Allows a header or data cell to span multiple rows. In this example, the merged header spans two rows.</li>
+        <li><code>scope</code>: Enhances accessibility by indicating the context of the header. Possible values include <code>col</code>, <code>row</code>, <code>colgroup</code>, and <code>rowgroup</code>.</li>
+    </ul>
+
+</body>
+</html>

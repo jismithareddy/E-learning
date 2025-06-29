@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Craft Topics</title>
+    <style>
+        /* Full-page layout */
+        #page-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center nav bar horizontally */
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif; /* Default font */
+            background-color: #f9f9f9;
+        }
+        
+        /* Style for the navigation bar (centered at the top) */
+        #main-nav {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky; /* Make nav sticky to the top */
+            top: 0; /* Stick to the top */
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+        #main-nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px 10px; /* Adjust padding for better touch target */
+            color: white;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+        #main-nav a:hover {
+            background-color: rgb(16, 16, 140); /* Background change on hover */
+            color: white;
+        }
+        
+        /* Container for the aside and main content */
+        #content-container {
+            display: flex;
+            width: 100%;
+            height: calc(100% - 50px); /* Adjust height based on nav bar */
+            margin-top: 20px;
+        }
+        
+        /* Style for the aside sidebar (on the left) */
+        #sidebar {
+            width: 250px;
+            background-color: #f4f4f4; /* Light gray background */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        }
+        #sidebar a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+        #sidebar a:hover {
+            background-color: #ddd; /* Light gray on hover */
+        }
+        
+        /* Main content area (next to aside) */
+        #main-content {
+            flex-grow: 1; /* Take up remaining space */
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            overflow-y: auto; /* Enable scrolling */
+        }
+        #main-content h1 {
+            margin-top: 0; /* Remove top margin for heading */
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            #content-container {
+                flex-direction: column; /* Stack the sidebar and content */
+                height: auto; /* Allow height to be based on content */
+            }
+            
+            #sidebar {
+                width: 100%; /* Full width for sidebar on smaller screens */
+                box-shadow: none; /* Remove shadow for a cleaner look */
+            }
+            
+            #main-content {
+                width: 100%; /* Full width for content on smaller screens */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #main-nav a {
+                padding: 5px 8px; /* Smaller padding for mobile devices */
+                margin: 0 5px; /* Smaller margin for mobile devices */
+            }
+        
+            #sidebar a {
+                padding: 8px; /* Smaller padding for links in sidebar */
+            }
+        }
+        </style>
+</head>
+<body id="page-body">
+    <nav id="main-nav">
+        <a href="" class="page">Basics</a>
+        <a href="" class="page">HTML</a>
+        <a href="" class="page">CSS</a>
+        <a href="" class="page">JS</a>
+        <a href="" class="page">Python</a>
+        <a href="" class="page">Java</a>
+        <a href="" class="page">C</a>
+        <a href="" class="page">SQL</a>
+    </nav>
+    <div id="content-container">
+        <aside id="sidebar">
+            <a onclick="loadContent('computer')" class="link">What is a computer?</a>
+            <a onclick="loadContent('key_com_computer')" class="link">Key components of a computer</a>
+            <a onclick="loadContent('all_computer')" class="link">Types of computers</a>
+            <a onclick="loadContent('use')" class="link">Common uses of computers</a>
+            <a onclick="loadContent('intro')" class="link">Introduction to programming</a>
+            <a onclick="loadContent('why')" class="link">Why programming?</a>
+            <a onclick="loadContent('comp')" class="link">Compilers & interpreters</a>
+            <a onclick="loadContent('ptypes')" class="link">Different types of programming languages</a>
+        </aside>
+        <div id="content">
+            <h1>Start your learning</h1>
+            <p>Go through the topics on the left side, they will definitely enhance your knowledge about the basics of programming.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

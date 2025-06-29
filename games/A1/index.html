@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhance Gaming Skills</title>
+    <link rel="stylesheet" href="gaming.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav>
+        <a href="#" class="page">Basics</a>
+        <a href="#" class="page">Chess</a>
+        <a href="#" class="page">Checkers</a>
+        <a href="#" class="page">Poker</a>
+        <a href="#" class="page">Game Development</a>
+        <a href="#" class="page">Strategy Games</a>
+        <a href="#" class="page">Online Games</a>
+    </nav>
+
+    <!-- Main container for aside and content -->
+    <div class="container">
+        <!-- Sidebar with gaming topics -->
+        <aside>
+            <h2>Gaming Topics</h2>
+            <!-- Strategy Games -->
+            <a href="#" onclick="loadContent('chess')">Chess Strategies</a>
+            <a href="#" onclick="loadContent('checkers')">Checkers Tips</a>
+            <a href="#" onclick="loadContent('poker')">Poker Techniques</a>
+
+            <!-- Game Development -->
+            <a href="#" onclick="loadContent('game_dev')">Game Development Basics</a>
+            <a href="#" onclick="loadContent('game_design')">Game Design Principles</a>
+
+            <!-- General Gaming Skills -->
+            <a href="#" onclick="loadContent('skills')">Improving Your Gaming Skills</a>
+            <a href="#" onclick="loadContent('practice')">Practice Techniques</a>
+            <a href="#" onclick="loadContent('resources')">Online Resources</a>
+            <a href="#" onclick="loadContent('communities')">Gaming Communities</a>
+        </aside>
+
+        <!-- Main content area -->
+        <div class="content" id="contentArea">
+            <h1>Welcome to Gaming Skills Enhancement</h1>
+            <p>Select a gaming topic from the left to get started.</p>
+        </div>
+    </div>
+
+    <script src="gaming.js"></script> <!-- Link to external JavaScript file -->
+</body>
+</html>

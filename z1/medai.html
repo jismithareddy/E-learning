@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Tags Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+            color: #d14;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Displaying Media Tags in HTML</h1>
+
+    <h2>1. The <code>&lt;audio&gt;</code> Tag</h2>
+    <p>The <code>&lt;audio&gt;</code> tag is used to embed sound content in web pages. It allows for audio playback and can include multiple sources to support different audio formats.</p>
+    <pre><code>
+&lt;audio controls autoplay loop muted preload=&quot;auto&quot;&gt;
+    &lt;source src=&quot;https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;
+    </code></pre>
+    <p>Example Audio Player:</p>
+    <audio controls autoplay loop muted preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <h3>Attributes of the <code>&lt;audio&gt;</code> Tag:</h3>
+    <ul>
+        <li><code>controls</code>: Displays audio controls (play, pause, volume) for user interaction.</li>
+        <li><code>autoplay</code>: Automatically starts playing the audio when the page loads.</li>
+        <li><code>loop</code>: Replays the audio automatically when it ends.</li>
+        <li><code>muted</code>: Starts the audio muted by default.</li>
+        <li><code>preload</code>: Specifies how the audio should be loaded when the page loads. Possible values:
+            <ul>
+                <li><code>none</code>: Do not preload audio.</li>
+                <li><code>metadata</code>: Load only audio metadata (duration, dimensions).</li>
+                <li><code>auto</code>: Load the entire audio file when the page loads.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>2. The <code>&lt;video&gt;</code> Tag</h2>
+    <p>The <code>&lt;video&gt;</code> tag is used to embed video content in web pages. It provides various attributes to control playback, dimensions, and more.</p>
+    <pre><code>
+&lt;video controls autoplay loop muted preload=&quot;auto&quot; width=&quot;640&quot; height=&quot;360&quot;&gt;
+    &lt;source src=&quot;https://www.w3schools.com/html/mov_bbb.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    Your browser does not support the video element.
+&lt;/video&gt;
+    </code></pre>
+    <p>Example Video Player:</p>
+    <video controls autoplay loop muted preload="auto" width="640" height="360">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support the video element.
+    </video>
+
+    <h3>Attributes of the <code>&lt;video&gt;</code> Tag:</h3>
+    <ul>
+        <li><code>controls</code>: Displays video controls (play, pause, volume) for user interaction.</li>
+        <li><code>autoplay</code>: Automatically starts playing the video when the page loads.</li>
+        <li><code>loop</code>: Replays the video automatically when it ends.</li>
+        <li><code>muted</code>: Starts the video muted by default.</li>
+        <li><code>preload</code>: Specifies how the video should be loaded when the page loads. Possible values:
+            <ul>
+                <li><code>none</code>: Do not preload video.</li>
+                <li><code>metadata</code>: Load only video metadata (duration, dimensions).</li>
+                <li><code>auto</code>: Load the entire video file when the page loads.</li>
+            </ul>
+        </li>
+        <li><code>width</code>: Sets the width of the video player in pixels.</li>
+        <li><code>height</code>: Sets the height of the video player in pixels.</li>
+    </ul>
+
+</body>
+</html>

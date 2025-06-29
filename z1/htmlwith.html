@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML with CSS and JavaScript Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .box {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Combining HTML with CSS and JavaScript</h1>
+
+    <div class="box">
+        <h2>1. HTML with CSS</h2>
+        <p>This section demonstrates how to style HTML elements using CSS.</p>
+        
+        <pre><code>
+&lt;style&gt;
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        color: #333;
+    }
+    .box {
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+&lt;/style&gt;
+
+&lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;div class=&quot;box&quot;&gt;
+    &lt;p&gt;This is a styled box using CSS.&lt;/p&gt;
+&lt;/div&gt;
+        </code></pre>
+
+        <h3>Example with CSS:</h3>
+        <h1>Hello, World!</h1>
+        <div class="box">
+            <p>This is a styled box using CSS.</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>2. HTML with JavaScript</h2>
+        <p>This section demonstrates how to add interactivity to HTML using JavaScript.</p>
+        
+        <pre><code>
+&lt;button class=&quot;button&quot; onclick=&quot;displayMessage()&quot;&gt;Click Me!&lt;/button&gt;
+
+&lt;script&gt;
+    function displayMessage() {
+        alert(&quot;Hello, this is a JavaScript alert!&quot;);
+    }
+&lt;/script&gt;
+        </code></pre>
+
+        <h3>Example with JavaScript:</h3>
+        <button class="button" onclick="displayMessage()">Click Me!</button>
+
+        <script>
+            function displayMessage() {
+                alert("Hello, this is a JavaScript alert!");
+            }
+        </script>
+    </div>
+
+    <h3>What is HTML with CSS and JavaScript?</h3>
+    <p>HTML (HyperText Markup Language) is the standard language for creating web pages, providing the structure of the content.</p>
+    <p>CSS (Cascading Style Sheets) is used to style the HTML content, allowing developers to change the layout, colors, and fonts, making the web pages visually appealing.</p>
+    <p>JavaScript is a programming language that adds interactivity to HTML, enabling dynamic behavior such as responding to user actions, validating forms, and creating animations.</p>
+
+    <h3>Why Use HTML with CSS and JavaScript?</h3>
+    <ul>
+        <li><strong>Separation of Concerns</strong>: HTML handles the structure, CSS manages the presentation, and JavaScript adds behavior, promoting organized and maintainable code.</li>
+        <li><strong>Improved User Experience</strong>: CSS enhances the aesthetics of the web page, while JavaScript provides interactive features that engage users.</li>
+        <li><strong>Responsive Design</strong>: CSS allows for layouts that adapt to different screen sizes and devices, ensuring a consistent experience for users.</li>
+        <li><strong>Enhanced Functionality</strong>: JavaScript can manipulate the HTML and CSS in real-time, allowing for rich user interfaces and experiences.</li>
+    </ul>
+
+</body>
+</html>

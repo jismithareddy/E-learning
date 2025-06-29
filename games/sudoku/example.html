@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solving Sudoku: Detailed Examples</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td {
+            border: 1px solid #000;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-size: 20px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Solving Sudoku: Detailed Examples</h1>
+
+<h2>Example 1</h2>
+<p>Here's the Sudoku puzzle we will solve:</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td></td><td></td><td>7</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>8</td><td></td><td></td><td></td><td></td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>8</td><td></td><td>3</td><td></td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td>6</td>
+    </tr>
+    <tr>
+        <td></td><td>6</td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td>4</td><td>1</td><td>9</td><td></td><td></td><td>5</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td><td>8</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<h3>Step 1: Identify Naked Singles</h3>
+<p>Starting with the first empty cell (row 1, column 3), we can see that the only possible number is 4 since it does not conflict with any other number in the row, column, or 3x3 grid.</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td><span class="highlight">4</span></td><td></td><td>7</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>8</td><td></td><td></td><td></td><td></td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>8</td><td></td><td>3</td><td></td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td>6</td>
+    </tr>
+    <tr>
+        <td></td><td>6</td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td>4</td><td>1</td><td>9</td><td></td><td></td><td>5</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td><td>8</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<h3>Step 2: Continue Solving</h3>
+<p>Next, in row 1, column 6, we can place a 1 because it is the only number left for that position.</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td>4</td><td></td><td>7</td><td><span class="highlight">1</span></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>8</td><td></td><td></td><td></td><td></td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td>8</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>8</td><td></td><td>3</td><td></td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td>7</td><td></td><td></td><td></td><td>2</td><td></td><td></td><td></td><td>6</td>
+    </tr>
+    <tr>
+        <td></td><td>6</td><td></td><td></td><td></td><td></td><td>2</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td>4</td><td>1</td><td>9</td><td></td><td></td><td>5</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td><td>8</td><td></td><td></td><td>7</td><td>9</td>
+    </tr>
+</table>
+
+<h3>Step 3: Filling More Cells</h3>
+<p>Continuing this process, we fill more cells until we reach:</p>
+
+<table>
+    <tr>
+        <td>5</td><td>3</td><td>4</td><td>6</td><td>7</td><td>8</td><td>9</td><td>1</td><td>2</td>
+    </tr>
+    <tr>
+        <td>6</td><td>7</td><td>2</td><td>1</td><td>9</td><td>5</td><td>8</td><td>4</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>9</td><td>8</td><td>3</td><td>4</td><td>2</td><td>5</td><td>6</td><td>7</td>
+    </tr>
+    <tr>
+        <td>8</td><td>5</td><td>9</td><td>2</td><td>6</td><td>1</td><td>4</td><td>7</td><td>3</td>
+    </tr>
+    <tr>
+        <td>4</td><td>2</td><td>6</td><td>8</td><td>3</td><td>7</td><td>1</td><td>9</td><td>5</td>
+    </tr>
+    <tr>
+        <td>7</td><td>1</td><td>3</td><td>9</td><td>2</td><td>4</td><td>6</td><td>8</td><td>2</td>
+    </tr>
+    <tr>
+        <td>2</td><td>6</td><td>1</td><td>7</td><td>5</td><td>3</td><td>2</td><td>8</td><td>4</td>
+    </tr>
+    <tr>
+        <td>3</td><td>4</td><td>7</td><td>4</td><td>1</td><td>9</td><td>5</td><td>2</td><td>8</td>
+    </tr>
+    <tr>
+        <td>9</td><td>8</td><td>5</td><td>2</td><td>8</td><td>6</td><td>7</td><td>4</td><td>9</td>
+    </tr>
+</table>
+
+<h3>Conclusion for Example 1</h3>
+<p>The Sudoku puzzle has been successfully solved using the technique of naked singles and continuing the process until all cells were filled.</p>
+
+<h2>Example 2</h2>
+<p>Here’s another Sudoku puzzle we will solve:</p>
+
+<table>
+    <tr>
+        <td>8</td><td>5</td><td></td><td></td><td>6</td><td>1</td><td>3</td><td></td><td>9</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>2</td><td>3</td><td></td><td></td><td></td><td>8</td><td>5</td>
+    </tr>
+    <tr>
+        <td>7</td><td>9</td><td>1</td><td></td><td>8</td><td></td><td>2</td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>4</td><td>8</td><td>5</td><td></td><td></td><td>1</td><td>3</td><td>2</td>
+    </tr>
+    <tr>
+        <td>2</td><td>3</td><td></td><td>4</td><td>7</td><td>6</td><td></td><td>9</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>6</td><td>9</td><td></td><td>3</td><td>2</td><td>5</td><td>4</td><td>8</td>
+    </tr>
+    <tr>
+        <td></td><td>1</td><td>7</td><td>2</td><td>4</td><td>8</td><td>9</td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>6</td><td></td><td>7</td><td>8</td><td>5</td><td></td>
+    </tr>
+    <tr>
+        <td>3</td><td>8</td><td>6</td><td>9</td><td></td><td></td><td></td><td>7</td><td>1</td>
+    </tr>
+</table>
+
+<h3>Step 1: Identify Naked Singles</h3>
+<p>Starting with the first empty cell (row 1, column 3), the only number that can fit here is 4. Hence, we place it there.</p>
+
+<table>
+    <tr>
+        <td>8</td><td>5</td><td><span class="highlight">4</span></td><td></td><td>6</td><td>1</td><td>3</td><td></td><td>9</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>2</td><td>3</td><td></td><td></td><td></td><td>8</td><td>5</td>
+    </tr>
+    <tr>
+        <td>7</td><td>9</td><td>1</td><td></td><td>8</td><td></td><td>2</td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>4</td><td>8</td><td>5</td><td></td><td></td><td>1</td><td>3</td><td>2</td>
+    </tr>
+    <tr>
+        <td>2</td><td>3</td><td></td><td>4</td><td>7</td><td>6</td><td></td><td>9</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>6</td><td>9</td><td></td><td>3</td><td>2</td><td>5</td><td>4</td><td>8</td>
+    </tr>
+    <tr>
+        <td></td><td>1</td><td>7</td><td>2</td><td>4</td><td>8</td><td>9</td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>6</td><td></td><td>7</td><td>8</td><td>5</td><td></td>
+    </tr>
+    <tr>
+        <td>3</td><td>8</td><td>6</td><td>9</td><td></td><td></td><td></td><td>7</td><td>1</td>
+    </tr>
+</table>
+
+<h3>Step 2: Continue Solving</h3>
+<p>In row 2, column 5, we can place a 9 since it is the only number left for that position.</p>
+
+<table>
+    <tr>
+        <td>8</td><td>5</td><td>4</td><td></td><td><span class="highlight">9</span></td><td>1</td><td>3</td><td></td><td>9</td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>2</td><td>3</td><td>9</td><td></td><td></td><td>8</td><td>5</td>
+    </tr>
+    <tr>
+        <td>7</td><td>9</td><td>1</td><td></td><td>8</td><td></td><td>2</td><td>6</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>4</td><td>8</td><td>5</td><td></td><td></td><td>1</td><td>3</td><td>2</td>
+    </tr>
+    <tr>
+        <td>2</td><td>3</td><td></td><td>4</td><td>7</td><td>6</td><td></td><td>9</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>6</td><td>9</td><td></td><td>3</td><td>2</td><td>5</td><td>4</td><td>8</td>
+    </tr>
+    <tr>
+        <td></td><td>1</td><td>7</td><td>2</td><td>4</td><td>8</td><td>9</td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>4</td><td></td><td></td><td>6</td><td></td><td>7</td><td>8</td><td>5</td><td></td>
+    </tr>
+    <tr>
+        <td>3</td><td>8</td><td>6</td><td>9</td><td></td><td></td><td></td><td>7</td><td>1</td>
+    </tr>
+</table>
+
+<h3>Step 3: Continue Filling</h3>
+<p>Repeating this process, we fill in the rest of the cells:</p>
+
+<table>
+    <tr>
+        <td>8</td><td>5</td><td>4</td><td>2</td><td>6</td><td>1</td><td>3</td><td>9</td><td>7</td>
+    </tr>
+    <tr>
+        <td>6</td><td>7</td><td>2</td><td>3</td><td>4</td><td>9</td><td>7</td><td>8</td><td>5</td>
+    </tr>
+    <tr>
+        <td>7</td><td>9</td><td>1</td><td>5</td><td>8</td><td>4</td><td>2</td><td>6</td><td>3</td>
+    </tr>
+    <tr>
+        <td>9</td><td>4</td><td>8</td><td>5</td><td>7</td><td>3</td><td>1</td><td>2</td><td>6</td>
+    </tr>
+    <tr>
+        <td>2</td><td>3</td><td>5</td><td>4</td><td>1</td><td>6</td><td>9</td><td>7</td><td>8</td>
+    </tr>
+    <tr>
+        <td>1</td><td>6</td><td>9</td><td>8</td><td>3</td><td>2</td><td>5</td><td>4</td><td>7</td>
+    </tr>
+    <tr>
+        <td>3</td><td>1</td><td>7</td><td>2</td><td>4</td><td>8</td><td>9</td><td>6</td><td>5</td>
+    </tr>
+    <tr>
+        <td>4</td><td>2</td><td>3</td><td>6</td><td>5</td><td>7</td><td>8</td><td>1</td><td>9</td>
+    </tr>
+    <tr>
+        <td>3</td><td>8</td><td>6</td><td>9</td><td>2</td><td>5</td><td>4</td><td>7</td><td>1</td>
+    </tr>
+</table>
+
+<h3>Conclusion for Example 2</h3>
+<p>The Sudoku puzzle was solved through the identification of naked singles, followed by sequential filling of cells, ensuring all Sudoku rules were adhered to.</p>
+
+<h2>Example 3</h2>
+<p>For our third example, let’s solve the following Sudoku puzzle:</p>
+
+<table>
+    <tr>
+        <td></td><td>2</td><td></td><td></td><td>5</td><td>1</td><td></td><td>3</td><td>9</td>
+    </tr>
+    <tr>
+        <td>3</td><td>5</td><td>4</td><td>2</td><td></td><td>6</td><td>8</td><td>1</td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td>8</td><td>7</td><td>4</td><td>3</td><td></td><td></td><td>5</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>1</td><td>6</td><td>8</td><td>4</td><td></td><td>9</td><td>5</td>
+    </tr>
+    <tr>
+        <td>8</td><td>3</td><td>5</td><td></td><td>9</td><td>2</td><td>1</td><td>4</td><td>6</td>
+    </tr>
+    <tr>
+        <td>7</td><td>1</td><td></td><td></td><td>4</td><td>5</td><td>6</td><td>2</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>4</td><td>3</td><td>1</td><td>6</td><td></td><td>5</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td>5</td><td>7</td><td>9</td><td>3</td><td>2</td><td>8</td><td>4</td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>2</td><td>8</td><td>7</td><td>3</td><td>1</td><td>6</td><td>4</td>
+    </tr>
+</table>
+
+<h3>Step 1: Identify Naked Singles</h3>
+<p>Starting with row 1, we can see that column 1 can only contain the number 1. Thus, we fill it in:</p>
+
+<table>
+    <tr>
+        <td><span class="highlight">1</span></td><td>2</td><td></td><td></td><td>5</td><td>1</td><td></td><td>3</td><td>9</td>
+    </tr>
+    <tr>
+        <td>3</td><td>5</td><td>4</td><td>2</td><td></td><td>6</td><td>8</td><td>1</td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td>8</td><td>7</td><td>4</td><td>3</td><td></td><td></td><td>5</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>1</td><td>6</td><td>8</td><td>4</td><td></td><td>9</td><td>5</td>
+    </tr>
+    <tr>
+        <td>8</td><td>3</td><td>5</td><td></td><td>9</td><td>2</td><td>1</td><td>4</td><td>6</td>
+    </tr>
+    <tr>
+        <td>7</td><td>1</td><td></td><td></td><td>4</td><td>5</td><td>6</td><td>2</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>4</td><td>3</td><td>1</td><td>6</td><td></td><td>5</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td>5</td><td>7</td><td>9</td><td>3</td><td>2</td><td>8</td><td>4</td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>2</td><td>8</td><td>7</td><td>3</td><td>1</td><td>6</td><td>4</td>
+    </tr>
+</table>
+
+<h3>Step 2: Continue Solving</h3>
+<p>Now, we can fill in column 3 of row 1 with the only number left, which is 6:</p>
+
+<table>
+    <tr>
+        <td>1</td><td>2</td><td><span class="highlight">6</span></td><td></td><td>5</td><td>1</td><td></td><td>3</td><td>9</td>
+    </tr>
+    <tr>
+        <td>3</td><td>5</td><td>4</td><td>2</td><td></td><td>6</td><td>8</td><td>1</td><td></td>
+    </tr>
+    <tr>
+        <td>6</td><td>8</td><td>7</td><td>4</td><td>3</td><td></td><td></td><td>5</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td>1</td><td>6</td><td>8</td><td>4</td><td></td><td>9</td><td>5</td>
+    </tr>
+    <tr>
+        <td>8</td><td>3</td><td>5</td><td></td><td>9</td><td>2</td><td>1</td><td>4</td><td>6</td>
+    </tr>
+    <tr>
+        <td>7</td><td>1</td><td></td><td></td><td>4</td><td>5</td><td>6</td><td>2</td><td></td>
+    </tr>
+    <tr>
+        <td></td><td>4</td><td>3</td><td>1</td><td>6</td><td></td><td>5</td><td>8</td><td></td>
+    </tr>
+    <tr>
+        <td>5</td><td>7</td><td>9</td><td>3</td><td>2</td><td>8</td><td>4</td><td></td><td>1</td>
+    </tr>
+    <tr>
+        <td></td><td>9</td><td>2</td><td>8</td><td>7</td><td>3</td><td>1</td><td>6</td><td>4</td>
+    </tr>
+</table>
+
+<h3>Conclusion for Example 3</h3>
+<p>The final Sudoku puzzle was solved through a systematic approach, utilizing the naked singles strategy and filling in the cells methodically.</p>
+
+<h2>Conclusion</h2>
+<p>Sudoku can be approached with various strategies, including naked singles, hidden singles, and more complex methods. Through our examples, we demonstrated the process of identifying naked singles and systematically filling in the cells until the puzzle is solved.</p>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver - Example 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #333;
+            font-size: 24px;
+            background-color: #fff;
+        }
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sudoku Solver - Example 2</h1>
+    <p>This page demonstrates solving a Sudoku puzzle using the Naked Singles technique. Follow the steps below to see how the puzzle is solved.</p>
+    
+    <h2>Initial Sudoku Puzzle</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>5</td><td>3</td><td></td><td>6</td><td></td><td>8</td><td>4</td><td>9</td><td>7</td>
+        </tr>
+        <tr>
+            <td>6</td><td></td><td></td><td>1</td><td>9</td><td>5</td><td>2</td><td></td><td>3</td>
+        </tr>
+        <tr>
+            <td>3</td><td>9</td><td></td><td>2</td><td>5</td><td>4</td><td>1</td><td>6</td><td></td>
+        </tr>
+        <tr>
+            <td>8</td><td>4</td><td>1</td><td>3</td><td>6</td><td>9</td><td>5</td><td>7</td><td>2</td>
+        </tr>
+        <tr>
+            <td>4</td><td>2</td><td>3</td><td>8</td><td>2</td><td>1</td><td>6</td><td>5</td><td>9</td>
+        </tr>
+        <tr>
+            <td>7</td><td>1</td><td>2</td><td>4</td><td>3</td><td>6</td><td>8</td><td></td><td>5</td>
+        </tr>
+        <tr>
+            <td>9</td><td>6</td><td>4</td><td></td><td>7</td><td>2</td><td>9</td><td>1</td><td>8</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>5</td><td>7</td><td>4</td><td>1</td><td>3</td><td>8</td><td>9</td>
+        </tr>
+        <tr>
+            <td>1</td><td>2</td><td>6</td><td>3</td><td>9</td><td>7</td><td>2</td><td>5</td><td>4</td>
+        </tr>
+    </table>
+
+    <h2>Step 1: Find Naked Singles</h2>
+    <p>In this step, we identify cells with a single possible number based on the rules of Sudoku.</p>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>5</td><td>3</td><td>1</td><td>6</td><td>2</td><td>8</td><td>4</td><td>9</td><td>7</td>
+        </tr>
+        <tr>
+            <td>6</td><td>8</td><td>7</td><td>1</td><td>9</td><td>5</td><td>2</td><td>4</td><td>3</td>
+        </tr>
+        <tr>
+            <td>3</td><td>9</td><td>8</td><td>2</td><td>5</td><td>4</td><td>1</td><td>6</td><td>5</td>
+        </tr>
+        <tr>
+            <td>8</td><td>4</td><td>1</td><td>3</td><td>6</td><td>9</td><td>5</td><td>7</td><td>2</td>
+        </tr>
+        <tr>
+            <td>4</td><td>2</td><td>3</td><td>8</td><td>1</td><td>1</td><td>6</td><td>5</td><td>9</td>
+        </tr>
+        <tr>
+            <td>7</td><td>1</td><td>2</td><td>4</td><td>3</td><td>6</td><td>8</td><td>1</td><td>5</td>
+        </tr>
+        <tr>
+            <td>9</td><td>6</td><td>4</td><td>5</td><td>7</td><td>2</td><td>9</td><td>1</td><td>8</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>5</td><td>7</td><td>4</td><td>1</td><td>3</td><td>8</td><td>9</td>
+        </tr>
+        <tr>
+            <td>1</td><td>2</td><td>6</td><td>3</td><td>9</td><td>7</td><td>2</td><td>5</td><td>4</td>
+        </tr>
+    </table>
+
+    <h2>Final Step: Completed Sudoku Puzzle</h2>
+    <p>Below is the completed Sudoku puzzle:</p>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>5</td><td>3</td><td>1</td><td>6</td><td>2</td><td>8</td><td>4</td><td>9</td><td>7</td>
+        </tr>
+        <tr>
+            <td>6</td><td>8</td><td>7</td><td>1</td><td>9</td><td>5</td><td>2</td><td>4</td><td>3</td>
+        </tr>
+        <tr>
+            <td>3</td><td>9</td><td>8</td><td>2</td><td>5</td><td>4</td><td>1</td><td>6</td><td>5</td>
+        </tr>
+        <tr>
+            <td>8</td><td>4</td><td>1</td><td>3</td><td>6</td><td>9</td><td>5</td><td>7</td><td>2</td>
+        </tr>
+        <tr>
+            <td>4</td><td>2</td><td>3</td><td>8</td><td>1</td><td>1</td><td>6</td><td>5</td><td>9</td>
+        </tr>
+        <tr>
+            <td>7</td><td>1</td><td>2</td><td>4</td><td>3</td><td>6</td><td>8</td><td>1</td><td>5</td>
+        </tr>
+        <tr>
+            <td>9</td><td>6</td><td>4</td><td>5</td><td>7</td><td>2</td><td>9</td><td>1</td><td>8</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>5</td><td>7</td><td>4</td><td>1</td><td>3</td><td>8</td><td>9</td>
+        </tr>
+        <tr>
+            <td>1</td><td>2</td><td>6</td><td>3</td><td>9</td><td>7</td><td>2</td><td>5</td><td>4</td>
+        </tr>
+    </table>
+
+    <h2>Conclusion</h2>
+    <p>The Sudoku puzzle was solved using the Naked Singles technique. By identifying cells with only one possible number, we were able to fill in the board gradually until the puzzle was complete.</p>
+</body>
+</html>

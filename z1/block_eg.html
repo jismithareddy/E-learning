@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying Code - Block vs Inline Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, 'Courier New', Courier, monospace;
+            color: #d6336c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Displaying Code - Block vs Inline Elements</h1>
+
+    <h2>Code Example 1: Block Elements vs Inline Elements Layout</h2>
+    <pre><code>&lt;div class="block"&gt;
+    This is a block element (&lt;div&gt;). It starts on a new line and takes up the full width.
+&lt;/div&gt;
+
+&lt;span class="inline"&gt;This is an inline element (&lt;span&gt;).&lt;/span&gt;
+&lt;span class="inline"&gt;It stays inline with the other content.&lt;/span&gt;
+    </code></pre>
+
+    <h2>Code Example 2: Containing Other Elements</h2>
+    <pre><code>&lt;div class="block"&gt;
+    &lt;h3&gt;This is a heading inside a block element.&lt;/h3&gt;
+    &lt;p&gt;This is a paragraph inside the block element.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;a href="#"&gt;This is an inline element (&lt;a&gt;) inside text.&lt;/a&gt;
+    </code></pre>
+
+    <h2>Code Example 3: Full-width vs Content Width</h2>
+    <pre><code>&lt;div class="block"&gt;
+    This block element takes the full width of the parent container.
+&lt;/div&gt;
+
+&lt;span class="inline"&gt;This inline element only takes up as much width as it needs.&lt;/span&gt;
+    </code></pre>
+
+    <h2>Code Example 4: Inline Elements Inside Block Elements</h2>
+    <pre><code>&lt;p&gt;
+    This is a block element that contains inline elements like &lt;strong&gt;bold text&lt;/strong&gt; 
+    and &lt;em&gt;italic text&lt;/em&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+    Here is another inline element: a &lt;a href="#"&gt;link&lt;/a&gt; inside a paragraph.
+&lt;/p&gt;
+    </code></pre>
+
+</body>
+</html>
