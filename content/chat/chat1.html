@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Application</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #messages { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; }
+    input { width: 80%; padding: 10px; }
+    button { padding: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Skill Craft Chat</h2>
+  <div id="messages"></div>
+  <input id="message" autocomplete="off">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    let ws = new WebSocket("ws://localhost:8080/your-app-name/chat");
+
+    ws.onmessage = function(event) {
+      const messagesDiv = document.getElementById('messages');
+      const message = document.createElement('div');
+      message.textContent = event.data;
+      messagesDiv.appendChild(message);
+    };
+
+    function sendMessage() {
+      const messageInput = document.getElementById('message');
+      ws.send(messageInput.value);
+      messageInput.value = '';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Craft Topics</title>
+    <style>
+        /* Full-page layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center nav bar horizontally */
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style for the navigation bar (centered at the top) */
+        nav {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px;
+            color: white;
+        }
+
+        /* Container for the aside and main content */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin-top: 20px;
+        }
+
+        /* Style for the aside sidebar (under the nav, on the left) */
+        aside {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            overflow-y: auto; /* Make the sidebar scrollable if content overflows */
+        }
+        aside a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
+        /* Main content area (next to aside) */
+        .content {
+            width: 400px;  /* Decreased width */
+            flex-grow: 1; /* Take up remaining space */
+            padding: 20px;
+            overflow-y: auto;
+            /* Make the content scrollable */
+            max-height: 80vh; /* Scrollable content area */
+        }
+
+        .content h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .head{
+            color: green;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation bar centered at the top -->
+    <nav>
+        <a href="">Basics</a>
+        <a href="">HTML</a>
+        <a href="">CSS</a>
+        <a href="">JS</a>
+        <a href="">Python</a>
+        <a href="">Java</a>
+        <a href="">C</a>
+        <a href="">SQL</a>
+    </nav>
+
+    <!-- Container for aside and main content -->
+    <div class="container">
+        <!-- Sidebar (aside) on the left -->
+        <aside>
+            <a onclick="loadContent('intro')">Intro</a>
+            <a onclick="loadContent('structure')">Structure</a>
+            <a onclick="loadContent('variables')">Variables & Data Types</a>
+            <a onclick="loadContent('operators')">Operators</a>
+            <a onclick="loadContent('control-structures')">Control Structures</a>
+            <a onclick="loadContent('loops')">Loops</a>
+            <a onclick="loadContent('functions')">Functions</a>
+            <a onclick="loadContent('recursion')">Recursion</a>
+            <a onclick="loadContent('arrays')">Arrays</a>
+            <a onclick="loadContent('lists')">Lists</a>
+            <a onclick="loadContent('sets')">Sets</a>
+            <a onclick="loadContent('maps')">Maps & Dictionaries</a>
+            <a onclick="loadContent('stacks')">Stacks & Queues</a>
+            <a onclick="loadContent('oop')">OOP Concepts</a>
+            <a onclick="loadContent('classes')">Classes & Objects</a>
+            <a onclick="loadContent('inheritance')">Inheritance</a>
+            <a onclick="loadContent('polymorphism')">Polymorphism</a>
+            <a onclick="loadContent('encapsulation')">Encapsulation</a>
+            <a onclick="loadContent('abstraction')">Abstraction</a>
+            <a onclick="loadContent('memory')">Memory Management</a>
+            <a onclick="loadContent('constructors')">Constructors & Destructors</a>
+            <a onclick="loadContent('exception')">Exception Handling</a>
+            <a onclick="loadContent

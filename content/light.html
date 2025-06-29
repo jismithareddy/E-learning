@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Theme Toggle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Light Theme Styles */
+        .light-theme {
+            background-color: white;
+            color: black;
+        }
+
+        /* Dark Theme Styles */
+        .dark-theme {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Button Styles */
+        .theme-toggle {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Light Theme Button Styles */
+        .light-theme .theme-toggle {
+            background-color: lightgray;
+            color: black;
+        }
+
+        /* Dark Theme Button Styles */
+        .dark-theme .theme-toggle {
+            background-color: gray;
+            color: white;
+        }
+
+        /* Anchor Tag Styles */
+        a {
+            text-decoration: none;
+            color: inherit; /* Inherit color from parent */
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* Anchor Hover and Active Styles */
+        a:hover {
+            background-color: lightgray;
+        }
+
+        a.active {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <button class="theme-toggle" id="theme-toggle">Switch to Dark Theme</button>
+
+    <h1>Theme Toggle Example</h1>
+    <a href="#" class="link">Link 1</a>
+    <a href="#" class="link">Link 2</a>
+    <a href="#" class="link">Link 3</a>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme'); // Toggle dark theme
+            body.classList.toggle('light-theme'); // Toggle light theme
+
+            // Update button text based on current theme
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.textContent = 'Switch to Light Theme';
+            } else {
+                themeToggle.textContent = 'Switch to Dark Theme';
+            }
+        });
+
+        // Set up click event listeners for the links
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default anchor behavior
+
+                // Remove 'active' class from all links
+                document.querySelectorAll('.link').forEach(l => l.classList.remove('active'));
+
+                // Add 'active' class to the clicked link
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

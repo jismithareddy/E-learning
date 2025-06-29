@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Full-page layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center nav bar horizontally */
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Style for the navigation bar (centered at the top) */
+        nav {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px;
+            color: white;
+        }
+
+        /* Container for the aside and main content */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin-top: 20px;
+        }
+
+        /* Style for the aside sidebar (under the nav, on the left) */
+        aside {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        aside a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Main content area (next to aside) */
+        .content {
+            flex-grow: 1; /* Take up remaining space */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation bar centered at the top -->
+    <nav>
+        <a href="">Basics</a>
+        <a href="">HTML</a>
+        <a href="">CSS</a>
+        <a href="">JS</a>
+        <a href="">Python</a>
+        <a href="">Java</a>
+        <a href="">C</a>
+        <a href="">SQL</a>
+    </nav>
+
+    <!-- Container for aside and main content -->
+    <div class="container">
+        <!-- Sidebar (aside) on the left -->
+        <aside>
+            <a href="">Intro</a>
+            <a href="">Structure</a>
+            <a href="">Variables & Data Types</a>
+            <a href="">Operators</a>
+            <a href="">Control Structures</a>
+            <a href="">Loops</a>
+            <a href="">Functions</a>
+            <a href="">Recursion</a>
+            <a href="">Arrays</a>
+            <a href="">Lists</a>
+            <a href="">Sets</a>
+            <a href="">Maps & Dictionaries</a>
+            <a href="">Stacks & Queues</a>
+            <a href="">OOP Concepts</a>
+            <a href="">Classes & Objects</a>
+            <a href="">Inheritance</a>
+            <a href="">Polymorphism</a>
+            <a href="">Encapsulation</a>
+            <a href="">Abstraction</a>
+            <a href="">Memory Management</a>
+            <a href="">Constructors & Destructors</a>
+            <a href="">Exception Handling</a>
+            <a href="">File Handling</a>
+            <a href="">Multithreading</a>
+            <a href="">Concurrency</a>
+            <a href="">Lambda Expressions</a>
+            <a href="">Regular Expressions</a>
+            <a href="">Testing & Unit Testing</a>
+            <a href="">Best Practices</a>
+            <a href="">Debugging & Tools</a>
+            <a href="">Web Development</a>
+            <a href="">Working with APIs</a>
+            <a href="">Deployment & CI/CD</a>
+            <a href="">Additional Language Features</a>
+        </aside>
+        
+
+        <!-- Main content area (right of the aside) -->
+        <div class="content">
+            <h1>Main Content Area</h1>
+            <p>This is where the main content will go.</p>
+        </div>
+    </div>
+
+</body>
+</html>

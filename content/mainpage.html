@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Craft Topics</title>
+    <style>
+        /* Full-page layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center nav bar horizontally */
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style for the navigation bar (centered at the top) */
+        nav {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px;
+            color: white;
+        }
+
+        /* Container for the aside and main content */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin-top: 20px;
+        }
+
+        /* Style for the aside sidebar (under the nav, on the left) */
+        aside {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            overflow-y: auto; /* Make the sidebar scrollable if content overflows */
+        }
+        aside a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
+        /* Main content area (next to aside) */
+        .content {
+            width:500px;  
+            flex-grow: 1; /* Take up remaining space */
+            padding: 20px;
+            overflow-y: auto;
+             /* Make the content scrollable */
+            max-height: 80vh; /* Scrollable content area */
+        }
+
+        .content h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation bar centered at the top -->
+    <nav>
+        <a href="">Basics</a>
+        <a href="">HTML</a>
+        <a href="">CSS</a>
+        <a href="">JS</a>
+        <a href="">Python</a>
+        <a href="">Java</a>
+        <a href="">C</a>
+        <a href="">SQL</a>
+    </nav>
+
+    <!-- Container for aside and main content -->
+    <div class="container">
+        <!-- Sidebar (aside) on the left -->
+        <aside>
+            <a onclick="loadContent('intro')">Intro</a>
+            <a onclick="loadContent('structure')">Structure</a>
+            <a onclick="loadContent('variables')">Variables & Data Types</a>
+            <a onclick="loadContent('operators')">Operators</a>
+            <a onclick="loadContent('control-structures')">Control Structures</a>
+            <a onclick="loadContent('loops')">Loops</a>
+            <a onclick="loadContent('functions')">Functions</a>
+            <a onclick="loadContent('recursion')">Recursion</a>
+            <a onclick="loadContent('arrays')">Arrays</a>
+            <a onclick="loadContent('lists')">Lists</a>
+            <a onclick="loadContent('sets')">Sets</a>
+            <a onclick="loadContent('maps')">Maps & Dictionaries</a>
+            <a onclick="loadContent('stacks')">Stacks & Queues</a>
+            <a onclick="loadContent('oop')">OOP Concepts</a>
+            <a onclick="loadContent('classes')">Classes & Objects</a>
+            <a onclick="loadContent('inheritance')">Inheritance</a>
+            <a onclick="loadContent('polymorphism')">Polymorphism</a>
+            <a onclick="loadContent('encapsulation')">Encapsulation</a>
+            <a onclick="loadContent('abstraction')">Abstraction</a>
+            <a onclick="loadContent('memory')">Memory Management</a>
+            <a onclick="loadContent('constructors')">Constructors & Destructors</a>
+            <a onclick="loadContent('exception')">Exception Handling</a>
+            <a onclick="loadContent('file')">File Handling</a>
+            <a onclick="loadContent('multithreading')">Multithreading</a>
+            <a onclick="loadContent('concurrency')">Concurrency</a>
+            <a onclick="loadContent('lambda')">Lambda Expressions</a>
+            <a onclick="loadContent('regex')">Regular Expressions</a>
+            <a onclick="loadContent('testing')">Testing & Unit Testing</a>
+            <a onclick="loadContent('best-practices')">Best Practices</a>
+            <a onclick="loadContent('debugging')">Debugging & Tools</a>
+            <a onclick="loadContent('web')">Web Development</a>
+            <a onclick="loadContent('api')">Working with APIs</a>
+            <a onclick="loadContent('deployment')">Deployment & CI/CD</a>
+            <a onclick="loadContent('features')">Additional Language Features</a>
+        </aside>
+        
+        <!-- Main content area (right of the aside) -->
+        <div class="content" id="contentArea">
+            <h1>Main Content Area</h1>
+            <p>Select a topic from the sidebar to view its content here.</p>
+        </div>
+    </div>
+
+    <script>
+        function loadContent(topic) {
+            let contentArea = document.getElementById('contentArea');
+            let content = '';
+
+            switch(topic) {
+                case 'intro':
+                    content = ` <div class="main-div">
+    <h4 class= "head">Introduction  About programming</h4>
+    <div class="des">
+        <section></section>
+            <h6>What is Programming?</h6>
+            <p>Programming is the process of creating a set of instructions that tell a computer how to perform a specific task. These instructions, known as <strong>code</strong>, are written in various programming languages, such as Python, Java, C, and JavaScript, which the computer can interpret and execute.</p>
+            <p>Programming is fundamental to the operation of modern technology. It allows for the creation of software, websites, mobile apps, games, and more. From the simplest calculator app on your phone to complex systems like autopilot on airplanes, programming powers almost everything we use daily.</p>
+        </section>
+        <section class="code">
+            <code>
+
+            </code>
+
+
+
+        </section>
+        <section class="des">
+
+        </section>
+        <br><br>
+        <section class="code">
+            <code>
+
+            </code>
+
+
+
+        </section>
+        <section class="des">
+
+        </section>
+
+    </div>
+</div>`;
+                    break;
+                case 'structure':
+                    content = `
+                        <h1>Structure of a Program</h1>
+                        <p>A well-structured program is easier to read and maintain. The key elements include:</p>
+                        <ul>
+                            <li><strong>Variables:</strong> Used to store data values.</li>
+                            <li><strong>Functions:</strong> Blocks of code designed to perform a particular task.</li>
+                            <li><strong>Control Flow:</strong> Determines the order in which instructions are executed.</li>
+                        </ul>
+                        <p>Here's an example:</p>
+                        <pre><code>function greet() {
+    console.log("Hello, World!");
+}
+greet(); // Calls the function</code></pre>
+                    `;
+                    break;
+                case 'variables':
+                    content = `
+                        <h1>Variables & Data Types</h1>
+                        <p>Variables are containers for storing data values. The data type determines what kind of data can be stored.</p>
+                        <ul>
+                            <li><strong>String:</strong> A sequence of characters, e.g., "Hello".</li>
+                            <li><strong>Number:</strong> Represents both integers and floating-point numbers, e.g., 42 or 3.14.</li>
+                            <li><strong>Boolean:</strong> Represents true or false.</li>
+                        </ul>
+                        <p>Example:</p>
+                        <pre><code>let name = "John"; // String
+let age = 30; // Number
+let isStudent = true; // Boolean</code></pre>
+                    `;
+                    break;
+                case 'operators':
+                    content = `
+                        <h1>Operators in Programming</h1>
+                        <p>Operators are symbols that perform operations on variables and values. Common operators include:</p>
+                        <ul>
+                            <li><strong>Arithmetic Operators:</strong> +, -, *, / (e.g., <code>let sum = a + b;</code>)</li>
+                            <li><strong>Relational Operators:</strong> ==, !=, <, > (e.g., <code>if (a > b)</code>)</li>
+                            <li><strong>Logical Operators:</strong> &&, ||, ! (e.g., <code>if (a && b)</code>)</li>
+                        </ul>
+                        <p>Example:</p>
+                        <pre><code>let a = 5, b = 10;
+let result = a + b; // 15</code></pre>
+                    `;
+                    break;
+                case 'control-structures':
+                    content = `
+                        <h1>Control Structures</h1>
+                        <p>Control structures dictate the flow of control in a program. Common types include:</p>
+                        <ul>
+                            <li><strong>If Statements:</strong> Executes code based on a condition.</li>
+                            <li><strong>Switch Statements:</strong> Selects one of many code blocks to execute.</li>
+                        </ul>
+                        <p>Example:</p>
+                        <pre><code>if (age >= 18) {
+    console.log("Adult");
+} else {
+    console.log("Minor");
+}</code></pre>
+                    `;
+                    break;
+                case 'loops':
+                    content = `
+                        <h1>Loops in Programming</h1>
+                        <p>Loops are used to repeat a block of code as long as a condition is true. Common types include:</p>
+                        <ul>
+                            <li><strong>For Loop:</strong> Iterates a specified number of times.</li>
+                            <li><strong>While Loop:</strong> Continues as long as a condition is true.</li>
+                        </ul>
+                        <p>Example:</p>
+                        <pre><code>for (let i = 0; i < 5; i++) {
+    console.log(i);
+}</code></pre>
+                    `;
+                    break;
+                case 'functions':
+                    content = `
+                        <h1>Functions in Programming</h1>
+                        <p>A function is a block of code designed to perform a specific task. Functions are executed when they are called.</p>
+                        <p>Example:</p>
+                        <pre><code>function add(a, b) {
+    return a + b;
+}
+let sum = add(5, 10); // 15</code></pre>
+                    `;
+                    break;
+                case 'recursion':
+                    content = `
+                        <h1>Recursion</h1>
+                        <p>Recursion occurs when a function calls itself. It's a powerful tool for solving problems that can be broken down into smaller subproblems.</p>
+                        <p>Example:</p>
+                        <pre><code>function factorial(n) {
+    if (n === 0) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+let result = factorial(5); // 120</code></pre>
+                    `;
+                    break;
+                case 'arrays':
+                    content = `
+                        <h1>Arrays in Programming</h1>
+                        <p>An array is a collection of items stored at contiguous memory locations. It can hold multiple values under a single name.</p>
+                        <p>Example:</p>
+                        <pre><code>let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[1]); // Banana</code></pre>
+                    `;
+                    break;
+                case 'lists':
+                    content = `
+                        <h1>Lists</h1>
+                        <p>In programming, lists are collections of items that can be accessed by their index. Lists can hold different data types.</p>
+                        <p>Example:</p>
+                        <pre><code>let numbers = [1, 2, 3, 4, 5];
+console.log(numbers.length); // 5</code></pre>
+                    `;
+                    break;
+                case 'sets':
+                    content = `
+                        <h1>Sets in Programming</h1>
+                        <p>A set is a collection of unique values. It is often used to store distinct elements without duplicates.</p>
+                        <p>Example:</p>
+                        <pre><code>let mySet = new Set([1, 2, 3, 2]);
+console.log(mySet.size); // 3</code></pre>
+                    `;
+                    break;
+                case 'maps':
+                    content = `
+                        <h1>Maps & Dictionaries</h1>
+                        <p>A map is a collection of key-value pairs. It allows the association of keys with values.</p>
+                        <p>Example:</p>
+                        <pre><code>let myMap = new Map();
+myMap.set("name", "John");
+console.log(myMap.get("name")); // John</code></pre>
+                    `;
+                    break;
+                case 'stacks':
+                    content = `
+                        <h1>Stacks & Queues</h1>
+                        <p>A stack is a data structure that follows the Last In First Out (LIFO) principle, while a queue follows the First In First Out (FIFO) principle.</p>
+                        <p>Example:</p>
+                        <pre><code>let stack = [];
+stack.push(1); // Push to stack
+let last = stack.pop(); // Pop from stack</code></pre>
+                    `;
+                    break;
+                case 'oop':
+                    content = `
+                        <h1>Object-Oriented Programming (OOP) Concepts</h1>
+                        <p>OOP is a programming paradigm based on the concept of "objects," which can contain data and code to manipulate that data.</p>
+                        <p>Core concepts include:</p>
+                        <ul>
+                            <li><strong>Encapsulation:</strong> Bundling data and methods.</li>
+                            <li><strong>Inheritance:</strong> Deriving new classes from existing ones.</li>
+                            <li><strong>Polymorphism:</strong> Ability to take many forms.</li>
+                        </ul>
+                    `;
+                    break;
+                case 'classes':
+                    content = `
+                        <h1>Classes & Objects</h1>
+                        <p>A class is a blueprint for creating objects. An object is an instance of a class.</p>
+                        <p>Example:</p>
+                        <pre><code>class Car {
+    constructor(make, model) {
+        this.make = make;
+        this.model = model;
+    }
+}
+let myCar = new Car("Toyota", "Corolla");</code></pre>
+                    `;
+                    break;
+                case 'inheritance':
+                    content = `
+                        <h1>Inheritance in OOP</h1>
+                        <p>Inheritance allows a class to use properties and methods of another class.</p>
+                        <p>Example:</p>
+                        <pre><code>class Animal {
+    speak() {
+        console.log("Animal speaks");
+    }
+}
+class Dog extends Animal {
+    bark() {
+        console.log("Woof!");
+    }
+}
+let dog = new Dog();
+dog.speak(); // Animal speaks
+dog.bark(); // Woof!</code></pre>
+                    `;
+                    break;
+                case 'polymorphism':
+                    content = `
+                        <h1>Polymorphism in OOP</h1>
+                        <p>Polymorphism allows methods to do different things based on the object it is acting upon.</p>
+                        <p>Example:</p>
+                        <pre><code>class Cat extends Animal {
+    speak() {
+        console.log("Meow!");
+    }
+}
+let myCat = new Cat();
+myCat.speak(); // Meow!</code></pre>
+                    `;
+                    break;
+                case 'encapsulation':
+                    content = `
+                        <h1>Encapsulation in OOP</h1>
+                        <p>Encapsulation restricts direct access to some of an object's components, which is a means of preventing unintended interference and misuse of the methods and data.</p>
+                        <p>Example:</p>
+                        <pre><code>class BankAccount {
+    constructor(balance) {
+        this._balance = balance; // private property
+    }
+    deposit(amount) {
+        this._balance += amount;
+    }
+}
+let account = new BankAccount(100);
+account.deposit(50); // modifies balance</code></pre>
+                    `;
+                    break;
+                case 'abstraction':
+                    content = `
+                        <h1>Abstraction in OOP</h1>
+                        <p>Abstraction is the concept of hiding the complex reality while exposing only the necessary parts.</p>
+                        <p>Example:</p>
+                        <pre><code>class Shape {
+    draw() {
+        throw "Not implemented"; // Abstract method
+    }
+}
+class Circle extends Shape {
+    draw() {
+        console.log("Drawing a circle");
+    }
+}</code></pre>
+                    `;
+                    break;
+                case 'memory':
+                    content = `
+                        <h1>Memory Management</h1>
+                        <p>Memory management is the process of controlling and coordinating computer memory, which includes both hardware and software.</p>
+                        <p>Example:</p>
+                        <pre><code>let arr = new Array(100); // Allocate memory
+arr = null; // Free memory</code></pre>
+                    `;
+                    break;
+                case 'constructors':
+                    content = `
+                        <h1>Constructors & Destructors</h1>
+                        <p>Constructors are special methods invoked during the creation of an object, while destructors are called when an object is destroyed.</p>
+                        <p>Example:</p>
+                        <pre><code>class Person {
+    constructor(name) {
+        this.name = name;
+    }
+}
+let p = new Person("John"); // Constructor called</code></pre>
+                    `;
+                    break;
+                case 'exception':
+                    content = `
+                        <h1>Exception Handling</h1>
+                        <p>Exception handling is a mechanism to handle runtime errors, allowing the program to continue its execution.</p>
+                        <p>Example:</p>
+                        <pre><code>try {
+    let result = riskyFunction();
+} catch (error) {
+    console.log("Error occurred:", error);
+}</code></pre>
+                    `;
+                    break;
+                case 'file':
+                    content = `
+                        <h1>File Handling</h1>
+                        <p>File handling is a method of accessing and manipulating files stored on the disk.</p>
+                        <p>Example:</p>
+                        <pre><code>const fs = require('fs');
+fs.readFile('file.txt', 'utf8', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+});</code></pre>
+                    `;
+                    break;
+                case 'multithreading':
+                    content = `
+                        <h1>Multithreading</h1>
+                        <p>Multithreading is a technique where multiple threads are created by a process to execute tasks concurrently.</p>
+                        <p>Example:</p>
+                        <pre><code>const { Worker } = require('worker_threads');
+const worker = new Worker('./worker.js');</code></pre>
+                    `;
+                    break;
+                case 'concurrency':
+                    content = `
+                        <h1>Concurrency</h1>
+                        <p>Concurrency is the ability of a program to make progress on more than one task simultaneously.</p>
+                    `;
+                    break;
+                case 'lambda':
+                    content = `
+                        <h1>Lambda Expressions</h1>
+                        <p>Lambda expressions are a feature that allows the creation of anonymous functions.</p>
+                        <p>Example:</p>
+                        <pre><code>const square = x => x * x;
+console.log(square(5)); // 25</code></pre>
+                    `;
+                    break;
+                case 'regex':
+                    content = `
+                        <h1>Regular Expressions</h1>
+                        <p>Regular expressions are patterns used to match character combinations in strings.</p>
+                        <p>Example:</p>
+                        <pre><code>const regex = /hello/;
+console.log(regex.test("hello world")); // true</code></pre>
+                    `;
+                    break;
+                case 'testing':
+                    content = `
+                        <h1>Testing & Unit Testing</h1>
+                        <p>Testing is the process of evaluating the functionality of a program, while unit testing is testing individual components.</p>
+                    `;
+                    break;
+                case 'best':
+                    content = `
+                        <h1>Best Practices</h1>
+                        <p>Best practices in programming refer to a set of guidelines to follow for writing clean, maintainable code.</p>
+                    `;
+                    break;
+                case 'debugging':
+                    content = `
+                        <h1>Debugging & Tools</h1>
+                        <p>Debugging is the process of finding and resolving defects or problems in the code.</p>
+                    `;
+                    break;
+                case 'web':
+                    content = `
+                        <h1>Web Development</h1>
+                        <p>Web development is the work involved in developing a website for the Internet.</p>
+                    `;
+                    break;
+                case 'apis':
+                    content = `
+                        <h1>Working with APIs</h1>
+                        <p>APIs (Application Programming Interfaces) allow communication between different software applications.</p>
+                    `;
+                    break;
+                case 'deployment':
+                    content = `
+                        <h1>Deployment & CI/CD</h1>
+                        <p>Deployment is the process of putting an application into a live environment.</p>
+                    `;
+                    break;
+                case 'additional':
+                    content = `
+                        <h1>Additional Language Features</h1>
+                        <p>Additional language features provide extra capabilities in programming.</p>
+                    `;
+                    break;
+                default:
+                    content = `<h1>Content not found</h1>`;
+                    break;
+            }
+            document.querySelector('.content').innerHTML = content;
+        }
+    </script>
+</body>
+</html>
