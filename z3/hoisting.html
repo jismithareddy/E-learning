@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Hoisting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Hoisting</h1>
+<p>Hoisting is a behavior in JavaScript where variable and function declarations are moved (or "hoisted") to the top of their scope before the code execution. However, only the declarations are hoisted, not the initializations.</p>
+
+<p>This means you can refer to variables and functions before they are declared in the code, but their values will not be assigned until the actual point of initialization.</p>
+
+<h2>Example 1: Hoisting with Variables (var)</h2>
+<pre><code>console.log(x); // Outputs: undefined
+var x = 5;
+console.log(x); // Outputs: 5
+</code></pre>
+<p><strong>Explanation:</strong> In this example, the variable <code>x</code> is hoisted to the top of its scope, but the value <code>5</code> is not assigned to it until the line <code>var x = 5;</code> is reached. Before that, <code>x</code> is <code>undefined</code>.</p>
+
+<h2>Example 2: Hoisting with let and const</h2>
+<pre><code>console.log(y); // ReferenceError: Cannot access 'y' before initialization
+let y = 10;
+console.log(y); // Outputs: 10
+</code></pre>
+<p><strong>Explanation:</strong> Unlike <code>var</code>, variables declared with <code>let</code> and <code>const</code> are not initialized until the line where they are declared is executed. This is why trying to access <code>y</code> before its declaration throws a <code>ReferenceError</code>.</p>
+
+<h2>Example 3: Hoisting with Functions</h2>
+<pre><code>console.log(add(2, 3)); // Outputs: 5
+
+function add(a, b) {
+    return a + b;
+}
+</code></pre>
+<p><strong>Explanation:</strong> Function declarations are fully hoisted. This means that you can call the <code>add</code> function even before it is declared in the code, and it will work without any issues because the entire function declaration is hoisted.</p>
+
+<h2>Example 4: Hoisting with Function Expressions</h2>
+<pre><code>console.log(multiply(2, 3)); // TypeError: multiply is not a function
+
+var multiply = function(a, b) {
+    return a * b;
+};
+</code></pre>
+<p><strong>Explanation:</strong> Function expressions are not hoisted like function declarations. Only the variable <code>multiply</code> is hoisted, but its value (the function) is assigned later in the code. Until that point, <code>multiply</code> is <code>undefined</code>, leading to a <code>TypeError</code> when trying to call it before its definition.</p>
+
+<h2>Example 5: Hoisting within Functions</h2>
+<pre><code>function showMessage() {
+    console.log(message); // Outputs: undefined
+    var message = "Hello, World!";
+    console.log(message); // Outputs: Hello, World!
+}
+
+showMessage();
+</code></pre>
+<p><strong>Explanation:</strong> Inside the <code>showMessage</code> function, the variable <code>message</code> is hoisted to the top of the function's scope. Before the assignment, its value is <code>undefined</code>. After the assignment, the correct value is displayed.</p>
+
+<h2>Example 6: Hoisting in Block Scope</h2>
+<pre><code>function testBlockScope() {
+    console.log(a); // Outputs: undefined
+    console.log(b); // ReferenceError: Cannot access 'b' before initialization
+
+    var a = 10;
+    let b = 20;
+}
+
+testBlockScope();
+</code></pre>
+<p><strong>Explanation:</strong> <code>var</code> is hoisted and initialized with <code>undefined</code> at the top of its function scope. However, <code>let</code> (and <code>const</code>) are block-scoped, and they are not initialized until their declaration line is executed, leading to a <code>ReferenceError</code> when accessed before declaration.</p>
+
+<h2>Example 7: Hoisting and Temporal Dead Zone (TDZ)</h2>
+<pre><code>console.log(x); // ReferenceError: Cannot access 'x' before initialization
+
+let x = 5;
+</code></pre>
+<p><strong>Explanation:</strong> In the case of <code>let</code> and <code>const</code>, there is a concept called the <strong>Temporal Dead Zone (TDZ)</strong>. The TDZ is the time between entering a scope and the point where a variable is declared. During this time, trying to access the variable throws a <code>ReferenceError</code>.</p>
+
+<h2>Conclusion</h2>
+<p>Hoisting is an essential concept in JavaScript that moves variable and function declarations to the top of their scope. Understanding how hoisting works, especially with <code>var</code>, <code>let</code>, <code>const</code>, and function declarations, helps prevent unexpected behavior and errors in code.</p>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display and Positioning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .code-container {
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        pre {
+            margin: 0;
+            padding: 10px;
+            overflow-x: auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .copy-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: #4CAF50;
+            margin: 10px;
+            display: inline-block; /* Change this value to experiment with different display types */
+        }
+        .position-example {
+            position: relative;
+            background-color: #f9c74f;
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+        }
+        .absolute-box {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #f94144;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Display and Positioning</h1>
+
+    <p>The <strong>display</strong> property specifies the display behavior of an element. It determines how an element is rendered on the page, influencing layout and positioning.</p>
+    <p>The <strong>positioning</strong> properties define the positioning of elements in relation to their parent elements or the viewport. This allows for flexible layouts and overlapping content.</p>
+
+    <h2>Display Property Values</h2>
+    <ul>
+        <li><strong>block:</strong> The element takes up the full width available and starts on a new line.</li>
+        <li><strong>inline:</strong> The element only takes up as much width as necessary, and does not start on a new line.</li>
+        <li><strong>inline-block:</strong> The element flows like an inline element but allows setting width and height.</li>
+        <li><strong>flex:</strong> Enables a flexible layout for child elements.</li>
+        <li><strong>grid:</strong> Creates a grid layout for child elements.</li>
+    </ul>
+
+    <h2>Display Property Example</h2>
+    <div class="code-container">
+        <h3>HTML and CSS Code</h3>
+        <pre>
+&lt;div class="box"&gt;&lt;/div&gt;
+&lt;div class="box"&gt;&lt;/div&gt;
+
+.box {
+    width: 200px;
+    height: 100px;
+    background-color: #4CAF50;
+    margin: 10px;
+    display: inline-block; /* Change this value to block, flex, grid, etc. */
+}
+        </pre>
+        
+    </div>
+
+    <h2>Positioning Property Values</h2>
+    <ul>
+        <li><strong>static:</strong> The default value; elements are positioned according to the normal flow of the document.</li>
+        <li><strong>relative:</strong> Positions the element relative to its normal position.</li>
+        <li><strong>absolute:</strong> Positions the element relative to its nearest positioned ancestor.</li>
+        <li><strong>fixed:</strong> Positions the element relative to the viewport, remaining in place when scrolled.</li>
+        <li><strong>sticky:</strong> Toggles between relative and fixed, depending on the scroll position.</li>
+    </ul>
+
+    <h2>Positioning Example</h2>
+    <div class="code-container">
+        <h3>HTML and CSS Code</h3>
+        <pre>
+&lt;div class="position-example"&gt;
+    &lt;div class="absolute-box"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+.position-example {
+    position: relative; /* Establishes a positioning context */
+    background-color: #f9c74f;
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+}
+.absolute-box {
+    position: absolute; /* Positions this box relative to its parent */
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #f94144;
+}
+        </pre>
+        
+    </div>
+
+    <h2>Visual Representation</h2>
+    <div class="box"></div>
+    <div class="box"></div>
+    
+    <div class="position-example">
+        <div class="absolute-box"></div>
+    </div>
+
+
+
+</body>
+</html>

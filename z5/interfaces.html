@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaces in Java - Detailed Explanation</title>
+</head>
+<body>
+    <h1>Interfaces in Java</h1>
+    <p>In Java, an <strong>interface</strong> is a reference type, similar to a class, that can contain only constants, method signatures, default methods, static methods, and nested types. Interfaces cannot contain instance fields or constructors.</p>
+
+    <h2>What is an Interface?</h2>
+    <p>An interface defines a contract of methods that the implementing classes must provide. It is used to achieve abstraction and multiple inheritance in Java. The classes that implement the interface must provide concrete implementations of all methods declared in the interface.</p>
+
+    <h2>Why Use Interfaces?</h2>
+    <ul>
+        <li>To achieve loose coupling between classes.</li>
+        <li>To implement multiple inheritance, which Java does not support directly with classes.</li>
+        <li>To provide a contract that implementing classes must follow.</li>
+        <li>To allow different classes to implement the same interface but provide different implementations.</li>
+    </ul>
+
+    <h2>Basic Syntax of Interface</h2>
+    <pre><code>
+    interface InterfaceName {
+        // Constant declarations (if needed)
+        // Abstract method declarations (without body)
+        void method1();
+        void method2();
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>interface</code> keyword is used to declare an interface. It can have abstract methods (methods without a body) that must be implemented by the implementing classes.</p>
+
+    <h2>Example of a Simple Interface</h2>
+    <pre><code>
+    interface Animal {
+        // Abstract method (no body)
+        void sound();
+    }
+
+    class Dog implements Animal {
+        // Providing implementation of the sound() method
+        public void sound() {
+            System.out.println("Dog barks");
+        }
+    }
+
+    class Cat implements Animal {
+        // Providing implementation of the sound() method
+        public void sound() {
+            System.out.println("Cat meows");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Animal dog = new Dog();
+            Animal cat = new Cat();
+
+            dog.sound();  // Output: Dog barks
+            cat.sound();  // Output: Cat meows
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>Animal</code> interface defines an abstract method <code>sound()</code>. Both <code>Dog</code> and <code>Cat</code> implement the <code>Animal</code> interface and provide their specific implementations of the <code>sound()</code> method.</p>
+
+    <h2>Types of Interfaces</h2>
+    <ul>
+        <li><strong>Normal Interface:</strong> Declares abstract methods that need to be implemented.</li>
+        <li><strong>Functional Interface:</strong> Contains exactly one abstract method. It can be used as the target for lambda expressions.</li>
+        <li><strong>Marker Interface:</strong> Has no methods. It is used to indicate some property or behavior to the implementing classes.</li>
+        <li><strong>Default Methods:</strong> Can have a body and provide a default implementation.</li>
+        <li><strong>Static Methods:</strong> Can be defined within an interface with a body.</li>
+    </ul>
+
+    <h2>Example 1: Functional Interface</h2>
+    <pre><code>
+    @FunctionalInterface
+    interface Add {
+        // Single abstract method
+        int sum(int a, int b);
+
+        // Default method
+        default void printMessage() {
+            System.out.println("Performing addition...");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            // Lambda expression
+            Add addition = (a, b) -> a + b;
+            System.out.println("Sum: " + addition.sum(5, 10));  // Output: Sum: 15
+            addition.printMessage();  // Output: Performing addition...
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>Add</code> interface is a functional interface with a single abstract method <code>sum()</code>. The lambda expression <code>(a, b) -> a + b</code> provides the implementation for this method. A default method <code>printMessage()</code> is also defined in the interface.</p>
+
+    <h2>Example 2: Marker Interface</h2>
+    <pre><code>
+    interface Serializable {}
+
+    class Person implements Serializable {
+        private String name;
+        private int age;
+
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public void display() {
+            System.out.println("Name: " + name + ", Age: " + age);
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Person person = new Person("John", 25);
+            person.display();  // Output: Name: John, Age: 25
+            // The person object can be serialized as it implements the Serializable interface
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>Serializable</code> interface is a marker interface, meaning it has no methods. By implementing this interface, the <code>Person</code> class indicates that its objects can be serialized.</p>
+
+    <h2>Example 3: Default Method in Interface</h2>
+    <pre><code>
+    interface Shape {
+        // Abstract method
+        void draw();
+
+        // Default method with body
+        default void defaultShape() {
+            System.out.println("This is a default shape");
+        }
+    }
+
+    class Circle implements Shape {
+        public void draw() {
+            System.out.println("Drawing a circle");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Circle circle = new Circle();
+            circle.draw();  // Output: Drawing a circle
+            circle.defaultShape();  // Output: This is a default shape
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>Shape</code> interface defines both an abstract method <code>draw()</code> and a default method <code>defaultShape()</code>. The <code>Circle</code> class implements the <code>Shape</code> interface and provides its own implementation of the <code>draw()</code> method while inheriting the default implementation of the <code>defaultShape()</code> method.</p>
+
+    <h2>Differences Between Interface and Abstract Class</h2>
+    <table border="1">
+        <tr>
+            <th>Aspect</th>
+            <th>Interface</th>
+            <th>Abstract Class</th>
+        </tr>
+        <tr>
+            <td>Implementation</td>
+            <td>Can have abstract methods and default/static methods</td>
+            <td>Can have abstract and non-abstract methods</td>
+        </tr>
+        <tr>
+            <td>Inheritance</td>
+            <td>A class can implement multiple interfaces</td>
+            <td>A class can inherit only one abstract class</td>
+        </tr>
+        <tr>
+            <td>Access Modifiers</td>
+            <td>Methods are implicitly public</td>
+            <td>Methods can have any access modifier (private, protected, public)</td>
+        </tr>
+        <tr>
+            <td>Constructors</td>
+            <td>Cannot have constructors</td>
+            <td>Can have constructors</td>
+        </tr>
+        <tr>
+            <td>Fields</td>
+            <td>Can only have constants (public, static, final)</td>
+            <td>Can have instance fields and static fields</td>
+        </tr>
+    </table>
+    <p><strong>Explanation:</strong> The table highlights the key differences between an interface and an abstract class. An interface is more focused on defining a contract for classes to follow, while an abstract class can provide partial implementation and have more flexible characteristics.</p>
+
+</body>
+</html>

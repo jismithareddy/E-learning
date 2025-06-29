@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Joins - Detailed Explanation with Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #ec5f5f;
+        }
+        pre {
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding SQL Joins</h1>
+    
+    <p>SQL Joins are used to combine rows from two or more tables based on a related column between them. Joins allow us to fetch data from multiple tables by creating relationships between them. There are several types of SQL joins:</p>
+    
+    <ul>
+        <li><strong>INNER JOIN</strong></li>
+        <li><strong>LEFT (OUTER) JOIN</strong></li>
+        <li><strong>RIGHT (OUTER) JOIN</strong></li>
+        <li><strong>FULL (OUTER) JOIN</strong></li>
+        <li><strong>CROSS JOIN</strong></li>
+        <li><strong>NATURAL JOIN</strong></li>
+        <li><strong>SELF JOIN</strong></li>
+    </ul>
+
+    <h2>1. INNER JOIN</h2>
+    <p>An <strong>INNER JOIN</strong> returns records that have matching values in both tables. If a row in either table does not have a corresponding match in the other table, it will not appear in the result set.</p>
+
+    <h3>Example of INNER JOIN</h3>
+    <pre>
+SELECT orders.order_id, customers.customer_name
+FROM orders
+INNER JOIN customers
+ON orders.customer_id = customers.customer_id;
+    </pre>
+
+    <h3>Sample Data for INNER JOIN</h3>
+
+    <h4>Orders Table</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_id</th>
+                <th>amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>101</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>102</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>103</td>
+                <td>700</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Customers Table</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>customer_id</th>
+                <th>customer_name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Jane Smith</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Result of INNER JOIN</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>2. LEFT (OUTER) JOIN</h2>
+    <p>A <strong>LEFT JOIN</strong> returns all records from the left table (Orders), and the matched records from the right table (Customers). If there is no match, the result will contain <code>NULL</code> for columns from the right table.</p>
+
+    <h3>Example of LEFT JOIN</h3>
+    <pre>
+SELECT orders.order_id, customers.customer_name
+FROM orders
+LEFT JOIN customers
+ON orders.customer_id = customers.customer_id;
+    </pre>
+
+    <h4>Result of LEFT JOIN</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>NULL</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. RIGHT (OUTER) JOIN</h2>
+    <p>A <strong>RIGHT JOIN</strong> returns all records from the right table (Customers), and the matched records from the left table (Orders). If there is no match, the result will contain <code>NULL</code> for columns from the left table.</p>
+
+    <h3>Example of RIGHT JOIN</h3>
+    <pre>
+SELECT orders.order_id, customers.customer_name
+FROM orders
+RIGHT JOIN customers
+ON orders.customer_id = customers.customer_id;
+    </pre>
+
+    <h4>Result of RIGHT JOIN</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+            </tr>
+            <tr>
+                <td>NULL</td>
+                <td>NULL</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4. FULL OUTER JOIN</h2>
+    <p>A <strong>FULL OUTER JOIN</strong> returns all records when there is a match in either table. If there is no match, the result will contain <code>NULL</code> for columns from the other table.</p>
+
+    <h3>Example of FULL OUTER JOIN</h3>
+    <pre>
+SELECT orders.order_id, customers.customer_name
+FROM orders
+FULL OUTER JOIN customers
+ON orders.customer_id = customers.customer_id;
+    </pre>
+
+    <h4>Result of FULL OUTER JOIN</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>NULL</td>
+            </tr>
+            <tr>
+                <td>NULL</td>
+                <td>NULL</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>5. CROSS JOIN</h2>
+    <p>A <strong>CROSS JOIN</strong> returns the Cartesian product of both tables. It multiplies each row from the first table with every row from the second table, resulting in a large result set.</p>
+
+    <h3>Example of CROSS JOIN</h3>
+    <pre>
+SELECT orders.order_id, customers.customer_name
+FROM orders
+CROSS JOIN customers;
+    </pre>
+
+    <h4>Result of CROSS JOIN</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Jane Smith</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Jane Smith</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>6. NATURAL JOIN</h2>
+    <p>A <strong>NATURAL JOIN</strong> automatically joins two tables based on the columns that have the same name and data type in both tables. It eliminates the need to specify the join condition explicitly.</p>
+
+    <h3>Example of NATURAL JOIN</h3>
+    <pre>
+SELECT order_id, customer_name
+FROM orders
+NATURAL JOIN customers;
+    </pre>
+
+    <h4>Sample Data for NATURAL JOIN</h4>
+    <h4>Orders Table</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_id</th>
+                <th>amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>101</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>102</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>101</td>
+                <td>700</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Result of NATURAL JOIN</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>customer_name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>John Doe</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>7. SELF JOIN</h2>
+    <p>A <strong>SELF JOIN</strong> is a join that is used to join a table with itself. This is useful for querying hierarchical data or comparing rows within the same table.</p>
+
+    <h3>Example of SELF JOIN</h3>
+    <pre>
+SELECT a.employee_id AS EmployeeID, a.name AS EmployeeName, b.name AS ManagerName
+FROM employees a
+JOIN employees b ON a.manager_id = b.employee_id;
+    </pre>
+
+    <h4>Sample Data for SELF JOIN</h4>
+    <h4>Employees Table</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>employee_id</th>
+                <th>name</th>
+                <th>manager_id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>NULL</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Mike</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Result of SELF JOIN</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>EmployeeID</th>
+                <th>EmployeeName</th>
+                <th>ManagerName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2</td>
+                <td>Jane</td>
+                <td>John</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Mike</td>
+                <td>John</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

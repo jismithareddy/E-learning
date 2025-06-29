@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>DOM Manipulation in JavaScript</h1>
+<p>The Document Object Model (DOM) represents the structure of a web page. It allows JavaScript to manipulate HTML and CSS, enabling dynamic updates to the content and style of a web page. DOM manipulation involves adding, removing, or modifying elements and their attributes.</p>
+
+<h2>1. Selecting Elements</h2>
+<p>JavaScript provides several methods to select elements from the DOM.</p>
+
+<h3>Example 1: Selecting an Element by ID</h3>
+<pre><code>&lt;div id="myDiv"&gt;Hello, World!&lt;/div&gt;
+&lt;script&gt;
+    const element = document.getElementById("myDiv");
+    console.log(element.innerHTML); // Outputs: Hello, World!
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> In this example, the <code>getElementById</code> method selects the <code>&lt;div&gt;</code> with the ID <code>myDiv</code> and logs its inner HTML to the console.</p>
+
+<h2>2. Changing Content</h2>
+<p>Once an element is selected, its content can be modified.</p>
+
+<h3>Example 2: Changing Text Content</h3>
+<pre><code>&lt;div id="myDiv"&gt;Original Text&lt;/div&gt;
+&lt;button id="changeText"&gt;Change Text&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("changeText").addEventListener("click", function() {
+        document.getElementById("myDiv").innerHTML = "Text Changed!";
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> This example uses an event listener to change the text content of the <code>&lt;div&gt;</code> when the button is clicked. The <code>innerHTML</code> property is used to update the content.</p>
+
+<h2>3. Adding Elements</h2>
+<p>New elements can be created and added to the DOM.</p>
+
+<h3>Example 3: Adding a New Element</h3>
+<pre><code>&lt;button id="addElement"&gt;Add Element&lt;/button&gt;
+&lt;div id="elementContainer"&gt;&lt;/div&gt;
+&lt;script&gt;
+    document.getElementById("addElement").addEventListener("click", function() {
+        const newElement = document.createElement("p");
+        newElement.innerHTML = "New Paragraph Added!";
+        document.getElementById("elementContainer").appendChild(newElement);
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> In this example, a new paragraph element is created and added to the <code>&lt;div&gt;</code> with the ID <code>elementContainer</code> when the button is clicked. The <code>createElement</code> and <code>appendChild</code> methods are used to add the new element.</p>
+
+<h2>4. Removing Elements</h2>
+<p>Elements can also be removed from the DOM.</p>
+
+<h3>Example 4: Removing an Element</h3>
+<pre><code>&lt;div id="removeDiv"&gt;This will be removed&lt;/div&gt;
+&lt;button id="removeElement"&gt;Remove Element&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("removeElement").addEventListener("click", function() {
+        const element = document.getElementById("removeDiv");
+        element.parentNode.removeChild(element);
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> This example demonstrates how to remove an element from the DOM. When the button is clicked, the <code>removeChild</code> method is called on the parent node of the <code>&lt;div&gt;</code> to remove it.</p>
+
+<h2>5. Modifying Attributes</h2>
+<p>The attributes of an element can be modified as well.</p>
+
+<h3>Example 5: Changing Attributes</h3>
+<pre><code>&lt;img id="myImage" src="image.jpg" alt="My Image"&gt;
+&lt;button id="changeSrc"&gt;Change Image Source&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("changeSrc").addEventListener("click", function() {
+        document.getElementById("myImage").setAttribute("src", "new-image.jpg");
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> In this example, clicking the button changes the <code>src</code> attribute of an image element using the <code>setAttribute</code> method, updating the displayed image.</p>
+
+<h2>6. Changing Styles</h2>
+<p>The styles of an element can be altered through JavaScript.</p>
+
+<h3>Example 6: Changing Styles</h3>
+<pre><code>&lt;div id="styleDiv" style="width: 100px; height: 100px; background-color: blue;"&gt;&lt;/div&gt;
+&lt;button id="changeStyle"&gt;Change Style&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("changeStyle").addEventListener("click", function() {
+        const div = document.getElementById("styleDiv");
+        div.style.backgroundColor = "red";
+        div.style.width = "200px";
+        div.style.height = "200px";
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> This example changes the background color, width, and height of a <code>&lt;div&gt;</code> element when the button is clicked, using the <code>style</code> property.</p>
+
+<h2>7. Class Manipulation</h2>
+<p>Classes can be added or removed from elements to change their styles or behavior.</p>
+
+<h3>Example 7: Adding and Removing Classes</h3>
+<pre><code>&lt;div id="classDiv" class="box"&gt;I am a box!&lt;/div&gt;
+&lt;button id="toggleClass"&gt;Toggle Class&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("toggleClass").addEventListener("click", function() {
+        const div = document.getElementById("classDiv");
+        div.classList.toggle("highlight");
+    });
+&lt;/script&gt;
+&lt;style&gt;
+    .box { width: 100px; height: 100px; background-color: gray; }
+    .highlight { background-color: yellow; }
+&lt;/style&gt;</code></pre>
+<p><strong>Explanation:</strong> This example toggles a class on the <code>&lt;div&gt;</code> when the button is clicked. If the class <code>highlight</code> is added, the background color changes to yellow.</p>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Methods in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>DOM Methods in JavaScript</h1>
+<p>The Document Object Model (DOM) provides a structured representation of the document as a tree of objects, allowing JavaScript to manipulate the content, structure, and styles of web pages. Here are some commonly used DOM methods.</p>
+
+<h2>1. <code>getElementById()</code></h2>
+<p>This method selects an element by its unique ID.</p>
+
+<h3>Example 1: Selecting an Element by ID</h3>
+<pre><code>&lt;div id="myDiv"&gt;Hello, World!&lt;/div&gt;
+&lt;script&gt;
+    const element = document.getElementById("myDiv");
+    console.log(element.innerHTML); // Outputs: Hello, World!
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>getElementById()</code> method returns the element with the specified ID.</p>
+
+<h2>2. <code>getElementsByClassName()</code></h2>
+<p>This method selects all elements that have a specific class name.</p>
+
+<h3>Example 2: Selecting Elements by Class Name</h3>
+<pre><code>&lt;div class="myClass"&gt;Element 1&lt;/div&gt;
+&lt;div class="myClass"&gt;Element 2&lt;/div&gt;
+&lt;script&gt;
+    const elements = document.getElementsByClassName("myClass");
+    console.log(elements[0].innerHTML); // Outputs: Element 1
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>getElementsByClassName()</code> method returns a live HTMLCollection of elements with the specified class name.</p>
+
+<h2>3. <code>getElementsByTagName()</code></h2>
+<p>This method selects all elements with a specific tag name.</p>
+
+<h3>Example 3: Selecting Elements by Tag Name</h3>
+<pre><code>&lt;p&gt;Paragraph 1&lt;/p&gt;
+&lt;p&gt;Paragraph 2&lt;/p&gt;
+&lt;script&gt;
+    const paragraphs = document.getElementsByTagName("p");
+    console.log(paragraphs.length); // Outputs: 2
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>getElementsByTagName()</code> method returns a live HTMLCollection of elements with the specified tag name.</p>
+
+<h2>4. <code>querySelector()</code></h2>
+<p>This method selects the first element that matches a specified CSS selector.</p>
+
+<h3>Example 4: Selecting an Element with a CSS Selector</h3>
+<pre><code>&lt;div class="container"&gt;&lt;p&gt;First Paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;script&gt;
+    const firstParagraph = document.querySelector(".container p");
+    console.log(firstParagraph.innerHTML); // Outputs: First Paragraph
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>querySelector()</code> method returns the first element that matches the specified CSS selector.</p>
+
+<h2>5. <code>querySelectorAll()</code></h2>
+<p>This method selects all elements that match a specified CSS selector.</p>
+
+<h3>Example 5: Selecting All Elements with a CSS Selector</h3>
+<pre><code>&lt;div class="item"&gt;Item 1&lt;/div&gt;
+&lt;div class="item"&gt;Item 2&lt;/div&gt;
+&lt;script&gt;
+    const items = document.querySelectorAll(".item");
+    console.log(items.length); // Outputs: 2
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>querySelectorAll()</code> method returns a static NodeList of all elements that match the specified CSS selector.</p>
+
+<h2>6. <code>createElement()</code></h2>
+<p>This method creates a new element with a specified tag name.</p>
+
+<h3>Example 6: Creating a New Element</h3>
+<pre><code>&lt;button id="addElement"&gt;Add Element&lt;/button&gt;
+&lt;div id="container"&gt;&lt;/div&gt;
+&lt;script&gt;
+    document.getElementById("addElement").addEventListener("click", function() {
+        const newElement = document.createElement("p");
+        newElement.innerHTML = "New Paragraph Added!";
+        document.getElementById("container").appendChild(newElement);
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>createElement()</code> method creates a new element that can then be added to the DOM.</p>
+
+<h2>7. <code>appendChild()</code></h2>
+<p>This method adds a new child node to a specified parent node.</p>
+
+<h3>Example 7: Appending a Child Element</h3>
+<pre><code>&lt;div id="parent"&gt;&lt;/div&gt;
+&lt;script&gt;
+    const child = document.createElement("span");
+    child.innerHTML = "I am a child!";
+    document.getElementById("parent").appendChild(child);
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>appendChild()</code> method adds the newly created child element to the specified parent element.</p>
+
+<h2>8. <code>removeChild()</code></h2>
+<p>This method removes a specified child node from a parent node.</p>
+
+<h3>Example 8: Removing a Child Element</h3>
+<pre><code>&lt;div id="removeMe"&gt;Remove Me&lt;/div&gt;
+&lt;button id="removeButton"&gt;Remove Element&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("removeButton").addEventListener("click", function() {
+        const element = document.getElementById("removeMe");
+        element.parentNode.removeChild(element);
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>removeChild()</code> method removes a specified child node from its parent node.</p>
+
+<h2>9. <code>setAttribute()</code></h2>
+<p>This method sets a specified attribute and value for an element.</p>
+
+<h3>Example 9: Setting an Attribute</h3>
+<pre><code>&lt;img id="myImage" src="image.jpg" alt="My Image"&gt;
+&lt;button id="changeSrc"&gt;Change Image Source&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("changeSrc").addEventListener("click", function() {
+        document.getElementById("myImage").setAttribute("src", "new-image.jpg");
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>setAttribute()</code> method sets the value of a specified attribute for an element.</p>
+
+<h2>10. <code>style</code></h2>
+<p>The <code>style</code> property allows you to change the inline CSS styles of an element.</p>
+
+<h3>Example 10: Changing Styles</h3>
+<pre><code>&lt;div id="myDiv" style="width: 100px; height: 100px; background-color: blue;"&gt;&lt;/div&gt;
+&lt;button id="changeStyle"&gt;Change Style&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("changeStyle").addEventListener("click", function() {
+        const div = document.getElementById("myDiv");
+        div.style.backgroundColor = "red";
+        div.style.width = "200px";
+        div.style.height = "200px";
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>style</code> property can be used to modify the CSS styles of an element dynamically.</p>
+
+<h2>11. <code>classList</code></h2>
+<p>The <code>classList</code> property provides methods to add, remove, and toggle classes of an element.</p>
+
+<h3>Example 11: Adding and Removing Classes</h3>
+<pre><code>&lt;div id="classDiv" class="box"&gt;I am a box!&lt;/div&gt;
+&lt;button id="toggleClass"&gt;Toggle Class&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("toggleClass").addEventListener("click", function() {
+        const div = document.getElementById("classDiv");
+        div.classList.toggle("active");
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>classList</code> property allows for easy manipulation of classes on an element.</p>
+
+<h2>12. <code>innerHTML</code></h2>
+<p>The <code>innerHTML</code> property allows you to get or set the HTML content of an element.</p>
+
+<h3>Example 12: Using innerHTML</h3>
+<pre><code>&lt;div id="content"&gt;Original Content&lt;/div&gt;
+&lt;button id="updateContent"&gt;Update Content&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("updateContent").addEventListener("click", function() {
+        document.getElementById("content").innerHTML = "Updated Content!";
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> The <code>innerHTML</code> property can be used to set or get the HTML content within an element.</p>
+
+<h2>Conclusion</h2>
+<p>These are some of the most commonly used DOM methods in JavaScript. Understanding these methods will help you manipulate HTML elements effectively and create dynamic web applications.</p>
+
+</body>
+</html>
+

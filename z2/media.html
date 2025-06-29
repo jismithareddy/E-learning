@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .item {
+            background-color: #cce5ff;
+            border: 1px solid #007bff;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Media Queries Explained</h1>
+
+    <h2>What are Media Queries?</h2>
+    <p>Media queries are a CSS technique used to apply styles based on the characteristics of the device, such as width, height, resolution, and orientation. They allow developers to create responsive designs that adapt to different screen sizes and orientations.</p>
+
+    <h2>Example 1: Basic Media Query</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Basic Media Query Example&lt;/title&gt;
+    &lt;style&gt;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .item {
+            background-color: #cce5ff;
+            border: 1px solid #007bff;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        /* Media Query */
+        @media (max-width: 600px) {
+            .item {
+                flex-basis: 100%; /* Stack items on small screens */
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Basic Media Query Example&lt;/h1&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="item"&gt;Item 1&lt;/div&gt;
+        &lt;div class="item"&gt;Item 2&lt;/div&gt;
+        &lt;div class="item"&gt;Item 3&lt;/div&gt;
+        &lt;div class="item"&gt;Item 4&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates a basic media query:
+        <ul>
+            <li>The media query applies styles when the viewport width is 600 pixels or less.</li>
+            <li>Inside the media query, the <code>flex-basis: 100%;</code> property stacks the items vertically, making them full-width on smaller screens.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="container">
+        <div class="item" style="min-width: 200px;">Item 1</div>
+        <div class="item" style="min-width: 200px;">Item 2</div>
+        <div class="item" style="min-width: 200px;">Item 3</div>
+        <div class="item" style="min-width: 200px;">Item 4</div>
+    </div>
+
+    <h2>Example 2: Media Query for Different Screen Resolutions</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Different Resolutions Example&lt;/title&gt;
+    &lt;style&gt;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .item {
+            background-color: #cce5ff;
+            border: 1px solid #007bff;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        /* Media Queries */
+        @media (min-width: 601px) and (max-width: 1200px) {
+            .item {
+                background-color: #99ccff; /* Change background color for medium screens */
+            }
+        }
+        @media (min-width: 1201px) {
+            .item {
+                background-color: #3399ff; /* Change background color for large screens */
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Different Resolutions Example&lt;/h1&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="item"&gt;Item 1&lt;/div&gt;
+        &lt;div class="item"&gt;Item 2&lt;/div&gt;
+        &lt;div class="item"&gt;Item 3&lt;/div&gt;
+        &lt;div class="item"&gt;Item 4&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates media queries for different screen resolutions:
+        <ul>
+            <li>The first media query applies to devices with a width between 601px and 1200px, changing the background color of the items to a lighter shade.</li>
+            <li>The second media query applies to devices wider than 1201px, changing the background color to a darker shade, enhancing visual clarity.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="container">
+        <div class="item" style="min-width: 200px;">Item 1</div>
+        <div class="item" style="min-width: 200px;">Item 2</div>
+        <div class="item" style="min-width: 200px;">Item 3</div>
+        <div class="item" style="min-width: 200px;">Item 4</div>
+    </div>
+
+</body>
+</html>

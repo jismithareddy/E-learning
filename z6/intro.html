@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to SQL</title>
+
+    <!-- CSS Styling -->
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Headings */
+        h1, h2 {
+            color: #333;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Paragraphs */
+        p {
+            margin: 0 0 20px 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        /* List Styling */
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            table, th, td {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main container -->
+    <div class="container">
+
+        <!-- Introduction to SQL Section -->
+        <section>
+            <h1>Introduction to SQL</h1>
+            <p>
+                SQL, or Structured Query Language, is a standard programming language used to manage and manipulate relational databases. It is widely used in database systems such as MySQL, PostgreSQL, Microsoft SQL Server, and Oracle Database. SQL allows users to create, read, update, and delete data within a database, making it a crucial tool for interacting with data stored in relational databases.
+            </p>
+            <p>
+                The main purpose of SQL is to provide a structured way to interact with and manipulate data. SQL is essential for tasks like querying data to get specific information, defining the structure of the database, managing access control, and maintaining the integrity of the data.
+            </p>
+            <p>
+                SQL is declarative, meaning that you specify <em>what</em> you want, and the database management system figures out <em>how</em> to retrieve or manipulate the data. It is widely used in web development, data analysis, and many applications where large amounts of data need to be managed efficiently.
+            </p>
+        </section>
+
+        <!-- Difference Between File System and SQL Section -->
+        <section>
+            <h2>Difference Between File System and SQL</h2>
+            <p>
+                The traditional file system is used to store data in files, whereas SQL is a language used to manage data in databases. Below is a detailed comparison:
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>File System</th>
+                        <th>SQL (Relational Database)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Structure</td>
+                        <td>
+                            In a file system, data is stored in files, which can be structured in a hierarchical manner (e.g., directories). The data may be unstructured or semi-structured (e.g., text files, CSV files).
+                        </td>
+                        <td>
+                            SQL databases store data in structured tables with rows and columns. The relational model organizes data into relations (tables), making it easier to maintain and query.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Data Redundancy</td>
+                        <td>
+                            Data redundancy is common in file systems, as the same data may be repeated in multiple files, leading to inconsistency.
+                        </td>
+                        <td>
+                            SQL databases implement normalization techniques to minimize redundancy and ensure data consistency across tables.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Data Integrity</td>
+                        <td>
+                            Ensuring data integrity in a file system is difficult, as there are no built-in rules to enforce constraints (e.g., unique values, foreign keys).
+                        </td>
+                        <td>
+                            SQL databases provide mechanisms like primary keys, foreign keys, and unique constraints to ensure data integrity.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Querying Data</td>
+                        <td>
+                            Querying specific information from files requires writing custom scripts or manually searching through files. It's time-consuming and error-prone.
+                        </td>
+                        <td>
+                            SQL provides powerful querying capabilities through SELECT statements, making it easy to retrieve specific information using queries.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Data Security</td>
+                        <td>
+                            File systems rely on basic file permissions for security, which can be limited and hard to manage when dealing with large data sets.
+                        </td>
+                        <td>
+                            SQL databases offer fine-grained access control (e.g., GRANT, REVOKE) to control user access, and encryption to enhance data security.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Transactions</td>
+                        <td>
+                            File systems do not support transactions, meaning operations are not atomic (i.e., they can't be rolled back if something goes wrong).
+                        </td>
+                        <td>
+                            SQL databases support transactions, ensuring that operations are completed entirely or not at all, maintaining data consistency.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Backup and Recovery</td>
+                        <td>
+                            Backing up and recovering data from a file system can be cumbersome and may require manual intervention.
+                        </td>
+                        <td>
+                            SQL databases have built-in mechanisms for automated backups and recovery processes, ensuring data safety.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Why We Need to Use SQL Section -->
+        <section>
+            <h2>Why We Need to Use SQL</h2>
+            <p>
+                SQL is essential for managing large amounts of data in a structured way. Below are some key reasons why we use SQL over traditional file systems:
+            </p>
+            <ul>
+                <li><strong>Efficient Data Management:</strong> SQL provides a standardized way to interact with databases, making data management faster, more efficient, and less prone to errors compared to file systems.</li>
+                <li><strong>Data Integrity:</strong> SQL enforces data integrity by allowing the definition of constraints like primary keys and foreign keys, preventing duplication and ensuring relationships between tables.</li>
+                <li><strong>Data Security:</strong> SQL databases offer robust security features such as authentication, role-based access control, and encryption, which are more advanced than the basic security measures in file systems.</li>
+                <li><strong>Powerful Querying Capabilities:</strong> SQL allows users to write complex queries to retrieve, update, or manipulate data, making it easy to extract valuable information from large datasets.</li>
+                <li><strong>Support for Transactions:</strong> SQL supports atomic transactions, meaning that changes are applied only if the entire operation is successful. This ensures data consistency even in the event of system failures.</li>
+                <li><strong>Data Relationships:</strong> SQL is based on the relational model, which allows for establishing relationships between tables. This makes it easier to maintain complex data structures and relationships compared to flat files in a file system.</li>
+                <li><strong>Scalability:</strong> SQL databases are designed to handle large-scale data storage and retrieval, making them suitable for enterprise-level applications.</li>
+                <li><strong>Industry Standard:</strong> SQL is a widely adopted standard, making it a reliable and universally accepted way to manage and interact with databases across industries.</li>
+            </ul>
+            <p>
+                In summary, SQL provides a structured and reliable way to manage and interact with data, making it the preferred choice over traditional file systems, especially when working with large, complex datasets.
+            </p>
+        </section>
+
+    </div>
+
+</body>
+</html>

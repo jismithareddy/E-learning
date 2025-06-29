@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lambda Expressions in Java - Detailed Explanation</title>
+</head>
+<body>
+    <h1>Lambda Expressions in Java</h1>
+    
+    <h2>Introduction to Lambda Expressions</h2>
+    <p>Lambda expressions, introduced in Java 8, provide a clear and concise way to express instances of single-method interfaces (functional interfaces). Lambda expressions help in reducing boilerplate code and can be used primarily to define the behavior of methods passed as parameters.</p>
+
+    <p>Before Java 8, anonymous classes were used to achieve similar functionality, but lambda expressions provide a more readable and succinct way to write code.</p>
+
+    <h2>Basic Syntax of Lambda Expression</h2>
+    <pre><code>
+    (parameters) -> expression
+    </code></pre>
+    <p><strong>Explanation:</strong> Lambda expressions consist of:</p>
+    <ul>
+        <li><strong>Parameters:</strong> These are the inputs to the lambda expression. They can be zero or more.</li>
+        <li><strong>Arrow Operator ("->"):</strong> Separates the parameters from the body of the lambda expression.</li>
+        <li><strong>Expression/Body:</strong> The body can be a single expression or a block of statements.</li>
+    </ul>
+
+    <h2>Functional Interface</h2>
+    <p>A functional interface is an interface with a single abstract method. Lambda expressions can be used to provide the implementation of the method defined in a functional interface.</p>
+    <pre><code>
+    @FunctionalInterface
+    interface MyFunctionalInterface {
+        void display();
+    }
+    </code></pre>
+    <p>The above interface has a single abstract method <code>display()</code>. Lambda expressions can be used to provide its implementation.</p>
+
+    <h2>Example 1: Simple Lambda Expression</h2>
+    <pre><code>
+    @FunctionalInterface
+    interface MyFunctionalInterface {
+        void greet(String name);
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            // Lambda expression to implement the greet method
+            MyFunctionalInterface greet = (name) -> System.out.println("Hello, " + name);
+            
+            greet.greet("John");  // Output: Hello, John
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The lambda expression <code>(name) -> System.out.println("Hello, " + name);</code> provides the implementation of the <code>greet()</code> method from the functional interface <code>MyFunctionalInterface</code>.</p>
+
+    <h2>Lambda Expressions with Multiple Parameters</h2>
+    <pre><code>
+    @FunctionalInterface
+    interface Calculator {
+        int add(int a, int b);
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            // Lambda expression with two parameters
+            Calculator calc = (a, b) -> a + b;
+
+            System.out.println("Sum: " + calc.add(5, 10));  // Output: Sum: 15
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The lambda expression <code>(a, b) -> a + b</code> provides the implementation of the <code>add()</code> method in the <code>Calculator</code> interface, which adds two integers.</p>
+
+    <h2>Lambda Expressions with Multiple Statements</h2>
+    <pre><code>
+    @FunctionalInterface
+    interface MathOperation {
+        void performOperation(int a, int b);
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            // Lambda expression with multiple statements
+            MathOperation operation = (a, b) -> {
+                int sum = a + b;
+                int difference = a - b;
+                System.out.println("Sum: " + sum);
+                System.out.println("Difference: " + difference);
+            };
+
+            operation.performOperation(10, 5);  
+            // Output:
+            // Sum: 15
+            // Difference: 5
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The lambda expression <code>(a, b) -> { ... }</code> includes multiple statements, such as calculating the sum and difference of two numbers. The results are printed within the body of the lambda expression.</p>
+
+    <h2>Types of Lambda Expressions</h2>
+    <ul>
+        <li><strong>Simple Lambda:</strong> A lambda expression with a single statement or a single expression.</li>
+        <li><strong>Multiple Statements Lambda:</strong> A lambda expression that contains a block of code with multiple statements.</li>
+    </ul>
+
+    <h2>Use of Lambda Expressions with Collections</h2>
+    <p>Lambda expressions are widely used in Java 8 with the new Stream API, which allows us to process collections in a functional style.</p>
+
+    <h3>Example 2: Using Lambda with Collections</h3>
+    <pre><code>
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class Main {
+        public static void main(String[] args) {
+            List<String> names = new ArrayList<>();
+            names.add("Alice");
+            names.add("Bob");
+            names.add("Charlie");
+
+            // Using lambda expression to print names
+            names.forEach(name -> System.out.println(name));
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>forEach()</code> method of the <code>List</code> interface accepts a lambda expression that iterates over each element in the list and prints it. Here, the lambda expression <code>name -> System.out.println(name)</code> performs the action.</p>
+
+    <h2>Advantages of Lambda Expressions</h2>
+    <ul>
+        <li><strong>Conciseness:</strong> Lambda expressions reduce the amount of boilerplate code, especially when passing behavior as parameters.</li>
+        <li><strong>Readability:</strong> Code becomes cleaner and more readable compared to anonymous class implementations.</li>
+        <li><strong>Enables Functional Programming:</strong> Lambda expressions are key components in functional programming and allow operations on collections using Streams.</li>
+        <li><strong>Lazy Evaluation:</strong> When used with Streams, lambda expressions help in lazy evaluation, which improves performance in certain scenarios.</li>
+    </ul>
+
+    <h2>Common Functional Interfaces in Java</h2>
+    <ul>
+        <li><code>Runnable:</code> Represents a task that can be executed in a separate thread.</li>
+        <li><code>Predicate:</code> Represents a boolean-valued function of one argument.</li>
+        <li><code>Function:</code> Represents a function that accepts one argument and produces a result.</li>
+        <li><code>Consumer:</code> Represents an operation that accepts a single input argument and returns no result.</li>
+        <li><code>Supplier:</code> Represents a function that supplies a result without taking any input.</li>
+    </ul>
+
+    <h3>Example 3: Using Lambda with Predicate</h3>
+    <pre><code>
+    import java.util.function.Predicate;
+
+    public class Main {
+        public static void main(String[] args) {
+            // Predicate to check if a number is even
+            Predicate<Integer> isEven = num -> num % 2 == 0;
+
+            System.out.println("Is 4 even? " + isEven.test(4));  // Output: Is 4 even? true
+            System.out.println("Is 5 even? " + isEven.test(5));  // Output: Is 5 even? false
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>Predicate</code> functional interface represents a boolean-valued function. The lambda expression <code>num -> num % 2 == 0</code> checks if a number is even.</p>
+
+    <h2>Static and Instance Methods in Lambda Expressions</h2>
+    <p>You can also reference static and instance methods in lambda expressions. For example:</p>
+
+    <h3>Example 4: Static Method Reference</h3>
+    <pre><code>
+    class Calculator {
+        public static int add(int a, int b) {
+            return a + b;
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            // Using a static method reference
+            BinaryOperator<Integer> adder = Calculator::add;
+
+            System.out.println("Sum: " + adder.apply(5, 10));  // Output: Sum: 15
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The static method <code>add()</code> from the <code>Calculator</code> class is referenced in the lambda expression using the method reference syntax <code>Calculator::add</code>.</p>
+
+    <h2>Conclusion</h2>
+    <p>Lambda expressions make it easier to write code that is concise, readable, and expressive. They are an essential feature introduced in Java 8, especially for functional programming and operations on collections.</p>
+
+</body>
+</html>

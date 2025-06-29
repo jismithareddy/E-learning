@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Selectors Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box:nth-child(2) {
+            background-color: #ffc107;
+        }
+        .box:nth-of-type(odd) {
+            background-color: #17a2b8;
+        }
+        .box:first-of-type {
+            background-color: #dc3545;
+        }
+        .parent > .box:first-child {
+            background-color: #007bff;
+        }
+        [data-custom="special"] {
+            background-color: #6f42c1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Advanced CSS Selectors Explained</h1>
+
+    <h2>What are CSS Selectors?</h2>
+    <p>CSS selectors are patterns used to select and style elements on a web page. In addition to basic selectors (like class and ID selectors), CSS provides a range of advanced selectors to target elements based on their attributes, position, and relationships to other elements.</p>
+
+    <h2>Example 1: Attribute Selector</h2>
+    <p>CSS allows you to select elements based on the presence or value of an attribute using attribute selectors. Below is an example where we use the <code>[attribute=value]</code> syntax to select an element with a specific data attribute:</p>
+    <pre><code>
+&lt;div class="box" data-custom="special"&gt;I am special&lt;/div&gt;
+
+&lt;style&gt;
+    [data-custom="special"] {
+        background-color: #6f42c1;
+    }
+&lt;/style&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong>
+        The attribute selector <code>[data-custom="special"]</code> targets the element with a <code>data-custom</code> attribute having the value "special." It changes the background color of that element.
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="box" data-custom="special">I am special</div>
+
+    <h2>Example 2: Child Combinator Selector</h2>
+    <p>The child combinator selector (<code>&gt;</code>) selects direct children of a parent element. In the example below, only the first child of the <code>.parent</code> element is selected:</p>
+    <pre><code>
+&lt;div class="parent"&gt;
+    &lt;div class="box"&gt;First Child&lt;/div&gt;
+    &lt;div class="box"&gt;Second Child&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .parent &gt; .box:first-child {
+        background-color: #007bff;
+    }
+&lt;/style&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> The child combinator selector <code>.parent &gt; .box:first-child</code> selects only the first direct child of the <code>.parent</code> element and applies the specified styles.
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="parent">
+        <div class="box">First Child</div>
+        <div class="box">Second Child</div>
+    </div>
+
+    <h2>Example 3: Pseudo-Class Selectors</h2>
+    <p>Pseudo-class selectors target elements in specific states or positions. Here, we use <code>:nth-child()</code>, <code>:nth-of-type()</code>, and <code>:first-of-type()</code> to style elements based on their order:</p>
+    <pre><code>
+&lt;div class="box"&gt;First Box&lt;/div&gt;
+&lt;div class="box"&gt;Second Box&lt;/div&gt;
+&lt;div class="box"&gt;Third Box&lt;/div&gt;
+
+&lt;style&gt;
+    .box:nth-child(2) {
+        background-color: #ffc107;
+    }
+
+    .box:nth-of-type(odd) {
+        background-color: #17a2b8;
+    }
+
+    .box:first-of-type {
+        background-color: #dc3545;
+    }
+&lt;/style&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong>
+        <ul>
+            <li><code>:nth-child(2)</code> selects the second child in the parent and applies styles to it.</li>
+            <li><code>:nth-of-type(odd)</code> selects elements based on their order within the group of elements of the same type (odd elements in this case).</li>
+            <li><code>:first-of-type</code> targets the first element of its type within its parent.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="box">First Box</div>
+    <div class="box">Second Box</div>
+    <div class="box">Third Box</div>
+
+    <h2>Example 4: Universal Selector</h2>
+    <p>The universal selector (<code>*</code>) selects all elements on the page. This can be useful for applying a base style to all elements or resetting default styles:</p>
+    <pre><code>
+&lt;style&gt;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+&lt;/style&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> The universal selector targets all elements on the page, resetting their margins and paddings and setting <code>box-sizing</code> to <code>border-box</code>.
+    </div>
+
+    <h2>Example 5: Grouping Selector</h2>
+    <p>The grouping selector allows you to apply the same styles to multiple selectors by separating them with a comma:</p>
+    <pre><code>
+&lt;style&gt;
+    h1, h2, p {
+        color: #0056b3;
+        font-family: Arial, sans-serif;
+    }
+&lt;/style&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> The grouping selector <code>h1, h2, p</code> applies the same styles (text color and font family) to all <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, and <code>&lt;p&gt;</code> elements.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streams API in Java - Detailed Explanation</title>
+</head>
+<body>
+    <h1>Java Streams API</h1>
+    
+    <h2>Introduction to Streams API</h2>
+    <p>The Streams API in Java, introduced in Java 8, provides a powerful and efficient way to process collections of objects in a functional style. Streams allow developers to perform operations such as filtering, mapping, reducing, and collecting data without modifying the underlying collection.</p>
+    
+    <p>Streams are a sequence of elements that can be processed in parallel or sequentially. Unlike collections, streams do not store data, they convey elements from a source such as a collection, array, or I/O channel through a pipeline of computational operations.</p>
+    
+    <h2>Streams vs Collections</h2>
+    <p>Collections are data structures that store data, whereas streams are sequences of data that are processed. The key differences are:</p>
+    <ul>
+        <li><strong>Collections:</strong> Store data in memory and can be modified.</li>
+        <li><strong>Streams:</strong> Do not store data, are read-only, and typically process data in a functional manner.</li>
+    </ul>
+    
+    <h2>Key Concepts of Streams API</h2>
+    <ul>
+        <li><strong>Source:</strong> The stream is created from a source such as a collection, array, or file.</li>
+        <li><strong>Intermediate Operations:</strong> Operations that transform the stream into another stream (e.g., <code>filter()</code>, <code>map()</code>, <code>sorted()</code>). These operations are lazy and are not executed until a terminal operation is invoked.</li>
+        <li><strong>Terminal Operations:</strong> Operations that produce a result or a side-effect (e.g., <code>collect()</code>, <code>forEach()</code>, <code>reduce()</code>). A stream can only be traversed once, and terminal operations consume the stream.</li>
+    </ul>
+
+    <h2>Example 1: Creating a Stream from a Collection</h2>
+    <pre><code>
+    import java.util.List;
+    import java.util.stream.Collectors;
+
+    public class Main {
+        public static void main(String[] args) {
+            List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+            // Create a stream and filter names starting with 'A'
+            List<String> filteredNames = names.stream()
+                                              .filter(name -> name.startsWith("A"))
+                                              .collect(Collectors.toList());
+
+            System.out.println("Filtered Names: " + filteredNames);  // Output: [Alice]
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, a stream is created from a list of names using the <code>stream()</code> method. The <code>filter()</code> intermediate operation is used to select names that start with "A", and the result is collected into a new list using <code>collect()</code>.</p>
+
+    <h2>Intermediate Operations</h2>
+    <p>Intermediate operations return a new stream and are lazy. They are not executed until a terminal operation is invoked. Some commonly used intermediate operations are:</p>
+    <ul>
+        <li><code>filter()</code>: Filters elements based on a condition.</li>
+        <li><code>map()</code>: Transforms each element using a given function.</li>
+        <li><code>sorted()</code>: Sorts the stream based on natural ordering or a custom comparator.</li>
+        <li><code>distinct()</code>: Removes duplicate elements from the stream.</li>
+        <li><code>limit()</code>: Limits the stream to a specific number of elements.</li>
+    </ul>
+
+    <h3>Example 2: Using map and sorted</h3>
+    <pre><code>
+    import java.util.List;
+    import java.util.stream.Collectors;
+
+    public class Main {
+        public static void main(String[] args) {
+            List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+            // Convert names to uppercase and sort them
+            List<String> processedNames = names.stream()
+                                              .map(String::toUpperCase)
+                                              .sorted()
+                                              .collect(Collectors.toList());
+
+            System.out.println("Processed Names: " + processedNames);  // Output: [ALICE, BOB, CHARLIE, DAVID]
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>map()</code> operation is used to convert each name to uppercase, and <code>sorted()</code> sorts the names alphabetically. The final list is collected using <code>collect()</code>.</p>
+
+    <h2>Terminal Operations</h2>
+    <p>Terminal operations produce a result or a side-effect, such as collecting elements into a new collection or iterating over them. Some commonly used terminal operations are:</p>
+    <ul>
+        <li><code>collect()</code>: Collects elements into a collection (e.g., List, Set).</li>
+        <li><code>forEach()</code>: Performs an action for each element in the stream.</li>
+        <li><code>reduce()</code>: Combines the elements of the stream into a single result.</li>
+        <li><code>count()</code>: Returns the number of elements in the stream.</li>
+        <li><code>anyMatch(), allMatch(), noneMatch()</code>: Checks if any, all, or none of the elements match a given condition.</li>
+    </ul>
+
+    <h3>Example 3: Using forEach and reduce</h3>
+    <pre><code>
+    import java.util.List;
+    import java.util.stream.Collectors;
+
+    public class Main {
+        public static void main(String[] args) {
+            List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+
+            // Print each number using forEach
+            numbers.stream().forEach(System.out::println);
+
+            // Sum of all numbers using reduce
+            int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+            System.out.println("Sum: " + sum);  // Output: Sum: 15
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>forEach()</code> method iterates over the stream and prints each number. The <code>reduce()</code> method combines the elements of the stream by summing them.</p>
+
+    <h2>Parallel Streams</h2>
+    <p>Streams can be processed sequentially (one element at a time) or in parallel (using multiple threads). To process a stream in parallel, you can use the <code>parallelStream()</code> method. Parallel streams are particularly useful for large data sets that can be processed concurrently.</p>
+
+    <h3>Example 4: Using parallelStream</h3>
+    <pre><code>
+    import java.util.List;
+
+    public class Main {
+        public static void main(String[] args) {
+            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+            // Using parallelStream to process elements in parallel
+            numbers.parallelStream().forEach(System.out::println);
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>parallelStream()</code> method allows the stream to be processed in parallel. Each element is processed by different threads, which can improve performance when dealing with large data sets.</p>
+
+    <h2>Common Operations in Streams API</h2>
+    <p>The Streams API provides several useful operations for processing streams. Here are some of the most common:</p>
+    <ul>
+        <li><code>filter()</code>: Filters elements based on a condition.</li>
+        <li><code>map()</code>: Transforms elements.</li>
+        <li><code>reduce()</code>: Combines elements into a single result.</li>
+        <li><code>collect()</code>: Collects elements into a collection.</li>
+        <li><code>forEach()</code>: Performs an action on each element.</li>
+        <li><code>anyMatch(), allMatch(), noneMatch()</code>: Check if a condition is met.</li>
+        <li><code>distinct()</code>: Removes duplicate elements.</li>
+        <li><code>sorted()</code>: Sorts elements.</li>
+        <li><code>limit()</code>: Limits the number of elements.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Streams API provides a functional approach to processing collections, making it more readable, expressive, and concise. It enables developers to work with data in a pipeline fashion and supports both sequential and parallel operations, allowing better performance for large-scale data processing.</p>
+
+</body>
+</html>

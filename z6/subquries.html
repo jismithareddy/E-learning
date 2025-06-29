@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Subqueries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #cd3636;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Subqueries</h1>
+    <p>A subquery is a query nested inside another SQL query. Subqueries can be used in SELECT, INSERT, UPDATE, and DELETE statements and can return individual values or a set of records. Subqueries are categorized into two types: correlated and non-correlated subqueries.</p>
+
+    <h2>Sample Data</h2>
+    <h3>Customers Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerID</th>
+                <th>CustomerName</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>USA</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>UK</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Emily Davis</td>
+                <td>USA</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Orders Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>CustomerID</th>
+                <th>OrderAmount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>150.00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>300.00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>1</td>
+                <td>100.00</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>3</td>
+                <td>250.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>1. Non-Correlated Subqueries</h2>
+    <p>A non-correlated subquery is executed independently of the outer query. It can be executed on its own.</p>
+
+    <h3>1.1 Example: Find Customers with Orders Over $200</h3>
+    <pre>
+SELECT CustomerName 
+FROM Customers 
+WHERE CustomerID IN (SELECT CustomerID FROM Orders WHERE OrderAmount > 200);
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jane Smith</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>2. Correlated Subqueries</h2>
+    <p>A correlated subquery is executed for each row processed by the outer query. It depends on the outer query for its values.</p>
+
+    <h3>2.1 Example: Find Customers with Order Amounts Greater than Their Average</h3>
+    <pre>
+SELECT CustomerName 
+FROM Customers C 
+WHERE EXISTS (SELECT 1 FROM Orders O WHERE O.CustomerID = C.CustomerID GROUP BY O.CustomerID HAVING AVG(O.OrderAmount) < 200);
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>Emily Davis</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. Subquery in SELECT Statement</h2>
+    <p>Subqueries can also be used in the SELECT statement to calculate derived values.</p>
+
+    <h3>3.1 Example: Get Customer Names and Their Order Count</h3>
+    <pre>
+SELECT CustomerName, 
+    (SELECT COUNT(*) FROM Orders WHERE Orders.CustomerID = Customers.CustomerID) AS OrderCount
+FROM Customers;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerName</th>
+                <th>OrderCount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Emily Davis</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Conclusion</h2>
+    <p>Subqueries are powerful tools in SQL that allow for complex queries and data analysis. Understanding how to effectively use both correlated and non-correlated subqueries can greatly enhance data retrieval capabilities.</p>
+
+</body>
+</html>

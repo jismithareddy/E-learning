@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods in Java</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        code {
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Methods in Java</h1>
+    <p>In Java, a method is a block of code that performs a specific task, typically to execute a particular action or compute a value. Methods allow us to reuse code, improve program organization, and make our code modular. In this section, we will cover the basics of methods in Java, including different types of methods, and provide examples for better understanding.</p>
+
+    <h2>1. Method Basics</h2>
+    <p>A method in Java consists of the following components:</p>
+    <ul>
+        <li><b>Access Modifier:</b> Defines the visibility of the method (e.g., public, private).</li>
+        <li><b>Return Type:</b> Specifies what type of value the method will return (e.g., int, void, String). The method can also return no value, in which case the return type is <code>void</code>.</li>
+        <li><b>Method Name:</b> The name used to refer to the method.</li>
+        <li><b>Parameters:</b> A list of inputs to the method, enclosed in parentheses.</li>
+        <li><b>Method Body:</b> The block of code that defines what the method does, enclosed in curly braces <code>{ }</code>.</li>
+    </ul>
+
+    <h2>2. Method Declaration and Definition</h2>
+    <p>A simple method is declared as follows:</p>
+
+    <pre><code>
+        accessModifier returnType methodName(parameters) {
+            // Method body
+        }
+    </code></pre>
+
+    <h2>3. Example 1: A Simple Method</h2>
+    <p>Here is an example of a simple method that prints a greeting message:</p>
+
+    <pre><code>
+        public class Main {
+            // Method declaration
+            public static void greet() {
+                System.out.println("Hello, welcome to Java methods!");
+            }
+
+            public static void main(String[] args) {
+                greet(); // Calling the method
+            }
+        }
+    </code></pre>
+    <p>The <code>greet()</code> method is declared with the access modifier <code>public</code>, the return type <code>void</code> (since it doesn't return anything), and no parameters. It is called in the <code>main()</code> method, which will display "Hello, welcome to Java methods!" when executed.</p>
+
+    <h2>4. Example 2: Method with Parameters</h2>
+    <p>Methods can accept parameters to perform operations with them. Here is an example:</p>
+
+    <pre><code>
+        public class Main {
+            // Method with parameters
+            public static void greetUser(String name) {
+                System.out.println("Hello, " + name + "!");
+            }
+
+            public static void main(String[] args) {
+                greetUser("Alice");
+            }
+        }
+    </code></pre>
+    <p>The method <code>greetUser(String name)</code> takes a single parameter <code>name</code> and prints a personalized greeting. In this case, the output will be "Hello, Alice!".</p>
+
+    <h2>5. Example 3: Method with Return Type</h2>
+    <p>Methods can return values using the <code>return</code> keyword. Here is an example of a method that returns a value:</p>
+
+    <pre><code>
+        public class Main {
+            // Method with return type
+            public static int add(int a, int b) {
+                return a + b;
+            }
+
+            public static void main(String[] args) {
+                int result = add(5, 3); // Calling the method
+                System.out.println("The sum is: " + result);
+            }
+        }
+    </code></pre>
+    <p>The <code>add(int a, int b)</code> method accepts two integer parameters and returns their sum. The method returns an integer value, which is stored in the <code>result</code> variable and printed to the console.</p>
+
+    <h2>6. Example 4: Method Overloading</h2>
+    <p>Method overloading allows you to define multiple methods with the same name but different parameter lists. Here's an example:</p>
+
+    <pre><code>
+        public class Main {
+            // Overloaded method with two parameters
+            public static int add(int a, int b) {
+                return a + b;
+            }
+
+            // Overloaded method with three parameters
+            public static int add(int a, int b, int c) {
+                return a + b + c;
+            }
+
+            public static void main(String[] args) {
+                System.out.println("Sum of two numbers: " + add(2, 3));
+                System.out.println("Sum of three numbers: " + add(2, 3, 4));
+            }
+        }
+    </code></pre>
+    <p>The two <code>add()</code> methods have the same name but differ in the number of parameters. The appropriate method is chosen based on the number of arguments passed during the method call.</p>
+
+    <h2>7. Example 5: Recursive Method</h2>
+    <p>Recursive methods call themselves to solve smaller instances of the same problem. Here's an example of a factorial method:</p>
+
+    <pre><code>
+        public class Main {
+            // Recursive method for calculating factorial
+            public static int factorial(int n) {
+                if (n == 0) {
+                    return 1;
+                }
+                return n * factorial(n - 1);
+            }
+
+            public static void main(String[] args) {
+                System.out.println("Factorial of 5: " + factorial(5));
+            }
+        }
+    </code></pre>
+    <p>The <code>factorial()</code> method calls itself until it reaches the base case <code>n == 0</code>, at which point it returns 1. For <code>factorial(5)</code>, the method will return 120.</p>
+
+    <h2>8. Example 6: Method with Multiple Parameters</h2>
+    <p>Methods can accept multiple parameters. Here's an example:</p>
+
+    <pre><code>
+        public class Main {
+            // Method with multiple parameters
+            public static void displayInfo(String name, int age) {
+                System.out.println("Name: " + name);
+                System.out.println("Age: " + age);
+            }
+
+            public static void main(String[] args) {
+                displayInfo("Alice", 25);
+            }
+        }
+    </code></pre>
+    <p>The method <code>displayInfo(String name, int age)</code> takes two parameters: a String <code>name</code> and an integer <code>age</code>, and displays both values when called.</p>
+
+    <h2>9. Example 7: Method with Varargs (Variable Length Arguments)</h2>
+    <p>Varargs allows you to pass a variable number of arguments to a method. Here's an example:</p>
+
+    <pre><code>
+        public class Main {
+            // Method with varargs
+            public static void printNumbers(int... numbers) {
+                for (int num : numbers) {
+                    System.out.println(num);
+                }
+            }
+
+            public static void main(String[] args) {
+                printNumbers(1, 2, 3, 4, 5); // Passing multiple arguments
+            }
+        }
+    </code></pre>
+    <p>The method <code>printNumbers(int... numbers)</code> uses varargs to accept any number of integer arguments, which are iterated over in the method body.</p>
+
+    <h2>10. Example 8: Static Method</h2>
+    <p>A static method belongs to the class rather than an instance of the class. Here's an example:</p>
+
+    <pre><code>
+        public class Main {
+            // Static method
+            public static void displayMessage() {
+                System.out.println("This is a static method.");
+            }
+
+            public static void main(String[] args) {
+                displayMessage(); // Calling the static method
+            }
+        }
+    </code></pre>
+    <p>The method <code>displayMessage()</code> is declared as static and can be called without creating an instance of the class. Static methods are typically used for utility functions.</p>
+
+    <h2>11. Example 9: Instance Method</h2>
+    <p>An instance method is tied to an object of the class. Here's an example:</p>
+
+    <pre><code>
+        public class Main {
+            // Instance method
+            public void greet() {
+                System.out.println("Hello from the instance method!");
+            }
+
+            public static void main(String[] args) {
+                Main obj = new Main();
+                obj.greet(); // Calling the instance method
+            }
+        }
+    </code></pre>
+    <p>The method <code>greet()</code> is an instance method, meaning it is called on an object of the class. The object <code>obj</code> is created and the method is invoked.</p>
+
+    <h2>12. Example 10: Method with Return and Parameters</h2>
+    <p>This method accepts parameters, performs a computation, and returns the result:</p>
+
+    <pre><code>
+        public class Main {
+            // Method that accepts parameters and returns a value
+            public static int multiply(int a, int b) {
+                return a * b;
+            }
+
+            public static void main(String[] args) {
+                int result = multiply(4, 6);
+                System.out.println("Product: " + result);
+            }
+        }
+    </code></pre>
+    <p>The method <code>multiply(int a, int b)</code> returns the product of two integers. The result is printed in the <code>main()</code> method.</p>
+
+</body>
+</html>

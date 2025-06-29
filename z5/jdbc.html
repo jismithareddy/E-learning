@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDBC and Database Connection</title>
+</head>
+<body>
+    <h1>JDBC and Database Connection</h1>
+
+    <p>
+        Java Database Connectivity (JDBC) is an API that allows Java applications to interact with databases. It provides a standard interface for connecting to relational databases, executing SQL queries, and retrieving results. JDBC enables Java programs to perform database operations such as inserting, updating, deleting, and querying data.
+    </p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+        <li><strong>Driver Manager:</strong> A class that manages a list of database drivers.</li>
+        <li><strong>Connection:</strong> A connection between the Java application and the database.</li>
+        <li><strong>Statement:</strong> Used to execute SQL queries.</li>
+        <li><strong>ResultSet:</strong> Represents the result set obtained from querying a database.</li>
+        <li><strong>PreparedStatement:</strong> A special kind of statement used for executing parameterized queries.</li>
+    </ul>
+
+    <h2>Steps to Connect to a Database using JDBC</h2>
+    <ol>
+        <li>Load the database driver class.</li>
+        <li>Establish a connection to the database.</li>
+        <li>Create a statement object to execute SQL queries.</li>
+        <li>Execute the query and process the result set.</li>
+        <li>Close the connection and clean up resources.</li>
+    </ol>
+
+    <h2>JDBC Example Code</h2>
+
+    <h3>Example 1: Loading JDBC Driver</h3>
+    <pre>
+public class JDBCExample {
+    public static void main(String[] args) {
+        try {
+            // Loading the JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("JDBC Driver loaded successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+    </pre>
+    <p>
+        This example demonstrates how to load a JDBC driver using the <code>Class.forName()</code> method. 
+        In this case, we are loading the MySQL driver.
+    </p>
+
+    <h3>Example 2: Establishing a Database Connection</h3>
+    <pre>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class JDBCConnection {
+    public static void main(String[] args) {
+        Connection connection = null;
+        try {
+            // Establishing a connection to the database
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+            System.out.println("Connected to the database successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close(); // Closing the connection
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+    </pre>
+    <p>
+        This example demonstrates how to establish a connection to a MySQL database using the JDBC <code>DriverManager</code>.
+        The database URL specifies the database location, and the username and password are used for authentication.
+    </p>
+
+    <h3>Example 3: Executing a SQL Query</h3>
+    <pre>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.SQLException;
+
+public class ExecuteQuery {
+    public static void main(String[] args) {
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+            statement = connection.createStatement();
+
+            // Executing an SQL query to insert data
+            String query = "INSERT INTO employees (id, name, salary) VALUES (1, 'John', 1000)";
+            int result = statement.executeUpdate(query);
+            System.out.println(result + " record(s) inserted");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+    </pre>
+    <p>
+        In this example, we execute an SQL <code>INSERT</code> query using a <code>Statement</code> object. 
+        After executing the query, the number of affected rows is printed.
+    </p>
+
+    <h3>Example 4: Retrieving Data Using ResultSet</h3>
+    <pre>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class RetrieveData {
+    public static void main(String[] args) {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+            statement = connection.createStatement();
+
+            // Executing a query to fetch data
+            String query = "SELECT id, name, salary FROM employees";
+            resultSet = statement.executeQuery(query);
+
+            // Iterating through the result set
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                double salary = resultSet.getDouble("salary");
+                System.out.println("ID: " + id + ", Name: " + name + ", Salary: " + salary);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+    </pre>
+    <p>
+        This example demonstrates how to retrieve data from a database using a <code>ResultSet</code>. 
+        We iterate through the <code>ResultSet</code> to fetch data from the "employees" table.
+    </p>
+
+    <h3>Example 5: Using PreparedStatement for Parameterized Queries</h3>
+    <pre>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class PreparedStatementExample {
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+
+            // Using PreparedStatement for inserting data
+            String query = "INSERT INTO employees (id, name, salary) VALUES (?, ?, ?)";
+            preparedStatement = connection.prepareStatement(query);
+
+            // Setting parameters
+            preparedStatement.setInt(1, 2);
+            preparedStatement.setString(2, "Alice");
+            preparedStatement.setDouble(3, 1200);
+
+            // Executing the query
+            int result = preparedStatement.executeUpdate();
+            System.out.println(result + " record(s) inserted");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+    </pre>
+    <p>
+        In this example, we use a <code>PreparedStatement</code> to insert data into the database. 
+        PreparedStatement helps avoid SQL injection attacks and improves performance for repeated queries.
+    </p>
+
+    <h3>Example 6: Using Batch Processing with JDBC</h3>
+    <pre>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class BatchProcessingExample {
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+
+            String query = "INSERT INTO employees (id, name, salary) VALUES (?, ?, ?)";
+            preparedStatement = connection.prepareStatement(query);
+
+            // Adding multiple insert statements to the batch
+            preparedStatement.setInt(1, 3);
+            preparedStatement.setString(2, "Bob");
+            preparedStatement.setDouble(3, 1500);
+            preparedStatement.addBatch();
+
+            preparedStatement.setInt(1, 4);
+            preparedStatement.setString(2, "Charlie");
+            preparedStatement.setDouble(3, 1800);
+            preparedStatement.addBatch();
+
+            // Executing the batch
+            int[] result = preparedStatement.executeBatch();
+            System.out.println("Batch executed, " + result.length + " records inserted.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+    </pre>
+    <p>
+        This example demonstrates how to use batch processing with <code>PreparedStatement</code> to execute multiple SQL statements efficiently.
+    </p>
+
+    <h3>Example 7: Handling SQL Exceptions</h3>
+    <pre>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class SQLExceptionHandlingExample {
+    public static void main(String[] args) {
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+            statement = connection.createStatement();
+
+            // Executing a query with a potential error
+            String query = "SELECT * FROM non_existing_table";
+            statement.executeQuery(query);
+        } catch (SQLException e) {
+            // Handling SQL exceptions
+            System.err.println("SQL Exception: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+    </pre>
+    <p>
+        This example demonstrates how to handle SQL exceptions in JDBC. If an SQL error occurs, 
+        the exception message and stack trace are printed for debugging purposes.
+    </p>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Patterns in Java</title>
+</head>
+<body>
+    <h1>Design Patterns in Java</h1>
+
+    <p>
+        Design patterns are proven solutions to common software design problems. They provide a reusable and efficient approach to solving problems that arise during software development. In Java, design patterns help improve code readability, maintainability, and scalability.
+    </p>
+
+    <h2>Types of Design Patterns</h2>
+    <p>
+        Design patterns are generally categorized into three types:
+    </p>
+    <ul>
+        <li><strong>Creational Patterns:</strong> Deal with object creation mechanisms.</li>
+        <li><strong>Structural Patterns:</strong> Deal with object composition and organization.</li>
+        <li><strong>Behavioral Patterns:</strong> Deal with communication between objects and how they interact.</li>
+    </ul>
+
+    <h2>1. Creational Design Patterns</h2>
+    <p>
+        Creational patterns deal with object creation mechanisms. They help create objects in a way that is suitable to the situation. This reduces the complexity of the object creation process and increases code flexibility.
+    </p>
+
+    <h3>Example 1: Singleton Pattern</h3>
+    <pre>
+public class Singleton {
+    private static Singleton instance;
+
+    private Singleton() { }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Singleton obj1 = Singleton.getInstance();
+        Singleton obj2 = Singleton.getInstance();
+        System.out.println(obj1 == obj2); // Output: true (both are the same instance)
+    }
+}
+    </pre>
+    <p>
+        The Singleton pattern ensures that a class has only one instance and provides a global point of access to it. This is useful in cases where we need to control access to a shared resource.
+    </p>
+
+    <h3>Example 2: Factory Pattern</h3>
+    <pre>
+interface Shape {
+    void draw();
+}
+
+class Circle implements Shape {
+    public void draw() {
+        System.out.println("Drawing a Circle");
+    }
+}
+
+class Rectangle implements Shape {
+    public void draw() {
+        System.out.println("Drawing a Rectangle");
+    }
+}
+
+class ShapeFactory {
+    public static Shape getShape(String shapeType) {
+        if(shapeType == null) {
+            return null;
+        }
+        if(shapeType.equalsIgnoreCase("CIRCLE")) {
+            return new Circle();
+        } else if(shapeType.equalsIgnoreCase("RECTANGLE")) {
+            return new Rectangle();
+        }
+        return null;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape shape1 = ShapeFactory.getShape("CIRCLE");
+        shape1.draw();
+
+        Shape shape2 = ShapeFactory.getShape("RECTANGLE");
+        shape2.draw();
+    }
+}
+    </pre>
+    <p>
+        The Factory pattern allows the creation of objects without specifying the exact class of object that will be created. In this example, the ShapeFactory creates different shapes based on the input.
+    </p>
+
+    <h2>2. Structural Design Patterns</h2>
+    <p>
+        Structural patterns deal with object composition and help ensure that objects are composed in a way that provides flexibility and efficiency in solving design problems.
+    </p>
+
+    <h3>Example 3: Adapter Pattern</h3>
+    <pre>
+interface MediaPlayer {
+    void play(String audioType, String fileName);
+}
+
+class AudioPlayer implements MediaPlayer {
+    public void play(String audioType, String fileName) {
+        if(audioType.equalsIgnoreCase("mp3")) {
+            System.out.println("Playing mp3 file. Name: " + fileName);
+        } else {
+            System.out.println("Invalid media. " + audioType + " format not supported.");
+        }
+    }
+}
+
+class MediaAdapter implements MediaPlayer {
+    AdvancedMediaPlayer advancedMusicPlayer;
+
+    public MediaAdapter(String audioType) {
+        if(audioType.equalsIgnoreCase("vlc") ){
+            advancedMusicPlayer = new VlcPlayer();
+        }
+        else if(audioType.equalsIgnoreCase("mp4")){
+            advancedMusicPlayer = new Mp4Player();
+        }
+    }
+
+    public void play(String audioType, String fileName) {
+        if(audioType.equalsIgnoreCase("vlc")) {
+            advancedMusicPlayer.playVlc(fileName);
+        }
+        else if(audioType.equalsIgnoreCase("mp4")) {
+            advancedMusicPlayer.playMp4(fileName);
+        }
+    }
+}
+
+interface AdvancedMediaPlayer {
+    void playVlc(String fileName);
+    void playMp4(String fileName);
+}
+
+class VlcPlayer implements AdvancedMediaPlayer {
+    public void playVlc(String fileName) {
+        System.out.println("Playing vlc file. Name: " + fileName);
+    }
+    public void playMp4(String fileName) {
+        // do nothing
+    }
+}
+
+class Mp4Player implements AdvancedMediaPlayer {
+    public void playVlc(String fileName) {
+        // do nothing
+    }
+    public void playMp4(String fileName) {
+        System.out.println("Playing mp4 file. Name: " + fileName);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        AudioPlayer audioPlayer = new AudioPlayer();
+        audioPlayer.play("mp3", "beyond the horizon.mp3");
+
+        audioPlayer.play("mp4", "alone.mp4");  // Invalid media, should use MediaAdapter to support mp4
+    }
+}
+    </pre>
+    <p>
+        The Adapter pattern allows us to "adapt" an incompatible interface to a compatible one. In this example, we adapt different media players to a unified media player interface.
+    </p>
+
+    <h3>Example 4: Decorator Pattern</h3>
+    <pre>
+interface Car {
+    void assemble();
+}
+
+class BasicCar implements Car {
+    public void assemble() {
+        System.out.println("Basic Car.");
+    }
+}
+
+class SportsCar implements Car {
+    private Car car;
+
+    public SportsCar(Car car) {
+        this.car = car;
+    }
+
+    public void assemble() {
+        car.assemble();
+        System.out.println("Adding features of Sports Car.");
+    }
+}
+
+class LuxuryCar implements Car {
+    private Car car;
+
+    public LuxuryCar(Car car) {
+        this.car = car;
+    }
+
+    public void assemble() {
+        car.assemble();
+        System.out.println("Adding features of Luxury Car.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car sportsCar = new SportsCar(new BasicCar());
+        sportsCar.assemble();
+
+        System.out.println("\n*****\n");
+
+        Car sportsLuxuryCar = new SportsCar(new LuxuryCar(new BasicCar()));
+        sportsLuxuryCar.assemble();
+    }
+}
+    </pre>
+    <p>
+        The Decorator pattern allows us to add new behavior to an object without modifying its structure. In this example, we decorate a basic car with additional features like sports and luxury aspects.
+    </p>
+
+    <h2>3. Behavioral Design Patterns</h2>
+    <p>
+        Behavioral patterns deal with the communication between objects and how they interact with each other. They define the responsibilities of objects and how they collaborate to accomplish a task.
+    </p>
+
+    <h3>Example 5: Observer Pattern</h3>
+    <pre>
+import java.util.ArrayList;
+import java.util.List;
+
+interface Observer {
+    void update(String message);
+}
+
+class ConcreteObserver implements Observer {
+    private String name;
+
+    public ConcreteObserver(String name) {
+        this.name = name;
+    }
+
+    public void update(String message) {
+        System.out.println(name + " received message: " + message);
+    }
+}
+
+class Subject {
+    private List<Observer> observers = new ArrayList<>();
+
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void notifyObservers(String message) {
+        for (Observer observer : observers) {
+            observer.update(message);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Subject subject = new Subject();
+
+        Observer observer1 = new ConcreteObserver("Observer 1");
+        Observer observer2 = new ConcreteObserver("Observer 2");
+
+        subject.addObserver(observer1);
+        subject.addObserver(observer2);
+
+        subject.notifyObservers("New message");
+    }
+}
+    </pre>
+    <p>
+        The Observer pattern allows objects (observers) to be notified automatically when the state of another object (subject) changes. In this example, the subject notifies its observers when a new message is available.
+    </p>
+
+    <h3>Example 6: Strategy Pattern</h3>
+    <pre>
+interface PaymentStrategy {
+    void pay(int amount);
+}
+
+class CreditCardPayment implements PaymentStrategy {
+    public void pay(int amount) {
+        System.out.println("Paid " + amount + " using Credit Card.");
+    }
+}
+
+class PayPalPayment implements PaymentStrategy {
+    public void pay(int amount) {
+        System.out.println("Paid " + amount + " using PayPal.");
+    }
+}
+
+class PaymentContext {
+    private PaymentStrategy strategy;
+
+    public PaymentContext(PaymentStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void executePayment(int amount) {
+        strategy.pay(amount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PaymentContext context = new PaymentContext(new CreditCardPayment());
+        context.executePayment(5000);
+
+        context = new PaymentContext(new PayPalPayment());
+        context.executePayment(1000);
+    }
+}
+    </pre>
+    <p>
+        The Strategy pattern allows for the selection of an algorithm or behavior at runtime. In this example, the payment method can be dynamically chosen at runtime, either Credit Card or PayPal.
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Shadows Explained</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4; /* Light gray background for the body */
+        }
+        pre {
+            background-color: #fff; /* White background for code blocks */
+            border: 1px solid #ccc; /* Light gray border around code blocks */
+            padding: 10px; /* Padding inside the code block */
+            overflow-x: auto; /* Allow horizontal scrolling for long lines */
+        }
+        code {
+            color: #333; /* Dark gray color for code text */
+        }
+        h1, h2 {
+            color: #0056b3; /* Dark blue color for headings */
+        }
+        .shadow-box {
+            height: 100px; /* Fixed height for shadow boxes */
+            width: 150px; /* Fixed width for shadow boxes */
+            display: flex; /* Flexbox for centering content */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            color: white; /* White text color */
+            font-weight: bold; /* Bold text */
+            margin: 10px; /* Margin around boxes */
+            border-radius: 5px; /* Rounded corners for the boxes */
+            text-align: center; /* Center text alignment */
+        }
+        .visualization {
+            display: flex; /* Flexbox for visualization layout */
+            flex-wrap: wrap; /* Allow boxes to wrap onto the next line */
+            gap: 10px; /* Space between boxes */
+        }
+        .box-shadow {
+            background-color: #007bff; /* Blue background for box shadow example */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Standard box shadow */
+        }
+        .text-shadow {
+            background-color: #28a745; /* Green background for text shadow example */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow effect */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Shadows Explained</h1>
+
+    <h2>Understanding Shadows in CSS</h2>
+    <p>CSS allows you to create shadows for both boxes and text using the following properties:</p>
+    <ul>
+        <li><strong>box-shadow:</strong> Adds shadow effects around an element's frame.</li>
+        <li><strong>text-shadow:</strong> Applies shadow effects to text, giving it a three-dimensional appearance.</li>
+    </ul>
+
+    <h2>Example 1: Using Box Shadow</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Box Shadow Example&lt;/title&gt;
+    &lt;style&gt;
+        .box-shadow {
+            height: 100px; /* Fixed height for the box */
+            width: 150px; /* Fixed width for the box */
+            background-color: #007bff; /* Background color of the box (blue) */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Creates a shadow effect:
+                                                            - 5px horizontal offset (right)
+                                                            - 5px vertical offset (down)
+                                                            - 10px blur radius (softness of the shadow)
+                                                            - rgba(0, 0, 0, 0.5) color (semi-transparent black) */
+            display: flex; /* Use flexbox for centering content */
+            align-items: center; /* Center items vertically within the box */
+            justify-content: center; /* Center items horizontally within the box */
+            color: white; /* Text color (white) */
+            font-weight: bold; /* Bold text */
+            border-radius: 5px; /* Rounded corners for the box */
+            margin: 10px; /* Margin around the box */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Box Shadow&lt;/h1&gt;
+    &lt;div class="box-shadow"&gt;Box Shadow&lt;/div&gt; <!-- Box with shadow effect -->
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    <div class="description">
+        <strong>Explanation:</strong> 
+        This example demonstrates how to use the <code>box-shadow</code> property to create a shadow effect around a box. 
+        The <code>box-shadow</code> property takes several values:
+        <ul>
+            <li><strong>Horizontal Offset:</strong> <code>5px</code> - This value shifts the shadow to the right. Positive values move the shadow to the right, while negative values move it to the left.</li>
+            <li><strong>Vertical Offset:</strong> <code>5px</code> - This value shifts the shadow downward. Positive values move the shadow down, while negative values move it up.</li>
+            <li><strong>Blur Radius:</strong> <code>10px</code> - This value determines how blurry the shadow will be. A larger value results in a softer, more diffused shadow, while a value of <code>0</code> gives a sharp shadow.</li>
+            <li><strong>Color:</strong> <code>rgba(0, 0, 0, 0.5)</code> - This value specifies the color of the shadow. Using RGBA allows for transparency, with the last value (0.5) indicating the opacity of the shadow.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="visualization">
+        <div class="box-shadow">Box Shadow</div> <!-- Visual representation of box shadow -->
+    </div>
+
+    <h2>Example 2: Using Text Shadow</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text Shadow Example&lt;/title&gt;
+    &lt;style&gt;
+        .text-shadow {
+            background-color: #28a745; /* Background color of the box (green) */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Creates a shadow effect:
+                                                            - 2px horizontal offset (right)
+                                                            - 2px vertical offset (down)
+                                                            - 4px blur radius (softness of the shadow)
+                                                            - rgba(0, 0, 0, 0.6) color (semi-transparent black) */
+            height: 100px; /* Fixed height for the box */
+            width: 150px; /* Fixed width for the box */
+            display: flex; /* Use flexbox for centering content */
+            align-items: center; /* Center items vertically within the box */
+            justify-content: center; /* Center items horizontally within the box */
+            color: white; /* Text color (white) */
+            font-weight: bold; /* Bold text */
+            border-radius: 5px; /* Rounded corners for the box */
+            margin: 10px; /* Margin around the box */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Text Shadow&lt;/h1&gt;
+    &lt;div class="text-shadow"&gt;Text Shadow&lt;/div&gt; <!-- Box with text shadow effect -->
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    <div class="description">
+        <strong>Explanation:</strong> 
+        This example illustrates how to use the <code>text-shadow</code> property to create a shadow effect behind the text. 
+        The <code>text-shadow</code> property also takes several values:
+        <ul>
+            <li><strong>Horizontal Offset:</strong> <code>2px</code> - This value shifts the shadow to the right of the text.</li>
+            <li><strong>Vertical Offset:</strong> <code>2px</code> - This value shifts the shadow below the text.</li>
+            <li><strong>Blur Radius:</strong> <code>4px</code> - This value determines the softness of the shadow; a larger number results in a more diffused shadow.</li>
+            <li><strong>Color:</strong> <code>rgba(0, 0, 0, 0.6)</code> - This value specifies the color of the text shadow, allowing for transparency.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="visualization">
+        <div class="text-shadow">Text Shadow</div> <!-- Visual representation of text shadow -->
+    </div>
+
+</body>
+</html>

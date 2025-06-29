@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Loops</h1>
+<p>Loops are used in programming to execute a block of code repeatedly as long as a specified condition is true. In JavaScript, there are several types of loops, including <code>for</code>, <code>while</code>, and <code>do...while</code>. Each loop has its own use cases and syntax.</p>
+
+<h2>1. For Loop</h2>
+<p>The <code>for</code> loop is used when the number of iterations is known. It consists of three parts: initialization, condition, and increment/decrement.</p>
+
+<h3>Example 1: For Loop</h3>
+<pre><code>for (let i = 0; i < 5; i++) {
+    console.log(i);
+}</code></pre>
+<p><strong>Explanation:</strong> This example demonstrates a <code>for</code> loop that iterates from <code>0</code> to <code>4</code> (5 iterations). The variable <code>i</code> is initialized to <code>0</code>, and on each iteration, it is incremented by <code>1</code>. The value of <code>i</code> is printed to the console during each iteration.</p>
+
+<h2>2. While Loop</h2>
+<p>The <code>while</code> loop continues to execute as long as the specified condition is true. It's useful when the number of iterations is not known in advance.</p>
+
+<h3>Example 2: While Loop</h3>
+<pre><code>let count = 0;
+while (count < 5) {
+    console.log(count);
+    count++;
+}</code></pre>
+<p><strong>Explanation:</strong> In this example, a <code>while</code> loop is used to print numbers from <code>0</code> to <code>4</code>. The loop continues to run as long as <code>count</code> is less than <code>5</code>. Inside the loop, <code>count</code> is incremented by <code>1</code> after each iteration.</p>
+
+<h2>3. Do...While Loop</h2>
+<p>The <code>do...while</code> loop is similar to the <code>while</code> loop, but it guarantees that the code block will be executed at least once, as the condition is evaluated after the code block.</p>
+
+<h3>Example 3: Do...While Loop</h3>
+<pre><code>let num = 0;
+do {
+    console.log(num);
+    num++;
+} while (num < 5);</code></pre>
+<p><strong>Explanation:</strong> In this example, a <code>do...while</code> loop is used to print numbers from <code>0</code> to <code>4</code>. The code block inside the <code>do</code> statement executes first, and then the condition is checked. If <code>num</code> is less than <code>5</code>, the loop continues.</p>
+
+<h2>4. For...Of Loop</h2>
+<p>The <code>for...of</code> loop is a modern way to iterate over iterable objects, such as arrays or strings, allowing you to access each element directly.</p>
+
+<h3>Example 4: For...Of Loop</h3>
+<pre><code>const colors = ["Red", "Green", "Blue"];
+for (const color of colors) {
+    console.log(color);
+}</code></pre>
+<p><strong>Explanation:</strong> This example demonstrates the <code>for...of</code> loop, which iterates over the <code>colors</code> array. Each element in the array is accessed and printed directly to the console.</p>
+
+<h2>5. For...In Loop</h2>
+<p>The <code>for...in</code> loop is used to iterate over the properties of an object.</p>
+
+<h3>Example 5: For...In Loop</h3>
+<pre><code>const person = { name: "John", age: 30, city: "New York" };
+for (const key in person) {
+    console.log(key + ": " + person[key]);
+}</code></pre>
+<p><strong>Explanation:</strong> In this example, the <code>for...in</code> loop iterates over the properties of the <code>person</code> object. For each property, it prints the key and its corresponding value to the console.</p>
+
+<h2>6. Nested Loops</h2>
+<p>You can use loops inside other loops to perform more complex operations.</p>
+
+<h3>Example 6: Nested Loops</h3>
+<pre><code>for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 2; j++) {
+        console.log("i: " + i + ", j: " + j);
+    }
+}</code></pre>
+<p><strong>Explanation:</strong> This example demonstrates nested loops. The outer loop runs three times, and for each iteration of the outer loop, the inner loop runs two times. The values of <code>i</code> and <code>j</code> are printed during each iteration.</p>
+
+<h2>7. Breaking and Continuing Loops</h2>
+<p>You can use <code>break</code> to exit a loop prematurely and <code>continue</code> to skip the current iteration and proceed to the next one.</p>
+
+<h3>Example 7: Break and Continue</h3>
+<pre><code>for (let i = 0; i < 5; i++) {
+    if (i === 2) {
+        continue; // Skip the number 2
+    }
+    if (i === 4) {
+        break; // Exit the loop when i is 4
+    }
+    console.log(i);
+}</code></pre>
+<p><strong>Explanation:</strong> In this example, the loop prints numbers from <code>0</code> to <code>4</code>. When <code>i</code> is <code>2</code>, the <code>continue</code> statement skips the current iteration. When <code>i</code> is <code>4</code>, the <code>break</code> statement exits the loop entirely.</p>
+
+</body>
+</html>

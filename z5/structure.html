@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Write Java Code</title>
+</head>
+<body>
+
+    <h1>How to Write Java Code</h1>
+
+    <p>Java is a powerful, object-oriented programming language used to build various types of applications. Writing Java code involves understanding the basic structure and syntax. Below is the general format of a Java program.</p>
+
+    <h2>1. Package Declaration (Optional)</h2>
+    <p>The first line of a Java program is the <strong>package declaration</strong> (if used). Packages group related classes and avoid name conflicts. It is optional, but recommended in larger projects.</p>
+    
+    <pre><code>package com.example.myprogram;</code></pre>
+
+    <h2>2. Import Statements (Optional)</h2>
+    <p>Import statements allow the use of classes from other packages in your program. For example, to use classes like <code>Scanner</code> from <code>java.util</code>, you must import the package first.</p>
+
+    <pre><code>import java.util.Scanner;</code></pre>
+
+    <h2>3. Class Declaration</h2>
+    <p>Every Java program must contain at least one class. The class is the foundation of the program. The class name should follow the CamelCase convention (starting with an uppercase letter).</p>
+
+    <pre><code>public class HelloWorld {</code></pre>
+
+    <h2>4. Main Method</h2>
+    <p>The <strong>main method</strong> is the entry point of any Java application. It must be defined as <code>public static void main(String[] args)</code>. When the program runs, the execution starts from this method.</p>
+    
+    <pre><code>public static void main(String[] args) {</code></pre>
+
+    <h2>5. Statements and Expressions</h2>
+    <p>Inside the main method or any other method, you define actions using statements and expressions. These can include variable declarations, method calls, and control structures.</p>
+
+    <pre><code>System.out.println("Hello, World!");</code></pre>
+
+    <h2>6. Variables</h2>
+    <p>Variables store data that your program will use. Every variable needs to be declared with a specific data type. For example, <code>int</code> is used for integer numbers, and <code>String</code> is used for text.</p>
+    
+    <pre><code>int number = 10;</code></pre>
+
+    <h2>7. Closing the Class and Program</h2>
+    <p>The program is closed with the curly braces <code>{ }</code> to end the class and method declarations.</p>
+
+    <pre><code>}</code></pre>
+
+    <h2>Complete Java Program Example</h2>
+    <p>Here's an example of a complete Java program that includes all of the above elements:</p>
+
+    <pre><code>
+        package com.example.helloworld;
+
+        import java.util.Scanner;
+
+        public class HelloWorld {
+            public static void main(String[] args) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter your name: ");
+                String name = scanner.nextLine();
+                System.out.println("Hello, " + name + "!");
+                scanner.close();
+            }
+        }
+    </code></pre>
+
+</body>
+</html>

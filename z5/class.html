@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes and Objects in Java</title>
+</head>
+<body>
+
+    <h1>Classes and Objects in Java</h1>
+    <p>Java is an object-oriented programming (OOP) language, which means that it focuses on using classes and objects to structure the code. Understanding how to define classes and create objects is essential for mastering Java.</p>
+
+    <h2>What is a Class?</h2>
+    <p>A <strong>class</strong> in Java is a blueprint or prototype from which objects are created. A class defines the properties (data members) and behaviors (methods) that the objects created from the class will have. It is a user-defined data type in Java.</p>
+
+    <h3>Class Syntax:</h3>
+    <pre><code>
+        class ClassName {
+            // Data members (variables)
+            // Methods (functions)
+        }
+    </code></pre>
+
+    <p>In this syntax, <code>ClassName</code> represents the name of the class, and inside the class, we define variables (data members) and methods (behaviors) associated with the class.</p>
+
+    <h2>What is an Object?</h2>
+    <p>An <strong>object</strong> is an instance of a class. When a class is defined, no memory is allocated until an object of the class is created. An object has a state (data members) and behavior (methods).</p>
+    
+    <p>Objects are created using the <code>new</code> keyword followed by the class constructor.</p>
+
+    <h3>Object Syntax:</h3>
+    <pre><code>
+        ClassName obj = new ClassName();
+    </code></pre>
+
+    <p>This code creates an object <code>obj</code> of the class <code>ClassName</code>.</p>
+
+    <h2>Example 1: Defining a Class and Creating an Object</h2>
+    <p>Let’s define a class <code>Car</code> with two properties: <code>brand</code> and <code>speed</code>. Then we’ll create an object of this class and assign values to these properties.</p>
+
+    <pre><code>
+        // Define the class
+        class Car {
+            // Data members (properties)
+            String brand;
+            int speed;
+
+            // Method to display car details
+            void displayDetails() {
+                System.out.println("Brand: " + brand);
+                System.out.println("Speed: " + speed + " km/h");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                // Create an object of the Car class
+                Car myCar = new Car();
+                
+                // Assign values to the object's properties
+                myCar.brand = "Tesla";
+                myCar.speed = 120;
+
+                // Call the method to display details
+                myCar.displayDetails();
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, we define a class <code>Car</code> with two data members: <code>brand</code> and <code>speed</code>. We then create an object <code>myCar</code> and set the values of the data members using dot notation (<code>myCar.brand</code>, <code>myCar.speed</code>). Finally, we call the method <code>displayDetails()</code> to print the car's details.</p>
+
+    <h2>Constructors in Java</h2>
+    <p>In Java, constructors are special methods used to initialize objects. A constructor is automatically called when an object of a class is created.</p>
+
+    <h3>Constructor Syntax:</h3>
+    <pre><code>
+        class ClassName {
+            // Constructor
+            public ClassName() {
+                // Initialization code
+            }
+        }
+    </code></pre>
+
+    <p>Constructor rules:
+    <ul>
+        <li>A constructor has the same name as the class.</li>
+        <li>A constructor does not have a return type, not even <code>void</code>.</li>
+        <li>Constructors are invoked implicitly when an object is created.</li>
+    </ul></p>
+
+    <h3>Example 2: Using a Constructor</h3>
+    <p>Here’s an example that uses a constructor to initialize the properties of the <code>Car</code> class.</p>
+
+    <pre><code>
+        class Car {
+            String brand;
+            int speed;
+
+            // Constructor
+            public Car(String b, int s) {
+                brand = b;
+                speed = s;
+            }
+
+            void displayDetails() {
+                System.out.println("Brand: " + brand);
+                System.out.println("Speed: " + speed + " km/h");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                // Create an object of the Car class and pass values to the constructor
+                Car myCar = new Car("Tesla", 150);
+
+                // Call the method to display car details
+                myCar.displayDetails();
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, the <code>Car</code> class has a constructor that accepts two parameters: <code>brand</code> and <code>speed</code>. These values are assigned to the object's data members when the object is created. The constructor initializes the object with the values provided during object creation.</p>
+
+    <h2>Access Modifiers in Java</h2>
+    <p>Java provides four access modifiers that control the visibility of classes, methods, and variables. These are:</p>
+    <ul>
+        <li><strong>public</strong>: Accessible from anywhere.</li>
+        <li><strong>private</strong>: Accessible only within the class.</li>
+        <li><strong>protected</strong>: Accessible within the package and subclasses.</li>
+        <li><strong>default</strong>: Accessible only within the package (no modifier).</li>
+    </ul>
+
+    <h3>Example 3: Using Access Modifiers</h3>
+    <pre><code>
+        class Car {
+            public String brand;   // Public field
+            private int speed;     // Private field
+
+            // Public method to access private field
+            public void setSpeed(int s) {
+                if (s > 0) {
+                    speed = s;
+                } else {
+                    System.out.println("Speed must be positive.");
+                }
+            }
+
+            public void displayDetails() {
+                System.out.println("Brand: " + brand);
+                System.out.println("Speed: " + speed + " km/h");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Car myCar = new Car();
+                myCar.brand = "Tesla";     // Accessing public member
+                myCar.setSpeed(120);       // Using a public method to set private field
+                myCar.displayDetails();
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, the <code>brand</code> is a public field, so it can be accessed directly. However, <code>speed</code> is private and can only be accessed using the public method <code>setSpeed()</code>. This demonstrates encapsulation, a key concept in OOP where data is hidden within a class and accessed through methods.</p>
+
+    <h2>Inheritance in Java</h2>
+    <p>Java supports inheritance, which allows a class (child class) to inherit the properties and methods of another class (parent class). Inheritance helps promote code reuse and establishes a hierarchy.</p>
+
+    <h3>Example 4: Inheritance</h3>
+    <pre><code>
+        // Parent class
+        class Vehicle {
+            String brand;
+
+            public void displayBrand() {
+                System.out.println("Brand: " + brand);
+            }
+        }
+
+        // Child class
+        class Car extends Vehicle {
+            int speed;
+
+            public void displaySpeed() {
+                System.out.println("Speed: " + speed + " km/h");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Car myCar = new Car();
+                myCar.brand = "Tesla";
+                myCar.speed = 150;
+                myCar.displayBrand();    // Inherited method
+                myCar.displaySpeed();    // Method of the child class
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, the <code>Car</code> class inherits from the <code>Vehicle</code> class. The child class <code>Car</code> can use the inherited method <code>displayBrand()</code> from the parent class <code>Vehicle</code>, as well as its own method <code>displaySpeed()</code>.</p>
+
+    <h2>Conclusion</h2>
+    <p>Classes and objects form the backbone of object-oriented programming in Java. By defining classes and creating objects, we can model real-world entities, and by utilizing constructors, access modifiers, and inheritance, we can implement encapsulation and reuse code efficiently.</p>
+
+</body>
+</html>

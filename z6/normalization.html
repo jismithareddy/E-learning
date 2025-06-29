@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Normalization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        p {
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #d65353;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Database Normalization</h2>
+<p>
+    Database normalization is a systematic approach to organizing data in a database to reduce redundancy 
+    and improve data integrity. It involves dividing large tables into smaller, related tables and defining 
+    relationships between them to eliminate unnecessary duplication of data.
+</p>
+
+<h3>Objectives of Normalization</h3>
+<ul>
+    <li>
+        Reduce data redundancy by ensuring that data is stored only once.
+    </li>
+    <li>
+        Improve data integrity by enforcing data consistency.
+    </li>
+    <li>
+        Simplify data management by organizing data logically.
+    </li>
+    <li>
+        Enhance query performance by optimizing table structures.
+    </li>
+</ul>
+
+<h3>Normal Forms</h3>
+<p>Normalization is achieved through a series of stages known as normal forms. The most commonly used normal forms are:</p>
+
+<h4>1. First Normal Form (1NF)</h4>
+<p>A table is in 1NF if:</p>
+<ul>
+    <li>All columns contain atomic (indivisible) values.</li>
+    <li>Each column contains values of a single type.</li>
+    <li>Each column must have a unique name.</li>
+    <li>Order of storage does not matter.</li>
+</ul>
+<p><strong>Example:</strong> Consider the following <code>Orders</code> table:</p>
+<table>
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerName</th>
+            <th>Products</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>Widget A, Widget B</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane Smith</td>
+            <td>Widget C</td>
+        </tr>
+    </tbody>
+</table>
+<p>This table violates 1NF because the <code>Products</code> column contains multiple values. To convert 
+it to 1NF, we can separate the products:</p>
+<table>
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerName</th>
+            <th>Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>Widget A</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>Widget B</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane Smith</td>
+            <td>Widget C</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>2. Second Normal Form (2NF)</h4>
+<p>A table is in 2NF if:</p>
+<ul>
+    <li>It is already in 1NF.</li>
+    <li>All non-key attributes are fully functionally dependent on the primary key.</li>
+</ul>
+<p><strong>Example:</strong> Consider the following table that combines orders and customer details:</p>
+<table>
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerID</th>
+            <th>CustomerName</th>
+            <th>Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>John Doe</td>
+            <td>Widget A</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>John Doe</td>
+            <td>Widget B</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>102</td>
+            <td>Jane Smith</td>
+            <td>Widget C</td>
+        </tr>
+    </tbody>
+</table>
+<p>This table is in 1NF but not in 2NF because <code>CustomerName</code> is dependent on <code>CustomerID</code>, 
+which is not part of the primary key. To convert it to 2NF, we create two tables:</p>
+
+<h4>Orders Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerID</th>
+            <th>Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>Widget A</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>Widget B</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>102</td>
+            <td>Widget C</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Customers Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>CustomerID</th>
+            <th>CustomerName</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>101</td>
+            <td>John Doe</td>
+        </tr>
+        <tr>
+            <td>102</td>
+            <td>Jane Smith</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>3. Third Normal Form (3NF)</h4>
+<p>A table is in 3NF if:</p>
+<ul>
+    <li>It is already in 2NF.</li>
+    <li>All the attributes are functionally dependent only on the primary key (no transitive dependency).</li>
+</ul>
+<p><strong>Example:</strong> Suppose we have a table with order details and a separate column for <code>CustomerCity</code>:</p>
+<table>
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerID</th>
+            <th>Product</th>
+            <th>CustomerCity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>Widget A</td>
+            <td>New York</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>Widget B</td>
+            <td>New York</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>102</td>
+            <td>Widget C</td>
+            <td>Los Angeles</td>
+        </tr>
+    </tbody>
+</table>
+<p>This table is in 2NF but not in 3NF because <code>CustomerCity</code> depends on <code>CustomerID</code>, 
+which is not part of the primary key. To convert it to 3NF, we should separate <code>CustomerCity</code>:</p>
+
+<h4>Updated Customers Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>CustomerID</th>
+            <th>CustomerName</th>
+            <th>CustomerCity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>101</td>
+            <td>John Doe</td>
+            <td>New York</td>
+        </tr>
+        <tr>
+            <td>102</td>
+            <td>Jane Smith</td>
+            <td>Los Angeles</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Summary of Normalization Stages</h3>
+<ul>
+    <li><strong>1NF:</strong> Eliminate repeating groups; ensure atomicity.</li>
+    <li><strong>2NF:</strong> Eliminate partial dependencies; ensure full functional dependence on primary keys.</li>
+    <li><strong>3NF:</strong> Eliminate transitive dependencies; ensure that non-key attributes are dependent only on the primary key.</li>
+</ul>
+
+<h3>Conclusion</h3>
+<p>
+    Database normalization is a crucial process in designing a robust database schema. By adhering to 
+    normalization rules, you can create a more efficient, maintainable, and scalable database system 
+    that minimizes redundancy and enhances data integrity.
+</p>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Normal Forms in Database Normalization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        p {
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #af3131;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Higher Normal Forms in Database Normalization</h2>
+
+<h3>Boyce-Codd Normal Form (BCNF)</h3>
+<p>
+    A table is in Boyce-Codd Normal Form (BCNF) if:
+</p>
+<ul>
+    <li>It is in Third Normal Form (3NF).</li>
+    <li>For every functional dependency <code>X → Y</code>, <code>X</code> should be a superkey.</li>
+</ul>
+<p>
+    This means that if a non-trivial functional dependency exists, the left side of the dependency must be a superkey. BCNF addresses certain types of anomalies that are not handled by 3NF.
+</p>
+<p><strong>Example:</strong> Consider the following table:</p>
+<table>
+    <thead>
+        <tr>
+            <th>CourseID</th>
+            <th>Instructor</th>
+            <th>Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CS101</td>
+            <td>Dr. Smith</td>
+            <td>Room A</td>
+        </tr>
+        <tr>
+            <td>CS101</td>
+            <td>Dr. Brown</td>
+            <td>Room B</td>
+        </tr>
+        <tr>
+            <td>CS102</td>
+            <td>Dr. Smith</td>
+            <td>Room A</td>
+        </tr>
+        <tr>
+            <td>CS102</td>
+            <td>Dr. Brown</td>
+            <td>Room B</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    In this table, the combination of <code>CourseID</code> and <code>Instructor</code> can determine <code>Room</code>. 
+    However, <code>Instructor</code> also determines <code>Room</code>. To convert this to BCNF, we need to split the table:
+</p>
+
+<h4>Courses Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>CourseID</th>
+            <th>Instructor</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CS101</td>
+            <td>Dr. Smith</td>
+        </tr>
+        <tr>
+            <td>CS101</td>
+            <td>Dr. Brown</td>
+        </tr>
+        <tr>
+            <td>CS102</td>
+            <td>Dr. Smith</td>
+        </tr>
+        <tr>
+            <td>CS102</td>
+            <td>Dr. Brown</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Rooms Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Instructor</th>
+            <th>Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Dr. Smith</td>
+            <td>Room A</td>
+        </tr>
+        <tr>
+            <td>Dr. Brown</td>
+            <td>Room B</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Fourth Normal Form (4NF)</h3>
+<p>
+    A table is in Fourth Normal Form (4NF) if:
+</p>
+<ul>
+    <li>It is in Boyce-Codd Normal Form (BCNF).</li>
+    <li>It does not contain any multi-valued dependencies.</li>
+</ul>
+<p>
+    A multi-valued dependency occurs when one attribute in a table uniquely determines another attribute, but does not determine it fully.
+</p>
+<p><strong>Example:</strong> Consider the following table:</p>
+<table>
+    <thead>
+        <tr>
+            <th>StudentID</th>
+            <th>Course</th>
+            <th>Hobby</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Math</td>
+            <td>Reading</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Math</td>
+            <td>Swimming</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Science</td>
+            <td>Reading</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Science</td>
+            <td>Chess</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Here, <code>StudentID</code> determines <code>Course</code> and <code>Hobby</code>, leading to multi-valued dependencies. 
+    To convert it to 4NF, we split it into two tables:
+</p>
+
+<h4>Student Courses Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>StudentID</th>
+            <th>Course</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Math</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Science</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Student Hobbies Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>StudentID</th>
+            <th>Hobby</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Reading</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Swimming</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Reading</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Chess</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Fifth Normal Form (5NF)</h3>
+<p>
+    A table is in Fifth Normal Form (5NF) if:
+</p>
+<ul>
+    <li>It is in Fourth Normal Form (4NF).</li>
+    <li>It does not contain any join dependency and joining the tables will produce lossless joins.</li>
+</ul>
+<p>
+    Lossless joins occur when no data is lost when the tables are joined.
+</p>
+<p><strong>Example:</strong> Consider a table that tracks projects and their assigned resources:</p>
+<table>
+    <thead>
+        <tr>
+            <th>ProjectID</th>
+            <th>ResourceID</th>
+            <th>Task</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>P1</td>
+            <td>R1</td>
+            <td>Design</td>
+        </tr>
+        <tr>
+            <td>P1</td>
+            <td>R2</td>
+            <td>Development</td>
+        </tr>
+        <tr>
+            <td>P2</td>
+            <td>R1</td>
+            <td>Testing</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    This table can be split into three tables to achieve 5NF:
+</p>
+
+<h4>Projects Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>ProjectID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>P1</td>
+        </tr>
+        <tr>
+            <td>P2</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Resources Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>ResourceID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R1</td>
+        </tr>
+        <tr>
+            <td>R2</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Project Tasks Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>ProjectID</th>
+            <th>ResourceID</th>
+            <th>Task</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>P1</td>
+            <td>R1</td>
+            <td>Design</td>
+        </tr>
+        <tr>
+            <td>P1</td>
+            <td>R2</td>
+            <td>Development</td>
+        </tr>
+        <tr>
+            <td>P2</td>
+            <td>R1</td>
+            <td>Testing</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Sixth Normal Form (6NF)</h3>
+<p>
+    Sixth Normal Form (6NF) is primarily used in temporal databases, focusing on separating data based on the time dimension. 
+    It involves breaking down a table into sub-tables to ensure that the data is only related to one time period.
+</p>
+<p><strong>Example:</strong> Consider a table that records employee roles over time:</p>
+<table>
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>Role</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>E1</td>
+            <td>Developer</td>
+            <td>2020-01-01</td>
+            <td>2021-01-01</td>
+        </tr>
+        <tr>
+            <td>E1</td>
+            <td>Senior Developer</td>
+            <td>2021-01-02</td>
+            <td>2022-01-01</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    To convert this to 6NF, we would separate the roles based on the time period:
+</p>
+
+<h4>Employee Roles Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>E1</td>
+            <td>Developer</td>
+        </tr>
+        <tr>
+            <td>E1</td>
+            <td>Senior Developer</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Time Period Table</h4>
+<table>
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>E1</td>
+            <td>2020-01-01</td>
+            <td>2021-01-01</td>
+        </tr>
+        <tr>
+            <td>E1</td>
+            <td>2021-01-02</td>
+            <td>2022-01-01</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Conclusion</h3>
+<p>
+    Understanding higher normal forms is essential for creating a robust database design that minimizes redundancy, 
+    maintains data integrity, and accommodates various data relationships. Each normal form serves to refine the 
+    database structure, ultimately leading to a more efficient and manageable system.
+</p>
+
+</body>
+</html>

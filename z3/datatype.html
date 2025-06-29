@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Data Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #3498db;
+        }
+        h2 {
+            color: #e67e22;
+        }
+        .code-description {
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: block;
+            border: 1px solid #ccc;
+        }
+        .description {
+            margin-top: 10px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Data Types in JavaScript</h1>
+
+    <div class="code-description">
+        <h2>Introduction to Data Types</h2>
+        <pre><code>// JavaScript has several data types categorized as:
+// 1. Primitive Types: String, Number, Boolean, Undefined, Null, Symbol, BigInt
+// 2. Reference Types: Object (Array, Function, Date, etc.)
+
+let name = "John";        // String
+let age = 25;             // Number
+let isStudent = true;     // Boolean
+let course;               // Undefined
+let salary = null;        // Null
+
+console.log(name, age, isStudent, course, salary);</code></pre>
+        <p class="description">
+            JavaScript has two main categories of data types:
+            <ul>
+                <li><strong>Primitive Types:</strong> These include String, Number, Boolean, Undefined, Null, Symbol, and BigInt.</li>
+                <li><strong>Reference Types:</strong> These include Objects, Arrays, and Functions.</li>
+            </ul>
+            The example above demonstrates the use of common primitive types: <code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Undefined</code>, and <code>Null</code>.
+        </p>
+    </div>
+
+    <div class="code-description">
+        <h2>Primitive Data Types</h2>
+        <pre><code>// 1. String: Used for textual data
+let greeting = "Hello, World!";
+console.log(greeting);
+
+// 2. Number: Used for numerical data (both integers and floats)
+let price = 19.99;
+console.log(price);
+
+// 3. Boolean: Represents logical values, true or false
+let isLoggedIn = false;
+console.log(isLoggedIn);</code></pre>
+        <p class="description">
+            <strong>Primitive data types</strong> are the most basic data types in JavaScript:
+            <ul>
+                <li><strong>String:</strong> Represents textual data (e.g., "Hello").</li>
+                <li><strong>Number:</strong> Represents numbers (both integers and floating-point numbers).</li>
+                <li><strong>Boolean:</strong> Represents logical values: <code>true</code> or <code>false</code>.</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="code-description">
+        <h2>Undefined and Null</h2>
+        <pre><code>// 4. Undefined: A variable that has been declared but not assigned a value
+let user;
+console.log(user); // Output: undefined
+
+// 5. Null: Represents an intentional absence of a value
+let discount = null;
+console.log(discount); // Output: null</code></pre>
+        <p class="description">
+            <strong>Undefined</strong> indicates that a variable has been declared but not yet assigned a value, whereas <strong>Null</strong> is used to explicitly indicate the absence of any value.
+        </p>
+    </div>
+
+    <div class="code-description">
+        <h2>Object Data Type (Reference Type)</h2>
+        <pre><code>// Objects in JavaScript are collections of key-value pairs.
+
+let user = {
+    name: "Alice",
+    age: 30,
+    isAdmin: true
+};
+console.log(user);
+
+// Arrays are also objects, but store values in an indexed list.
+let colors = ["Red", "Green", "Blue"];
+console.log(colors);</code></pre>
+        <p class="description">
+            <strong>Objects</strong> in JavaScript are used to store collections of data. An object can store values in the form of key-value pairs. Arrays, which are a type of object, store multiple values in an ordered, indexed list.
+        </p>
+    </div>
+
+    <div class="code-description">
+        <h2>BigInt and Symbol</h2>
+        <pre><code>// 6. BigInt: Used for very large integers that exceed the safe limit for regular numbers.
+let largeNumber = BigInt(9007199254740991);
+console.log(largeNumber);
+
+// 7. Symbol: Used for creating unique identifiers.
+let id = Symbol("id");
+console.log(id);</code></pre>
+        <p class="description">
+            <strong>BigInt</strong> is used for integers that are too large to be represented by the <code>Number</code> type, while <strong>Symbol</strong> is used to create unique, immutable identifiers.
+        </p>
+    </div>
+
+    <div class="code-description">
+        <h2>Type Checking with typeof</h2>
+        <pre><code>// You can check the type of any variable using the 'typeof' operator.
+
+let score = 100;
+console.log(typeof score);    // Output: number
+
+let userName = "Alice";
+console.log(typeof userName); // Output: string
+
+let isActive = true;
+console.log(typeof isActive); // Output: boolean</code></pre>
+        <p class="description">
+            The <code>typeof</code> operator is used to determine the type of a variable. It returns a string indicating the data type (e.g., <code>"number"</code>, <code>"string"</code>, or <code>"boolean"</code>).
+        </p>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>JavaScript data types can be broadly classified into primitive and reference types. Understanding these data types is key to writing efficient and bug-free code in JavaScript. Each data type serves a different purpose, from handling text to numbers, and even complex objects.</p>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators in Java</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        code {
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Operators in Java</h1>
+
+    <p>In Java, operators are special symbols that perform operations on variables and values. Java supports several types of operators, including arithmetic, relational, logical, bitwise, assignment, and others.</p>
+
+    <h2>1. Arithmetic Operators</h2>
+    <p>Arithmetic operators are used to perform basic mathematical operations such as addition, subtraction, multiplication, division, and modulus.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td>Addition</td>
+            <td><code>int sum = 5 + 3;</code></td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Subtraction</td>
+            <td><code>int difference = 10 - 4;</code></td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Multiplication</td>
+            <td><code>int product = 6 * 2;</code></td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>Division</td>
+            <td><code>int quotient = 9 / 3;</code></td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>Modulus (Remainder)</td>
+            <td><code>int remainder = 10 % 3;</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int a = 10, b = 5;
+                System.out.println("Addition: " + (a + b));
+                System.out.println("Subtraction: " + (a - b));
+                System.out.println("Multiplication: " + (a * b));
+                System.out.println("Division: " + (a / b));
+                System.out.println("Modulus: " + (a % b));
+            }
+        }
+    </code></pre>
+
+    <h2>2. Relational Operators</h2>
+    <p>Relational operators are used to compare two values or variables. They return a boolean result: <code>true</code> or <code>false</code>.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>==</td>
+            <td>Equal to</td>
+            <td><code>if (a == b) {}</code></td>
+        </tr>
+        <tr>
+            <td>!=</td>
+            <td>Not equal to</td>
+            <td><code>if (a != b) {}</code></td>
+        </tr>
+        <tr>
+            <td>&gt;</td>
+            <td>Greater than</td>
+            <td><code>if (a &gt; b) {}</code></td>
+        </tr>
+        <tr>
+            <td>&lt;</td>
+            <td>Less than</td>
+            <td><code>if (a &lt; b) {}</code></td>
+        </tr>
+        <tr>
+            <td>&gt;=</td>
+            <td>Greater than or equal to</td>
+            <td><code>if (a &gt;= b) {}</code></td>
+        </tr>
+        <tr>
+            <td>&lt;=</td>
+            <td>Less than or equal to</td>
+            <td><code>if (a &lt;= b) {}</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int a = 10, b = 5;
+                if (a > b) {
+                    System.out.println("a is greater than b");
+                }
+                if (a != b) {
+                    System.out.println("a is not equal to b");
+                }
+            }
+        }
+    </code></pre>
+
+    <h2>3. Logical Operators</h2>
+    <p>Logical operators are used to combine multiple boolean expressions. They return <code>true</code> or <code>false</code> based on the logical operations.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>&&</td>
+            <td>Logical AND</td>
+            <td><code>if (a > 0 && b > 0) {}</code></td>
+        </tr>
+        <tr>
+            <td>||</td>
+            <td>Logical OR</td>
+            <td><code>if (a > 0 || b > 0) {}</code></td>
+        </tr>
+        <tr>
+            <td>!</td>
+            <td>Logical NOT</td>
+            <td><code>if (!(a > 0)) {}</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int a = 10, b = 5;
+                if (a > 0 && b > 0) {
+                    System.out.println("Both a and b are positive");
+                }
+                if (a > 0 || b > 0) {
+                    System.out.println("At least one of a or b is positive");
+                }
+            }
+        }
+    </code></pre>
+
+    <h2>4. Bitwise Operators</h2>
+    <p>Bitwise operators perform operations on individual bits of integer values. They are mainly used in low-level programming.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>&amp;</td>
+            <td>Bitwise AND</td>
+            <td><code>int result = a &amp; b;</code></td>
+        </tr>
+        <tr>
+            <td>|</td>
+            <td>Bitwise OR</td>
+            <td><code>int result = a | b;</code></td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>Bitwise XOR</td>
+            <td><code>int result = a ^ b;</code></td>
+        </tr>
+        <tr>
+            <td>~</td>
+            <td>Bitwise NOT</td>
+            <td><code>int result = ~a;</code></td>
+        </tr>
+        <tr>
+            <td>&lt;&lt;</td>
+            <td>Left shift</td>
+            <td><code>int result = a &lt;&lt; 2;</code></td>
+        </tr>
+        <tr>
+            <td>&gt;&gt;</td>
+            <td>Right shift</td>
+            <td><code>int result = a &gt;&gt; 2;</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int a = 5, b = 3;
+                System.out.println("Bitwise AND: " + (a & b));
+                System.out.println("Bitwise OR: " + (a | b));
+                System.out.println("Bitwise XOR: " + (a ^ b));
+                System.out.println("Left shift: " + (a << 1));
+                System.out.println("Right shift: " + (a >> 1));
+            }
+        }
+    </code></pre>
+
+    <h2>5. Assignment Operators</h2>
+    <p>Assignment operators are used to assign values to variables.</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>=</td>
+            <td>Simple assignment</td>
+            <td><code>int a = 10;</code></td>
+        </tr>
+        <tr>
+            <td>+=</td>
+            <td>Add and assign</td>
+            <td><code>a += 5;</code></td>
+        </tr>
+        <tr>
+            <td>-=</td>
+            <td>Subtract and assign</td>
+            <td><code>a -= 3;</code></td>
+        </tr>
+        <tr>
+            <td>*=</td>
+            <td>Multiply and assign</td>
+            <td><code>a *= 2;</code></td>
+        </tr>
+        <tr>
+            <td>/=</td>
+            <td>Divide and assign</td>
+            <td><code>a /= 4;</code></td>
+        </tr>
+        <tr>
+            <td>%=</td>
+            <td>Modulus and assign</td>
+            <td><code>a %= 3;</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int a = 10;
+                a += 5; // a = a + 5
+                System.out.println("After +=: " + a);
+                a -= 3; // a = a - 3
+                System.out.println("After -=: " + a);
+            }
+        }
+    </code></pre>
+
+</body>
+</html>

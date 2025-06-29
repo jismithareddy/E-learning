@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Closures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Closures</h1>
+<p>A closure is a feature in JavaScript where an inner function has access to the outer (enclosing) function's variables — a scope chain. This includes:</p>
+<ul>
+    <li>The variables of its own scope</li>
+    <li>Variables of the outer function's scope</li>
+    <li>Global variables</li>
+</ul>
+<p>This concept allows functions to "remember" the environment in which they were created, even after the outer function has finished executing.</p>
+
+<h2>Example 1: Basic Closure</h2>
+<pre><code>function outerFunction() {
+    let outerVariable = "I am outside!";
+    
+    function innerFunction() {
+        console.log(outerVariable); // Accessing outerVariable inside the inner function
+    }
+    
+    return innerFunction;
+}
+
+const closureExample = outerFunction();
+closureExample(); // Outputs: I am outside!
+</code></pre>
+<p><strong>Explanation:</strong> In this example, <code>innerFunction</code> has access to <code>outerVariable</code>, even though <code>outerFunction</code> has already returned. This is because <code>innerFunction</code> forms a closure, retaining access to the outer function’s scope.</p>
+
+<h2>Example 2: Closure with Parameters</h2>
+<pre><code>function createCounter(start) {
+    let count = start;
+
+    return function() {
+        count += 1;
+        console.log(count);
+    };
+}
+
+const counter = createCounter(5);
+counter(); // Outputs: 6
+counter(); // Outputs: 7
+counter(); // Outputs: 8
+</code></pre>
+<p><strong>Explanation:</strong> The closure formed inside <code>createCounter</code> retains access to the <code>count</code> variable, which is initialized with the parameter <code>start</code>. Each time the returned function is called, the closure updates and logs the new value of <code>count</code>.</p>
+
+<h2>Example 3: Private Variables with Closures</h2>
+<pre><code>function secretHolder(secret) {
+    return {
+        getSecret: function() {
+            console.log(secret); // Accesses the private secret variable
+        },
+        setSecret: function(newSecret) {
+            secret = newSecret; // Modifies the private secret variable
+        }
+    };
+}
+
+const mySecret = secretHolder("Hidden message");
+mySecret.getSecret(); // Outputs: Hidden message
+mySecret.setSecret("New secret");
+mySecret.getSecret(); // Outputs: New secret
+</code></pre>
+<p><strong>Explanation:</strong> Here, closures are used to create private variables. The <code>secret</code> variable is not accessible outside the function, but can be accessed or modified using the <code>getSecret</code> and <code>setSecret</code> methods, effectively creating "private" variables in JavaScript.</p>
+
+<h2>Example 4: Closures in Loops (Common Mistake)</h2>
+<pre><code>for (var i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log("i:", i); // Outputs the final value of i, which is 4 (not what we expected)
+    }, 1000);
+}
+</code></pre>
+<p><strong>Explanation:</strong> In this example, we expected the loop to print 1, 2, and 3. However, since <code>var</code> is function-scoped, the <code>i</code> variable is shared across all the iterations. By the time the <code>setTimeout</code> callbacks are executed, <code>i</code> has already reached 4, hence all the functions print 4.</p>
+
+<h2>Example 5: Correcting Closures in Loops</h2>
+<pre><code>for (let i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log("i:", i); // Outputs: 1, 2, 3 as expected
+    }, 1000);
+}
+</code></pre>
+<p><strong>Explanation:</strong> Using <code>let</code> (block-scoped) ensures that each iteration of the loop gets its own separate copy of <code>i</code>, so the closures created inside <code>setTimeout</code> retain the correct value of <code>i</code>.</p>
+
+<h2>Example 6: Closures with Function Factory</h2>
+<pre><code>function multiplyBy(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = multiplyBy(2);
+console.log(double(5)); // Outputs: 10
+
+const triple = multiplyBy(3);
+console.log(triple(5)); // Outputs: 15
+</code></pre>
+<p><strong>Explanation:</strong> The <code>multiplyBy</code> function creates a closure that "remembers" the value of <code>factor</code> passed into it. The inner function then uses this factor to multiply any number passed into it. This is a common pattern for function factories.</p>
+
+<h2>Example 7: Closure for Caching (Memoization)</h2>
+<pre><code>function memoize(fn) {
+    let cache = {};
+    
+    return function(arg) {
+        if (cache[arg]) {
+            console.log("Fetching from cache");
+            return cache[arg];
+        } else {
+            console.log("Calculating result");
+            const result = fn(arg);
+            cache[arg] = result;
+            return result;
+        }
+    };
+}
+
+function square(n) {
+    return n * n;
+}
+
+const memoizedSquare = memoize(square);
+
+console.log(memoizedSquare(4)); // Calculating result: 16
+console.log(memoizedSquare(4)); // Fetching from cache: 16
+</code></pre>
+<p><strong>Explanation:</strong> This example shows how closures can be used to implement caching. The <code>memoize</code> function creates a closure that holds a <code>cache</code> object. When the memoized function is called, it first checks the cache. If the result is already in the cache, it returns it without recalculating; otherwise, it calculates the result and stores it in the cache for future use.</p>
+
+<h2>Conclusion</h2>
+<p>Closures are an important and powerful feature in JavaScript. They allow functions to retain access to the scope in which they were created, even after that scope has closed. This makes them extremely useful for tasks such as creating private variables, function factories, and caching results.</p>
+
+</body>
+</html>

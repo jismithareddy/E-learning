@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Flow Statements in Java</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        code {
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Control Flow Statements in Java</h1>
+
+    <p>Control flow statements in Java allow us to dictate the order in which code is executed. They include conditional statements, looping statements, and branching statements. In this section, we'll explain these control flow statements in detail, along with examples for each type.</p>
+
+    <h2>1. Conditional Statements</h2>
+    <p>Conditional statements allow us to execute different sections of code based on whether a condition is true or false.</p>
+
+    <h3>1.1. if Statement</h3>
+    <p>The <code>if</code> statement evaluates a condition and executes a block of code if the condition is true.</p>
+
+    <pre><code>
+        if (condition) {
+            // block of code
+        }
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int age = 18;
+                if (age >= 18) {
+                    System.out.println("You are eligible to vote.");
+                }
+            }
+        }
+    </code></pre>
+    <p>In this example, we check if the value of <code>age</code> is greater than or equal to 18. If true, the program prints "You are eligible to vote." Since the age is 18, the output will be displayed.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int score = 75;
+                if (score >= 50) {
+                    System.out.println("You passed the exam.");
+                }
+            }
+        }
+    </code></pre>
+    <p>This example checks if the <code>score</code> is greater than or equal to 50. If true, it prints "You passed the exam." Since the score is 75, the message is printed to the console.</p>
+
+    <h3>1.2. if-else Statement</h3>
+    <p>The <code>if-else</code> statement allows you to specify an alternative block of code to execute if the condition is false.</p>
+
+    <pre><code>
+        if (condition) {
+            // block of code if condition is true
+        } else {
+            // block of code if condition is false
+        }
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int num = 10;
+                if (num % 2 == 0) {
+                    System.out.println("The number is even.");
+                } else {
+                    System.out.println("The number is odd.");
+                }
+            }
+        }
+    </code></pre>
+    <p>This example checks whether the number <code>num</code> is even or odd using the modulo operator (%). If the number is divisible by 2 (i.e., the remainder is 0), the message "The number is even" is printed. Otherwise, "The number is odd" is printed.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int age = 16;
+                if (age >= 18) {
+                    System.out.println("You can drive.");
+                } else {
+                    System.out.println("You are too young to drive.");
+                }
+            }
+        }
+    </code></pre>
+    <p>This example checks if the value of <code>age</code> is greater than or equal to 18. Since the age is 16, the condition is false, and the output will be "You are too young to drive."</p>
+
+    <h2>2. Looping Statements</h2>
+    <p>Looping statements allow us to repeatedly execute a block of code until a condition is met.</p>
+
+    <h3>2.1. for Loop</h3>
+    <p>The <code>for</code> loop is used to repeat a block of code a specific number of times.</p>
+
+    <pre><code>
+        for (initialization; condition; increment/decrement) {
+            // block of code
+        }
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                for (int i = 1; i <= 5; i++) {
+                    System.out.println("The value of i is: " + i);
+                }
+            }
+        }
+    </code></pre>
+    <p>This <code>for</code> loop runs from 1 to 5. Each time it runs, the current value of <code>i</code> is printed. The loop will execute 5 times, and the numbers 1 to 5 will be printed to the console.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                for (int i = 1; i <= 10; i++) {
+                    if (i % 2 == 0) {
+                        System.out.println(i + " is even.");
+                    } else {
+                        System.out.println(i + " is odd.");
+                    }
+                }
+            }
+        }
+    </code></pre>
+    <p>This <code>for</code> loop runs from 1 to 10. For each iteration, the program checks if <code>i</code> is even or odd using the modulo operator (%). The corresponding message is printed based on the result.</p>
+
+    <h3>2.2. while Loop</h3>
+    <p>The <code>while</code> loop repeats a block of code as long as a condition is true.</p>
+
+    <pre><code>
+        while (condition) {
+            // block of code
+        }
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int i = 1;
+                while (i <= 5) {
+                    System.out.println("The value of i is: " + i);
+                    i++;
+                }
+            }
+        }
+    </code></pre>
+    <p>This <code>while</code> loop prints the value of <code>i</code> as long as <code>i <= 5</code>. The value of <code>i</code> starts from 1 and is incremented by 1 on each iteration, printing values from 1 to 5.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int num = 10;
+                while (num > 0) {
+                    System.out.println("Countdown: " + num);
+                    num--;
+                }
+            }
+        }
+    </code></pre>
+    <p>This <code>while</code> loop continues printing the value of <code>num</code> and decrements it on each iteration. The loop stops when <code>num</code> becomes 0.</p>
+
+    <h3>2.3. do-while Loop</h3>
+    <p>The <code>do-while</code> loop is similar to the <code>while</code> loop, but it guarantees that the loop will execute at least once, even if the condition is false initially.</p>
+
+    <pre><code>
+        do {
+            // block of code
+        } while (condition);
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int i = 1;
+                do {
+                    System.out.println("The value of i is: " + i);
+                    i++;
+                } while (i <= 5);
+            }
+        }
+    </code></pre>
+    <p>This <code>do-while</code> loop prints values of <code>i</code> from 1 to 5. Since the condition is checked after the loop's body, the loop will execute at least once, even if <code>i</code> starts at a higher value.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int num = 5;
+                do {
+                    System.out.println("Countdown: " + num);
+                    num--;
+                } while (num > 0);
+            }
+        }
+    </code></pre>
+    <p>This <code>do-while</code> loop decrements <code>num</code> and prints the countdown values until <code>num</code> becomes 0. The loop will execute at least once.</p>
+
+    <h2>3. Branching Statements</h2>
+    <p>Branching statements allow us to transfer control to other parts of the program, typically based on conditions.</p>
+
+    <h3>3.1. break Statement</h3>
+    <p>The <code>break</code> statement is used to exit a loop or switch statement prematurely.</p>
+
+    <pre><code>
+        break;
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                for (int i = 1; i <= 5; i++) {
+                    if (i == 3) {
+                        break;
+                    }
+                    System.out.println("i = " + i);
+                }
+            }
+        }
+    </code></pre>
+    <p>This loop runs from 1 to 5, but when <code>i == 3</code>, the <code>break</code> statement is executed, exiting the loop prematurely.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int num = 1;
+                while (num <= 5) {
+                    if (num == 3) {
+                        break;
+                    }
+                    System.out.println("num = " + num);
+                    num++;
+                }
+            }
+        }
+    </code></pre>
+    <p>This example shows how the <code>break</code> statement can exit a loop when a condition is met, stopping the iteration at <code>num == 3</code>.</p>
+
+    <h3>3.2. continue Statement</h3>
+    <p>The <code>continue</code> statement is used to skip the current iteration of a loop and move to the next iteration.</p>
+
+    <pre><code>
+        continue;
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                for (int i = 1; i <= 5; i++) {
+                    if (i == 3) {
+                        continue;
+                    }
+                    System.out.println("i = " + i);
+                }
+            }
+        }
+    </code></pre>
+    <p>This example demonstrates the use of <code>continue</code> in a loop. When <code>i == 3</code>, the loop skips the current iteration and proceeds to the next one, so "i = 3" is not printed.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int num = 1;
+                while (num <= 5) {
+                    if (num == 3) {
+                        num++;
+                        continue;
+                    }
+                    System.out.println("num = " + num);
+                    num++;
+                }
+            }
+        }
+    </code></pre>
+    <p>In this example, the loop skips the iteration when <code>num == 3</code>, so "num = 3" is not printed.</p>
+
+    <h3>3.3. return Statement</h3>
+    <p>The <code>return</code> statement is used to exit a method and optionally return a value.</p>
+
+    <pre><code>
+        return;
+        return value;
+    </code></pre>
+
+    <h3>Example 1:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                System.out.println("Before return statement.");
+                return;
+                System.out.println("This will not be executed.");
+            }
+        }
+    </code></pre>
+    <p>The program will print "Before return statement." and then exit the method. The second <code>System.out.println()</code> statement will never be executed.</p>
+
+    <h3>Example 2:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                int result = add(5, 10);
+                System.out.println("Result: " + result);
+            }
+
+            public static int add(int a, int b) {
+                return a + b;
+            }
+        }
+    </code></pre>
+    <p>This example defines a method that returns the sum of two numbers. The <code>add()</code> method returns the result, which is printed in the <code>main()</code> method.</p>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Views and Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        p {
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>SQL Views</h2>
+<p>
+    A <strong>view</strong> in SQL is a virtual table that is based on the result set of a SELECT query. 
+    Views can simplify complex queries, encapsulate data, and enhance security by restricting access to certain columns or rows of a table.
+</p>
+
+<h3>Key Features of Views</h3>
+<ul>
+    <li>
+        <strong>Virtual Table:</strong> A view does not store data physically; instead, it presents data stored in one or more tables.
+    </li>
+    <li>
+        <strong>Encapsulation:</strong> Views can hide the complexity of the underlying data and present a simplified interface to users.
+    </li>
+    <li>
+        <strong>Security:</strong> Views can restrict access to sensitive data by exposing only specific columns and rows.
+    </li>
+    <li>
+        <strong>Consistency:</strong> Changes to the underlying tables are reflected in the view automatically.
+    </li>
+</ul>
+
+<h2>Creating a View</h2>
+<p>The syntax for creating a view is as follows:</p>
+<pre>
+<code>
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+</code>
+</pre>
+
+<h3>Example of Creating a View</h3>
+<p>Consider a table named <code>employees</code>:</p>
+<table>
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>department</th>
+            <th>salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td>HR</td>
+            <td>60000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Smith</td>
+            <td>IT</td>
+            <td>75000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Mike</td>
+            <td>Johnson</td>
+            <td>Finance</td>
+            <td>70000</td>
+        </tr>
+    </tbody>
+</table>
+<p>We can create a view to show employees in the IT department:</p>
+<pre>
+<code>
+CREATE VIEW IT_Employees AS
+SELECT first_name, last_name, salary
+FROM employees
+WHERE department = 'IT';
+</code>
+</pre>
+
+<h3>Querying a View</h3>
+<p>You can query a view just like a regular table:</p>
+<pre>
+<code>
+SELECT * FROM IT_Employees;
+</code>
+</pre>
+<p>This would return:</p>
+<table>
+    <thead>
+        <tr>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Jane</td>
+            <td>Smith</td>
+            <td>75000</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Updating a View</h2>
+<p>In some cases, you can update the data in the underlying tables through a view. The view must be updatable, which typically requires it to be based on a single table without any grouping or aggregate functions.</p>
+
+<h3>Example of Updating a View</h3>
+<p>Assuming we want to increase the salary of the employee in the IT department:</p>
+<pre>
+<code>
+UPDATE IT_Employees
+SET salary = salary + 5000
+WHERE last_name = 'Smith';
+</code>
+</pre>
+<p>This will update the salary in the <code>employees</code> table:</p>
+<table>
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>department</th>
+            <th>salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td>HR</td>
+            <td>60000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Smith</td>
+            <td>IT</td>
+            <td>80000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Mike</td>
+            <td>Johnson</td>
+            <td>Finance</td>
+            <td>70000</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Deleting a View</h2>
+<p>To remove a view from the database, use the <code>DROP VIEW</code> command:</p>
+<pre>
+<code>
+DROP VIEW IT_Employees;
+</code>
+</pre>
+<p>This command deletes the view, but the underlying data remains unaffected.</p>
+
+<h2>Conclusion</h2>
+<p>SQL views are powerful tools for simplifying data access, enhancing security, and encapsulating complex queries. 
+Understanding how to create, query, update, and delete views is essential for effective database management.</p>
+
+</body>
+</html>

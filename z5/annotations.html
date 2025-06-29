@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annotations in Java</title>
+</head>
+<body>
+    <h1>Annotations in Java</h1>
+
+    <p>
+        In Java, annotations are special types of metadata that provide data about a program but do not change its behavior. Annotations are used to provide additional information to the compiler or at runtime. They can be applied to classes, methods, fields, parameters, and other elements of a Java program.
+    </p>
+
+    <h2>Common Uses of Annotations</h2>
+    <ul>
+        <li><strong>Compile-time checking:</strong> Annotations can be used to provide information that is used by the compiler during compilation.</li>
+        <li><strong>Runtime processing:</strong> Some annotations are available at runtime and can be processed using reflection.</li>
+        <li><strong>Code generation:</strong> Annotations are commonly used in frameworks and libraries to automate code generation (e.g., in Hibernate, Spring).</li>
+    </ul>
+
+    <h2>Types of Annotations</h2>
+    <p>
+        There are several types of annotations in Java:
+    </p>
+    <ul>
+        <li><strong>Marker annotations:</strong> These annotations do not have any members. Example: <code>@Override</code></li>
+        <li><strong>Single-value annotations:</strong> These annotations contain a single element. Example: <code>@FunctionalInterface</code></li>
+        <li><strong>Multi-value annotations:</strong> These annotations contain multiple elements. Example: <code>@Entity</code></li>
+    </ul>
+
+    <h2>Example 1: Using the @Override Annotation</h2>
+    <pre>
+public class Animal {
+    public void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+public class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks");
+    }
+
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        myDog.makeSound();
+    }
+}
+    </pre>
+    <p>
+        The <code>@Override</code> annotation tells the compiler that the method in the subclass is intended to override a method in the superclass. If the method signature in the subclass doesn't match the method in the superclass, the compiler will throw an error.
+    </p>
+
+    <h2>Example 2: Using the @Deprecated Annotation</h2>
+    <pre>
+public class OldClass {
+    @Deprecated
+    public void oldMethod() {
+        System.out.println("This method is deprecated.");
+    }
+
+    public static void main(String[] args) {
+        OldClass obj = new OldClass();
+        obj.oldMethod();
+    }
+}
+    </pre>
+    <p>
+        The <code>@Deprecated</code> annotation marks a method as deprecated. It indicates that the method is outdated and might be removed in future versions. The compiler generates a warning if you use a deprecated method.
+    </p>
+
+    <h2>Example 3: Creating a Custom Annotation</h2>
+    <pre>
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface MyCustomAnnotation {
+    String value() default "Custom Annotation";
+}
+
+public class MyClass {
+    @MyCustomAnnotation(value = "Test Method")
+    public void myMethod() {
+        System.out.println("This method has a custom annotation");
+    }
+
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.myMethod();
+    }
+}
+    </pre>
+    <p>
+        In this example, we define a custom annotation <code>@MyCustomAnnotation</code>. It is applied to the method <code>myMethod</code>, and we can use reflection to process this annotation during runtime.
+    </p>
+
+    <h2>Example 4: Using the @SuppressWarnings Annotation</h2>
+    <pre>
+public class WarningExample {
+    @SuppressWarnings("unchecked")
+    public void useUncheckedCode() {
+        List list = new ArrayList();
+        list.add("Unchecked warning");
+    }
+
+    public static void main(String[] args) {
+        WarningExample example = new WarningExample();
+        example.useUncheckedCode();
+    }
+}
+    </pre>
+    <p>
+        The <code>@SuppressWarnings</code> annotation is used to suppress compiler warnings. In this case, we suppress the "unchecked" warning when using a raw type for the <code>ArrayList</code>.
+    </p>
+
+    <h2>Example 5: Using the @Entity Annotation (Common in ORM frameworks)</h2>
+    <pre>
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class User {
+    @Id
+    private int id;
+    private String name;
+
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+    </pre>
+    <p>
+        The <code>@Entity</code> annotation is used in Java Persistence API (JPA) to mark a class as an entity. This class will be mapped to a table in the database. The <code>@Id</code> annotation marks the primary key of the entity.
+    </p>
+
+    <h2>Example 6: Using the @FunctionalInterface Annotation</h2>
+    <pre>
+@FunctionalInterface
+public interface MyFunctionalInterface {
+    void myMethod();
+
+    // The following method would cause a compilation error since it violates the functional interface rule
+    // void anotherMethod();
+}
+    </pre>
+    <p>
+        The <code>@FunctionalInterface</code> annotation ensures that the interface is a functional interface, which means it must have exactly one abstract method. It can have multiple default or static methods.
+    </p>
+
+    <h2>Example 7: Using @Retention and @Target in Custom Annotations</h2>
+    <pre>
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.lang.annotation.ElementType;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface MyFieldAnnotation {
+    String description() default "No description";
+}
+
+public class MyClass {
+    @MyFieldAnnotation(description = "This is a custom annotation on a field")
+    private String myField;
+
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        System.out.println(obj.myField);
+    }
+}
+    </pre>
+    <p>
+        In this example, the <code>@Retention</code> annotation defines whether the annotation should be available at runtime or compile time. The <code>@Target</code> annotation specifies where the annotation can be applied (e.g., to methods, fields, etc.).
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+        Annotations play an important role in modern Java programming, especially in frameworks and libraries like Spring, Hibernate, and JPA. They help developers add metadata to their code, which can be processed at compile-time or runtime for various purposes such as validation, logging, and ORM mapping.
+    </p>
+</body>
+</html>

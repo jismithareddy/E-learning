@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Transactions and Locking Mechanisms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        p {
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Transactions in SQL</h2>
+<p>
+    A <strong>transaction</strong> in SQL is a sequence of one or more SQL statements that are executed as a single logical unit of work. 
+    Transactions are essential for ensuring data integrity and consistency, especially in multi-user environments where concurrent access to the database can occur.
+</p>
+
+<h3>Key Characteristics</h3>
+<p>Transactions are governed by the <strong>ACID</strong> properties:</p>
+<ul>
+    <li>
+        <strong>Atomicity:</strong> This property ensures that a transaction is treated as a single unit. 
+        If any part of the transaction fails, the entire transaction is aborted, and the database is rolled back to its state before the transaction began.
+    </li>
+    <li>
+        <strong>Consistency:</strong> A transaction must transition the database from one valid state to another. 
+        Any transaction must ensure that the integrity constraints are maintained.
+    </li>
+    <li>
+        <strong>Isolation:</strong> Transactions must operate independently. 
+        The operations of a transaction should not be visible to other transactions until the transaction is committed.
+    </li>
+    <li>
+        <strong>Durability:</strong> Once a transaction is committed, its changes become permanent, even in the event of a system failure.
+    </li>
+</ul>
+
+<h2>Transaction Control Protocols</h2>
+<p>Transaction control commands in SQL are used to manage the execution of transactions. Here are the primary commands:</p>
+
+<h3>1. BEGIN TRANSACTION</h3>
+<p>This command marks the start of a transaction. All subsequent SQL statements are part of this transaction until a COMMIT or ROLLBACK is executed.</p>
+<code>BEGIN TRANSACTION;</code>
+
+<h3>2. COMMIT</h3>
+<p>This command is used to save all the changes made during the transaction. Once committed, the changes cannot be rolled back.</p>
+<code>COMMIT;</code>
+
+<h3>3. ROLLBACK</h3>
+<p>This command is used to undo all changes made during the transaction. If an error occurs, this command can restore the database to its previous state.</p>
+<code>ROLLBACK;</code>
+
+<h3>4. SAVEPOINT</h3>
+<p>This command is used to set a point within a transaction to which you can later roll back. This is useful for larger transactions where you may want to undo part of the transaction without affecting the entire transaction.</p>
+<code>SAVEPOINT savepoint_name;</code>
+
+<h2>Transaction Example</h2>
+<p>Consider a bank transfer operation where money is transferred from Account A to Account B:</p>
+<pre>
+<code>
+BEGIN TRANSACTION;
+
+UPDATE accounts
+SET balance = balance - 100
+WHERE account_id = 'A';  -- Debiting Account A
+
+UPDATE accounts
+SET balance = balance + 100
+WHERE account_id = 'B';  -- Crediting Account B
+
+COMMIT;  -- Commit the transaction if both operations are successful
+</code>
+</pre>
+
+<h2>What are Locks?</h2>
+<p>Locks are mechanisms used to manage concurrent access to the database. They prevent multiple transactions from interfering with each other, ensuring data integrity and consistency.</p>
+
+<h2>Types of Locks</h2>
+<ul>
+    <li>
+        <strong>Shared Lock:</strong> Allows multiple transactions to read a resource but prevents any transaction from modifying it.
+    </li>
+    <li>
+        <strong>Exclusive Lock:</strong> Allows a transaction to both read and modify a resource, preventing other transactions from accessing it.
+    </li>
+    <li>
+        <strong>Update Lock:</strong> Used to prevent a deadlock by signaling that a transaction intends to modify a resource.
+    </li>
+    <li>
+        <strong>Intent Lock:</strong> A higher-level lock that indicates a transaction intends to acquire a lock on a lower-level resource.
+    </li>
+</ul>
+
+<h2>Deadlocks</h2>
+<p>A deadlock occurs when two or more transactions are waiting for each other to release locks, creating a cycle of dependencies that prevents any transaction from proceeding. For example:</p>
+<pre>
+<code>
+Transaction 1:          Transaction 2:
+------------------      ------------------
+1. LOCK A               1. LOCK B
+2. LOCK B (wait)       2. LOCK A (wait)
+</code>
+</pre>
+
+<h2>Lock-Based Protocols</h2>
+<p>Lock-based protocols are strategies for managing locks and ensuring serializability of transactions. Two common lock-based protocols are:</p>
+
+<h3>1. Strict Two-Phase Locking (S2PL)</h3>
+<p>In Strict Two-Phase Locking, a transaction must hold all its locks until it completes (commits or rolls back). This ensures that no other transaction can access locked resources, thus guaranteeing serializability.</p>
+<h4>Advantages:</h4>
+<ul>
+    <li>Guaranteed serializability</li>
+    <li>Simple implementation</li>
+</ul>
+<h4>Disadvantages:</h4>
+<ul>
+    <li>Higher chances of deadlocks</li>
+    <li>Increased waiting time for transactions</li>
+</ul>
+
+<h3>2. Two-Phase Locking (2PL)</h3>
+<p>In Two-Phase Locking, a transaction goes through two phases:</p>
+<ul>
+    <li><strong>Growing Phase:</strong> The transaction can acquire locks but cannot release any.</li>
+    <li><strong>Shrinking Phase:</strong> The transaction can release locks but cannot acquire any more.</li>
+</ul>
+<p>This flexibility can reduce waiting times but might lead to non-serializable schedules.</p>
+<h4>Advantages:</h4>
+<ul>
+    <li>Flexibility in lock management</li>
+    <li>Lower chances of deadlocks compared to S2PL</li>
+</ul>
+<h4>Disadvantages:</h4>
+<ul>
+    <li>Potential for non-serializable schedules</li>
+    <li>Complex implementation</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Understanding transactions, locks, and lock-based protocols is essential for maintaining data integrity and consistency in SQL databases. 
+By effectively managing transactions and locking mechanisms, you can ensure that your database operates efficiently and reliably.</p>
+
+</body>
+</html>

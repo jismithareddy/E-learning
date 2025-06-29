@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance and This Keyword in Java</title>
+</head>
+<body>
+
+    <h1>Inheritance in Java</h1>
+
+    <p>Inheritance is a fundamental concept in Object-Oriented Programming (OOP), which allows one class (called the child or subclass) to inherit the properties and behaviors (fields and methods) from another class (called the parent or superclass). Inheritance promotes code reuse and establishes a natural hierarchy between classes.</p>
+
+    <h2>Why is Inheritance Important?</h2>
+    <p>Inheritance allows us to:
+        <ul>
+            <li>Reuse existing code, thus promoting code reusability.</li>
+            <li>Establish a hierarchical relationship between classes.</li>
+            <li>Implement polymorphism, one of the key concepts of OOP.</li>
+        </ul>
+    </p>
+
+    <h2>Types of Inheritance in Java</h2>
+    <p>Java supports the following types of inheritance:
+        <ul>
+            <li><strong>Single Inheritance</strong>: A class inherits from only one superclass.</li>
+            <li><strong>Multilevel Inheritance</strong>: A class inherits from a superclass, and another class inherits from the first class.</li>
+            <li><strong>Hierarchical Inheritance</strong>: Multiple classes inherit from a single superclass.</li>
+            <li><strong>Multiple Inheritance (through interfaces)</strong>: Java does not support multiple inheritance using classes (a class inheriting from multiple classes), but it can be achieved through interfaces.</li>
+        </ul>
+    </p>
+
+    <h2>Single Inheritance</h2>
+    <p>Single inheritance occurs when a class inherits from one parent class. This is the most common form of inheritance.</p>
+
+    <h3>Example of Single Inheritance:</h3>
+    <pre><code>
+        // Parent class
+        class Animal {
+            public void sound() {
+                System.out.println("Animals make sounds");
+            }
+        }
+
+        // Child class inheriting from Animal
+        class Dog extends Animal {
+            public void display() {
+                System.out.println("Dog barks");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Dog myDog = new Dog();
+                myDog.sound();   // Method inherited from Animal
+                myDog.display(); // Method from Dog class
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, the <code>Dog</code> class extends (inherits from) the <code>Animal</code> class. The <code>Dog</code> class has access to the <code>sound()</code> method from the parent class <code>Animal</code> and can also define its own method, <code>display()</code>.</p>
+
+    <h2>Multilevel Inheritance</h2>
+    <p>Multilevel inheritance occurs when a class is derived from another derived class. This creates a chain of inheritance.</p>
+
+    <h3>Example of Multilevel Inheritance:</h3>
+    <pre><code>
+        // Parent class
+        class Animal {
+            public void sound() {
+                System.out.println("Animals make sounds");
+            }
+        }
+
+        // Child class inheriting from Animal
+        class Mammal extends Animal {
+            public void feed() {
+                System.out.println("Mammals feed milk to their young");
+            }
+        }
+
+        // Subclass inheriting from Mammal
+        class Dog extends Mammal {
+            public void display() {
+                System.out.println("Dog barks");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Dog myDog = new Dog();
+                myDog.sound();  // Inherited from Animal
+                myDog.feed();   // Inherited from Mammal
+                myDog.display(); // Method from Dog class
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: The <code>Dog</code> class inherits from <code>Mammal</code>, and <code>Mammal</code> inherits from <code>Animal</code>. The <code>Dog</code> class inherits methods from both the parent and grandparent classes, allowing access to <code>sound()</code> and <code>feed()</code> methods, in addition to its own <code>display()</code> method.</p>
+
+    <h2>Hierarchical Inheritance</h2>
+    <p>Hierarchical inheritance occurs when multiple classes inherit from a single parent class.</p>
+
+    <h3>Example of Hierarchical Inheritance:</h3>
+    <pre><code>
+        // Parent class
+        class Animal {
+            public void sound() {
+                System.out.println("Animals make sounds");
+            }
+        }
+
+        // Child class 1 inheriting from Animal
+        class Dog extends Animal {
+            public void display() {
+                System.out.println("Dog barks");
+            }
+        }
+
+        // Child class 2 inheriting from Animal
+        class Cat extends Animal {
+            public void display() {
+                System.out.println("Cat meows");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Dog myDog = new Dog();
+                myDog.sound();   // Inherited from Animal
+                myDog.display(); // Method from Dog class
+
+                Cat myCat = new Cat();
+                myCat.sound();   // Inherited from Animal
+                myCat.display(); // Method from Cat class
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, both <code>Dog</code> and <code>Cat</code> inherit from the parent class <code>Animal</code>. This demonstrates how multiple subclasses can share common functionality (inherited from the parent class) while also having their own specific behavior.</p>
+
+    <h2>Method Overriding in Inheritance</h2>
+    <p>When a subclass provides its own implementation of a method that is already present in its superclass, it is called method overriding. This allows the subclass to provide specific behavior while maintaining the same method signature.</p>
+
+    <h3>Example of Method Overriding:</h3>
+    <pre><code>
+        // Parent class
+        class Animal {
+            public void sound() {
+                System.out.println("Animals make sounds");
+            }
+        }
+
+        // Child class overriding the method
+        class Dog extends Animal {
+            @Override
+            public void sound() {
+                System.out.println("Dog barks");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Animal myAnimal = new Animal();
+                myAnimal.sound();  // Calls the parent class method
+
+                Dog myDog = new Dog();
+                myDog.sound();     // Calls the overridden method in Dog class
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, the <code>sound()</code> method in the parent class <code>Animal</code> is overridden in the child class <code>Dog</code>. When we call <code>sound()</code> on an object of the <code>Dog</code> class, it executes the overridden method in the <code>Dog</code> class instead of the method in the parent class.</p>
+
+    <h2>Multiple Inheritance in Java (Interfaces)</h2>
+    <p>Java does not support multiple inheritance using classes, meaning a class cannot inherit from more than one class directly. However, multiple inheritance can be achieved through interfaces, which allow a class to implement more than one interface.</p>
+
+    <h3>Example of Multiple Inheritance Using Interfaces:</h3>
+    <pre><code>
+        interface Animal {
+            void sound();
+        }
+
+        interface Vehicle {
+            void move();
+        }
+
+        class Car implements Animal, Vehicle {
+            public void sound() {
+                System.out.println("Car honks");
+            }
+
+            public void move() {
+                System.out.println("Car moves on the road");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Car myCar = new Car();
+                myCar.sound(); // From Animal interface
+                myCar.move();  // From Vehicle interface
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: In this example, the <code>Car</code> class implements two interfaces, <code>Animal</code> and <code>Vehicle</code>. This allows it to inherit behaviors from both interfaces and provide specific implementations of the methods defined in them.</p>
+
+    <h2>Accessing Parent Class Members in Java</h2>
+    <p>In Java, you can access the parent class's fields and methods from a subclass using the <code>super</code> keyword. It is used to refer to the immediate parent class and can be used to call the parent class's constructor, methods, and fields.</p>
+
+    <h3>Example of Using Super Keyword:</h3>
+    <pre><code>
+        class Animal {
+            public void sound() {
+                System.out.println("Animal makes a sound");
+            }
+        }
+
+        class Dog extends Animal {
+            public void sound() {
+                super.sound(); // Calls the parent class method
+                System.out.println("Dog barks");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Dog myDog = new Dog();
+                myDog.sound(); // Calls method in Dog class and super class
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: The <code>super.sound()</code> in the <code>Dog</code> class calls the <code>sound()</code> method of the parent class <code>Animal</code> before executing the child class method.</p>
+
+    <h2>The <code>this</code> Keyword in Java</h2>
+    <p>The <code>this</code> keyword in Java refers to the current object. It is commonly used to refer to the current instance of a class within a method or constructor. It can also be used to differentiate between class fields and parameters with the same name.</p>
+
+    <h3>Example of Using <code>this</code> Keyword:</h3>
+    <pre><code>
+        class Student {
+            String name;
+            int age;
+
+            // Constructor
+            Student(String name, int age) {
+                this.name = name; // 'this' refers to the current object's name field
+                this.age = age;   // 'this' refers to the current object's age field
+            }
+
+            void display() {
+                System.out.println("Name: " + this.name);
+                System.out.println("Age: " + this.age);
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Student student = new Student("John", 20);
+                student.display(); // Displays the name and age using 'this'
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: The <code>this</code> keyword is used to refer to the instance variables <code>name</code> and <code>age</code> of the current object. It differentiates between the parameters passed to the constructor and the instance variables.</p>
+
+</body>
+</html>

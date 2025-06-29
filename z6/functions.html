@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Functions with Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        h3 {
+            color: #555;
+        }
+        pre {
+            background-color: #e3d6d6;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #d7b9b9;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #c83030;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>SQL Functions with Operations</h2>
+    <p>SQL functions perform operations on data stored in a database. Here we will explore various functions with sample operations and their corresponding results displayed in tables.</p>
+
+    <h2>1. Sample Data</h2>
+    <p>We will use the following sample tables for demonstration:</p>
+    <h3>Customers Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerID</th>
+                <th>CustomerName</th>
+                <th>ContactNumber</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>123-456-7890</td>
+                <td>New York</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>987-654-3210</td>
+                <td>Los Angeles</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Emily Davis</td>
+                <td>456-789-1230</td>
+                <td>Chicago</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Orders Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>CustomerID</th>
+                <th>OrderAmount</th>
+                <th>OrderDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>150.00</td>
+                <td>2024-01-10</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+                <td>300.00</td>
+                <td>2024-02-15</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2</td>
+                <td>100.00</td>
+                <td>2024-03-12</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>3</td>
+                <td>250.00</td>
+                <td>2024-01-25</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>2. Aggregate Functions</h2>
+
+    <h3>2.1 COUNT()</h3>
+    <p>The <strong>COUNT()</strong> function returns the number of rows that meet a specified condition.</p>
+    <pre>
+SELECT COUNT(*) AS TotalOrders
+FROM Orders WHERE OrderAmount > 100;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>TotalOrders</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>2.2 SUM()</h3>
+    <p>The <strong>SUM()</strong> function calculates the total sum of a numeric column.</p>
+    <pre>
+SELECT SUM(OrderAmount) AS TotalSales
+FROM Orders;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>TotalSales</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>800.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>2.3 AVG()</h3>
+    <p>The <strong>AVG()</strong> function computes the average value of a numeric column.</p>
+    <pre>
+SELECT AVG(OrderAmount) AS AverageOrderAmount
+FROM Orders;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>AverageOrderAmount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>200.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>2.4 MAX()</h3>
+    <p>The <strong>MAX()</strong> function returns the maximum value from a set of values in a specific column.</p>
+    <pre>
+SELECT MAX(OrderAmount) AS HighestOrder
+FROM Orders;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>HighestOrder</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>300.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>2.5 MIN()</h3>
+    <p>The <strong>MIN()</strong> function returns the minimum value from a set of values in a specific column.</p>
+    <pre>
+SELECT MIN(OrderAmount) AS LowestOrder
+FROM Orders;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>LowestOrder</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>100.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. Scalar Functions</h2>
+
+    <h3>3.1 UPPER()</h3>
+    <p>The <strong>UPPER()</strong> function converts a string to uppercase letters.</p>
+    <pre>
+SELECT UPPER(CustomerName) AS UppercaseName
+FROM Customers;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>UppercaseName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>JOHN DOE</td>
+            </tr>
+            <tr>
+                <td>JANE SMITH</td>
+            </tr>
+            <tr>
+                <td>EMILY DAVIS</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.2 LOWER()</h3>
+    <p>The <strong>LOWER()</strong> function converts a string to lowercase letters.</p>
+    <pre>
+SELECT LOWER(CustomerName) AS LowercaseName
+FROM Customers;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>LowercaseName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>john doe</td>
+            </tr>
+            <tr>
+                <td>jane smith</td>
+            </tr>
+            <tr>
+                <td>emily davis</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.3 LEN()</h3>
+    <p>The <strong>LEN()</strong> function returns the length of a string.</p>
+    <pre>
+SELECT CustomerName, LEN(CustomerName) AS NameLength
+FROM Customers;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerName</th>
+                <th>NameLength</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Emily Davis</td>
+                <td>11</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.4 ROUND()</h3>
+    <p>The <strong>ROUND()</strong> function rounds a numeric value to a specified number of decimal places.</p>
+    <pre>
+SELECT OrderAmount, ROUND(OrderAmount, 0) AS RoundedAmount
+FROM Orders;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>OrderAmount</th>
+                <th>RoundedAmount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>150.00</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>300.00</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>100.00</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>250.00</td>
+                <td>250</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.5 GETDATE()</h3>
+    <p>The <strong>GETDATE()</strong> function returns the current date and time.</p>
+    <pre>
+SELECT GETDATE() AS CurrentDateTime;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CurrentDateTime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2024-10-22 12:00:00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4. String Functions</h2>
+
+    <h3>4.1 CONCAT()</h3>
+    <p>The <strong>CONCAT()</strong> function combines multiple strings into one.</p>
+    <pre>
+SELECT CONCAT(CustomerName, ' - ', ContactNumber) AS CustomerDetails
+FROM Customers;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerDetails</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe - 123-456-7890</td>
+            </tr>
+            <tr>
+                <td>Jane Smith - 987-654-3210</td>
+            </tr>
+            <tr>
+                <td>Emily Davis - 456-789-1230</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>4.2 SUBSTRING()</h3>
+    <p>The <strong>SUBSTRING()</strong> function extracts a substring from a string, starting at a specified position for a specified length.</p>
+    <pre>
+SELECT SUBSTRING(CustomerName, 1, 4) AS NamePart
+FROM Customers;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>NamePart</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+            </tr>
+            <tr>
+                <td>Jane</td>
+            </tr>
+            <tr>
+                <td>Emily</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>4.3 REPLACE()</h3>
+    <p>The <strong>REPLACE()</strong> function replaces all occurrences of a specified substring with another substring.</p>
+    <pre>
+SELECT REPLACE(CustomerName, 'Doe', 'Smith') AS CorrectedName
+FROM Customers;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CorrectedName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Smith</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+            </tr>
+            <tr>
+                <td>Emily Davis</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>4.4 TRIM()</h3>
+    <p>The <strong>TRIM()</strong> function removes leading and trailing spaces from a string.</p>
+    <pre>
+SELECT TRIM('   John Doe   ') AS CleanedName;
+    </pre>
+    <h4>Result</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>CleanedName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Conclusion</h2>
+    <p>Understanding SQL functions is crucial for effective data manipulation and analysis in database management. These functions enhance the ability to extract, transform, and analyze data efficiently.</p>
+
+</body>
+</html>

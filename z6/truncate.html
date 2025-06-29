@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRUNCATE Command in SQL</title>
+</head>
+<body>
+
+    <h1>Understanding the TRUNCATE Command in SQL</h1>
+    <p>The <strong>TRUNCATE</strong> command in SQL is used to delete all rows from a table, but it preserves the table structure for future use. It is different from the <code>DELETE</code> command, as <code>TRUNCATE</code> removes all the rows in a more efficient way, without logging each row's deletion.</p>
+
+    <h2>Key Points about TRUNCATE</h2>
+    <ul>
+        <li><strong>Faster than DELETE:</strong> <code>TRUNCATE</code> is faster because it doesn't log individual row deletions.</li>
+        <li><strong>Resets Auto Increment:</strong> If a table has an auto-incrementing primary key, <code>TRUNCATE</code> will reset it to the initial value.</li>
+        <li><strong>Cannot be Rolled Back:</strong> Unlike <code>DELETE</code>, <code>TRUNCATE</code> cannot be rolled back in most cases.</li>
+        <li><strong>No WHERE Clause:</strong> <code>TRUNCATE</code> cannot filter rows; it removes all rows in the table.</li>
+    </ul>
+
+    <h2>Syntax of TRUNCATE</h2>
+    <pre>
+TRUNCATE TABLE table_name;
+    </pre>
+    <p>This will remove all rows from the table <code>table_name</code>, but the table structure will remain.</p>
+
+    <h2>Examples of Using TRUNCATE</h2>
+
+    <h3>Example 1: Truncating the <code>Users</code> Table</h3>
+    <pre>
+-- Before truncation
+SELECT * FROM Users;
+
+TRUNCATE TABLE Users;
+
+-- After truncation, the table will be empty
+SELECT * FROM Users;
+    </pre>
+    <p><strong>Description:</strong> All the records from the <code>Users</code> table will be deleted, but the table will still exist in the database.</p>
+
+    <h3>Example 2: Truncating the <code>Orders</code> Table</h3>
+    <pre>
+-- Before truncation
+SELECT * FROM Orders;
+
+TRUNCATE TABLE Orders;
+
+-- After truncation, the table will be empty
+SELECT * FROM Orders;
+    </pre>
+    <p><strong>Description:</strong> This will remove all orders from the <code>Orders</code> table while keeping the table itself intact for future use.</p>
+
+    <h2>Visualization of TRUNCATE Operation</h2>
+
+    <h3>Before TRUNCATE: Users Table</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>user_id (PK)</th>
+                <th>username</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>JohnDoe</td>
+                <td>john@example.com</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>JaneSmith</td>
+                <td>jane@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>After TRUNCATE: Users Table</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>user_id (PK)</th>
+                <th>username</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3">No records (Table is empty)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Before TRUNCATE: Orders Table</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>order_id (PK)</th>
+                <th>user_id (FK)</th>
+                <th>product_name</th>
+                <th>quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>1</td>
+                <td>Laptop</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>2</td>
+                <td>Smartphone</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>After TRUNCATE: Orders Table</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>order_id (PK)</th>
+                <th>user_id (FK)</th>
+                <th>product_name</th>
+                <th>quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">No records (Table is empty)</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

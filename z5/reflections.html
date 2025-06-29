@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflection in Java</title>
+</head>
+<body>
+    <h1>Reflection in Java</h1>
+
+    <p>
+        Reflection in Java is a powerful feature that allows you to inspect and manipulate classes, methods, fields, and other elements of a Java program during runtime. Through reflection, you can retrieve metadata about classes and even invoke methods or modify fields dynamically.
+    </p>
+
+    <h2>Why Use Reflection?</h2>
+    <p>
+        Reflection provides a way to inspect or modify the structure of a class dynamically. It is often used in frameworks like Spring, Hibernate, and JUnit for dependency injection, object-relational mapping, and test automation. However, reflection should be used carefully, as it can impact performance and security if misused.
+    </p>
+
+    <h2>Key Components of Reflection</h2>
+    <p>
+        Reflection provides several classes in the <code>java.lang.reflect</code> package to inspect and manipulate classes at runtime. The key components are:
+    </p>
+    <ul>
+        <li><strong>Class</strong>: Represents the metadata of a class.</li>
+        <li><strong>Field</strong>: Represents a field in a class.</li>
+        <li><strong>Method</strong>: Represents a method in a class.</li>
+        <li><strong>Constructor</strong>: Represents a constructor of a class.</li>
+    </ul>
+
+    <h2>Example 1: Getting Class Information</h2>
+    <pre>
+public class MyClass {
+    public void myMethod() {
+        System.out.println("Method called");
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException {
+        MyClass obj = new MyClass();
+        Class<?> myClass = obj.getClass(); // Getting class information
+        System.out.println("Class name: " + myClass.getName());
+    }
+}
+    </pre>
+    <p>
+        In this example, we use the <code>getClass()</code> method to get the class information at runtime. The <code>getName()</code> method returns the name of the class.
+    </p>
+
+    <h2>Example 2: Accessing Methods Using Reflection</h2>
+    <pre>
+import java.lang.reflect.Method;
+
+public class MyClass {
+    public void myMethod() {
+        System.out.println("Method called");
+    }
+
+    public static void main(String[] args) throws Exception {
+        MyClass obj = new MyClass();
+        Method method = obj.getClass().getMethod("myMethod"); // Accessing method by name
+        method.invoke(obj); // Invoking method dynamically
+    }
+}
+    </pre>
+    <p>
+        In this example, we use reflection to dynamically access and invoke the <code>myMethod</code> method. The <code>getMethod()</code> method retrieves the method by its name, and the <code>invoke()</code> method calls it on the object instance.
+    </p>
+
+    <h2>Example 3: Accessing Fields Using Reflection</h2>
+    <pre>
+import java.lang.reflect.Field;
+
+public class MyClass {
+    private String myField = "Hello, Reflection!";
+
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+        MyClass obj = new MyClass();
+        Field field = obj.getClass().getDeclaredField("myField"); // Accessing field
+        field.setAccessible(true); // Make private field accessible
+        String value = (String) field.get(obj); // Getting value of the field
+        System.out.println("Field value: " + value);
+    }
+}
+    </pre>
+    <p>
+        Here, we access the private field <code>myField</code> using reflection. The <code>getDeclaredField()</code> method retrieves the field, and <code>setAccessible(true)</code> allows us to bypass access modifiers. We then retrieve its value using <code>get()</code>.
+    </p>
+
+    <h2>Example 4: Accessing Constructors Using Reflection</h2>
+    <pre>
+import java.lang.reflect.Constructor;
+
+public class MyClass {
+    private String name;
+
+    public MyClass(String name) {
+        this.name = name;
+    }
+
+    public static void main(String[] args) throws Exception {
+        Constructor<MyClass> constructor = MyClass.class.getConstructor(String.class); // Access constructor
+        MyClass obj = constructor.newInstance("Reflection Constructor"); // Creating instance using constructor
+        System.out.println("Object created with name: " + obj.name);
+    }
+}
+    </pre>
+    <p>
+        In this example, we use reflection to access the constructor of <code>MyClass</code> that takes a String argument. The <code>getConstructor()</code> method retrieves the constructor, and <code>newInstance()</code> creates a new instance of the class.
+    </p>
+
+    <h2>Example 5: Modifying Fields Using Reflection</h2>
+    <pre>
+import java.lang.reflect.Field;
+
+public class MyClass {
+    private String myField = "Initial Value";
+
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+        MyClass obj = new MyClass();
+        Field field = obj.getClass().getDeclaredField("myField");
+        field.setAccessible(true); // Make the private field accessible
+        field.set(obj, "Modified Value"); // Set new value to the field
+        System.out.println("Modified field value: " + obj.myField);
+    }
+}
+    </pre>
+    <p>
+        Here, we use reflection to modify the value of a private field <code>myField</code>. We access the field using <code>getDeclaredField()</code>, and modify its value using <code>set()</code>.
+    </p>
+
+    <h2>Example 6: Invoking Private Methods Using Reflection</h2>
+    <pre>
+import java.lang.reflect.Method;
+
+public class MyClass {
+    private void privateMethod() {
+        System.out.println("Private method invoked");
+    }
+
+    public static void main(String[] args) throws Exception {
+        MyClass obj = new MyClass();
+        Method method = obj.getClass().getDeclaredMethod("privateMethod");
+        method.setAccessible(true); // Make private method accessible
+        method.invoke(obj); // Invoke private method
+    }
+}
+    </pre>
+    <p>
+        In this example, we use reflection to invoke a private method <code>privateMethod</code>. We use <code>getDeclaredMethod()</code> to access the private method, and <code>setAccessible(true)</code> allows us to bypass access control. Finally, we invoke the method using <code>invoke()</code>.
+    </p>
+
+    <h2>Example 7: Using Reflection for Array Manipulation</h2>
+    <pre>
+import java.lang.reflect.Array;
+
+public class ArrayReflection {
+    public static void main(String[] args) {
+        int[] arr = (int[]) Array.newInstance(int.class, 5); // Create array using reflection
+        Array.set(arr, 0, 10); // Set value in array
+        Array.set(arr, 1, 20);
+        System.out.println("Array element at index 0: " + Array.get(arr, 0)); // Get value from array
+        System.out.println("Array element at index 1: " + Array.get(arr, 1));
+    }
+}
+    </pre>
+    <p>
+        Reflection allows us to create and manipulate arrays dynamically. The <code>Array.newInstance()</code> method creates a new array of a specified type and length. We can use <code>Array.set()</code> to set values and <code>Array.get()</code> to retrieve values.
+    </p>
+
+    <h2>Reflection Performance Consideration</h2>
+    <p>
+        While reflection is powerful, it comes with performance overhead. Reflection operations are slower than regular code because it involves types being resolved at runtime. Reflection should be used carefully, especially in performance-critical applications.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+        Reflection is a versatile and powerful feature of Java, enabling introspection and manipulation of classes, fields, methods, and constructors at runtime. It is heavily used in frameworks like Spring and Hibernate for tasks such as dependency injection and ORM mapping. However, developers should be cautious of the performance and security implications when using reflection in their applications.
+    </p>
+</body>
+</html>

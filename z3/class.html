@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Classes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Classes</h1>
+<p>In JavaScript, a <strong>class</strong> is a blueprint for creating objects with predefined properties and methods. It is a template that simplifies object creation and enhances code organization. Classes were introduced in ES6.</p>
+
+<h2>Example 1: Defining a Class</h2>
+<pre><code>class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log('Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old.');
+    }
+}
+
+const john = new Person('John', 25);
+john.greet(); // Outputs: Hello, my name is John and I am 25 years old.
+</code></pre>
+<p><strong>Explanation:</strong> In this example, we define a <em>Person</em> class with a constructor that initializes the properties <em>name</em> and <em>age</em>. The <em>greet</em> method prints a message introducing the person. We create an instance of the class using the <em>new</em> keyword and call the <em>greet</em> method.</p>
+
+<h2>Example 2: Adding Methods to a Class</h2>
+<pre><code>class Car {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    displayDetails() {
+        return this.brand + ' ' + this.model;
+    }
+}
+
+const myCar = new Car('Toyota', 'Corolla');
+console.log(myCar.displayDetails()); // Outputs: Toyota Corolla
+</code></pre>
+<p><strong>Explanation:</strong> We can add methods to a class to define behaviors. In this example, the <em>Car</em> class has a method <em>displayDetails</em> that returns a string with the car’s brand and model.</p>
+
+<h2>Example 3: Class Inheritance</h2>
+<pre><code>class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(this.name + ' makes a noise.');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(this.name + ' barks.');
+    }
+}
+
+const dog = new Dog('Buddy');
+dog.speak(); // Outputs: Buddy barks.
+</code></pre>
+<p><strong>Explanation:</strong> Classes support <strong>inheritance</strong> using the <em>extends</em> keyword. In this example, <em>Dog</em> is a subclass of <em>Animal</em>. The <em>Dog</em> class overrides the <em>speak</em> method to provide a different behavior.</p>
+
+<h2>Example 4: Static Methods</h2>
+<pre><code>class MathUtils {
+    static add(a, b) {
+        return a + b;
+    }
+}
+
+console.log(MathUtils.add(5, 3)); // Outputs: 8
+</code></pre>
+<p><strong>Explanation:</strong> Static methods are defined on the class itself, rather than on instances of the class. In this example, the <em>add</em> method is static, and it can be called directly using the class name without creating an instance.</p>
+
+<h2>Example 5: Getters and Setters</h2>
+<pre><code>class Rectangle {
+    constructor(width, height) {
+        this._width = width;
+        this._height = height;
+    }
+
+    get area() {
+        return this._width * this._height;
+    }
+
+    set width(value) {
+        this._width = value;
+    }
+}
+
+const rect = new Rectangle(10, 20);
+console.log(rect.area); // Outputs: 200
+rect.width = 15;
+console.log(rect.area); // Outputs: 300
+</code></pre>
+<p><strong>Explanation:</strong> Getters and setters allow us to control how a property is accessed or modified. In this example, the <em>area</em> getter calculates the area of the rectangle, while the <em>width</em> setter allows us to update the width.</p>
+
+<h2>Example 6: Private Fields (ES2022)</h2>
+<pre><code>class User {
+    #password;
+
+    constructor(name, password) {
+        this.name = name;
+        this.#password = password;
+    }
+
+    checkPassword(password) {
+        return this.#password === password;
+    }
+}
+
+const user = new User('Alice', '12345');
+console.log(user.checkPassword('12345')); // Outputs: true
+//console.log(user.#password); // Error: Private field '#password' must be declared in an enclosing class
+</code></pre>
+<p><strong>Explanation:</strong> Private fields are declared with <em>#</em> and can only be accessed within the class. In this example, the <em>password</em> is private, so it cannot be accessed directly from outside the class.</p>
+
+<h2>Example 7: Class Expression</h2>
+<pre><code>const Animal = class {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(this.name + ' makes a sound.');
+    }
+};
+
+const cat = new Animal('Whiskers');
+cat.speak(); // Outputs: Whiskers makes a sound.
+</code></pre>
+<p><strong>Explanation:</strong> Just like functions, classes can also be defined as expressions and assigned to variables. In this example, we define the <em>Animal</em> class as an expression and create an instance of it.</p>
+
+<h2>Conclusion</h2>
+<p>JavaScript classes provide a powerful and clean way to create and manage objects, allowing for better organization of code through constructors, methods, inheritance, and encapsulation.</p>
+<ul>
+    <li><strong>Classes</strong> are templates for creating objects.</li>
+    <li><strong>Constructor</strong> method initializes properties when an instance is created.</li>
+    <li><strong>Methods</strong> define the behaviors of the object.</li>
+    <li>Classes support <strong>inheritance</strong> through the <em>extends</em> keyword.</li>
+    <li><strong>Static methods</strong> are called on the class itself.</li>
+    <li><strong>Getters and setters</strong> manage property access and updates.</li>
+    <li>Private fields are supported with the <em>#</em> syntax (ES2022).</li>
+</ul>
+
+</body>
+</html>

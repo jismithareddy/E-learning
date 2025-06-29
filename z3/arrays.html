@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Arrays</h1>
+<p>An <strong>array</strong> in JavaScript is a special variable that can hold multiple values at once. Arrays are used to store collections of data and can contain elements of different types, including numbers, strings, and even other objects. Arrays are indexed, meaning each element can be accessed using its numerical index, starting from zero.</p>
+
+<h2>1. Creating an Array</h2>
+<p>You can create an array using either array literal syntax or the <code>new Array()</code> constructor.</p>
+
+<h3>Example 1: Array Literal Syntax</h3>
+<pre><code>// Creating an array using array literal syntax
+const fruits = ["Apple", "Banana", "Cherry"];
+
+// Accessing array elements
+console.log(fruits[0]); // Output: Apple</code></pre>
+<p><strong>Explanation:</strong> This example demonstrates creating an array named <code>fruits</code> using array literal syntax. The array contains three elements: <code>Apple</code>, <code>Banana</code>, and <code>Cherry</code>. You can access these elements using their index.</p>
+
+<h2>2. Adding Elements</h2>
+<p>You can add elements to an array using the <code>push()</code> method or by specifying an index.</p>
+
+<h3>Example 2: Adding Elements</h3>
+<pre><code>const numbers = [1, 2, 3];
+
+// Adding an element using push()
+numbers.push(4); // Adds 4 to the end of the array
+
+// Adding an element at a specific index
+numbers[1] = 5; // Changes the second element
+
+console.log(numbers); // Output: [1, 5, 3, 4]</code></pre>
+<p><strong>Explanation:</strong> In this example, an array named <code>numbers</code> is created. The <code>push()</code> method adds the number <code>4</code> to the end of the array, while directly accessing index <code>1</code> modifies the second element to <code>5</code>.</p>
+
+<h2>3. Removing Elements</h2>
+<p>You can remove elements from an array using the <code>pop()</code> or <code>splice()</code> method.</p>
+
+<h3>Example 3: Removing Elements</h3>
+<pre><code>const colors = ["Red", "Green", "Blue"];
+
+// Removing the last element using pop()
+colors.pop(); // Removes "Blue"
+
+// Removing an element at a specific index using splice()
+colors.splice(0, 1); // Removes "Red" (index 0)
+
+console.log(colors); // Output: ["Green"]</code></pre>
+<p><strong>Explanation:</strong> This example shows how to remove elements from an array named <code>colors</code>. The <code>pop()</code> method removes the last element, while <code>splice()</code> is used to remove an element at a specific index.</p>
+
+<h2>4. Iterating Over Arrays</h2>
+<p>You can use loops, such as <code>for</code> and <code>forEach()</code>, to iterate over array elements.</p>
+
+<h3>Example 4: Iterating Over Arrays</h3>
+<pre><code>const animals = ["Cat", "Dog", "Elephant"];
+
+// Using for loop
+for (let i = 0; i < animals.length; i++) {
+    console.log(animals[i]);
+}
+
+// Using forEach method
+animals.forEach(animal => {
+    console.log(animal);
+});</code></pre>
+<p><strong>Explanation:</strong> In this example, two methods are shown for iterating over the <code>animals</code> array. The first uses a traditional <code>for</code> loop, while the second uses the <code>forEach()</code> method to execute a function for each element in the array.</p>
+
+<h2>5. Array Length</h2>
+<p>You can find the number of elements in an array using the <code>length</code> property.</p>
+
+<h3>Example 5: Array Length</h3>
+<pre><code>const fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits.length); // Output: 3</code></pre>
+<p><strong>Explanation:</strong> This example demonstrates how to access the <code>length</code> property of an array. The <code>length</code> property returns the number of elements in the <code>fruits</code> array.</p>
+
+<h2>6. Array Methods</h2>
+<p>JavaScript provides several built-in methods for manipulating arrays, such as <code>map()</code>, <code>filter()</code>, and <code>reduce()</code>.</p>
+
+<h3>Example 6: Array Methods</h3>
+<pre><code>const numbers = [1, 2, 3, 4];
+
+// Using map() to create a new array with squared values
+const squared = numbers.map(num => num * num);
+console.log(squared); // Output: [1, 4, 9, 16]
+
+// Using filter() to create a new array with even numbers
+const evens = numbers.filter(num => num % 2 === 0);
+console.log(evens); // Output: [2, 4]</code></pre>
+<p><strong>Explanation:</strong> In this example, the <code>map()</code> method creates a new array with squared values of the <code>numbers</code> array. The <code>filter()</code> method creates a new array that only contains even numbers.</p>
+
+<h2>7. Multi-dimensional Arrays</h2>
+<p>JavaScript allows the creation of multi-dimensional arrays, which can be thought of as arrays of arrays.</p>
+
+<h3>Example 7: Multi-dimensional Arrays</h3>
+<pre><code>const matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+// Accessing an element in a multi-dimensional array
+console.log(matrix[1][2]); // Output: 6</code></pre>
+<p><strong>Explanation:</strong> This example shows how to create and access elements in a multi-dimensional array called <code>matrix</code>. The element at the second row and third column (index [1][2]) is accessed and printed.</p>
+
+</body>
+</html>

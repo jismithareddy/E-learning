@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox Explained</title>
+    <style>
+        /* Basic styling for the code display */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        .box {
+            padding: 20px;
+            margin: 10px 0;
+            border: 2px solid blue;
+            background-color: #e6f7ff;
+        }
+        .flex-container {
+            display: flex; /* Enables Flexbox layout */
+            justify-content: center; /* Centers items horizontally */
+            align-items: center; /* Centers items vertically */
+            height: 200px; /* Sets height for the container */
+            border: 2px solid green; /* Border for visibility */
+            margin: 20px 0;
+        }
+        .flex-item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #cce5ff;
+            border: 1px solid #007bff;
+            flex: 1; /* Allows items to grow and shrink */
+            text-align: center; /* Centers text inside items */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Flexbox </h1>
+
+    <h2>Understanding the Flexbox Property</h2>
+    <p>The <code>flex</code> property in CSS is a powerful layout tool that provides an efficient way to arrange items within a container. It enables responsive design and helps to align items in a predictable way across different screen sizes.</p>
+    <ul>
+        <li><strong>display: flex:</strong> Activates Flexbox on the container, enabling flex properties for its children.</li>
+        <li><strong>flex-direction:</strong> Defines the direction flex items are placed in the flex container (row or column).</li>
+        <li><strong>justify-content:</strong> Aligns flex items along the main axis (horizontal or vertical depending on flex-direction).</li>
+        <li><strong>align-items:</strong> Aligns flex items along the cross axis (perpendicular to the main axis).</li>
+        <li><strong>flex-wrap:</strong> Determines whether flex items should wrap onto multiple lines.</li>
+    </ul>
+
+    <h2>Example 1: Basic Flexbox Layout</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox Example&lt;/title&gt;
+    &lt;style&gt;
+        .flex-container {
+            display: flex; /* Enables Flexbox layout */
+            justify-content: space-around; /* Spaces items evenly */
+            align-items: center; /* Centers items vertically */
+            height: 200px; /* Sets height for the container */
+            border: 2px solid green; /* Border for visibility */
+        }
+        .flex-item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #cce5ff;
+            border: 1px solid #007bff;
+            flex: 1; /* Allows items to grow and shrink */
+            text-align: center; /* Centers text inside items */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Basic Flexbox Layout&lt;/h1&gt;
+    &lt;div class="flex-container"&gt;
+        &lt;div class="flex-item"&gt;Item 1&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 2&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 3&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates a basic Flexbox layout:
+        <ul>
+            <li>The <code>flex-container</code> is a Flexbox container with items displayed in a row.</li>
+            <li>The <code>justify-content: space-around;</code> property spaces the items evenly along the main axis.</li>
+            <li>The <code>align-items: center;</code> property centers the items vertically within the container.</li>
+        </ul>
+    </div>
+
+    <h2>Example 2: Flexbox with Different Directions</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox Direction Example&lt;/title&gt;
+    &lt;style&gt;
+        .flex-container {
+            display: flex; /* Enables Flexbox layout */
+            flex-direction: column; /* Stacks items vertically */
+            justify-content: center; /* Centers items vertically */
+            height: 300px; /* Sets height for the container */
+            border: 2px solid green; /* Border for visibility */
+        }
+        .flex-item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #cce5ff;
+            border: 1px solid #007bff;
+            text-align: center; /* Centers text inside items */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Flexbox with Different Directions&lt;/h1&gt;
+    &lt;div class="flex-container"&gt;
+        &lt;div class="flex-item"&gt;Item 1&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 2&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 3&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example shows how to use Flexbox to stack items vertically:
+        <ul>
+            <li>The <code>flex-direction: column;</code> property stacks the items on top of each other.</li>
+            <li>The <code>justify-content: center;</code> property centers the items within the flex container vertically.</li>
+        </ul>
+    </div>
+
+    <h2>Example 3: Flexbox Wrapping</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox Wrap Example&lt;/title&gt;
+    &lt;style&gt;
+        .flex-container {
+            display: flex; /* Enables Flexbox layout */
+            flex-wrap: wrap; /* Allows items to wrap onto multiple lines */
+            justify-content: space-between; /* Spaces items evenly */
+            border: 2px solid green; /* Border for visibility */
+        }
+        .flex-item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #cce5ff;
+            border: 1px solid #007bff;
+            flex: 0 1 150px; /* Allows items to grow and shrink, with a base width of 150px */
+            text-align: center; /* Centers text inside items */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Flexbox Wrapping&lt;/h1&gt;
+    &lt;div class="flex-container"&gt;
+        &lt;div class="flex-item"&gt;Item 1&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 2&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 3&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 4&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 5&lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates the wrapping feature of Flexbox:
+        <ul>
+            <li>The <code>flex-wrap: wrap;</code> property allows items to wrap onto the next line when there isn’t enough space.</li>
+            <li>Each <code>flex-item</code> has a base width of 150px, but can grow and shrink as needed.</li>
+        </ul>
+    </div>
+
+</body>
+</html>

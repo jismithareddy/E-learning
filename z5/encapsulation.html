@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encapsulation in Java - Examples</title>
+</head>
+<body>
+    <h1>Encapsulation in Java</h1>
+    <p>Encapsulation is a fundamental concept in Object-Oriented Programming (OOP). It refers to the bundling of data (variables) and methods (functions) that operate on the data into a single unit, usually a class. Encapsulation also involves restricting access to the data and providing controlled access via getter and setter methods.</p>
+
+    <h2>What is Encapsulation?</h2>
+    <p>Encapsulation helps achieve data hiding by making fields private and allowing access through public methods (getters and setters). This ensures that the internal state of an object is hidden from the outside world and can only be modified in a controlled manner.</p>
+
+    <h2>Examples of Encapsulation in Java</h2>
+
+    <h3>Example 1: Basic Encapsulation</h3>
+    <pre><code>
+    class Person {
+        // Private fields
+        private String name;
+        private int age;
+
+        // Constructor
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        // Getter for name
+        public String getName() {
+            return name;
+        }
+
+        // Setter for name
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        // Getter for age
+        public int getAge() {
+            return age;
+        }
+
+        // Setter for age
+        public void setAge(int age) {
+            this.age = age;
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Person person = new Person("John", 25);
+            System.out.println("Name: " + person.getName());  // Output: Name: John
+            System.out.println("Age: " + person.getAge());    // Output: Age: 25
+
+            // Changing the name and age
+            person.setName("Mike");
+            person.setAge(30);
+            System.out.println("Updated Name: " + person.getName());  // Output: Updated Name: Mike
+            System.out.println("Updated Age: " + person.getAge());    // Output: Updated Age: 30
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, the fields <code>name</code> and <code>age</code> are made <code>private</code>, which restricts access to them from outside the class. The public methods <code>getName()</code> and <code>setName()</code> provide controlled access to these fields. This is a simple example of encapsulation.</p>
+
+    <h3>Example 2: Encapsulation for Banking System</h3>
+    <pre><code>
+    class Account {
+        // Private fields
+        private int accountNumber;
+        private double balance;
+
+        // Constructor
+        public Account(int accountNumber, double balance) {
+            this.accountNumber = accountNumber;
+            this.balance = balance;
+        }
+
+        // Getter for accountNumber
+        public int getAccountNumber() {
+            return accountNumber;
+        }
+
+        // Getter for balance
+        public double getBalance() {
+            return balance;
+        }
+
+        // Method to deposit money
+        public void deposit(double amount) {
+            if (amount > 0) {
+                balance += amount;
+                System.out.println("Deposited: " + amount);
+            } else {
+                System.out.println("Invalid deposit amount");
+            }
+        }
+
+        // Method to withdraw money
+        public void withdraw(double amount) {
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                System.out.println("Withdrawn: " + amount);
+            } else {
+                System.out.println("Insufficient balance or invalid withdrawal amount");
+            }
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Account account = new Account(12345, 1000.00);
+            System.out.println("Account Number: " + account.getAccountNumber());  // Output: Account Number: 12345
+            System.out.println("Balance: " + account.getBalance());               // Output: Balance: 1000.0
+
+            account.deposit(500);  // Output: Deposited: 500.0
+            account.withdraw(200); // Output: Withdrawn: 200.0
+
+            System.out.println("Updated Balance: " + account.getBalance());      // Output: Updated Balance: 1300.0
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, the <code>Account</code> class encapsulates the account details like <code>accountNumber</code> and <code>balance</code>. These fields are private, and the methods <code>deposit()</code> and <code>withdraw()</code> allow controlled updates to the account balance. Encapsulation ensures that users can only modify the balance through valid operations.</p>
+
+    <h3>Example 3: Encapsulation with Validation</h3>
+    <pre><code>
+    class Product {
+        // Private fields
+        private String name;
+        private double price;
+
+        // Constructor
+        public Product(String name, double price) {
+            this.name = name;
+            setPrice(price);  // Using setter with validation
+        }
+
+        // Getter for name
+        public String getName() {
+            return name;
+        }
+
+        // Getter for price
+        public double getPrice() {
+            return price;
+        }
+
+        // Setter for price with validation
+        public void setPrice(double price) {
+            if (price > 0) {
+                this.price = price;
+            } else {
+                System.out.println("Invalid price");
+            }
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Product product = new Product("Laptop", 1500.00);
+            System.out.println("Product: " + product.getName());  // Output: Product: Laptop
+            System.out.println("Price: " + product.getPrice());   // Output: Price: 1500.0
+
+            // Trying to set an invalid price
+            product.setPrice(-500);  // Output: Invalid price
+            System.out.println("Updated Price: " + product.getPrice());  // Output: Updated Price: 1500.0
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> This example demonstrates encapsulation with validation in the setter method. The price of the product can only be set if it's positive, ensuring that the data remains valid. Encapsulation hides the internal logic of data validation from the outside world.</p>
+
+    <h3>Example 4: Using Encapsulation with Getter and Setter</h3>
+    <pre><code>
+    class Student {
+        private String name;
+        private int age;
+
+        // Constructor
+        public Student(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        // Getter for name
+        public String getName() {
+            return name;
+        }
+
+        // Setter for name
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        // Getter for age
+        public int getAge() {
+            return age;
+        }
+
+        // Setter for age
+        public void setAge(int age) {
+            if (age >= 0) {
+                this.age = age;
+            }
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Student student = new Student("Alice", 20);
+            System.out.println("Name: " + student.getName());  // Output: Name: Alice
+            System.out.println("Age: " + student.getAge());    // Output: Age: 20
+
+            student.setName("Bob");
+            student.setAge(25);
+            System.out.println("Updated Name: " + student.getName());  // Output: Updated Name: Bob
+            System.out.println("Updated Age: " + student.getAge());    // Output: Updated Age: 25
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>Student</code> class encapsulates the student's details, allowing access to them via public getter and setter methods. The setter method <code>setAge()</code> ensures that only valid age values are accepted.</p>
+
+</body>
+</html>

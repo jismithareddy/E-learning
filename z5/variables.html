@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables and Data Types in Java</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Variables and Data Types in Java</h1>
+
+    <h2>Variables in Java</h2>
+    <p>A <strong>variable</strong> in Java is a container that holds a value. Each variable must be declared with a specific data type. Once declared, the variable can store values of that data type. Variables help in storing, processing, and retrieving data in a program.</p>
+
+    <h3>Declaration and Initialization</h3>
+    <p>In Java, variables are declared using the following syntax:</p>
+    <pre><code>data_type variable_name = value;</code></pre>
+    <ul>
+        <li><strong>data_type:</strong> Specifies the type of data the variable will store (e.g., int, String, double, etc.).</li>
+        <li><strong>variable_name:</strong> The name of the variable (e.g., num, name, etc.).</li>
+        <li><strong>value:</strong> The actual value the variable holds (optional during declaration, but can be initialized immediately).</li>
+    </ul>
+
+    <h3>Types of Variables</h3>
+    <ul>
+        <li><strong>Local Variables:</strong> Declared inside a method or block, and can only be used within that method or block.</li>
+        <li><strong>Instance Variables:</strong> Declared inside a class but outside any method. These variables are associated with an object.</li>
+        <li><strong>Class Variables:</strong> Declared with the static keyword. These variables are shared across all instances of the class.</li>
+    </ul>
+
+    <h2>Data Types in Java</h2>
+    <p>Java provides two main types of data types: <strong>Primitive data types</strong> and <strong>Reference data types</strong>.</p>
+
+    <h3>Primitive Data Types</h3>
+    <p>Primitive data types are the most basic data types in Java. They store simple values, such as numbers or characters. Java provides 8 primitive data types:</p>
+
+    <table>
+        <tr>
+            <th>Data Type</th>
+            <th>Size</th>
+            <th>Default Value</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>byte</td>
+            <td>1 byte</td>
+            <td>0</td>
+            <td>Stores integer values from -128 to 127.</td>
+        </tr>
+        <tr>
+            <td>short</td>
+            <td>2 bytes</td>
+            <td>0</td>
+            <td>Stores integer values from -32,768 to 32,767.</td>
+        </tr>
+        <tr>
+            <td>int</td>
+            <td>4 bytes</td>
+            <td>0</td>
+            <td>Stores integer values from -2^31 to 2^31-1.</td>
+        </tr>
+        <tr>
+            <td>long</td>
+            <td>8 bytes</td>
+            <td>0L</td>
+            <td>Stores larger integer values than int, up to 2^63-1.</td>
+        </tr>
+        <tr>
+            <td>float</td>
+            <td>4 bytes</td>
+            <td>0.0f</td>
+            <td>Stores floating-point values with single precision.</td>
+        </tr>
+        <tr>
+            <td>double</td>
+            <td>8 bytes</td>
+            <td>0.0d</td>
+            <td>Stores floating-point values with double precision.</td>
+        </tr>
+        <tr>
+            <td>char</td>
+            <td>2 bytes</td>
+            <td>'\u0000'</td>
+            <td>Stores a single 16-bit Unicode character.</td>
+        </tr>
+        <tr>
+            <td>boolean</td>
+            <td>1 bit</td>
+            <td>false</td>
+            <td>Stores either true or false.</td>
+        </tr>
+    </table>
+
+    <h3>Reference Data Types</h3>
+    <p>Reference data types are used to store references (addresses) to objects in memory. Unlike primitive types, reference types can point to complex objects such as arrays, classes, or interfaces.</p>
+
+    <h4>1. Arrays</h4>
+    <p>An <strong>array</strong> is a collection of variables that are of the same type. In Java, arrays are objects, and their size is fixed once defined.</p>
+    <p>Arrays allow us to store multiple values in a single variable. For example, we can store an array of integers, strings, or any other objects.</p>
+    
+    <h5>Operations on Arrays:</h5>
+    <ul>
+        <li>Declaring an array: <code>int[] arr;</code></li>
+        <li>Creating an array: <code>arr = new int[5];</code></li>
+        <li>Accessing array elements: <code>arr[0] = 10;</code></li>
+        <li>Iterating through an array: <code>for(int i = 0; i < arr.length; i++)</code></li>
+    </ul>
+
+    <h4>2. Classes</h4>
+    <p>A <strong>class</strong> in Java is a reference data type that defines the properties (fields) and behavior (methods) of an object. A class serves as a blueprint for creating objects (instances).</p>
+    <p>Classes allow you to model real-world entities, like a "Car" class that may have fields like color, make, and model, and methods like drive() and stop().</p>
+
+    <h5>Operations on Classes:</h5>
+    <ul>
+        <li>Creating an object from a class: <code>Car myCar = new Car();</code></li>
+        <li>Accessing fields and methods of the object: <code>myCar.drive();</code></li>
+        <li>Modifying object properties: <code>myCar.color = "Red";</code></li>
+    </ul>
+
+    <h4>3. Interfaces</h4>
+    <p>An <strong>interface</strong> is a reference data type in Java that defines a contract of methods that a class must implement. Interfaces allow multiple inheritance of method signatures, enabling the decoupling of functionality.</p>
+    
+    <h5>Operations on Interfaces:</h5>
+    <ul>
+        <li>Declaring an interface: <code>interface Animal { }</code></li>
+        <li>Implementing an interface in a class: <code>class Dog implements Animal { }</code></li>
+        <li>Accessing implemented methods: <code>Dog dog = new Dog();</code></li>
+    </ul>
+
+    <h2>Example of Using Reference Data Types</h2>
+    <pre><code>
+        // Example with Arrays
+        public class Main {
+            public static void main(String[] args) {
+                // Creating and initializing an array
+                int[] numbers = {1, 2, 3, 4, 5};
+                
+                // Accessing elements in the array
+                System.out.println("First element: " + numbers[0]);
+
+                // Looping through the array
+                for(int i = 0; i < numbers.length; i++) {
+                    System.out.println("Element " + i + ": " + numbers[i]);
+                }
+            }
+        }
+
+        // Example with Classes
+        class Car {
+            String color;
+            String make;
+            String model;
+
+            void drive() {
+                System.out.println("The car is driving.");
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                // Creating an object of Car class
+                Car myCar = new Car();
+                myCar.color = "Red";
+                myCar.drive();
+            }
+        }
+    </code></pre>
+
+</body>
+</html>

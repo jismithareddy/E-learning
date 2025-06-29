@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Data Types</title>
+</head>
+<body>
+    <h1>SQL Data Types</h1>
+
+    <p>SQL (Structured Query Language) provides several <strong>data types</strong> that allow you to define the kind of data a column will hold in a table. Choosing the correct data type for a column is essential for the proper storage of data and the performance of queries.</p>
+
+    <h2>1. Numeric Data Types</h2>
+    <p>Numeric data types store numerical values. These values can be either integers (whole numbers) or floating-point numbers (numbers with decimal places).</p>
+
+    <h3>a. INT (or INTEGER)</h3>
+    <p><strong>Description:</strong> Used for whole numbers.</p>
+    <p><strong>Range:</strong> Varies by database system, but generally from -2,147,483,648 to 2,147,483,647.</p>
+    <p><strong>Example:</strong> <code>age INT</code></p>
+
+    <h3>b. TINYINT</h3>
+    <p><strong>Description:</strong> A smaller integer type.</p>
+    <p><strong>Range:</strong> Typically from -128 to 127 (signed) or 0 to 255 (unsigned).</p>
+    <p><strong>Example:</strong> <code>score TINYINT</code></p>
+
+    <h3>c. SMALLINT</h3>
+    <p><strong>Description:</strong> For slightly larger whole numbers than <code>TINYINT</code>.</p>
+    <p><strong>Range:</strong> From -32,768 to 32,767.</p>
+    <p><strong>Example:</strong> <code>year SMALLINT</code></p>
+
+    <h3>d. BIGINT</h3>
+    <p><strong>Description:</strong> Stores very large whole numbers.</p>
+    <p><strong>Range:</strong> From -2^63 to 2^63 - 1.</p>
+    <p><strong>Example:</strong> <code>population BIGINT</code></p>
+
+    <h3>e. FLOAT</h3>
+    <p><strong>Description:</strong> Stores floating-point numbers (numbers with decimals) with single precision.</p>
+    <p><strong>Range:</strong> Dependent on database system.</p>
+    <p><strong>Example:</strong> <code>height FLOAT</code></p>
+
+    <h3>f. DOUBLE</h3>
+    <p><strong>Description:</strong> Stores floating-point numbers with double precision (more accurate than <code>FLOAT</code>).</p>
+    <p><strong>Range:</strong> Larger range than <code>FLOAT</code>.</p>
+    <p><strong>Example:</strong> <code>price DOUBLE</code></p>
+
+    <h3>g. DECIMAL or NUMERIC</h3>
+    <p><strong>Description:</strong> Stores exact numeric data with a specified precision and scale. Useful for storing monetary values.</p>
+    <p><strong>Precision:</strong> Total number of digits.</p>
+    <p><strong>Scale:</strong> Number of digits to the right of the decimal point.</p>
+    <p><strong>Example:</strong> <code>salary DECIMAL(10, 2)</code> (10 digits in total, 2 after the decimal)</p>
+
+    <h2>2. Character Data Types</h2>
+    <p>These data types are used for storing string (text) data, and they are often the most commonly used data types in SQL.</p>
+
+    <h3>a. CHAR</h3>
+    <p><strong>Description:</strong> Fixed-length string. If the value is shorter than the specified length, it is padded with spaces.</p>
+    <p><strong>Size:</strong> Can store up to 255 characters.</p>
+    <p><strong>Example:</strong> <code>country CHAR(3)</code> (for 3-letter country codes)</p>
+
+    <h3>b. VARCHAR</h3>
+    <p><strong>Description:</strong> Variable-length string. Only the actual length of the string is stored, with no padding.</p>
+    <p><strong>Size:</strong> Can store up to 65,535 characters.</p>
+    <p><strong>Example:</strong> <code>name VARCHAR(255)</code></p>
+
+    <h3>c. TEXT</h3>
+    <p><strong>Description:</strong> Stores long text strings. The maximum size depends on the database system, but it is generally large (up to 65,535 characters or more).</p>
+    <p><strong>Example:</strong> <code>description TEXT</code></p>
+
+    <h2>3. Date and Time Data Types</h2>
+    <p>Date and time data types store values related to dates and times.</p>
+
+    <h3>a. DATE</h3>
+    <p><strong>Description:</strong> Stores dates in the format <code>YYYY-MM-DD</code>.</p>
+    <p><strong>Example:</strong> <code>birthdate DATE</code></p>
+
+    <h3>b. DATETIME</h3>
+    <p><strong>Description:</strong> Stores both date and time values in the format <code>YYYY-MM-DD HH:MM:SS</code>.</p>
+    <p><strong>Example:</strong> <code>created_at DATETIME</code></p>
+
+    <h3>c. TIME</h3>
+    <p><strong>Description:</strong> Stores time values in the format <code>HH:MM:SS</code>.</p>
+    <p><strong>Example:</strong> <code>event_time TIME</code></p>
+
+    <h3>d. TIMESTAMP</h3>
+    <p><strong>Description:</strong> Stores date and time values with time zone information. Typically used for tracking changes.</p>
+    <p><strong>Example:</strong> <code>updated_at TIMESTAMP</code></p>
+
+    <h2>4. Boolean Data Type</h2>
+    <p>Boolean data types store true or false values.</p>
+
+    <h3>a. BOOLEAN</h3>
+    <p><strong>Description:</strong> Stores true or false values. Some systems use <code>TRUE</code> and <code>FALSE</code> or 1 and 0.</p>
+    <p><strong>Example:</strong> <code>is_active BOOLEAN</code></p>
+
+    <h2>5. Binary Data Types</h2>
+    <p>Binary data types store data in a binary format, typically for files like images, audio, or videos.</p>
+
+    <h3>a. BLOB</h3>
+    <p><strong>Description:</strong> Stores Binary Large Objects, such as images or files.</p>
+    <p><strong>Example:</strong> <code>image BLOB</code></p>
+
+    <h3>b. VARBINARY</h3>
+    <p><strong>Description:</strong> Similar to BLOB, but with a variable length.</p>
+    <p><strong>Example:</strong> <code>data VARBINARY(255)</code></p>
+
+    <h2>Conclusion</h2>
+    <p>Choosing the right data type is essential for optimizing database storage and performance. Ensure that you select data types based on the nature and range of the data you're working with.</p>
+
+</body>
+</html>

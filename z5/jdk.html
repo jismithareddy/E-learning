@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDK and JVM Explanation</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Introduction to JDK and JVM</h1>
+
+    <h2>JDK (Java Development Kit)</h2>
+    <p>The <strong>JDK</strong> is a software development kit used to develop Java applications. It provides all the tools necessary to develop Java programs, including the compiler, Java Runtime Environment (JRE), and various development tools such as debuggers, documentation generators, and more.</p>
+
+    <h3>Components of JDK:</h3>
+    <ul>
+        <li><strong>JRE (Java Runtime Environment):</strong> This is included in JDK and is necessary to run Java applications. It contains the JVM and other libraries needed for execution.</li>
+        <li><strong>Java Compiler (javac):</strong> The compiler that translates Java source code into bytecode.</li>
+        <li><strong>Java Debugger (jdb):</strong> A tool to debug Java programs.</li>
+        <li><strong>Java Doc:</strong> A tool for generating API documentation for your Java code in HTML format.</li>
+        <li><strong>JVM:</strong> The <strong>Java Virtual Machine</strong>, which is part of the JRE, is responsible for running Java bytecode.</li>
+        <li><strong>Tools like `jar` (Java ARchive):</strong> It packages applications into archives for distribution.</li>
+    </ul>
+
+    <h3>Key Features of JDK:</h3>
+    <ul>
+        <li>It allows developers to write, compile, debug, and execute Java applications.</li>
+        <li>It provides both development and runtime tools.</li>
+        <li>It supports various IDEs (Integrated Development Environments) such as Eclipse, IntelliJ IDEA, NetBeans, etc.</li>
+    </ul>
+
+    <h2>JVM (Java Virtual Machine)</h2>
+    <p>The <strong>JVM</strong> is a part of the JRE and is responsible for running Java programs. It is platform-independent, meaning it enables Java programs to run on any operating system or hardware architecture without needing to rewrite the code.</p>
+
+    <h3>Components of JVM:</h3>
+    <ul>
+        <li><strong>Class Loader Subsystem:</strong> Loads Java classes into the JVM.</li>
+        <li><strong>Runtime Data Areas:</strong> Various memory areas like heap, stack, method area, etc., used for program execution.</li>
+        <li><strong>Execution Engine:</strong> Executes the bytecode instructions.</li>
+        <li><strong>Garbage Collector:</strong> Handles automatic memory management by reclaiming unused memory.</li>
+        <li><strong>Native Method Interface (JNI):</strong> Interface to call libraries and native code (written in languages like C or C++).</li>
+        <li><strong>Java Native Interface (JNI):</strong> A framework that allows Java code to interact with native applications written in other languages.</li>
+    </ul>
+
+    <h3>Key Features of JVM:</h3>
+    <ul>
+        <li><strong>Platform-independent:</strong> JVM enables the principle of "Write Once, Run Anywhere (WORA)," as Java bytecode can run on any system that has a JVM.</li>
+        <li><strong>Interpretation of Bytecode:</strong> JVM reads and executes Java bytecode.</li>
+        <li><strong>Memory Management:</strong> JVM manages memory using a heap and stack for variables and object storage.</li>
+        <li><strong>Garbage Collection:</strong> Automatically frees memory by removing unused objects from the heap.</li>
+    </ul>
+
+    <h2>Difference Between JDK and JVM</h2>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>JDK (Java Development Kit)</th>
+            <th>JVM (Java Virtual Machine)</th>
+        </tr>
+        <tr>
+            <td>Definition</td>
+            <td>JDK is a software development kit that includes tools for Java development (compiler, debugger, etc.).</td>
+            <td>JVM is an engine that runs Java bytecode and makes Java platform-independent.</td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td>JDK is used for developing and testing Java applications.</td>
+            <td>JVM is used for running Java applications.</td>
+        </tr>
+        <tr>
+            <td>Contains</td>
+            <td>Contains JRE, Java compiler (`javac`), Java debugger, and other tools.</td>
+            <td>Contains the JVM itself, which is part of the JRE.</td>
+        </tr>
+        <tr>
+            <td>Purpose</td>
+            <td>Provides the necessary tools to develop Java applications.</td>
+            <td>Executes the bytecode generated by the Java compiler.</td>
+        </tr>
+        <tr>
+            <td>Environment</td>
+            <td>Used by developers to write, compile, and debug Java code.</td>
+            <td>Used to execute Java bytecode on any platform.</td>
+        </tr>
+    </table>
+
+</body>
+</html>

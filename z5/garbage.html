@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garbage Collection in Java</title>
+</head>
+<body>
+    <h1>Garbage Collection in Java</h1>
+    <p>
+        Garbage Collection (GC) in Java is an automatic process used to reclaim memory by deleting objects 
+        that are no longer in use. In Java, developers do not need to manually manage memory allocation 
+        and deallocation; the Java Virtual Machine (JVM) handles memory management and garbage collection.
+    </p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+        <li><strong>Garbage Collector (GC)</strong>: The GC is responsible for finding and deleting objects 
+            that are no longer referenced, releasing their memory back to the heap.</li>
+        <li><strong>Heap Memory</strong>: The heap is a region of memory used for dynamic memory allocation. 
+            It contains objects created during runtime.</li>
+        <li><strong>Reachable vs. Unreachable Objects</strong>: An object is "reachable" if it can be accessed 
+            via a chain of references from active threads or static fields. If no such chain exists, the object 
+            becomes "unreachable" and can be collected by the GC.</li>
+    </ul>
+
+    <h2>How Garbage Collection Works</h2>
+    <p>
+        Java Garbage Collection works using the Mark and Sweep Algorithm. The process includes two phases:
+        <ol>
+            <li><strong>Mark:</strong> The GC identifies all live objects (reachable objects) and marks them.</li>
+            <li><strong>Sweep:</strong> The GC removes all unmarked objects (unreachable objects) and frees the memory.</li>
+        </ol>
+    </p>
+
+    <h2>Types of Garbage Collectors</h2>
+    <ul>
+        <li><strong>Serial Garbage Collector</strong>: Used in single-threaded environments.</li>
+        <li><strong>Parallel Garbage Collector</strong>: Uses multiple threads to speed up garbage collection.</li>
+        <li><strong>Concurrent Mark-Sweep (CMS) Collector</strong>: Minimizes pause times by performing most of its work concurrently with the application threads.</li>
+        <li><strong>G1 Garbage Collector</strong>: Used in large applications, with a goal of low pause times and high throughput.</li>
+    </ul>
+
+    <h2>Examples of Garbage Collection</h2>
+
+    <h3>Example 1: Simple Example of Garbage Collection</h3>
+    <pre>
+public class GCExample {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("John", 25);
+        Employee e2 = new Employee("Jane", 28);
+
+        // After the object reference is set to null, the object becomes eligible for garbage collection.
+        e1 = null;
+
+        System.gc(); // Requesting garbage collection manually (not recommended for real-world use)
+    }
+}
+
+class Employee {
+    String name;
+    int age;
+
+    Employee(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Garbage collected for " + name);
+        super.finalize();
+    }
+}
+    </pre>
+    <p>
+        In this example, the object <strong>e1</strong> becomes eligible for garbage collection when it is set to <strong>null</strong>. The 
+        <strong>finalize()</strong> method is called when the object is garbage collected, printing a message indicating that the 
+        object has been cleaned up.
+    </p>
+
+    <h3>Example 2: Demonstrating Unreachable Objects</h3>
+    <pre>
+public class UnreachableExample {
+    public static void main(String[] args) {
+        String str = new String("Hello");
+        str = null; // Now str is unreachable
+
+        // Requesting garbage collection
+        System.gc(); 
+    }
+}
+    </pre>
+    <p>
+        When the reference <strong>str</strong> is set to <strong>null</strong>, the object it refers to becomes unreachable. The object becomes 
+        eligible for garbage collection.
+    </p>
+
+    <h3>Example 3: Object Creation and GC Notification</h3>
+    <pre>
+public class ObjectGC {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Mike", 30);
+        Employee e2 = new Employee("Sara", 22);
+
+        // Employee e1 is no longer needed
+        e1 = null;
+
+        System.gc(); // Requesting garbage collection
+    }
+}
+    </pre>
+    <p>
+        After setting <strong>e1</strong> to <strong>null</strong>, the object is eligible for garbage collection. The GC will clean it up when it runs.
+    </p>
+
+    <h3>Example 4: Automatically Called <code>finalize()</code></h3>
+    <pre>
+class Test {
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Object is being garbage collected.");
+        super.finalize();
+    }
+
+    public static void main(String[] args) {
+        Test obj = new Test();
+        obj = null;  // Making the object eligible for GC
+        System.gc();  // Manually invoking GC
+    }
+}
+    </pre>
+    <p>
+        The <strong>finalize()</strong> method is invoked when the object is garbage collected. This method allows you to define 
+        cleanup actions before the object is collected.
+    </p>
+
+    <h3>Example 5: Garbage Collection with Multiple Objects</h3>
+    <pre>
+public class MultiObjectGC {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Alice", 30);
+        Employee e2 = new Employee("Bob", 25);
+
+        e1 = null;  // e1 object becomes unreachable
+        e2 = null;  // e2 object becomes unreachable
+
+        System.gc(); // Requesting garbage collection
+    }
+}
+    </pre>
+    <p>
+        Both objects <strong>e1</strong> and <strong>e2</strong> are made unreachable, so they will be garbage collected when the GC runs.
+    </p>
+
+    <h3>Example 6: Preventing Garbage Collection with Strong Reference</h3>
+    <pre>
+public class PreventGC {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Jake", 35);
+
+        // e1 has a strong reference, and the object will not be garbage collected
+        System.gc();  // Garbage collection is requested, but the object will not be collected
+    }
+}
+    </pre>
+    <p>
+        The object <strong>e1</strong> still has a strong reference, so it will not be garbage collected, even when GC is manually requested.
+    </p>
+
+    <h3>Example 7: Soft Reference Example</h3>
+    <pre>
+import java.lang.ref.SoftReference;
+
+public class SoftReferenceExample {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Luke", 28);
+
+        // Soft reference to the object
+        SoftReference<Employee> softRef = new SoftReference<>(e1);
+
+        // The object can be garbage collected when memory is low
+        e1 = null;
+
+        // Suggest garbage collection
+        System.gc();
+    }
+}
+    </pre>
+    <p>
+        A soft reference holds a reference to the object. The object can be collected when the JVM is running out of memory.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+        In Java, Garbage Collection is an automatic process that helps to manage memory by deleting objects that are 
+        no longer reachable. Java provides different types of collectors, such as the Serial GC, Parallel GC, CMS GC, 
+        and G1 GC. It is important to note that while we can request garbage collection, we cannot force it to happen 
+        at any specific time, and it is not recommended to manually invoke GC in production code.
+    </p>
+
+</body>
+</html>

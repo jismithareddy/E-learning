@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File I/O in Java</title>
+</head>
+<body>
+
+    <h1>File I/O in Java</h1>
+    <p>Java provides a set of APIs for performing input and output operations on files. These are part of the Java I/O package <code>java.io</code>. File I/O in Java can be performed using classes such as <code>File</code>, <code>FileInputStream</code>, <code>FileOutputStream</code>, <code>BufferedReader</code>, <code>BufferedWriter</code>, and more.</p>
+
+    <h2>Reading and Writing Files in Java</h2>
+    <p>In Java, file input/output (I/O) operations allow us to read and write data to files. There are different classes in Java to handle file operations such as reading data from and writing data to files, depending on the file format (e.g., text files or binary files).</p>
+
+    <h2>File Handling in Java</h2>
+    <p>The basic process of file handling in Java involves the following steps:</p>
+    <ol>
+        <li>Creating or opening a file.</li>
+        <li>Reading data from the file (Input Operations).</li>
+        <li>Writing data to the file (Output Operations).</li>
+        <li>Closing the file to free up resources.</li>
+    </ol>
+
+    <h2>File Input and Output Using <code>FileInputStream</code> and <code>FileOutputStream</code></h2>
+
+    <h3>Example 1: Reading Data from a File</h3>
+    <p>The <code>FileInputStream</code> class is used to read bytes from a file. Here is an example:</p>
+
+    <pre><code>
+        import java.io.FileInputStream;
+        import java.io.IOException;
+
+        public class FileInputExample {
+            public static void main(String[] args) {
+                FileInputStream inputStream = null;
+                try {
+                    inputStream = new FileInputStream("example.txt");
+                    int data;
+                    while ((data = inputStream.read()) != -1) {
+                        System.out.print((char) data);  // Prints the content of the file
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (inputStream != null) {
+                            inputStream.close();  // Closing the stream
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: This code reads data byte-by-byte from the file <code>example.txt</code> and prints it to the console. The <code>FileInputStream</code> class is used for input operations on files.</p>
+
+    <h3>Example 2: Writing Data to a File</h3>
+    <p>The <code>FileOutputStream</code> class is used to write bytes to a file. Here’s an example:</p>
+
+    <pre><code>
+        import java.io.FileOutputStream;
+        import java.io.IOException;
+
+        public class FileOutputExample {
+            public static void main(String[] args) {
+                FileOutputStream outputStream = null;
+                try {
+                    outputStream = new FileOutputStream("output.txt");
+                    String content = "This is an example of file writing in Java.";
+                    outputStream.write(content.getBytes());  // Writing bytes to the file
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (outputStream != null) {
+                            outputStream.close();  // Closing the stream
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: This example writes a string to the file <code>output.txt</code> using the <code>FileOutputStream</code> class. The string is first converted to a byte array using <code>getBytes()</code>, and then written to the file.</p>
+
+    <h2>File Reader and Writer for Text Files</h2>
+    <p>Java provides <code>FileReader</code> and <code>FileWriter</code> classes for reading and writing text files. These classes are more suitable for character-based I/O than <code>FileInputStream</code> and <code>FileOutputStream</code>.</p>
+
+    <h3>Example 3: Reading from a Text File Using <code>FileReader</code></h3>
+
+    <pre><code>
+        import java.io.FileReader;
+        import java.io.IOException;
+
+        public class FileReaderExample {
+            public static void main(String[] args) {
+                FileReader reader = null;
+                try {
+                    reader = new FileReader("textfile.txt");
+                    int data;
+                    while ((data = reader.read()) != -1) {
+                        System.out.print((char) data);  // Reads and prints character by character
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (reader != null) {
+                            reader.close();  // Closing the reader
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: This code uses <code>FileReader</code> to read a text file character by character and prints the content to the console. It’s more convenient for character-based data than <code>FileInputStream</code>.</p>
+
+    <h3>Example 4: Writing to a Text File Using <code>FileWriter</code></h3>
+
+    <pre><code>
+        import java.io.FileWriter;
+        import java.io.IOException;
+
+        public class FileWriterExample {
+            public static void main(String[] args) {
+                FileWriter writer = null;
+                try {
+                    writer = new FileWriter("outputfile.txt");
+                    String content = "Writing to a text file in Java using FileWriter.";
+                    writer.write(content);  // Writing string to the file
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (writer != null) {
+                            writer.close();  // Closing the writer
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: This example uses <code>FileWriter</code> to write a string to a text file. The <code>write()</code> method writes the string directly to the file.</p>
+
+    <h2>Buffered I/O for Efficient File Handling</h2>
+    <p>Buffered I/O can improve performance by reducing the number of I/O operations. The <code>BufferedReader</code> and <code>BufferedWriter</code> classes are used to efficiently read and write characters from and to files, respectively.</p>
+
+    <h3>Example 5: Reading from a File Using <code>BufferedReader</code></h3>
+
+    <pre><code>
+        import java.io.BufferedReader;
+        import java.io.FileReader;
+        import java.io.IOException;
+
+        public class BufferedReaderExample {
+            public static void main(String[] args) {
+                BufferedReader reader = null;
+                try {
+                    reader = new BufferedReader(new FileReader("textfile.txt"));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        System.out.println(line);  // Reads the file line by line
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (reader != null) {
+                            reader.close();  // Closing the reader
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: This code uses <code>BufferedReader</code> to read a text file line by line. BufferedReader is faster than <code>FileReader</code> because it reduces the number of read operations.</p>
+
+    <h3>Example 6: Writing to a File Using <code>BufferedWriter</code></h3>
+
+    <pre><code>
+        import java.io.BufferedWriter;
+        import java.io.FileWriter;
+        import java.io.IOException;
+
+        public class BufferedWriterExample {
+            public static void main(String[] args) {
+                BufferedWriter writer = null;
+                try {
+                    writer = new BufferedWriter(new FileWriter("outputfile.txt"));
+                    String content = "Writing to a file efficiently using BufferedWriter.";
+                    writer.write(content);  // Writes to the file
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (writer != null) {
+                            writer.close();  // Closing the writer
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: <code>BufferedWriter</code> is used for efficient writing. It buffers the data and writes it in larger chunks, improving performance compared to <code>FileWriter</code>.</p>
+
+    <h2>Conclusion</h2>
+    <p>File I/O in Java is an essential part of many applications, enabling us to read and write data from or to files. The use of different input/output streams like <code>FileInputStream</code>, <code>FileOutputStream</code>, and buffered streams like <code>BufferedReader</code> and <code>BufferedWriter</code> provides efficient ways to handle files.</p>
+
+</body>
+</html>

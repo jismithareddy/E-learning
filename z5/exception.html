@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exception Handling in Java</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        code {
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exception Handling in Java</h1>
+    <p>Exception handling is a mechanism in Java that allows a program to deal with runtime errors, ensuring that the program can continue executing even when an unexpected situation arises. In Java, exceptions are represented by objects, and they can be handled using <code>try</code>, <code>catch</code>, <code>finally</code>, and <code>throw</code> blocks.</p>
+
+    <h2>What is an Exception?</h2>
+    <p>An exception is an event that disrupts the normal flow of a program. It occurs at runtime and can be caused by various reasons such as invalid user input, unavailable resources, or errors in logic. When an exception occurs, the program creates an exception object and looks for a block of code that handles the exception.</p>
+
+    <h2>Types of Exceptions</h2>
+    <p>There are two main types of exceptions in Java:</p>
+    <ul>
+        <li><strong>Checked Exceptions</strong>: These are exceptions that are checked at compile-time. Example: <code>IOException</code>, <code>SQLException</code>.</li>
+        <li><strong>Unchecked Exceptions</strong>: These are exceptions that occur at runtime and are not checked during compile-time. Example: <code>ArithmeticException</code>, <code>NullPointerException</code>.</li>
+    </ul>
+
+    <h2>Checked Exceptions</h2>
+    <p>Checked exceptions are exceptions that are checked during the compilation process. They must either be caught using a <code>catch</code> block or declared using the <code>throws</code> keyword. Below is a list of common checked exceptions:</p>
+    <ul>
+        <li><code>IOException</code>: Signals that an I/O exception has occurred (e.g., file not found).</li>
+        <li><code>SQLException</code>: Signals an error in SQL query processing.</li>
+        <li><code>ClassNotFoundException</code>: Occurs when an application tries to load a class that is not found.</li>
+        <li><code>FileNotFoundException</code>: Occurs when an application tries to open a file that does not exist.</li>
+        <li><code>InterruptedException</code>: Signals that a thread has been interrupted.</li>
+    </ul>
+
+    <h2>Unchecked Exceptions</h2>
+    <p>Unchecked exceptions are exceptions that are not checked at compile-time. These exceptions are typically caused by programming errors. Below is a list of common unchecked exceptions:</p>
+    <ul>
+        <li><code>ArithmeticException</code>: Occurs when an arithmetic operation fails (e.g., division by zero).</li>
+        <li><code>NullPointerException</code>: Occurs when a program attempts to access an object reference that is null.</li>
+        <li><code>ArrayIndexOutOfBoundsException</code>: Occurs when trying to access an index of an array that does not exist.</li>
+        <li><code>ClassCastException</code>: Occurs when trying to cast an object to a class that it is not an instance of.</li>
+        <li><code>NumberFormatException</code>: Occurs when a string cannot be parsed into a numeric type.</li>
+    </ul>
+
+    <h2>Example 1: Handling ArithmeticException</h2>
+    <p>In this example, we handle a division by zero exception:</p>
+
+    <pre><code>
+        public class ArithmeticExample {
+            public static void main(String[] args) {
+                try {
+                    int result = 10 / 0; // This will cause an ArithmeticException
+                } catch (ArithmeticException e) {
+                    System.out.println("Error: Division by zero is not allowed.");
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: The code tries to perform division by zero. When an <code>ArithmeticException</code> occurs, the exception is caught by the <code>catch</code> block, and a message is displayed.</p>
+
+    <h2>Example 2: Handling Multiple Exceptions</h2>
+    <p>Java allows handling multiple exceptions in a single <code>catch</code> block:</p>
+
+    <pre><code>
+        public class MultipleExceptions {
+            public static void main(String[] args) {
+                try {
+                    String str = null;
+                    System.out.println(str.length()); // This will cause a NullPointerException
+                    int[] arr = new int[5];
+                    arr[10] = 20; // This will cause an ArrayIndexOutOfBoundsException
+                } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Caught an exception: " + e.getMessage());
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: This example demonstrates handling two different types of exceptions—<code>NullPointerException</code> and <code>ArrayIndexOutOfBoundsException</code>—using a multi-catch block.</p>
+
+    <h2>Example 3: Using Finally Block</h2>
+    <p>The <code>finally</code> block executes whether an exception is thrown or not. It is often used for cleanup activities:</p>
+
+    <pre><code>
+        public class FinallyExample {
+            public static void main(String[] args) {
+                try {
+                    System.out.println("Inside try block");
+                    int result = 10 / 2;
+                    System.out.println("Result: " + result);
+                } catch (ArithmeticException e) {
+                    System.out.println("Caught an exception.");
+                } finally {
+                    System.out.println("Finally block executed.");
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: The <code>finally</code> block is always executed after the <code>try</code> and <code>catch</code> blocks, even if no exception occurs. In this case, "Finally block executed." will be printed regardless of whether an exception was thrown.</p>
+
+    <h2>Example 4: Throwing an Exception</h2>
+    <p>In Java, you can throw your own exceptions using the <code>throw</code> keyword:</p>
+
+    <pre><code>
+        public class ThrowExample {
+            public static void main(String[] args) {
+                try {
+                    checkAge(15);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            public static void checkAge(int age) throws Exception {
+                if (age < 18) {
+                    throw new Exception("You are not eligible for voting.");
+                } else {
+                    System.out.println("You are eligible for voting.");
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: The method <code>checkAge()</code> throws an exception if the age is less than 18. The exception is then caught in the <code>catch</code> block in the <code>main</code> method.</p>
+
+    <h2>Example 5: Custom Exception Handling</h2>
+    <p>You can define your own exception by extending the <code>Exception</code> class:</p>
+
+    <pre><code>
+        class InvalidAgeException extends Exception {
+            public InvalidAgeException(String message) {
+                super(message);
+            }
+        }
+
+        public class CustomExceptionExample {
+            public static void main(String[] args) {
+                try {
+                    checkAge(17);
+                } catch (InvalidAgeException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            public static void checkAge(int age) throws InvalidAgeException {
+                if (age < 18) {
+                    throw new InvalidAgeException("Age is below 18, not eligible.");
+                }
+            }
+        }
+    </code></pre>
+
+    <p>Explanation: Here, we create a custom exception <code>InvalidAgeException</code> and use it to throw an error when the age is less than 18.</p>
+
+    <h2>Conclusion</h2>
+    <p>Exception handling in Java is a powerful tool to improve the robustness of a program by gracefully handling errors. Understanding checked and unchecked exceptions and how to handle them appropriately is key to writing reliable Java applications.</p>
+
+</body>
+</html>

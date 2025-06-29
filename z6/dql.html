@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DQL (Data Query Language) in SQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .example {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DQL (Data Query Language) in SQL</h1>
+
+    <p class="description">
+        Data Query Language (DQL) refers to the SQL commands used for querying and retrieving data from a database. The primary DQL command is the <strong>SELECT</strong> statement. DQL allows you to fetch records from one or more tables based on specific conditions or requirements.
+    </p>
+
+    <h2>What is DQL?</h2>
+    <p class="description">
+        DQL is a subset of SQL that focuses on querying data from databases. The purpose of DQL commands is to retrieve information from a database without modifying the actual data (in contrast to DML commands that modify data). The most commonly used DQL command is <strong>SELECT</strong>.
+    </p>
+
+    <h2>SELECT Command</h2>
+    <p class="description">
+        The <strong>SELECT</strong> command is used to query and retrieve data from a table or multiple tables in a database. You can specify the columns you want to retrieve and apply filters, sorting, and grouping to the results.
+    </p>
+    <h3>Syntax:</h3>
+    <pre>SELECT column1, column2, ... FROM table_name WHERE condition;</pre>
+    
+    <h3>Example:</h3>
+    <pre>SELECT first_name, last_name FROM employees WHERE salary > 50000;</pre>
+    <p class="description">
+        This query retrieves the <strong>first_name</strong> and <strong>last_name</strong> of employees whose salary is greater than 50,000.
+    </p>
+
+    <h2>Filtering and Sorting</h2>
+    <p class="description">
+        You can filter the results of your query using the <strong>WHERE</strong> clause, and sort the results using the <strong>ORDER BY</strong> clause.
+    </p>
+    
+    <h3>Syntax for Filtering:</h3>
+    <pre>SELECT column1, column2 FROM table_name WHERE condition;</pre>
+    
+    <h3>Example:</h3>
+    <pre>SELECT first_name, last_name FROM employees WHERE salary > 50000;</pre>
+    
+    <h3>Syntax for Sorting:</h3>
+    <pre>SELECT column1, column2 FROM table_name ORDER BY column_name ASC|DESC;</pre>
+    
+    <h3>Example:</h3>
+    <pre>SELECT first_name, last_name FROM employees ORDER BY salary DESC;</pre>
+    <p class="description">
+        This query retrieves employee names and sorts them by salary in descending order.
+    </p>
+
+    <h2>Joining Tables</h2>
+    <p class="description">
+        You can retrieve data from multiple tables by using SQL joins. The most common types of joins are <strong>INNER JOIN</strong>, <strong>LEFT JOIN</strong>, <strong>RIGHT JOIN</strong>, and <strong>FULL JOIN</strong>.
+    </p>
+    
+    <h3>Example of INNER JOIN:</h3>
+    <pre>SELECT employees.first_name, employees.last_name, departments.department_name
+FROM employees
+INNER JOIN departments ON employees.department_id = departments.department_id;</pre>
+    <p class="description">
+        This query retrieves employee names along with their department names by joining the <strong>employees</strong> and <strong>departments</strong> tables on the <strong>department_id</strong> column.
+    </p>
+
+    <h2>Grouping Results</h2>
+    <p class="description">
+        You can group data in your query using the <strong>GROUP BY</strong> clause. Grouping is useful for aggregation, such as counting or summing values within categories.
+    </p>
+    
+    <h3>Syntax for Grouping:</h3>
+    <pre>SELECT column1, COUNT(*)
+FROM table_name
+GROUP BY column1;</pre>
+
+    <h3>Example:</h3>
+    <pre>SELECT department_id, COUNT(*) FROM employees GROUP BY department_id;</pre>
+    <p class="description">
+        This query counts the number of employees in each department and groups the results by <strong>department_id</strong>.
+    </p>
+
+    <h2>Visualization of a SELECT Query:</h2>
+    <p class="description">
+        The following is an example of a simple <strong>SELECT</strong> query output from the employees table:
+    </p>
+
+    <h3>Initial Table - employees:</h3>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Salary</th>
+                <th>Department ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>50000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Jane</td>
+                <td>Smith</td>
+                <td>60000</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Alice</td>
+                <td>Johnson</td>
+                <td>70000</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>SELECT Query Result - Retrieve employees with salary > 50000:</h3>
+    <pre>SELECT first_name, last_name FROM employees WHERE salary > 50000;</pre>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jane</td>
+                <td>Smith</td>
+            </tr>
+            <tr>
+                <td>Alice</td>
+                <td>Johnson</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

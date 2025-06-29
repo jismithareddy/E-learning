@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Explained</title>
+    <style>
+        /* Basic styling for the code display */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        .description {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .selector {
+            font-weight: bold;
+            color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Selectors Explained</h1>
+
+    <h2>Types of CSS Selectors</h2>
+    <ul>
+        <li><span class="selector">Type Selector:</span> Selects all elements of a given type (e.g., <code>p</code>, <code>h1</code>).</li>
+        <li><span class="selector">Class Selector:</span> Selects elements with a specific class (e.g., <code>.className</code>).</li>
+        <li><span class="selector">ID Selector:</span> Selects an element with a specific ID (e.g., <code>#idName</code>).</li>
+        <li><span class="selector">Universal Selector:</span> Selects all elements in the document (e.g., <code>*</code>).</li>
+        <li><span class="selector">Attribute Selector:</span> Selects elements with a specific attribute (e.g., <code>[type="text"]</code>).</li>
+        <li><span class="selector">Pseudo-Class Selector:</span> Selects elements based on their state (e.g., <code>:hover</code>, <code>:first-child</code>).</li>
+    </ul>
+
+    <h2>Example 1: Basic Text Styling</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Basic Text Styling&lt;/title&gt;
+    &lt;style&gt;
+        /* Type Selector for paragraph */
+        p {
+            color: darkblue;         /* Text color */
+            font-size: 18px;        /* Font size */
+            font-family: Arial, sans-serif; /* Font family */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Basic Text Styling Example&lt;/h1&gt;
+    &lt;p&gt;This paragraph is styled with dark blue text, 18px font size, and the Arial font family.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates how to style a paragraph using a <span class="selector">Type Selector</span>. 
+        The <code>p</code> selector targets all <code>&lt;p&gt;</code> elements on the page. 
+        The styles applied include:
+        <ul>
+            <li><code>color: darkblue;</code> - Sets the text color to dark blue.</li>
+            <li><code>font-size: 18px;</code> - Sets the font size to 18 pixels.</li>
+            <li><code>font-family: Arial, sans-serif;</code> - Uses the Arial font family with a fallback to a generic sans-serif font.</li>
+        </ul>
+    </div>
+
+    <h2>Example 2: Class Selector for Highlighting</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Class Selector Example&lt;/title&gt;
+    &lt;style&gt;
+        /* Class Selector */
+        .highlight {
+            background-color: yellow; /* Highlight color */
+            font-weight: bold;        /* Bold text */
+            padding: 10px;           /* Space inside the element */
+            border-radius: 5px;      /* Rounded corners */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Class Selector Example&lt;/h1&gt;
+    &lt;p class="highlight"&gt;This paragraph is highlighted using a class selector.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example illustrates the use of a <span class="selector">Class Selector</span>. 
+        The <code>.highlight</code> selector targets any element with the class "highlight". 
+        The styles applied include:
+        <ul>
+            <li><code>background-color: yellow;</code> - Sets the background color to yellow.</li>
+            <li><code>font-weight: bold;</code> - Makes the text bold.</li>
+            <li><code>padding: 10px;</code> - Adds 10 pixels of padding inside the element, creating space around the text.</li>
+            <li><code>border-radius: 5px;</code> - Rounds the corners of the element.</li>
+        </ul>
+    </div>
+
+    <h2>Example 3: ID Selector for Unique Styling</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;ID Selector Example&lt;/title&gt;
+    &lt;style&gt;
+        /* ID Selector */
+        #unique-heading {
+            color: darkgreen;      /* Text color */
+            font-size: 28px;      /* Font size */
+            text-align: center;    /* Center alignment */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1 id="unique-heading"&gt;This is a Unique Heading&lt;/h1&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example shows how to use an <span class="selector">ID Selector</span> for unique styling. 
+        The <code>#unique-heading</code> selector targets the element with the specific ID "unique-heading". 
+        The styles applied include:
+        <ul>
+            <li><code>color: darkgreen;</code> - Sets the text color to dark green.</li>
+            <li><code>font-size: 28px;</code> - Sets the font size to 28 pixels.</li>
+            <li><code>text-align: center;</code> - Centers the text horizontally within its container.</li>
+        </ul>
+    </div>
+
+    <h2>Example 4: Grouping Selectors</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Grouping Selectors Example&lt;/title&gt;
+    &lt;style&gt;
+        /* Grouping Selectors */
+        h1, h2, h3 {
+            color: darkred;      /* Text color for headings */
+            margin-bottom: 10px; /* Space below each heading */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Heading 1&lt;/h1&gt;
+    &lt;h2&gt;Heading 2&lt;/h2&gt;
+    &lt;h3&gt;Heading 3&lt;/h3&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates <span class="selector">Grouping Selectors</span> in CSS, allowing the same styles to be applied to multiple elements. 
+        The <code>h1, h2, h3</code> selector targets all <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, and <code>&lt;h3&gt;</code> elements. 
+        The styles applied include:
+        <ul>
+            <li><code>color: darkred;</code> - Sets the text color for all headings to dark red.</li>
+            <li><code>margin-bottom: 10px;</code> - Adds 10 pixels of space below each heading.</li>
+        </ul>
+    </div>
+
+    <h2>Example 5: Pseudo-Class Selector for Hover Effects</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Pseudo-Class Selector Example&lt;/title&gt;
+    &lt;style&gt;
+        /* Pseudo-Class Selector */
+        a {
+            text-decoration: none; /* No underline */
+            color: blue;          /* Default link color */
+        }
+        a:hover {
+            color: red;           /* Change color on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Pseudo-Class Selector Example&lt;/h1&gt;
+    &lt;a href="#"&gt;Hover over this link&lt;/a&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example showcases a <span class="selector">Pseudo-Class Selector</span> for links. 
+        The <code>a</code> selector targets all anchor tags, while the <code>a:hover</code> selector targets links when the mouse hovers over them. 
+        The styles applied include:
+        <ul>
+            <li><code>text-decoration: none;</code> - Removes the underline from the link.</li>
+            <li><code>color: blue;</code> - Sets the default link color to blue.</li>
+            <li><code>a:hover { color: red; }</code> - Changes the link color to red when hovered over.</li>
+            <li><code>a:hover { text-decoration: underline; }</code> - Adds an underline to the link when hovered over.</li>
+        </ul>
+    </div>
+
+</body>
+</html>

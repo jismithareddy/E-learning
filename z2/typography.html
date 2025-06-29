@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography in CSS Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #0056b3;
+        }
+        h2 {
+            font-size: 2em;
+            color: #007bff;
+        }
+        h3 {
+            font-size: 1.75em;
+            color: #17a2b8;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .example {
+            padding: 10px;
+            border: 2px solid #333;
+            margin: 10px 0;
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Typography in CSS Explained</h1>
+
+    <h2>What is Typography in CSS?</h2>
+    <p>Typography in CSS refers to the style and appearance of text on a web page. It encompasses various elements, including font selection, size, weight, spacing, and line height. Proper typography enhances readability and improves the overall aesthetic of web design.</p>
+
+    <h2>Key Typography Properties</h2>
+
+    <h3>1. Font Family</h3>
+    <p>The <code>font-family</code> property specifies the typeface used for text. You can set a specific font or a fallback font stack.</p>
+    <div class="example" style="font-family: 'Georgia', serif;">This text uses the Georgia font.</div>
+
+    <h3>2. Font Size</h3>
+    <p>The <code>font-size</code> property defines the size of the text. It can be set using different units such as <code>px</code>, <code>em</code>, <code>rem</code>, and <code>%</code>.</p>
+    <div class="example" style="font-size: 20px;">This text is 20 pixels in size.</div>
+
+    <h3>3. Font Weight</h3>
+    <p>The <code>font-weight</code> property specifies the thickness of the font. Common values are <code>normal</code>, <code>bold</code>, <code>bolder</code>, and numerical values (100 to 900).</p>
+    <div class="example" style="font-weight: bold;">This text is bold.</div>
+
+    <h3>4. Line Height</h3>
+    <p>The <code>line-height</code> property controls the space between lines of text, which can significantly impact readability.</p>
+    <div class="example" style="line-height: 1.5;">This text has a line height of 1.5, creating more space between lines.</div>
+
+    <h3>5. Text Align</h3>
+    <p>The <code>text-align</code> property defines the alignment of the text within its container. Possible values include <code>left</code>, <code>right</code>, <code>center</code>, and <code>justify</code>.</p>
+    <div class="example" style="text-align: center;">This text is centered.</div>
+
+    <h3>6. Text Decoration</h3>
+    <p>The <code>text-decoration</code> property adds decoration to text, such as underlines, overlines, or strikethroughs.</p>
+    <div class="example" style="text-decoration: underline;">This text has an underline.</div>
+
+    <h2>Choosing Fonts</h2>
+    <p>When selecting fonts, consider using web-safe fonts (like Arial, Times New Roman) or web fonts (like Google Fonts) to ensure consistency across devices.</p>
+    
+    <h2>Example of Typography in Action</h2>
+    <h3>CSS Example:</h3>
+    <pre>
+        <code>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #0056b3;
+        }
+        p {
+            font-size: 1em;
+            text-align: justify;
+        }
+        </code>
+    </pre>
+    
+</body>
+</html>

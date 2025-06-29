@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn CSS Syntax</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        .example {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Syntax</h1>
+    <p>CSS (Cascading Style Sheets) is used to style and layout web pages. CSS syntax consists of a set of rules that dictate how HTML elements should be displayed.</p>
+
+    <h2>Basic Syntax</h2>
+    <p>The basic syntax of CSS is:</p>
+    <pre><code>selector {
+    property: value;
+}</code></pre>
+    <p>Each rule consists of a <strong>selector</strong> that targets the HTML element you want to style, followed by a set of <strong>properties</strong> and their corresponding <strong>values</strong>.</p>
+
+    <h2>Example of CSS Syntax</h2>
+    <div class="example">
+        <h3>Example 1: Styling a Heading</h3>
+        <pre><code>h1 {
+    color: blue; 
+    font-size: 24px; 
+}</code></pre>
+        <p>This CSS code styles all <code>&lt;h1&gt;</code> elements to have blue text and a font size of 24 pixels.</p>
+    </div>
+
+    <h2>Selectors</h2>
+    <p>Selectors are patterns used to select the elements you want to style. There are several types of selectors:</p>
+    <ul>
+        <li><strong>Type Selector:</strong> Selects all elements of a given type, e.g., <code>p</code> selects all paragraphs.</li>
+        <li><strong>Class Selector:</strong> Selects elements with a specific class, e.g., <code>.classname</code> selects all elements with class "classname."</li>
+        <li><strong>ID Selector:</strong> Selects a single element with a specific ID, e.g., <code>#idname</code> selects the element with ID "idname."</li>
+    </ul>
+
+    <h2>Example of Selectors</h2>
+    <div class="example">
+        <h3>Example 2: Class and ID Selectors</h3>
+        <pre><code>.myClass {
+    color: green; 
+}
+
+#myId {
+    font-weight: bold; 
+}</code></pre>
+        <p>This CSS code styles all elements with the class <code>myClass</code> to have green text and the element with ID <code>myId</code> to be bold.</p>
+    </div>
+
+    <h2>Properties and Values</h2>
+    <p>Each property is followed by a colon and a value. Here are some common properties:</p>
+    <ul>
+        <li><code>color</code>: Sets the text color.</li>
+        <li><code>font-size</code>: Sets the size of the font.</li>
+        <li><code>background-color</code>: Sets the background color of an element.</li>
+        <li><code>margin</code>: Sets the space around elements.</li>
+        <li><code>padding</code>: Sets the space inside elements.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Understanding CSS syntax is crucial for styling web pages effectively. Use selectors to target elements and properties to define their styles.</p>
+
+</body>
+</html>

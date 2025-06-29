@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMMENT Command in SQL</title>
+</head>
+<body>
+
+    <h1>Understanding the COMMENT Command in SQL</h1>
+    <p>The <strong>COMMENT</strong> command in SQL is used to add explanatory notes or descriptions to a table, column, or other database objects. These comments are helpful for documentation purposes, allowing developers or users to understand the purpose of the table or column better. Comments do not affect the data or structure of the table, but provide useful information.</p>
+
+    <h2>Where Can You Use SQL Comments?</h2>
+    <ul>
+        <li><strong>Table-level comments:</strong> Used to describe the purpose of the table.</li>
+        <li><strong>Column-level comments:</strong> Used to explain the purpose or constraints of individual columns.</li>
+    </ul>
+
+    <h2>Types of SQL Comments</h2>
+    <ul>
+        <li><strong>Single-line comments:</strong> Using <code>--</code>, everything after this symbol on the same line will be ignored by SQL.</li>
+        <li><strong>Multi-line comments:</strong> Using <code>/* ... */</code>, anything within the symbols will be considered a comment and ignored.</li>
+    </ul>
+
+    <h2>Syntax of COMMENT Command</h2>
+    <pre>
+COMMENT ON TABLE table_name IS 'description';
+COMMENT ON COLUMN table_name.column_name IS 'description';
+    </pre>
+
+    <h2>Examples of Using COMMENT</h2>
+
+    <h3>Example 1: Adding a Comment to a Table</h3>
+    <pre>
+-- Adding a comment to the Users table
+COMMENT ON TABLE Users IS 'This table stores user information including login details.';
+    </pre>
+    <p><strong>Description:</strong> This adds a comment to the <code>Users</code> table, explaining that it stores user information.</p>
+
+    <h3>Example 2: Adding a Comment to a Column</h3>
+    <pre>
+-- Adding a comment to the username column in the Users table
+COMMENT ON COLUMN Users.username IS 'Stores unique usernames for each user.';
+    </pre>
+    <p><strong>Description:</strong> This adds a comment to the <code>username</code> column in the <code>Users</code> table, explaining that it stores unique usernames for each user.</p>
+
+    <h3>Example 3: Multi-line Comment Example</h3>
+    <pre>
+/* 
+  This is a multi-line comment.
+  It is used to provide detailed explanations or notes
+  without affecting the actual SQL code.
+*/
+    </pre>
+    <p><strong>Description:</strong> This is an example of using a multi-line comment to add longer explanations in SQL code.</p>
+
+    <h2>Visualization of SQL Comments</h2>
+
+    <h3>Before Adding Comments</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>user_id (PK)</th>
+                <th>username</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>JohnDoe</td>
+                <td>john@example.com</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>JaneSmith</td>
+                <td>jane@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>After Adding Comments</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>user_id (PK)</th>
+                <th>username</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>JohnDoe</td>
+                <td>john@example.com</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>JaneSmith</td>
+                <td>jane@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>Table Comment:</strong> This table stores user information including login details.</p>
+    <p><strong>Column Comment for username:</strong> Stores unique usernames for each user.</p>
+
+    <h2>Using Comments to Enhance SQL Code</h2>
+    <p>SQL comments are useful for explaining complex queries or database structures. They allow you to document your code for other developers or for future reference without affecting the SQL execution.</p>
+
+    <h2>Example 4: Using Comments to Explain Complex Queries</h2>
+    <pre>
+-- This query retrieves all users who have placed orders
+SELECT u.user_id, u.username, o.order_id 
+FROM Users u
+JOIN Orders o ON u.user_id = o.user_id
+WHERE o.order_status = 'completed';
+    </pre>
+    <p><strong>Description:</strong> This comment helps explain the purpose of the query, which retrieves all users who have placed completed orders.</p>
+
+</body>
+</html>

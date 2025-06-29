@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DML Commands in SQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .example {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DML (Data Manipulation Language) Commands in SQL</h1>
+
+    <p class="description">Data Manipulation Language (DML) commands are used to manipulate data within existing database tables. These commands allow you to insert, update, delete, and retrieve records. The main DML commands are <strong>INSERT</strong>, <strong>UPDATE</strong>, <strong>DELETE</strong>, and <strong>SELECT</strong>. Below is an explanation of each command, along with examples.</p>
+
+    <h2>1. INSERT Command</h2>
+    <p class="description">
+        The <strong>INSERT</strong> command is used to add new records into a table. You can insert data into specific columns or into all columns of a table.
+    </p>
+    <h3>Syntax:</h3>
+    <pre>INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);</pre>
+    <h3>Example:</h3>
+    <pre>INSERT INTO employees (employee_id, first_name, last_name, salary) 
+VALUES (101, 'John', 'Doe', 50000);</pre>
+
+    <h2>2. UPDATE Command</h2>
+    <p class="description">
+        The <strong>UPDATE</strong> command is used to modify existing records in a table. You can update specific columns of one or more rows.
+    </p>
+    <h3>Syntax:</h3>
+    <pre>UPDATE table_name 
+SET column1 = value1, column2 = value2, ... 
+WHERE condition;</pre>
+    <h3>Example:</h3>
+    <pre>UPDATE employees 
+SET salary = 55000 
+WHERE employee_id = 101;</pre>
+
+    <h2>3. DELETE Command</h2>
+    <p class="description">
+        The <strong>DELETE</strong> command is used to remove one or more rows from a table. You can delete specific records based on a condition, or all records if no condition is specified.
+    </p>
+    <h3>Syntax:</h3>
+    <pre>DELETE FROM table_name WHERE condition;</pre>
+    <h3>Example:</h3>
+    <pre>DELETE FROM employees WHERE employee_id = 101;</pre>
+
+    <h2>4. SELECT Command</h2>
+    <p class="description">
+        The <strong>SELECT</strong> command is used to retrieve data from one or more tables. It can be used to fetch specific columns, filter rows with conditions, and combine data from multiple tables using joins.
+    </p>
+    <h3>Syntax:</h3>
+    <pre>SELECT column1, column2, ... FROM table_name WHERE condition;</pre>
+    <h3>Example:</h3>
+    <pre>SELECT first_name, last_name, salary FROM employees WHERE salary > 50000;</pre>
+
+    <h2>Visualization of DML Commands:</h2>
+    <p class="description">The following is a basic visualization of how each DML command interacts with a table named <strong>employees</strong>:</p>
+
+    <h3>Initial Table State:</h3>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>50000</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Jane</td>
+                <td>Smith</td>
+                <td>60000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>After INSERT Command:</h3>
+    <p>INSERT INTO employees (employee_id, first_name, last_name, salary) VALUES (103, 'Alice', 'Johnson', 70000);</p>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>50000</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Jane</td>
+                <td>Smith</td>
+                <td>60000</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Alice</td>
+                <td>Johnson</td>
+                <td>70000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>After UPDATE Command:</h3>
+    <p>UPDATE employees SET salary = 55000 WHERE employee_id = 101;</p>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>55000</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Jane</td>
+                <td>Smith</td>
+                <td>60000</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Alice</td>
+                <td>Johnson</td>
+                <td>70000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>After DELETE Command:</h3>
+    <p>DELETE FROM employees WHERE employee_id = 102;</p>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>55000</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Alice</td>
+                <td>Johnson</td>
+                <td>70000</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: var(--main-bg-color, #007bff); /* Using CSS variable */
+            border-radius: 10px;
+            color: var(--text-color, #fff); /* Fallback in case variable is undefined */
+            margin: 20px 0;
+            padding: 10px;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Define variables in the root */
+        :root {
+            --main-bg-color: #28a745;
+            --text-color: #fff;
+            --hover-bg-color: #17a2b8;
+        }
+
+        /* On hover, change the background using variables */
+        .box:hover {
+            background-color: var(--hover-bg-color);
+        }
+
+        /* Example with variable overwriting */
+        .box-secondary {
+            --main-bg-color: #ffc107;
+            --hover-bg-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Variables Explained</h1>
+
+    <h2>What are CSS Variables?</h2>
+    <p>CSS variables, also known as custom properties, are entities defined by CSS authors that contain specific values. These variables can be reused throughout a stylesheet, allowing for more flexible, maintainable, and dynamic designs.</p>
+
+    <h2>How CSS Variables Work</h2>
+    <p>CSS variables are defined using the <code>--variable-name</code> syntax. They are often defined in the <code>:root</code> selector, making them available globally, or can be scoped to specific elements.</p>
+
+    <h2>Example 1: Basic Use of CSS Variables</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Basic Use of CSS Variables&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --main-bg-color: #28a745;
+            --text-color: #fff;
+            --hover-bg-color: #17a2b8;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            border-radius: 10px;
+            padding: 10px;
+            transition: background-color 0.5s ease;
+        }
+
+        .box:hover {
+            background-color: var(--hover-bg-color);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Basic Use of CSS Variables&lt;/h1&gt;
+    &lt;div class="box"&gt;Hover over me!&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example shows how to use CSS variables to dynamically style elements:
+        <ul>
+            <li>The variables <code>--main-bg-color</code>, <code>--text-color</code>, and <code>--hover-bg-color</code> are defined inside the <code>:root</code> selector, making them available globally.</li>
+            <li>The box element uses the <code>--main-bg-color</code> for its background color and the <code>--text-color</code> for the text color.</li>
+            <li>When the user hovers over the box, the background color transitions to <code>--hover-bg-color</code>.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="box">Hover over me!</div>
+
+    <h2>Example 2: Variable Overwriting</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Variable Overwriting&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --main-bg-color: #28a745;
+            --text-color: #fff;
+            --hover-bg-color: #17a2b8;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            border-radius: 10px;
+            padding: 10px;
+            transition: background-color 0.5s ease;
+        }
+
+        .box-secondary {
+            --main-bg-color: #ffc107;
+            --hover-bg-color: #dc3545;
+        }
+
+        .box:hover {
+            background-color: var(--hover-bg-color);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Variable Overwriting&lt;/h1&gt;
+    &lt;div class="box"&gt;Primary Box&lt;/div&gt;
+    &lt;div class="box box-secondary"&gt;Secondary Box&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates how you can overwrite CSS variables at the element level:
+        <ul>
+            <li>The <code>--main-bg-color</code> and <code>--hover-bg-color</code> are overwritten inside the <code>.box-secondary</code> class.</li>
+            <li>The primary box uses the globally defined variables, while the secondary box uses its own local versions.</li>
+            <li>On hover, both boxes change their background color, but each box uses its respective variable for the hover effect.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="box">Primary Box</div>
+    <div class="box box-secondary">Secondary Box</div>
+
+    <h2>Why Use CSS Variables?</h2>
+    <p>CSS variables are extremely useful for simplifying and maintaining a consistent style across your website. They allow for easy reuse and make it simpler to update values in one place, especially when working on larger projects.</p>
+
+    <h3>Benefits of CSS Variables</h3>
+    <ul>
+        <li>**Global or Local Scope**: CSS variables can be scoped to either a global level (using <code>:root</code>) or locally to specific elements.</li>
+        <li>**Reusability**: Variables can be reused across multiple elements, avoiding duplication and ensuring consistency.</li>
+        <li>**Dynamic Updates**: Changing the value of a CSS variable updates it everywhere the variable is used, making it easy to modify themes or styles.</li>
+        <li>**Faster Prototyping**: Using variables accelerates prototyping and styling adjustments across different sections.</li>
+    </ul>
+
+    <h2>Understanding Key Concepts</h2>
+    <p>Here are some important concepts when working with CSS variables:</p>
+    <ul>
+        <li><code>--variable-name</code> – The syntax used to define a CSS variable. It should always start with two dashes (<code>--</code>).</li>
+        <li><code>:root</code> – This pseudo-class targets the document's root element and is commonly used to define global variables.</li>
+        <li><code>var(--variable-name)</code> – The function used to retrieve the value of a CSS variable.</li>
+        <li>**Fallback Values**: CSS variables can have fallback values in case a variable isn't defined or is invalid. Example: <code>var(--main-bg-color, #007bff)</code>.</li>
+    </ul>
+
+    <h2>Example 3: Fallback Value in CSS Variables</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Fallback Value Example&lt;/title&gt;
+    &lt;style&gt;
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: var(--non-existent-color, #007bff); /* Fallback to blue */
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Fallback Value Example&lt;/h1&gt;
+    &lt;div class="box"&gt;I’m Blue!&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> In this example, the variable <code>--non-existent-color</code> does not exist. The browser falls back to the specified color, <code>#007bff</code> (blue).
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="box">I’m Blue!</div>
+
+</body>
+</html>

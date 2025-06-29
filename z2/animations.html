@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #007bff;
+            margin: 20px 0;
+            border-radius: 10px;
+            animation: moveBox 2s infinite; /* Apply animation */
+        }
+        /* Define the animation keyframes */
+        @keyframes moveBox {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(200px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Example for fade animation */
+        .fade-box {
+            width: 100px;
+            height: 100px;
+            background-color: #28a745;
+            margin: 20px 0;
+            border-radius: 10px;
+            animation: fadeInOut 4s infinite; /* Apply animation */
+        }
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Animations Explained</h1>
+
+    <h2>What are CSS Animations?</h2>
+    <p>CSS animations allow you to animate transitions from one style configuration to another. They can animate properties such as color, size, position, and more, creating engaging visual effects on your website.</p>
+
+    <h2>How CSS Animations Work</h2>
+    <p>Animations are created using two main components:</p>
+    <ol>
+        <li><strong>@keyframes:</strong> Defines the stages of the animation, specifying the styles at each point (percentages).</li>
+        <li><strong>Animation Properties:</strong> Specifies how the animation should run, including the duration, timing, and repetition.</li>
+    </ol>
+
+    <h2>Example 1: Simple Movement Animation</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Simple Movement Animation&lt;/title&gt;
+    &lt;style&gt;
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #007bff;
+            border-radius: 10px;
+            animation: moveBox 2s infinite; /* Apply animation */
+        }
+        @keyframes moveBox {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(200px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Simple Movement Animation&lt;/h1&gt;
+    &lt;div class="box"&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates a basic movement animation using the following:
+        <ul>
+            <li>The <code>@keyframes</code> rule defines the animation's stages, where the box moves 200px to the right at 50%, and returns to its original position at 100%.</li>
+            <li>The <code>animation</code> property applies the animation to the <code>.box</code> class, with a duration of 2 seconds and an infinite loop.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="box"></div>
+
+    <h2>Example 2: Fade In and Out Animation</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Fade In and Out Animation&lt;/title&gt;
+    &lt;style&gt;
+        .fade-box {
+            width: 100px;
+            height: 100px;
+            background-color: #28a745;
+            border-radius: 10px;
+            animation: fadeInOut 4s infinite; /* Apply animation */
+        }
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Fade In and Out Animation&lt;/h1&gt;
+    &lt;div class="fade-box"&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example shows a fading animation effect:
+        <ul>
+            <li>The <code>@keyframes</code> rule defines the stages of the animation, setting the opacity to 0% at the start and end (0% and 100%), and 100% at the midpoint (50%).</li>
+            <li>The <code>animation</code> property applies the animation to the <code>.fade-box</code> class, with a duration of 4 seconds and an infinite loop.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="fade-box"></div>
+
+    <h2>Understanding Key Animation Properties</h2>
+    <p>Here are some important properties you can use when applying CSS animations:</p>
+    <ul>
+        <li><code>animation-name</code> – Specifies the name of the <code>@keyframes</code> you want to use.</li>
+        <li><code>animation-duration</code> – Specifies how long the animation should take to complete (e.g., 2s for 2 seconds).</li>
+        <li><code>animation-timing-function</code> – Specifies the speed curve of the animation. Common values include <code>ease</code>, <code>linear</code>, <code>ease-in</code>, <code>ease-out</code>, and <code>ease-in-out</code>.</li>
+        <li><code>animation-delay</code> – Specifies a delay before the animation starts.</li>
+        <li><code>animation-iteration-count</code> – Specifies how many times the animation should repeat. Can be a number (e.g., 1, 2, 3) or <code>infinite</code>.</li>
+        <li><code>animation-direction</code> – Specifies whether the animation should play forwards, backwards, or alternate between both.</li>
+    </ul>
+
+    <h2>Example 3: Animation with Delay and Iterations</h2>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Animation with Delay and Iterations&lt;/title&gt;
+    &lt;style&gt;
+        .delay-box {
+            width: 100px;
+            height: 100px;
+            background-color: #ffc107;
+            margin: 20px 0;
+            border-radius: 10px;
+            animation: growBox 2s ease-in-out 3s infinite; /* Apply animation with delay and infinite loop */
+        }
+        @keyframes growBox {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Animation with Delay and Iterations&lt;/h1&gt;
+    &lt;div class="delay-box"&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    <div class="description">
+        <strong>Explanation:</strong> This example demonstrates an animation with a delay and multiple iterations:
+        <ul>
+            <li>The <code>@keyframes</code> rule scales the element up to 1.5 times its size at 50% and returns to its original size at 100%.</li>
+            <li>The <code>animation</code> property specifies a 3-second delay before the animation starts, with an infinite loop.</li>
+        </ul>
+    </div>
+
+    <h3>Visualization</h3>
+    <div class="delay-box"></div>
+
+</body>
+</html>

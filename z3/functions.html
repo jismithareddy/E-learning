@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Functions</h1>
+<p>A <strong>function</strong> is a block of code designed to perform a specific task. Functions are fundamental building blocks in JavaScript, allowing for code reuse, organization, and clarity. They can take inputs (parameters), execute code, and return a value.</p>
+
+<h2>1. Function Declaration</h2>
+<p>A function can be declared using the <code>function</code> keyword followed by a name, parentheses, and curly braces.</p>
+
+<pre><code>function functionName(parameters) {
+    // code to be executed
+}</code></pre>
+
+<h3>Example 1: Basic Function</h3>
+<pre><code>// Function declaration
+function sayHello() {
+    console.log("Hello, world!"); // Prints a greeting to the console
+}
+
+// Calling the function
+sayHello(); // Output: Hello, world!</code></pre>
+<p><strong>Explanation:</strong> This example shows a simple function named <code>sayHello</code> that prints "Hello, world!" to the console when called. It's a basic demonstration of how functions can encapsulate behavior.</p>
+
+<h2>2. Function with Parameters</h2>
+<p>Functions can accept parameters, allowing you to pass values into the function.</p>
+
+<h3>Example 2: Adding Two Numbers</h3>
+<pre><code>// Function that adds two numbers
+function add(a, b) {
+    return a + b; // Returns the sum of a and b
+}
+
+// Calling the function with arguments
+let sum = add(5, 3);
+console.log(sum); // Output: 8</code></pre>
+<p><strong>Explanation:</strong> In this example, the <code>add</code> function takes two parameters <code>a</code> and <code>b</code>, adds them, and returns the result. When called with the arguments <code>5</code> and <code>3</code>, it returns <code>8</code>.</p>
+
+<h3>Example 3: Function Returning a Value</h3>
+<p>Functions can return a value using the <code>return</code> statement.</p>
+<pre><code>// Function that multiplies two numbers
+function multiply(a, b) {
+    return a * b; // Returns the product of a and b
+}
+
+// Calling the function
+let product = multiply(4, 5);
+console.log(product); // Output: 20</code></pre>
+<p><strong>Explanation:</strong> The <code>multiply</code> function takes two parameters and returns their product. It demonstrates how functions can process input and produce output.</p>
+
+<h2>3. Function with Default Parameters</h2>
+<p>You can set default values for parameters in functions.</p>
+
+<h3>Example 4: Default Parameter</h3>
+<pre><code>// Function with a default parameter
+function greet(name = "Guest") {
+    return "Hello, " + name + "!"; // Greets the user
+}
+
+// Calling the function
+console.log(greet()); // Output: Hello, Guest!
+console.log(greet("Alice")); // Output: Hello, Alice!</code></pre>
+<p><strong>Explanation:</strong> The <code>greet</code> function has a default parameter <code>name</code>. If no argument is provided, it uses "Guest" as the default. This feature enhances flexibility in function calls.</p>
+
+<h2>4. Function Expression</h2>
+<p>Functions can also be defined using function expressions.</p>
+
+<h3>Example 5: Function Expression</h3>
+<pre><code>// Function expression
+const subtract = function(a, b) {
+    return a - b; // Returns the difference of a and b
+};
+
+// Calling the function
+console.log(subtract(10, 4)); // Output: 6</code></pre>
+<p><strong>Explanation:</strong> In this case, the <code>subtract</code> function is defined as a variable using a function expression. This method allows functions to be treated like any other variable.</p>
+
+<h2>5. Arrow Functions</h2>
+<p>Arrow functions provide a more concise syntax for writing functions.</p>
+
+<h3>Example 6: Arrow Function</h3>
+<pre><code>// Arrow function to divide two numbers
+const divide = (a, b) => {
+    return a / b; // Returns the quotient of a and b
+};
+
+// Calling the function
+console.log(divide(10, 2)); // Output: 5</code></pre>
+<p><strong>Explanation:</strong> The <code>divide</code> function is defined using the arrow function syntax. This concise syntax makes the code easier to read and write, especially for simple functions.</p>
+
+<h2>6. Immediately Invoked Function Expression (IIFE)</h2>
+<p>An IIFE is a function that runs as soon as it is defined.</p>
+
+<h3>Example 7: IIFE</h3>
+<pre><code>// Immediately Invoked Function Expression
+(function() {
+    console.log("This is an IIFE!"); // Runs immediately
+})();</code></pre>
+<p><strong>Explanation:</strong> This example demonstrates an Immediately Invoked Function Expression (IIFE), which executes immediately after its definition. IIFEs are useful for creating a new scope and avoiding global variable pollution.</p>
+
+<h2>7. Function with Object Parameter</h2>
+<p>You can pass objects as parameters to functions.</p>
+
+<h3>Example 8: Function with Object</h3>
+<pre><code>// Function that takes an object as a parameter
+function printPerson(person) {
+    console.log("Name: " + person.name + ", Age: " + person.age);
+}
+
+// Creating an object
+const person = {
+    name: "John",
+    age: 30
+};
+
+// Calling the function
+printPerson(person); // Output: Name: John, Age: 30</code></pre>
+<p><strong>Explanation:</strong> The <code>printPerson</code> function takes an object as a parameter and accesses its properties. This example highlights how functions can handle complex data types like objects.</p>
+
+</body>
+</html>

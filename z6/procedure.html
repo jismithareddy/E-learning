@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Procedures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        p {
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #e64d4d;
+        }
+    </style>
+</head>
+<body>
+
+<h2>SQL Procedures</h2>
+<p>
+    A <strong>stored procedure</strong> is a set of SQL statements that can be stored in the database and 
+    executed as a single unit. Procedures are useful for encapsulating business logic and can accept 
+    parameters, enabling more dynamic and reusable code.
+</p>
+
+<h3>Key Features of Stored Procedures</h3>
+<ul>
+    <li>
+        <strong>Modularity:</strong> Procedures allow you to break down complex operations into manageable pieces.
+    </li>
+    <li>
+        <strong>Reusability:</strong> Procedures can be called multiple times from different places in your application.
+    </li>
+    <li>
+        <strong>Performance:</strong> Procedures can improve performance by reducing the amount of data sent between the client and server.
+    </li>
+    <li>
+        <strong>Security:</strong> Procedures can restrict direct access to tables, allowing controlled data manipulation.
+    </li>
+</ul>
+
+<h2>Creating a Stored Procedure</h2>
+<p>The syntax for creating a stored procedure is as follows:</p>
+<pre>
+<code>
+CREATE PROCEDURE procedure_name (parameters)
+BEGIN
+    -- Procedure logic
+END;
+</code>
+</pre>
+
+<h3>Example of Creating a Stored Procedure</h3>
+<p>Consider a table named <code>employees</code>:</p>
+<table>
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>department</th>
+            <th>salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td>HR</td>
+            <td>60000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Smith</td>
+            <td>IT</td>
+            <td>75000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Mike</td>
+            <td>Johnson</td>
+            <td>Finance</td>
+            <td>70000</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>We can create a procedure to update an employee's salary:</p>
+<pre>
+<code>
+CREATE PROCEDURE UpdateEmployeeSalary(
+    IN emp_id INT,
+    IN new_salary DECIMAL(10,2)
+)
+BEGIN
+    UPDATE employees
+    SET salary = new_salary
+    WHERE employee_id = emp_id;
+END;
+</code>
+</pre>
+
+<h3>Procedure Logic Explained</h3>
+<p>In the above procedure:</p>
+<ul>
+    <li><code>UpdateEmployeeSalary</code> is the name of the procedure.</li>
+    <li>It accepts two parameters: <code>emp_id</code> (the ID of the employee) and <code>new_salary</code> (the new salary to be assigned).</li>
+    <li>The procedure updates the salary of the specified employee in the <code>employees</code> table.</li>
+</ul>
+
+<h2>Executing a Stored Procedure</h2>
+<p>To execute the stored procedure, you can use the following command:</p>
+<pre>
+<code>
+CALL UpdateEmployeeSalary(2, 80000);
+</code>
+</pre>
+
+<p>After executing the procedure, the <code>employees</code> table will be updated:</p>
+<table>
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>department</th>
+            <th>salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td>HR</td>
+            <td>60000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Smith</td>
+            <td>IT</td>
+            <td>80000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Mike</td>
+            <td>Johnson</td>
+            <td>Finance</td>
+            <td>70000</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Dropping a Stored Procedure</h2>
+<p>To remove a stored procedure from the database, use the <code>DROP PROCEDURE</code> command:</p>
+<pre>
+<code>
+DROP PROCEDURE UpdateEmployeeSalary;
+</code>
+</pre>
+<p>This command deletes the procedure, and it will no longer be available for execution.</p>
+
+<h2>Conclusion</h2>
+<p>SQL stored procedures are powerful tools for encapsulating business logic, promoting reusability, and enhancing performance. They provide a structured way to manage complex operations in a database environment.</p>
+
+</body>
+</html>

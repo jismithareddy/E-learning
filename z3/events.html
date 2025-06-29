@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Events</h1>
+<p>Events are actions or occurrences that happen in the browser, which can be detected and handled using JavaScript. Events can be triggered by user interactions, such as clicking a button, or by other actions, like loading a page. JavaScript provides various ways to handle these events and respond to them effectively.</p>
+
+<h2>1. Click Event</h2>
+<p>The <code>click</code> event occurs when an element is clicked by the user.</p>
+
+<h3>Example 1: Click Event</h3>
+<pre><code>&lt;button id="myButton"&gt;Click Me!&lt;/button&gt;
+&lt;script&gt;
+    document.getElementById("myButton").addEventListener("click", function() {
+        alert("Button was clicked!");
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> In this example, when the button with the ID <code>myButton</code> is clicked, an alert box is displayed with the message "Button was clicked!" The <code>addEventListener</code> method is used to attach the event handler.</p>
+
+<h2>2. Mouseover Event</h2>
+<p>The <code>mouseover</code> event occurs when the mouse pointer is over an element.</p>
+
+<h3>Example 2: Mouseover Event</h3>
+<pre><code>&lt;div id="hoverDiv" style="width: 100px; height: 100px; background-color: lightblue;"&gt;Hover over me!&lt;/div&gt;
+&lt;script&gt;
+    document.getElementById("hoverDiv").addEventListener("mouseover", function() {
+        this.style.backgroundColor = "lightgreen";
+    });
+    document.getElementById("hoverDiv").addEventListener("mouseout", function() {
+        this.style.backgroundColor = "lightblue";
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> This example changes the background color of a <code>&lt;div&gt;</code> element when the mouse hovers over it. The <code>mouseout</code> event resets the color when the mouse leaves the element.</p>
+
+<h2>3. Keydown Event</h2>
+<p>The <code>keydown</code> event occurs when a key is pressed down.</p>
+
+<h3>Example 3: Keydown Event</h3>
+<pre><code>&lt;input type="text" id="textInput" placeholder="Type something..."&gt;
+&lt;script&gt;
+    document.getElementById("textInput").addEventListener("keydown", function(event) {
+        console.log("Key pressed: " + event.key);
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> In this example, when a key is pressed while the input field is focused, the key that was pressed is logged to the console. The <code>event.key</code> property returns the value of the key pressed.</p>
+
+<h2>4. Change Event</h2>
+<p>The <code>change</code> event occurs when the value of an input element changes.</p>
+
+<h3>Example 4: Change Event</h3>
+<pre><code>&lt;select id="mySelect"&gt;
+    &lt;option value="apple"&gt;Apple&lt;/option&gt;
+    &lt;option value="banana"&gt;Banana&lt;/option&gt;
+    &lt;option value="orange"&gt;Orange&lt;/option&gt;
+&lt;/select&gt;
+&lt;script&gt;
+    document.getElementById("mySelect").addEventListener("change", function() {
+        alert("You selected: " + this.value);
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> This example shows a dropdown menu. When the user selects an option, an alert box displays the selected value. The <code>change</code> event is triggered when the user makes a selection.</p>
+
+<h2>5. Form Submission Event</h2>
+<p>The <code>submit</code> event occurs when a form is submitted.</p>
+
+<h3>Example 5: Form Submission Event</h3>
+<pre><code>&lt;form id="myForm"&gt;
+    &lt;input type="text" placeholder="Enter your name" required&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        alert("Form submitted!");
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> In this example, when the form is submitted, an alert box appears with the message "Form submitted!" The <code>event.preventDefault()</code> method prevents the default form submission action.</p>
+
+<h2>6. Load Event</h2>
+<p>The <code>load</code> event occurs when a document or resource is fully loaded.</p>
+
+<h3>Example 6: Load Event</h3>
+<pre><code>&lt;script&gt;
+    window.addEventListener("load", function() {
+        console.log("Page fully loaded!");
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> This example uses the <code>load</code> event to execute a function when the entire page is fully loaded. The message "Page fully loaded!" is logged to the console.</p>
+
+<h2>7. Focus and Blur Events</h2>
+<p>The <code>focus</code> event occurs when an input element gains focus, while the <code>blur</code> event occurs when it loses focus.</p>
+
+<h3>Example 7: Focus and Blur Events</h3>
+<pre><code>&lt;input type="text" id="focusInput" placeholder="Focus on me!"&gt;
+&lt;script&gt;
+    const input = document.getElementById("focusInput");
+    input.addEventListener("focus", function() {
+        console.log("Input field is focused.");
+    });
+    input.addEventListener("blur", function() {
+        console.log("Input field lost focus.");
+    });
+&lt;/script&gt;</code></pre>
+<p><strong>Explanation:</strong> In this example, messages are logged to the console when the input field gains or loses focus. The <code>focus</code> event is triggered when the user clicks on the input field, while the <code>blur</code> event occurs when the user clicks away from it.</p>
+
+</body>
+</html>

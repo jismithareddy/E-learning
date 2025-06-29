@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Introduction</title>
+</head>
+<body>
+
+    <h1>Introduction to CSS</h1>
+    <p>
+        <strong>CSS (Cascading Style Sheets)</strong> is a stylesheet language used to control the presentation and layout of web pages. It allows developers to apply styles (like colors, fonts, spacing) to HTML documents, ensuring that content is displayed consistently and attractively across different devices and browsers.
+    </p>
+
+    <h2>History of CSS</h2>
+    <p>
+        CSS was first proposed by <strong>Håkon Wium Lie</strong> on October 10, 1994, while he was working with Tim Berners-Lee at CERN, the birthplace of the web. Prior to CSS, web pages were styled directly within the HTML code using inline styles, leading to cluttered, difficult-to-maintain code.
+    </p>
+    <p>
+        The first official version of CSS, <strong>CSS1</strong>, was released by the World Wide Web Consortium (W3C) in 1996. It introduced basic styling rules for text, margins, and positioning. As the web evolved, new versions of CSS were developed, with <strong>CSS2</strong> arriving in 1998 and <strong>CSS3</strong> being split into modules to allow for more rapid updates. CSS3 introduced advanced features like media queries for responsive design, animations, and flexible layouts.
+    </p>
+
+    <h2>Why Do We Need CSS?</h2>
+    <p>
+        Before CSS, all styling had to be done within the HTML using presentational tags like <code>&lt;font&gt;</code>, <code>&lt;b&gt;</code>, and tables for layouts. This approach made web development complex and inefficient, especially for larger websites. CSS solves this by separating the structure (HTML) from the design (CSS). Here are the key benefits of CSS:
+    </p>
+    <ul>
+        <li><strong>Separation of Concerns:</strong> HTML is used for content, and CSS is used for styling. This separation makes it easier to maintain and update websites.</li>
+        <li><strong>Consistency:</strong> CSS allows you to apply the same style to multiple pages by linking a single stylesheet, ensuring a consistent look and feel across the site.</li>
+        <li><strong>Responsive Design:</strong> With CSS, you can create web pages that adapt to different screen sizes, making them mobile-friendly.</li>
+        <li><strong>Reusability:</strong> CSS classes and external stylesheets can be reused across multiple pages, reducing redundancy and making updates more efficient.</li>
+        <li><strong>Customization:</strong> CSS offers advanced styling options like animations, transitions, and flexible layouts, giving developers greater control over the visual aspects of a website.</li>
+    </ul>
+
+    <h2>How to Connect CSS with HTML</h2>
+    <p>
+        There are three main ways to connect CSS with an HTML document:
+    </p>
+
+    <h3>1. Inline CSS</h3>
+    <p>
+        Inline CSS is written directly inside an HTML element using the <code>style</code> attribute. This method is suitable for small changes but is not recommended for styling entire websites due to poor scalability and maintainability.
+    </p>
+    <pre><code>
+    &lt;p style="color: blue; font-size: 20px;"&gt;This is a styled paragraph.&lt;/p&gt;
+    </code></pre>
+
+    <h3>2. Internal CSS</h3>
+    <p>
+        Internal CSS is added within a <code>&lt;style&gt;</code> element in the <code>&lt;head&gt;</code> section of an HTML document. This method is useful for applying styles to a single page, but it still mixes structure (HTML) and design (CSS) in the same file.
+    </p>
+    <pre><code>
+    &lt;head&gt;
+        &lt;style&gt;
+            p {
+                color: green;
+                font-size: 18px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    </code></pre>
+
+    <h3>3. External CSS</h3>
+    <p>
+        External CSS is stored in a separate `.css` file and linked to an HTML document using the <code>&lt;link&gt;</code> element. This is the most efficient and scalable way to apply styles across multiple web pages, as changes in the external CSS file will be reflected on all linked pages.
+    </p>
+    <pre><code>
+    &lt;link rel="stylesheet" type="text/css" href="styles.css"&gt;
+    </code></pre>
+
+    <p>The external stylesheet might look like this:</p>
+    <pre><code>
+    /* External CSS File (styles.css) */
+    p {
+        color: purple;
+        font-size: 16px;
+    }
+    </code></pre>
+
+    <p>
+        By separating HTML and CSS, we ensure that content and design are easier to maintain, scalable, and flexible across different platforms and devices. This makes CSS an essential tool for modern web development.
+    </p>
+
+</body>
+</html>

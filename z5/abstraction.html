@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstraction in Java - 7 Examples</title>
+</head>
+<body>
+    <h1>Abstraction in Java</h1>
+    <p>Abstraction is one of the key principles of Object-Oriented Programming (OOP). It allows you to hide complex implementation details and show only the essential features of an object. In Java, abstraction is achieved using <strong>abstract classes</strong> and <strong>interfaces</strong>.</p>
+
+    <h2>Examples of Abstraction in Java</h2>
+    
+    <h3>Example 1: Abstract Class with Abstract Method</h3>
+    <pre><code>
+    // Abstract class
+    abstract class Animal {
+        abstract void sound();
+    }
+
+    class Dog extends Animal {
+        public void sound() {
+            System.out.println("Dog barks");
+        }
+    }
+
+    class Cat extends Animal {
+        public void sound() {
+            System.out.println("Cat meows");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Animal dog = new Dog();
+            dog.sound();  // Output: Dog barks
+
+            Animal cat = new Cat();
+            cat.sound();  // Output: Cat meows
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> This example demonstrates an abstract class <code>Animal</code> with an abstract method <code>sound()</code>. The subclasses <code>Dog</code> and <code>Cat</code> provide implementations for the <code>sound()</code> method. Abstraction allows you to define the method structure without implementation in the parent class.</p>
+
+    <h3>Example 2: Abstract Class with Regular Method</h3>
+    <pre><code>
+    abstract class Vehicle {
+        abstract void start();
+        
+        public void fuel() {
+            System.out.println("Fueling the vehicle");
+        }
+    }
+
+    class Car extends Vehicle {
+        public void start() {
+            System.out.println("Car is starting");
+        }
+    }
+
+    class Bike extends Vehicle {
+        public void start() {
+            System.out.println("Bike is starting");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Vehicle car = new Car();
+            car.start();  // Output: Car is starting
+            car.fuel();   // Output: Fueling the vehicle
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The abstract class <code>Vehicle</code> contains an abstract method <code>start()</code> and a regular method <code>fuel()</code>. Subclasses must implement the abstract method, while they inherit the <code>fuel()</code> method.</p>
+
+    <h3>Example 3: Interface for Abstraction</h3>
+    <pre><code>
+    interface Shape {
+        double area();
+    }
+
+    class Circle implements Shape {
+        double radius;
+
+        public Circle(double radius) {
+            this.radius = radius;
+        }
+
+        public double area() {
+            return Math.PI * radius * radius;
+        }
+    }
+
+    class Rectangle implements Shape {
+        double length, width;
+
+        public Rectangle(double length, double width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        public double area() {
+            return length * width;
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Shape circle = new Circle(5);
+            System.out.println("Circle area: " + circle.area());  // Output: Circle area: 78.53981633974483
+
+            Shape rectangle = new Rectangle(5, 4);
+            System.out.println("Rectangle area: " + rectangle.area());  // Output: Rectangle area: 20.0
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, the interface <code>Shape</code> defines an abstract method <code>area()</code>. Both <code>Circle</code> and <code>Rectangle</code> implement the interface and provide their own implementation of the <code>area()</code> method.</p>
+
+    <h3>Example 4: Abstract Class with Constructor</h3>
+    <pre><code>
+    abstract class Animal {
+        String name;
+
+        public Animal(String name) {
+            this.name = name;
+        }
+
+        abstract void sound();
+
+        public void displayInfo() {
+            System.out.println("Animal: " + name);
+        }
+    }
+
+    class Dog extends Animal {
+        public Dog(String name) {
+            super(name);
+        }
+
+        public void sound() {
+            System.out.println("Dog barks");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Animal dog = new Dog("Bulldog");
+            dog.displayInfo();  // Output: Animal: Bulldog
+            dog.sound();        // Output: Dog barks
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The abstract class <code>Animal</code> has a constructor to initialize the name of the animal. The method <code>displayInfo()</code> is a non-abstract method, while <code>sound()</code> remains abstract.</p>
+
+    <h3>Example 5: Abstract Class with Multiple Abstract Methods</h3>
+    <pre><code>
+    abstract class Appliance {
+        abstract void turnOn();
+        abstract void turnOff();
+    }
+
+    class Fan extends Appliance {
+        public void turnOn() {
+            System.out.println("Fan is turned on");
+        }
+
+        public void turnOff() {
+            System.out.println("Fan is turned off");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Appliance fan = new Fan();
+            fan.turnOn();  // Output: Fan is turned on
+            fan.turnOff(); // Output: Fan is turned off
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, the abstract class <code>Appliance</code> defines two abstract methods: <code>turnOn()</code> and <code>turnOff()</code>. The subclass <code>Fan</code> implements both methods.</p>
+
+    <h3>Example 6: Using Abstract Class for Abstraction in Banking</h3>
+    <pre><code>
+    abstract class Bank {
+        abstract void getBalance();
+        abstract void deposit(double amount);
+    }
+
+    class SavingsAccount extends Bank {
+        double balance;
+
+        public SavingsAccount(double balance) {
+            this.balance = balance;
+        }
+
+        public void getBalance() {
+            System.out.println("Savings Account Balance: " + balance);
+        }
+
+        public void deposit(double amount) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Bank account = new SavingsAccount(1000);
+            account.getBalance();  // Output: Savings Account Balance: 1000.0
+            account.deposit(500);  // Output: Deposited: 500.0
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> The abstract class <code>Bank</code> defines two abstract methods: <code>getBalance()</code> and <code>deposit()</code>. The subclass <code>SavingsAccount</code> implements these methods, allowing it to interact with bank account data.</p>
+
+    <h3>Example 7: Interface and Multiple Inheritance</h3>
+    <pre><code>
+    interface Swimmable {
+        void swim();
+    }
+
+    interface Flyable {
+        void fly();
+    }
+
+    class Duck implements Swimmable, Flyable {
+        public void swim() {
+            System.out.println("Duck swims");
+        }
+
+        public void fly() {
+            System.out.println("Duck flies");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Duck duck = new Duck();
+            duck.swim();  // Output: Duck swims
+            duck.fly();   // Output: Duck flies
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, the interfaces <code>Swimmable</code> and <code>Flyable</code> define abstract methods <code>swim()</code> and <code>fly()</code>. The class <code>Duck</code> implements both interfaces and provides implementations for these methods.</p>
+
+</body>
+</html>

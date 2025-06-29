@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn SQL</title>
+    <link rel="stylesheet" href="sql.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav>
+        <a href="#" class="page">Basics</a>
+        <a href="#" class="page">HTML</a>
+        <a href="#" class="page">CSS</a>
+        <a href="#" class="page">JS</a>
+        <a href="#" class="page">Python</a>
+        <a href="#" class="page">Java</a>
+        <a href="#" class="page">SQL</a>
+    </nav>
+
+    <!-- Main container for aside and content -->
+    <div class="container">
+        <!-- Sidebar with SQL topics -->
+        <aside>
+            <h2>SQL Topics</h2>
+            <!-- Introduction and Basics -->
+            <a href="#" onclick="loadContent('intro')">Introduction to SQL</a>
+            <a href="#" onclick="loadContent('datatypes')">SQL Data Types</a>
+
+            <!-- DDL (Data Definition Language) -->
+            
+            <a href="#" onclick="loadContent('constraints')">CONSTRAINTS</a>
+            <a href="#" onclick="loadContent('ddl')">DDL COMMANDS</a>
+            <a href="#" onclick="loadContent('create')">CREATE</a>
+            <a href="#" onclick="loadContent('alter')">ALTER</a>
+            <a href="#" onclick="loadContent('drop')">DROP</a>
+            <a href="#" onclick="loadContent('truncate')">TRUNCATE</a>
+            <a href="#" onclick="loadContent('comment')">COMMENT</a>
+
+            <!-- DML (Data Manipulation Language) -->
+            
+            <a href="#" onclick="loadContent('dml')">DML</a>
+         
+
+            <!-- DQL (Data Query Language) -->
+           
+            <a href="#" onclick="loadContent('dql')">DQL</a>
+
+            <!-- TCL (Transaction Control Language) -->
+       
+            <a href="#" onclick="loadContent('tcl')">TCL</a>
+            
+            <a href="#" onclick="loadContent('joins')">SQL Joins</a>
+            <a href="#" onclick="loadContent('functions')">SQL Functions</a>
+            <a href="#" onclick="loadContent('subqueries')">Subqueries</a>
+            <a href="#" onclick="loadContent('indexes')">SQL Indexes</a>
+            <a href="#" onclick="loadContent('transactions')">SQL Transactions</a>
+            <a href="#" onclick="loadContent('views')">SQL Views</a>
+            <a href="#" onclick="loadContent('rank')">SQL RANK</a>
+            <a href="#" onclick="loadContent('triggers')">SQL Triggers</a>
+            <a href="#" onclick="loadContent('procedures')">Stored Procedures</a>
+            <a href="#" onclick="loadContent('normalization')">Database Normalization</a>
+            <a href="#" onclick="loadContent('backups')">Database Backups</a>
+            <a href="#" onclick="loadContent('security')">SQL Security</a>
+            <a href="#" onclick="loadContent('performance')">SQL Performance Tuning</a>
+            
+            <a href="#" onclick="loadContent('advancedfunctions')">Advanced SQL Functions</a>
+            <a href="#" onclick="loadContent('optimization')">SQL Optimization</a>
+            <a href="#" onclick="loadContent('acl')">Access Control (ACL)</a>
+        </aside>
+
+        <!-- Main content area -->
+        <div class="content" id="contentArea">
+            <h1>Welcome to SQL Learning</h1>
+            <p>Select a SQL topic from the left to get started.</p>
+        </div>
+    </div>
+
+    <script src="sql.js"></script> <!-- Link to external JavaScript file -->
+</body>
+</html>

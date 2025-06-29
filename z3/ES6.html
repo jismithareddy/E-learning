@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Features in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>ES6 Features in JavaScript</h1>
+<p>ES6, also known as ECMAScript 2015, introduced many new features to JavaScript that make coding easier and more efficient. Below are some key ES6 features explained with examples.</p>
+
+<h2>1. let and const</h2>
+<p><code>let</code> and <code>const</code> provide block-scoped variables, whereas <code>var</code> is function-scoped.</p>
+
+<h3>Example 1: let vs const vs var</h3>
+<pre><code>// let: block-scoped
+let x = 10;
+if (true) {
+    let x = 20;
+    console.log(x); // Outputs: 20
+}
+console.log(x); // Outputs: 10
+
+// const: block-scoped and immutable
+const y = 30;
+// y = 40; // Error: Assignment to constant variable
+</code></pre>
+<p><strong>Explanation:</strong> <code>let</code> allows reassigning the variable, but it's block-scoped, so changes inside the block do not affect the outer scope. <code>const</code> declares a constant variable that cannot be reassigned.</p>
+
+<h2>2. Arrow Functions</h2>
+<p>Arrow functions provide a more concise syntax for writing functions and do not bind their own <code>this</code> value.</p>
+
+<h3>Example 2: Arrow Function</h3>
+<pre><code>// Traditional function
+function greet(name) {
+    return "Hello " + name;
+}
+
+// Arrow function
+const greet = (name) => "Hello " + name;
+
+console.log(greet("Alice")); // Outputs: Hello Alice
+</code></pre>
+<p><strong>Explanation:</strong> Arrow functions are shorter and automatically return the value if the body is a single expression, making them ideal for simple callbacks and operations.</p>
+
+<h2>3. Template Literals</h2>
+<p>Template literals allow for easier string interpolation and multi-line strings using double quotes or single quotes, instead of complex concatenation.</p>
+
+<h3>Example 3: Template Literals (without backticks)</h3>
+<pre><code>const name = "Alice";
+const greeting = "Hello, " + name + "! Welcome to ES6.";
+
+console.log(greeting); // Outputs: Hello, Alice! Welcome to ES6.
+</code></pre>
+<p><strong>Explanation:</strong> Instead of backticks, you can concatenate strings using the plus operator (<code>+</code>). This is less clean, but it avoids the use of backticks.</p>
+
+<h2>4. Default Parameters</h2>
+<p>Functions can have default values for parameters in ES6, which makes function calls simpler.</p>
+
+<h3>Example 4: Default Parameters</h3>
+<pre><code>function greet(name = "Guest") {
+    return "Hello, " + name + "!";
+}
+
+console.log(greet()); // Outputs: Hello, Guest!
+console.log(greet("Alice")); // Outputs: Hello, Alice!
+</code></pre>
+<p><strong>Explanation:</strong> The parameter <code>name</code> has a default value of <code>"Guest"</code>. If no argument is provided, it uses the default value; otherwise, it uses the passed argument.</p>
+
+<h2>5. Destructuring Assignment</h2>
+<p>Destructuring allows you to unpack values from arrays or properties from objects into distinct variables.</p>
+
+<h3>Example 5: Destructuring Arrays and Objects</h3>
+<pre><code>// Array destructuring
+const [a, b] = [10, 20];
+console.log(a); // Outputs: 10
+console.log(b); // Outputs: 20
+
+// Object destructuring
+const person = { name: "Alice", age: 30 };
+const { name, age } = person;
+console.log(name); // Outputs: Alice
+console.log(age); // Outputs: 30
+</code></pre>
+<p><strong>Explanation:</strong> Destructuring simplifies extracting values from arrays or objects without the need for multiple variable assignments.</p>
+
+<h2>6. Spread and Rest Operators</h2>
+<p>The spread operator (<code>...</code>) allows you to spread elements of an array or object, and the rest operator (<code>...</code>) collects remaining elements into an array.</p>
+
+<h3>Example 6: Spread and Rest Operators</h3>
+<pre><code>// Spread operator with arrays
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5];
+console.log(arr2); // Outputs: [1, 2, 3, 4, 5]
+
+// Rest operator in function
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num);
+}
+
+console.log(sum(1, 2, 3)); // Outputs: 6
+</code></pre>
+<p><strong>Explanation:</strong> The spread operator is used to combine arrays or objects, while the rest operator gathers all remaining arguments into an array.</p>
+
+<h2>7. Classes</h2>
+<p>ES6 introduces classes, a syntactical sugar over JavaScript’s existing prototype-based inheritance. They make object-oriented programming more intuitive in JavaScript.</p>
+
+<h3>Example 7: Classes in ES6</h3>
+<pre><code>class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        return "Hello, my name is " + this.name + " and I am " + this.age + " years old.";
+    }
+}
+
+const alice = new Person("Alice", 30);
+console.log(alice.greet()); // Outputs: Hello, my name is Alice and I am 30 years old.
+</code></pre>
+<p><strong>Explanation:</strong> The <code>class</code> keyword simplifies creating objects and handling inheritance in JavaScript, making it look similar to other object-oriented languages like Java and C#.</p>
+
+<h2>Conclusion</h2>
+<p>ES6 introduces several new features and improvements that make JavaScript more powerful and easier to work with. These features provide modern ways to handle variables, functions, strings, objects, arrays, and even object-oriented programming with classes.</p>
+
+</body>
+</html>

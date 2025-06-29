@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison of RANK and DENSE_RANK Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        p {
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #b44545;
+        }
+    </style>
+</head>
+<body>
+    <h2>SQL RANK and DENSE_RANK Functions</h2>
+
+<p>
+    The <code>RANK()</code> and <code>DENSE_RANK()</code> functions are used in SQL to assign a unique rank to each row within a partition of a result set. These functions are particularly useful for ranking data based on specific criteria.
+</p>
+
+<h3>1. RANK() Function</h3>
+<p>
+    The <code>RANK()</code> function assigns a rank to each row within a partition of a result set. The rank starts at 1 for the first row within each partition and increments by 1 for each subsequent row. If there are duplicate values, the same rank is assigned to the duplicate values, and the next rank is skipped.
+</p>
+
+<h4>Example of RANK()</h4>
+<p>
+    Consider a table named <code>Scores</code> with the following data:
+</p>
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>85</td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>Charlie</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>80</td>
+    </tr>
+</table>
+
+<p>
+    The SQL query using <code>RANK()</code> to rank students based on their scores would be:
+</p>
+<pre><code>SELECT Student, Score, RANK() OVER (ORDER BY Score DESC) AS Rank
+FROM Scores;</code></pre>
+
+<p>
+    The result would be:
+</p>
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Score</th>
+        <th>Rank</th>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Charlie</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>85</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>80</td>
+        <td>4</td>
+    </tr>
+</table>
+
+<h3>2. DENSE_RANK() Function</h3>
+<p>
+    The <code>DENSE_RANK()</code> function is similar to <code>RANK()</code>, but it does not skip ranks when there are duplicate values. Each distinct value is assigned a unique rank, and the next rank follows immediately, regardless of how many duplicates there are.
+</p>
+
+<h4>Example of DENSE_RANK()</h4>
+<p>
+    Using the same <code>Scores</code> table, the SQL query using <code>DENSE_RANK()</code> to rank students would be:
+</p>
+<pre><code>SELECT Student, Score, DENSE_RANK() OVER (ORDER BY Score DESC) AS DenseRank
+FROM Scores;</code></pre>
+
+<p>
+    The result would be:
+</p>
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Score</th>
+        <th>DenseRank</th>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Charlie</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>85</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>80</td>
+        <td>3</td>
+    </tr>
+</table>
+
+<h3>3. Key Differences Between RANK() and DENSE_RANK()</h3>
+<table>
+    <tr>
+        <th>Criteria</th>
+        <th>RANK()</th>
+        <th>DENSE_RANK()</th>
+    </tr>
+    <tr>
+        <td>Handling Duplicates</td>
+        <td>Skips rank numbers for duplicates</td>
+        <td>No gaps in rank numbers</td>
+    </tr>
+    <tr>
+        <td>Example Result</td>
+        <td>1, 1, 3, 4</td>
+        <td>1, 1, 2, 3</td>
+    </tr>
+</table>
+
+<h3>Conclusion</h3>
+<p>
+    Both <code>RANK()</code> and <code>DENSE_RANK()</code> functions are powerful tools for ranking data in SQL. The choice between them depends on how you want to handle ties in your data. Use <code>RANK()</code> if you need to maintain gaps in ranks and <code>DENSE_RANK()</code> if you want continuous ranking without skips.
+</p>
+
+<h2>Comparison of RANK and DENSE_RANK Functions</h2>
+
+<h3>1. Definitions</h3>
+<p>
+    The <code>RANK()</code> function assigns a rank to each row within a partition of a result set. The rank starts at 1 for the first row within each partition and increments by 1 for each subsequent row. If there are duplicate values, the same rank is assigned to the duplicate values, and the next rank is skipped.
+</p>
+<p>
+    The <code>DENSE_RANK()</code> function is similar to <code>RANK()</code>, but it does not skip ranks when there are duplicate values. Each distinct value is assigned a unique rank, and the next rank follows immediately, regardless of how many duplicates there are.
+</p>
+
+<h3>2. Key Differences</h3>
+<table>
+    <tr>
+        <th>Criteria</th>
+        <th>RANK()</th>
+        <th>DENSE_RANK()</th>
+    </tr>
+    <tr>
+        <td>Handling Duplicates</td>
+        <td>Skips rank numbers for duplicates</td>
+        <td>No gaps in rank numbers</td>
+    </tr>
+    <tr>
+        <td>Example Result for Ties</td>
+        <td>1, 1, 3, 4</td>
+        <td>1, 1, 2, 3</td>
+    </tr>
+    <tr>
+        <td>Use Case</td>
+        <td>Use when gaps in ranking are acceptable</td>
+        <td>Use when continuous ranking is preferred</td>
+    </tr>
+</table>
+
+<h3>3. Example Comparison</h3>
+<p>
+    Consider a table named <code>Scores</code> with the following data:
+</p>
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>85</td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>Charlie</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>80</td>
+    </tr>
+</table>
+
+<h4>Using RANK()</h4>
+<pre><code>SELECT Student, Score, RANK() OVER (ORDER BY Score DESC) AS Rank
+FROM Scores;</code></pre>
+<p>
+    The result would be:
+</p>
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Score</th>
+        <th>Rank</th>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Charlie</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>85</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>80</td>
+        <td>4</td>
+    </tr>
+</table>
+
+<h4>Using DENSE_RANK()</h4>
+<pre><code>SELECT Student, Score, DENSE_RANK() OVER (ORDER BY Score DESC) AS DenseRank
+FROM Scores;</code></pre>
+<p>
+    The result would be:
+</p>
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Score</th>
+        <th>DenseRank</th>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Charlie</td>
+        <td>90</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>85</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>David</td>
+        <td>80</td>
+        <td>3</td>
+    </tr>
+</table>
+
+<h3>4. Conclusion</h3>
+<p>
+    Both <code>RANK()</code> and <code>DENSE_RANK()</code> functions are powerful tools for ranking data in SQL. The choice between them depends on how you want to handle ties in your data. Use <code>RANK()</code> if you need to maintain gaps in ranks and <code>DENSE_RANK()</code> if you want continuous ranking without skips.
+</p>
+
+</body>
+</html>

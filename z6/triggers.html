@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Triggers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        p {
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>SQL Triggers</h2>
+<p>
+    A <strong>trigger</strong> is a special type of stored procedure in SQL that automatically executes 
+    or fires when certain events occur in the database. Triggers can be set to activate before or after 
+    an <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> operation on a table.
+</p>
+
+<h3>Key Features of Triggers</h3>
+<ul>
+    <li>
+        <strong>Automatic Execution:</strong> Triggers automatically run when specified events occur in the database.
+    </li>
+    <li>
+        <strong>Data Integrity:</strong> Triggers help maintain data integrity by enforcing rules and constraints.
+    </li>
+    <li>
+        <strong>Audit Trails:</strong> Triggers can be used to track changes in data, providing a history of modifications.
+    </li>
+    <li>
+        <strong>Complex Business Logic:</strong> Triggers allow you to implement complex business rules that may not be achievable through regular SQL statements.
+    </li>
+</ul>
+
+<h2>Creating a Trigger</h2>
+<p>The syntax for creating a trigger is as follows:</p>
+<pre>
+<code>
+CREATE TRIGGER trigger_name
+BEFORE|AFTER INSERT|UPDATE|DELETE
+ON table_name
+FOR EACH ROW
+BEGIN
+    -- Trigger logic
+END;
+</code>
+</pre>
+
+<h3>Example of Creating a Trigger</h3>
+<p>Consider a table named <code>employees</code>:</p>
+<table>
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>department</th>
+            <th>salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td>HR</td>
+            <td>60000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Smith</td>
+            <td>IT</td>
+            <td>75000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Mike</td>
+            <td>Johnson</td>
+            <td>Finance</td>
+            <td>70000</td>
+        </tr>
+    </tbody>
+</table>
+<p>We can create a trigger that logs changes made to the <code>employees</code> table:</p>
+<pre>
+<code>
+CREATE TRIGGER LogSalaryChange
+AFTER UPDATE ON employees
+FOR EACH ROW
+BEGIN
+    INSERT INTO salary_log (employee_id, old_salary, new_salary, change_date)
+    VALUES (OLD.employee_id, OLD.salary, NEW.salary, NOW());
+END;
+</code>
+</pre>
+
+<h3>Trigger Logic Explained</h3>
+<p>In the above trigger:</p>
+<ul>
+    <li><code>LogSalaryChange</code> is the name of the trigger.</li>
+    <li>It is set to execute <strong>after</strong> an <code>UPDATE</code> on the <code>employees</code> table.</li>
+    <li>For each updated row, it inserts a record into the <code>salary_log</code> table, logging the employee ID, old salary, new salary, and the date of the change.</li>
+</ul>
+
+<h2>Trigger Execution Example</h2>
+<p>Assuming we have a <code>salary_log</code> table structured as follows:</p>
+<table>
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>old_salary</th>
+            <th>new_salary</th>
+            <th>change_date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- This table will be populated after the trigger fires -->
+    </tbody>
+</table>
+
+<p>Now, if we update Jane's salary:</p>
+<pre>
+<code>
+UPDATE employees
+SET salary = 80000
+WHERE last_name = 'Smith';
+</code>
+</pre>
+
+<p>After the update, the <code>salary_log</code> table will have the following entry:</p>
+<table>
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>old_salary</th>
+            <th>new_salary</th>
+            <th>change_date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2</td>
+            <td>75000</td>
+            <td>80000</td>
+            <td>[current_date_time]</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Dropping a Trigger</h2>
+<p>To remove a trigger from the database, use the <code>DROP TRIGGER</code> command:</p>
+<pre>
+<code>
+DROP TRIGGER LogSalaryChange;
+</code>
+</pre>
+<p>This command deletes the trigger, and it will no longer fire on the specified events.</p>
+
+<h2>Conclusion</h2>
+<p>SQL triggers are powerful tools for automating actions in response to changes in the database. They enhance data integrity and allow the implementation of complex business rules, making them an essential feature for advanced database management.</p>
+
+</body>
+</html>

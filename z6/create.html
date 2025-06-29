@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL CREATE Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p, ul {
+            line-height: 1.6;
+            color: #555;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 5px;
+            border-radius: 4px;
+            color: #333;
+        }
+        .example {
+            background-color: #e9f7e4;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .visualization {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CREATE Command in SQL</h1>
+
+    <p>The <strong>CREATE</strong> command in SQL is used to create database objects such as tables, views, schemas, and indexes. It defines the structure of the object, specifying the columns, their data types, and any constraints (e.g., primary keys or unique constraints).</p>
+
+    <h2>Examples of Using the CREATE Command</h2>
+
+    <p>Below are 7 examples of the <code>CREATE</code> command, which demonstrate different use cases for creating tables, schemas, and more:</p>
+
+    <!-- Example 1: Creating a Table -->
+    <div class="example">
+        <h3>Example 1: Creating a Table</h3>
+        <p>We can create a simple table to store employee information:</p>
+        <code>CREATE TABLE Employees (id INT PRIMARY KEY, name VARCHAR(50), age INT, department VARCHAR(50));</code>
+        <p><strong>Description:</strong> This command creates a table called <code>Employees</code> with columns <code>id</code>, <code>name</code>, <code>age</code>, and <code>department</code>.</p>
+        <div class="visualization">
+            <p>Table: Employees</p>
+            <p>id | name | age | department</p>
+        </div>
+    </div>
+
+    <!-- Example 2: Creating a Table with Not Null Constraints -->
+    <div class="example">
+        <h3>Example 2: Creating a Table with Not Null Constraints</h3>
+        <p>This example demonstrates the use of the <code>NOT NULL</code> constraint to ensure that certain columns must have a value:</p>
+        <code>CREATE TABLE Products (product_id INT NOT NULL, product_name VARCHAR(100) NOT NULL, price DECIMAL(10, 2), PRIMARY KEY (product_id));</code>
+        <p><strong>Description:</strong> The <code>product_id</code> and <code>product_name</code> columns are set to <code>NOT NULL</code>, which means they must have values when records are inserted into the table.</p>
+        <div class="visualization">
+            <p>Table: Products</p>
+            <p>product_id | product_name | price</p>
+        </div>
+    </div>
+
+    <!-- Example 3: Creating a Table with Foreign Key -->
+    <div class="example">
+        <h3>Example 3: Creating a Table with Foreign Key</h3>
+        <p>This example shows how to establish a foreign key relationship between two tables:</p>
+        <code>CREATE TABLE Orders (order_id INT PRIMARY KEY, customer_id INT, order_date DATE, FOREIGN KEY (customer_id) REFERENCES Customers (customer_id));</code>
+        <p><strong>Description:</strong> This creates a table called <code>Orders</code> with a foreign key constraint on the <code>customer_id</code> column, linking it to the <code>Customers</code> table.</p>
+        <div class="visualization">
+            <p>Table: Orders</p>
+            <p>order_id | customer_id | order_date</p>
+        </div>
+    </div>
+
+    <!-- Example 4: Creating a View -->
+    <div class="example">
+        <h3>Example 4: Creating a View</h3>
+        <p>A view is a virtual table based on the result of a SELECT query:</p>
+        <code>CREATE VIEW EmployeeDetails AS SELECT name, department FROM Employees WHERE age > 30;</code>
+        <p><strong>Description:</strong> This view will display the names and departments of employees older than 30.</p>
+        <div class="visualization">
+            <p>View: EmployeeDetails</p>
+            <p>name | department</p>
+        </div>
+    </div>
+
+    <!-- Example 5: Creating a Schema -->
+    <div class="example">
+        <h3>Example 5: Creating a Schema</h3>
+        <p>A schema is a collection of database objects that can contain tables, views, and other structures:</p>
+        <code>CREATE SCHEMA Sales;</code>
+        <p><strong>Description:</strong> This command creates a new schema named <code>Sales</code>.</p>
+        <div class="visualization">
+            <p>Schema: Sales</p>
+            <p>Contains tables, views, etc.</p>
+        </div>
+    </div>
+
+    <!-- Example 6: Creating an Index -->
+    <div class="example">
+        <h3>Example 6: Creating an Index</h3>
+        <p>Creating an index helps speed up queries on a table:</p>
+        <code>CREATE INDEX idx_employee_name ON Employees (name);</code>
+        <p><strong>Description:</strong> This index will improve the performance of queries that search for employees by name in the <code>Employees</code> table.</p>
+        <div class="visualization">
+            <p>Index: idx_employee_name</p>
+            <p>Indexed column: name</p>
+        </div>
+    </div>
+
+    <!-- Example 7: Creating a Temporary Table -->
+    <div class="example">
+        <h3>Example 7: Creating a Temporary Table</h3>
+        <p>Temporary tables exist only for the duration of a session or transaction:</p>
+        <code>CREATE TEMPORARY TABLE TempOrders (order_id INT, product_id INT, quantity INT);</code>
+        <p><strong>Description:</strong> This temporary table will store order information temporarily during a session.</p>
+        <div class="visualization">
+            <p>Temporary Table: TempOrders</p>
+            <p>order_id | product_id | quantity</p>
+        </div>
+    </div>
+
+    <h2>Where the CREATE Command is Used</h2>
+    <p>The <code>CREATE</code> command is used when designing and building a database. It is essential for:</p>
+    <ul>
+        <li>Creating tables to store data.</li>
+        <li>Defining relationships between tables (e.g., using foreign keys).</li>
+        <li>Creating views to simplify data retrieval.</li>
+        <li>Organizing data into schemas for better management.</li>
+        <li>Improving query performance through indexes.</li>
+        <li>Temporarily storing data in a session with temporary tables.</li>
+    </ul>
+
+    <p>The <code>CREATE</code> command is foundational to setting up a well-structured database.</p>
+
+</body>
+</html>

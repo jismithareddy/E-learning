@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL ALTER Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        .example {
+            background-color: #e7f3fe;
+            padding: 10px;
+            border-left: 4px solid #2196F3;
+            margin-bottom: 20px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL ALTER Command</h1>
+
+    <p>The <strong>ALTER</strong> command in SQL is used to modify the structure of an existing database object, such as a table, view, or index. It allows you to make changes to the structure without having to delete and recreate the object. These changes could include adding or dropping columns, modifying data types, renaming columns, or altering constraints.</p>
+
+    <h2>Common Uses of the ALTER Command</h2>
+    <ul>
+        <li>Adding a new column</li>
+        <li>Modifying an existing column's data type</li>
+        <li>Dropping a column</li>
+        <li>Renaming a column</li>
+        <li>Adding constraints (e.g., primary key, foreign key)</li>
+        <li>Dropping constraints</li>
+    </ul>
+
+    <h2>Examples of the ALTER Command</h2>
+
+    <div class="example">
+        <h3>Example 1: Adding a New Column to a Table</h3>
+        <pre>
+ALTER TABLE Employees ADD salary DECIMAL(10, 2);
+        </pre>
+        <div class="description">
+            This command adds a new column <strong>salary</strong> to the <strong>Employees</strong> table. The column will store decimal values with a precision of 10 digits, with 2 digits after the decimal point.
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Example 2: Modifying a Column's Data Type</h3>
+        <pre>
+ALTER TABLE Employees MODIFY salary DECIMAL(12, 2);
+        </pre>
+        <div class="description">
+            This command changes the <strong>salary</strong> column in the <strong>Employees</strong> table, increasing its precision to 12 digits instead of 10.
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Example 3: Dropping a Column from a Table</h3>
+        <pre>
+ALTER TABLE Employees DROP COLUMN age;
+        </pre>
+        <div class="description">
+            This command removes the <strong>age</strong> column from the <strong>Employees</strong> table.
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Example 4: Renaming a Column</h3>
+        <pre>
+ALTER TABLE Employees RENAME COLUMN department TO dept;
+        </pre>
+        <div class="description">
+            This command renames the <strong>department</strong> column to <strong>dept</strong> in the <strong>Employees</strong> table.
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Example 5: Adding a Primary Key Constraint</h3>
+        <pre>
+ALTER TABLE Employees ADD CONSTRAINT pk_employee_id PRIMARY KEY (id);
+        </pre>
+        <div class="description">
+            This command adds a primary key constraint to the <strong>id</strong> column in the <strong>Employees</strong> table.
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Example 6: Dropping a Foreign Key Constraint</h3>
+        <pre>
+ALTER TABLE Orders DROP CONSTRAINT fk_customer_id;
+        </pre>
+        <div class="description">
+            This command removes the foreign key constraint <strong>fk_customer_id</strong> from the <strong>Orders</strong> table.
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Example 7: Adding a NOT NULL Constraint</h3>
+        <pre>
+ALTER TABLE Employees MODIFY salary DECIMAL(10, 2) NOT NULL;
+        </pre>
+        <div class="description">
+            This command modifies the <strong>salary</strong> column to make it a mandatory field by adding a <strong>NOT NULL</strong> constraint.
+        </div>
+    </div>
+
+    <h2>Where to Use the ALTER Command</h2>
+    <p>The <strong>ALTER</strong> command is used when you need to modify the structure of a database object. It is particularly useful in cases where:</p>
+    <ul>
+        <li>The structure of a table needs to evolve to meet new requirements.</li>
+        <li>Constraints or relationships between tables need to be adjusted.</li>
+        <li>Column names, data types, or constraints need to be modified for optimization or clarity.</li>
+        <li>A column, table, or constraint name needs to be renamed.</li>
+    </ul>
+
+</body>
+</html>

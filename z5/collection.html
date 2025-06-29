@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections Framework in Java - Detailed Explanation</title>
+</head>
+<body>
+    <h1>Java Collections Framework</h1>
+    
+    <h2>Introduction to Collections Framework</h2>
+    <p>The Java Collections Framework (JCF) provides a set of interfaces, classes, and algorithms that help store, retrieve, and manipulate data efficiently. It is a unified architecture for representing and manipulating collections, allowing us to work with groups of objects.</p>
+    
+    <p>The JCF simplifies data management tasks such as sorting, searching, and modifying collections, and also defines commonly used data structures such as lists, sets, and maps.</p>
+    
+    <h2>Core Interfaces of the Collections Framework</h2>
+    <p>The core interfaces of the Collections Framework are:</p>
+    <ul>
+        <li><code>Collection</code>: The root interface for all collection types. It defines basic operations such as adding, removing, and querying elements.</li>
+        <li><code>List</code>: An ordered collection that allows duplicate elements. Elements can be accessed by their position in the list.</li>
+        <li><code>Set</code>: A collection that does not allow duplicate elements. It models the mathematical set.</li>
+        <li><code>Queue</code>: A collection designed for holding elements before processing. It follows FIFO (First In First Out) order.</li>
+        <li><code>Map</code>: A collection that stores key-value pairs. It maps keys to values and does not allow duplicate keys.</li>
+    </ul>
+
+    <h2>Collection Hierarchy</h2>
+    <pre><code>
+    java.util.Collection
+        ├── List
+        ├── Set
+        └── Queue
+
+    java.util.Map (Not part of Collection interface but closely related)
+    </code></pre>
+    <p>The Collection hierarchy consists of several interfaces, with <code>Collection</code> at the top. Below that are various specific collections such as <code>List</code>, <code>Set</code>, and <code>Queue</code>, each offering different functionalities.</p>
+
+    <h2>Implementations of Collection Interfaces</h2>
+    <p>Java provides various classes that implement the core interfaces of the Collections Framework. Some of the commonly used implementations are:</p>
+    
+    <h3>List Implementations</h3>
+    <ul>
+        <li><code>ArrayList</code>: A resizable array implementation of the List interface. It allows fast random access and dynamic resizing.</li>
+        <li><code>LinkedList</code>: A doubly-linked list implementation of the List interface. It allows fast insertion and removal of elements.</li>
+        <li><code>Vector</code>: A synchronized, resizable array implementation that is considered legacy.</li>
+    </ul>
+    
+    <h3>Set Implementations</h3>
+    <ul>
+        <li><code>HashSet</code>: An unordered, unsorted set that does not allow duplicates.</li>
+        <li><code>LinkedHashSet</code>: A set that maintains the insertion order of elements while ensuring no duplicates.</li>
+        <li><code>TreeSet</code>: A set that stores elements in a sorted order based on their natural ordering or a custom comparator.</li>
+    </ul>
+    
+    <h3>Queue Implementations</h3>
+    <ul>
+        <li><code>PriorityQueue</code>: A queue that orders its elements according to their natural ordering or based on a custom comparator.</li>
+        <li><code>LinkedList</code>: Also implements the Queue interface, providing FIFO behavior.</li>
+    </ul>
+    
+    <h3>Map Implementations</h3>
+    <ul>
+        <li><code>HashMap</code>: A hash table implementation of the Map interface. It allows null keys and values and provides constant-time performance for basic operations.</li>
+        <li><code>LinkedHashMap</code>: A hash table implementation that maintains the insertion order of keys.</li>
+        <li><code>TreeMap</code>: A map that stores keys in sorted order, based on their natural ordering or a custom comparator.</li>
+    </ul>
+
+    <h2>Example 1: Using ArrayList (List Implementation)</h2>
+    <pre><code>
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class Main {
+        public static void main(String[] args) {
+            List<String> names = new ArrayList<>();
+            names.add("Alice");
+            names.add("Bob");
+            names.add("Charlie");
+
+            System.out.println("Names: " + names);  // Output: Names: [Alice, Bob, Charlie]
+
+            names.remove("Bob");
+
+            System.out.println("After Removal: " + names);  // Output: After Removal: [Alice, Charlie]
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, an <code>ArrayList</code> is used to store names. The <code>add()</code> method is used to add elements, and the <code>remove()</code> method removes an element by value. The resulting list is printed before and after removal.</p>
+
+    <h2>Example 2: Using HashSet (Set Implementation)</h2>
+    <pre><code>
+    import java.util.HashSet;
+    import java.util.Set;
+
+    public class Main {
+        public static void main(String[] args) {
+            Set<Integer> numbers = new HashSet<>();
+            numbers.add(1);
+            numbers.add(2);
+            numbers.add(3);
+            numbers.add(3);  // Duplicate element
+
+            System.out.println("Numbers: " + numbers);  // Output: Numbers: [1, 2, 3]
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, a <code>HashSet</code> is used to store integers. Even though the value 3 is added twice, the set ensures that no duplicates are present, resulting in a set with unique elements.</p>
+
+    <h2>Example 3: Using HashMap (Map Implementation)</h2>
+    <pre><code>
+    import java.util.HashMap;
+    import java.util.Map;
+
+    public class Main {
+        public static void main(String[] args) {
+            Map<String, Integer> ages = new HashMap<>();
+            ages.put("Alice", 25);
+            ages.put("Bob", 30);
+            ages.put("Charlie", 35);
+
+            System.out.println("Ages: " + ages);  // Output: Ages: {Alice=25, Bob=30, Charlie=35}
+
+            ages.put("Alice", 26);  // Update Alice's age
+
+            System.out.println("Updated Ages: " + ages);  // Output: Updated Ages: {Alice=26, Bob=30, Charlie=35}
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, a <code>HashMap</code> is used to store key-value pairs representing names and ages. The <code>put()</code> method is used to add or update entries, and the updated map is printed.</p>
+
+    <h2>Iterator Interface</h2>
+    <p>The <code>Iterator</code> interface provides methods to iterate over collections. It defines three primary methods: <code>hasNext()</code>, <code>next()</code>, and <code>remove()</code>.</p>
+
+    <h3>Example 4: Using Iterator to Traverse a List</h3>
+    <pre><code>
+    import java.util.ArrayList;
+    import java.util.Iterator;
+    import java.util.List;
+
+    public class Main {
+        public static void main(String[] args) {
+            List<String> names = new ArrayList<>();
+            names.add("Alice");
+            names.add("Bob");
+            names.add("Charlie");
+
+            Iterator<String> iterator = names.iterator();
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next());
+            }
+        }
+    }
+    </code></pre>
+    <p><strong>Explanation:</strong> In this example, an <code>Iterator</code> is used to traverse through a list. The <code>hasNext()</code> method checks if more elements are present, and <code>next()</code> retrieves the next element.</p>
+
+    <h2>Common Algorithms in Collections Framework</h2>
+    <p>Java provides several algorithms in the <code>Collections</code> class to operate on collections. Some of the most commonly used methods are:</p>
+    <ul>
+        <li><code>sort(List)</code>: Sorts a list using its natural ordering or a custom comparator.</li>
+        <li><code>reverse(List)</code>: Reverses the elements of a list.</li>
+        <li><code>shuffle(List)</code>: Randomly shuffles the elements of a list.</li>
+        <li><code>binarySearch(List, key)</code>: Searches for a key in a sorted list using binary search.</li>
+        <li><code>min(Collection)</code>: Returns the minimum element from a collection.</li>
+        <li><code>max(Collection)</code>: Returns the maximum element from a collection.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Java Collections Framework provides a flexible and efficient way to handle data. It allows developers to work with various data structures, providing a wide range of functionalities and algorithms for manipulating collections.</p>
+
+</body>
+</html>

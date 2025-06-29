@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Conditional Statements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Conditional Statements</h1>
+<p>Conditional statements are used in programming to perform different actions based on different conditions. In JavaScript, the most common conditional statements are <code>if</code>, <code>else</code>, <code>else if</code>, and <code>switch</code>. These statements allow you to control the flow of your code based on specified conditions.</p>
+
+<h2>1. If Statement</h2>
+<p>The <code>if</code> statement evaluates a condition and executes a block of code if the condition is true.</p>
+
+<h3>Example 1: If Statement</h3>
+<pre><code>let age = 18;
+if (age >= 18) {
+    console.log("You are an adult.");
+}</code></pre>
+<p><strong>Explanation:</strong> In this example, the <code>if</code> statement checks if the variable <code>age</code> is greater than or equal to <code>18</code>. If the condition is true, it prints "You are an adult." to the console.</p>
+
+<h2>2. If...Else Statement</h2>
+<p>The <code>if...else</code> statement executes one block of code if the condition is true and another block if it is false.</p>
+
+<h3>Example 2: If...Else Statement</h3>
+<pre><code>let age = 16;
+if (age >= 18) {
+    console.log("You are an adult.");
+} else {
+    console.log("You are a minor.");
+}</code></pre>
+<p><strong>Explanation:</strong> This example uses an <code>if...else</code> statement to check if <code>age</code> is greater than or equal to <code>18</code>. If true, it prints "You are an adult." Otherwise, it prints "You are a minor."</p>
+
+<h2>3. If...Else If Statement</h2>
+<p>The <code>if...else if</code> statement allows you to check multiple conditions sequentially.</p>
+
+<h3>Example 3: If...Else If Statement</h3>
+<pre><code>let score = 85;
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 80) {
+    console.log("Grade: B");
+} else if (score >= 70) {
+    console.log("Grade: C");
+} else {
+    console.log("Grade: D");
+}</code></pre>
+<p><strong>Explanation:</strong> In this example, the program checks the <code>score</code> against several thresholds. It prints the corresponding grade based on the highest true condition.</p>
+
+<h2>4. Switch Statement</h2>
+<p>The <code>switch</code> statement evaluates an expression and executes code blocks based on matching case values.</p>
+
+<h3>Example 4: Switch Statement</h3>
+<pre><code>let fruit = "Apple";
+switch (fruit) {
+    case "Apple":
+        console.log("You selected an apple.");
+        break;
+    case "Banana":
+        console.log("You selected a banana.");
+        break;
+    default:
+        console.log("Unknown fruit.");
+}</code></pre>
+<p><strong>Explanation:</strong> This example uses a <code>switch</code> statement to check the value of <code>fruit</code>. It executes the corresponding case block that matches the value. The <code>break</code> statement prevents fall-through to the next case.</p>
+
+<h2>5. Ternary Operator</h2>
+<p>The ternary operator is a shorthand way to write simple <code>if...else</code> statements.</p>
+
+<h3>Example 5: Ternary Operator</h3>
+<pre><code>let age = 20;
+let eligibility = (age >= 18) ? "Eligible to vote" : "Not eligible to vote";
+console.log(eligibility);</code></pre>
+<p><strong>Explanation:</strong> In this example, the ternary operator checks if <code>age</code> is greater than or equal to <code>18</code>. If true, it assigns "Eligible to vote" to the variable <code>eligibility</code>; otherwise, it assigns "Not eligible to vote."</p>
+
+<h2>6. Short-Circuit Evaluation</h2>
+<p>Logical operators such as <code>&&</code> (AND) and <code>||</code> (OR) can also be used for conditional checks.</p>
+
+<h3>Example 6: Short-Circuit Evaluation</h3>
+<pre><code>let isMember = true;
+let discount = isMember && "10% discount";
+console.log(discount);</code></pre>
+<p><strong>Explanation:</strong> In this example, the <code>&&</code> operator checks if <code>isMember</code> is true. If it is, the value "10% discount" is assigned to <code>discount</code>. If false, <code>discount</code> will be <code>false</code>.</p>
+
+<h2>7. Nested Conditional Statements</h2>
+<p>You can nest conditional statements to perform more complex evaluations.</p>
+
+<h3>Example 7: Nested Conditional Statements</h3>
+<pre><code>let age = 20;
+let hasID = true;
+
+if (age >= 18) {
+    if (hasID) {
+        console.log("You can enter the club.");
+    } else {
+        console.log("You need an ID to enter.");
+    }
+} else {
+    console.log("You are too young to enter.");
+}</code></pre>
+<p><strong>Explanation:</strong> In this example, the outer <code>if</code> checks if the person is at least <code>18</code> years old. If true, it checks if the person has an ID with a nested <code>if</code>. The appropriate message is printed based on the conditions.</p>
+
+</body>
+</html>

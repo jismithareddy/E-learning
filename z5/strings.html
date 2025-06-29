@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings in Java</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        code {
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Strings in Java</h1>
+    <p>Strings in Java are objects of the <code>String</code> class. Strings are immutable, which means once created, their content cannot be changed.</p>
+
+    <h2>Example 1: String Declaration</h2>
+    <p>To declare a string in Java, you can use the <code>String</code> class followed by the variable name:</p>
+
+    <pre><code>
+        public class StringExample {
+            public static void main(String[] args) {
+                String greeting = "Hello, World!";
+                System.out.println(greeting);
+            }
+        }
+    </code></pre>
+
+    <p>This example declares a string variable <code>greeting</code> and initializes it with the value "Hello, World!". The string is then printed to the console using <code>System.out.println()</code>.</p>
+
+    <h2>Example 2: String Concatenation</h2>
+    <p>In Java, you can concatenate strings using the <code>+</code> operator:</p>
+
+    <pre><code>
+        public class StringConcatenation {
+            public static void main(String[] args) {
+                String firstName = "Alice";
+                String lastName = "Smith";
+                String fullName = firstName + " " + lastName;
+                System.out.println(fullName);
+            }
+        }
+    </code></pre>
+
+    <p>In this example, we concatenate <code>firstName</code> and <code>lastName</code> with a space between them, and store the result in <code>fullName</code>. The result is printed as "Alice Smith".</p>
+
+    <h2>Example 3: Finding the Length of a String</h2>
+    <p>To find the length of a string, use the <code>length()</code> method:</p>
+
+    <pre><code>
+        public class StringLength {
+            public static void main(String[] args) {
+                String message = "Hello!";
+                int length = message.length();
+                System.out.println("Length of message: " + length);
+            }
+        }
+    </code></pre>
+
+    <p>The <code>length()</code> method returns the number of characters in the string, which includes letters, spaces, and punctuation. In this case, the length of "Hello!" is 6.</p>
+
+    <h2>Example 4: Accessing Characters in a String</h2>
+    <p>You can access individual characters in a string using the <code>charAt()</code> method:</p>
+
+    <pre><code>
+        public class AccessCharacter {
+            public static void main(String[] args) {
+                String message = "Hello!";
+                char firstChar = message.charAt(0);
+                System.out.println("First character: " + firstChar);
+            }
+        }
+    </code></pre>
+
+    <p>The <code>charAt(0)</code> method retrieves the first character of the string (index 0), which is "H".</p>
+
+    <h2>Example 5: String Comparison</h2>
+    <p>Use the <code>equals()</code> method to compare strings:</p>
+
+    <pre><code>
+        public class StringComparison {
+            public static void main(String[] args) {
+                String str1 = "apple";
+                String str2 = "apple";
+                String str3 = "banana";
+                
+                System.out.println(str1.equals(str2)); // True
+                System.out.println(str1 == str3);       // False
+            }
+        }
+    </code></pre>
+
+    <p>The <code>equals()</code> method compares the content of two strings. The <code>==</code> operator compares whether two string references point to the same object in memory.</p>
+
+    <h2>Example 6: Convert to Uppercase</h2>
+    <p>To convert a string to uppercase, use the <code>toUpperCase()</code> method:</p>
+
+    <pre><code>
+        public class ToUpperCaseExample {
+            public static void main(String[] args) {
+                String message = "hello";
+                String upperMessage = message.toUpperCase();
+                System.out.println(upperMessage);
+            }
+        }
+    </code></pre>
+
+    <p>The <code>toUpperCase()</code> method converts all characters of the string to uppercase. The output will be "HELLO".</p>
+
+    <h2>Example 7: Substring Example</h2>
+    <p>Use the <code>substring()</code> method to extract a part of the string:</p>
+
+    <pre><code>
+        public class SubstringExample {
+            public static void main(String[] args) {
+                String message = "Hello, World!";
+                String subMessage = message.substring(7, 12);
+                System.out.println(subMessage);
+            }
+        }
+    </code></pre>
+
+    <p>The <code>substring(7, 12)</code> method extracts a portion of the string starting at index 7 (inclusive) and ending at index 12 (exclusive). The output is "World".</p>
+
+    <h2>Example 8: Replacing Substring</h2>
+    <p>To replace a part of a string, use the <code>replace()</code> method:</p>
+
+    <pre><code>
+        public class ReplaceExample {
+            public static void main(String[] args) {
+                String message = "I love Java";
+                String newMessage = message.replace("love", "enjoy");
+                System.out.println(newMessage);
+            }
+        }
+    </code></pre>
+
+    <p>The <code>replace()</code> method replaces all occurrences of the specified substring with a new substring. In this example, "love" is replaced with "enjoy". The output will be "I enjoy Java".</p>
+
+    <h2>Example 9: Trim Whitespace</h2>
+    <p>The <code>trim()</code> method removes leading and trailing whitespace from a string:</p>
+
+    <pre><code>
+        public class TrimExample {
+            public static void main(String[] args) {
+                String message = "   Hello World!   ";
+                String trimmedMessage = message.trim();
+                System.out.println(trimmedMessage);
+            }
+        }
+    </code></pre>
+
+    <p>The <code>trim()</code> method removes extra spaces before and after the string. The output will be "Hello World!".</p>
+
+    <h2>Example 10: String Conversion</h2>
+    <p>Strings can be converted to integers and vice versa:</p>
+
+    <pre><code>
+        public class StringConversion {
+            public static void main(String[] args) {
+                String numberString = "123";
+                int number = Integer.parseInt(numberString);
+                System.out.println(number);
+                
+                int num = 456;
+                String numString = String.valueOf(num);
+                System.out.println(numString);
+            }
+        }
+    </code></pre>
+
+    <p>The <code>Integer.parseInt()</code> method converts a string to an integer, while <code>String.valueOf()</code> converts an integer to a string.</p>
+
+    <h2>Summary of String Operations</h2>
+    <table>
+        <tr>
+            <th>Operation</th>
+            <th>Method</th>
+            <th>Example</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Convert to Uppercase</td>
+            <td><code>toUpperCase()</code></td>
+            <td><code>"hello".toUpperCase()</code></td>
+            <td>HELLO</td>
+        </tr>
+        <tr>
+            <td>Extract Substring</td>
+            <td><code>substring()</code></td>
+            <td><code>"hello".substring(1, 4)</code></td>
+            <td>ell</td>
+        </tr>
+        <tr>
+            <td>Replace Text</td>
+            <td><code>replace()</code></td>
+            <td><code>"I love Java".replace("love", "enjoy")</code></td>
+            <td>I enjoy Java</td>
+        </tr>
+        <tr>
+            <td>Trim Whitespace</td>
+            <td><code>trim()</code></td>
+            <td><code>"  Hello World!  ".trim()</code></td>
+            <td>Hello World!</td>
+        </tr>
+        <tr>
+            <td>Convert to Integer</td>
+            <td><code>Integer.parseInt()</code></td>
+            <td><code>Integer.parseInt("123")</code></td>
+            <td>123</td>
+        </tr>
+    </table>
+
+</body>
+</html>

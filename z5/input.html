@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input and Output in Java</title>
+    <style>
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        code {
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Input and Output in Java</h1>
+
+    <p>In Java, input and output (I/O) are handled through various classes provided in the Java API. The primary classes used for input and output in Java are part of the <strong>java.io</strong> package.</p>
+
+    <h2>1. Output in Java</h2>
+    <p>Output is the process of displaying data to the user. In Java, the most common way to display data is using the <code>System.out</code> object, which represents the standard output stream.</p>
+
+    <h3>1.1. Using <code>System.out.print()</code> and <code>System.out.println()</code></h3>
+    <p>Both <code>System.out.print()</code> and <code>System.out.println()</code> are used to output text to the console. The difference is that <code>System.out.println()</code> moves the cursor to a new line after printing, while <code>System.out.print()</code> does not.</p>
+
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><code>System.out.print()</code></td>
+            <td>Displays the output on the same line.</td>
+            <td><code>System.out.print("Hello ");</code></td>
+        </tr>
+        <tr>
+            <td><code>System.out.println()</code></td>
+            <td>Displays the output and moves to a new line.</td>
+            <td><code>System.out.println("World!");</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <pre><code>
+        public class Main {
+            public static void main(String[] args) {
+                System.out.print("Hello ");
+                System.out.println("World!");
+            }
+        }
+    </code></pre>
+
+    <h2>2. Input in Java</h2>
+    <p>Input is the process of receiving data from the user. The most commonly used class for input in Java is <code>Scanner</code>, which is part of the <strong>java.util</strong> package.</p>
+
+    <h3>2.1. Using <code>Scanner</code> Class</h3>
+    <p>The <code>Scanner</code> class is used to read input from the user. You need to import the <code>java.util.Scanner</code> package before using it.</p>
+
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><code>nextLine()</code></td>
+            <td>Reads a line of text from the user.</td>
+            <td><code>String input = scanner.nextLine();</code></td>
+        </tr>
+        <tr>
+            <td><code>nextInt()</code></td>
+            <td>Reads an integer value from the user.</td>
+            <td><code>int num = scanner.nextInt();</code></td>
+        </tr>
+        <tr>
+            <td><code>nextDouble()</code></td>
+            <td>Reads a double value from the user.</td>
+            <td><code>double value = scanner.nextDouble();</code></td>
+        </tr>
+    </table>
+
+    <h3>Example:</h3>
+    <pre><code>
+        import java.util.Scanner;
+
+        public class Main {
+            public static void main(String[] args) {
+                Scanner scanner = new Scanner(System.in);
+                
+                System.out.print("Enter your name: ");
+                String name = scanner.nextLine();
+                
+                System.out.print("Enter your age: ");
+                int age = scanner.nextInt();
+                
+                System.out.println("Hello, " + name + "! You are " + age + " years old.");
+            }
+        }
+    </code></pre>
+
+    <h2>3. Handling Different Data Types</h2>
+    <p>The <code>Scanner</code> class provides methods for inputting various types of data such as strings, integers, doubles, etc.</p>
+
+    <h3>3.1. Reading Strings</h3>
+    <p>To read a string input, use <code>nextLine()</code>.</p>
+    <pre><code>
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+    </code></pre>
+
+    <h3>3.2. Reading Integers</h3>
+    <p>To read an integer, use <code>nextInt()</code>.</p>
+    <pre><code>
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
+    </code></pre>
+
+    <h3>3.3. Reading Doubles</h3>
+    <p>To read a double, use <code>nextDouble()</code>.</p>
+    <pre><code>
+        System.out.print("Enter your salary: ");
+        double salary = scanner.nextDouble();
+    </code></pre>
+
+    <h2>4. Error Handling in Input</h2>
+    <p>When using the <code>Scanner</code> class, it is important to handle input errors, especially when the user inputs an unexpected data type.</p>
+
+    <h3>4.1. Handling Invalid Input</h3>
+    <p>You can use a <code>try-catch</code> block to handle exceptions like <code>InputMismatchException</code> if the user enters an incorrect type of input.</p>
+
+    <pre><code>
+        try {
+            int age = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+    </code></pre>
+
+    <h2>5. Closing the Scanner</h2>
+    <p>It is a good practice to close the <code>Scanner</code> object once it is no longer needed to free up resources. Use <code>scanner.close();</code> to close the scanner.</p>
+
+    <pre><code>
+        scanner.close();
+    </code></pre>
+
+</body>
+</html>
