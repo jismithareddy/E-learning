@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #header {
+            background-color: lightgrey;
+            padding-top: 0;
+            padding-bottom: 10px;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        #header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-bottom: 10px;
+            margin-left: 100px;
+        }
+        #nav {
+            display: flex;
+            align-items: center; /* Center align items vertically */
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        #nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 12px; /* Slightly increase padding on hover */
+            transform: scale(1.05); /* Grow the link on hover */
+        }
+        #live-form {
+            margin-left: 10px; /* Space between the last link and the button */
+            animation: fadeIn 0.5s; /* Add fade-in animation to the form */
+        }
+        #live {
+            background-color: #4c9ecd; /* Bright attention-grabbing color */
+            color: white;
+            padding: 12px 18px; /* Increased padding for a larger button */
+            border: none;
+            border-radius: 8px; /* More rounded corners */
+            font-size: 22px; /* Slightly larger font */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, border 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+        #live:hover {
+            background-color: #271e23; /* Darker red on hover */
+            transform: scale(1.05); /* Grow the button on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow effect */
+        }
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px); /* Slide in from above */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Original position */
+            }
+        }
+        #footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+        }
+        #footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        #footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+        #footer-container h1, #footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        #footer-container h1 {
+            font-size: 24px;
+        }
+        #footer-container h2 {
+            font-size: 18px;
+        }
+        #footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        #footer-links a:hover {
+            color: lightblue;
+        }
+        #footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>Skill Craft</h1>
+        <nav id="nav">
+            <a href="#">Home</a>
+            <a href="#">Register</a>
+            <a href="#">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+            <form action="/submit" method="post" id="live-form">
+                <button type="submit" id="live"> Live Sessions</button>
+            </form>
+        </nav>
+    </header>
+    
+    <footer id="footer">
+        <div id="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Email: abcd@gmail.com</h2>
+                <h2>Mobile: +91 1234567890</h2>
+                <h2>WhatsApp: +91 1234567890</h2>
+            </div>
+            <div id="footer-links">
+                <h1>Connect with Us</h1>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div id="footer-bottom">
+            &copy; 2024 Skill Craft. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

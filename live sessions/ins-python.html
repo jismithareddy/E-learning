@@ -1,0 +1,373 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Skill Craft - Learn Python</title> 
+    <style> 
+        /* Full-page layout */
+        body { 
+            display: flex; 
+            flex-direction: column; 
+            margin: 0; 
+            font-family: Arial, sans-serif; /* Default font */ 
+            background-color: #f9f9f9; 
+            height: 100vh;
+        }
+
+        /* Header styles */
+        #header { 
+            background-color: lightgrey; 
+            padding-top: 0; 
+            padding-bottom: 10px; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: center; 
+            align-items: center; 
+            width: 100%; 
+        }
+        
+        #header h1 { 
+            color: orangered; 
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 50px; 
+            margin-bottom: 10px; 
+            margin-left: 100px; 
+        }
+
+        #nav a { 
+            text-decoration: none; 
+            color: white; 
+            background-color: rgb(238, 17, 202); 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-top: 0; 
+            margin-left: 5px; 
+            font-size: 20px; 
+        }
+        
+        #nav a:hover { 
+            background-color: black; 
+            color: yellow; 
+            padding: 2px; 
+            font-size: 25px; 
+            cursor: pointer; 
+        }
+
+        /* Footer styles */
+        #footer { 
+            background-color: black; 
+            color: rgb(212, 124, 15); 
+            padding: 20px; 
+            text-align: center; 
+            width: 100%; 
+        }
+
+        #footer-container { 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px 0; 
+        }
+
+        #footer-container > div { 
+            flex: 1; 
+            padding: 0 15px; 
+        }
+
+        #footer-container h1, #footer-container h2 { 
+            color: white; 
+            margin: 5px 0; 
+            font-family: Arial, sans-serif; 
+        }
+
+        #footer-container h1 { 
+            font-size: 24px; 
+        }
+
+        #footer-container h2 { 
+            font-size: 18px; 
+        }
+
+        #footer-links a { 
+            text-decoration: none; 
+            color: aqua; 
+            margin: 10px; 
+            font-size: 18px; 
+            display: inline-block; 
+        }
+
+        #footer-links a:hover { 
+            color: lightblue; 
+        }
+
+        #footer-bottom { 
+            margin-top: 20px; 
+            color: white; 
+            font-size: 16px; 
+        }
+
+        /* Style for the main navigation bar */
+        #navBar { 
+            background-color: rgb(196, 117, 117); 
+            width: 100%; 
+            text-align: center; 
+            padding: 10px 0; 
+        }
+
+        #navBar a { 
+            margin: 0 10px; 
+            text-decoration: none; 
+            border: 2px solid rgb(16, 16, 140); 
+            padding: 5px 10px; 
+            color: white; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
+
+        #navBar a:hover { 
+            background-color: rgb(16, 16, 140); 
+            color: white; 
+        }
+
+        /* Container for aside and main content */
+        .container { 
+            display: flex; 
+            width: 100%; 
+            height: 100%; 
+            margin-top: 20px; 
+            flex-grow: 1; 
+        }
+
+        /* Style for the aside sidebar */
+        #pythonTopics { 
+            width: 250px; 
+            background-color: #f4f4f4; 
+            padding: 20px; 
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+            overflow-y: auto; /* Allows vertical scrolling */ 
+            height: 500px; 
+        }
+
+        #pythonTopics h2 { 
+            margin-top: 0; 
+        }
+
+        #pythonTopics a { 
+            display: block; 
+            margin: 10px 0; 
+            text-decoration: none; 
+            color: black; 
+            padding: 10px; 
+            transition: background-color 0.3s ease; 
+        }
+
+        #pythonTopics a:hover { 
+            background-color: #ddd; 
+        }
+        #nav {
+            display: flex;
+            align-items: center; /* Center align items vertically */
+        }
+        #live-form {
+            margin-left: 10px; /* Space between the last link and the button */
+            animation: fadeIn 0.5s; /* Add fade-in animation to the form */
+        }
+        #live {
+            background-color: #4c9ecd; /* Bright attention-grabbing color */
+            color: white;
+            padding: 12px 18px; /* Increased padding for a larger button */
+            border: none;
+            border-radius: 8px; /* More rounded corners */
+            font-size: 22px; /* Slightly larger font */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, border 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+        #live:hover {
+            background-color: #271e23; /* Darker red on hover */
+            transform: scale(1.05); /* Grow the button on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow effect */
+        }
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px); /* Slide in from above */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Original position */
+            }
+        }
+
+
+        /* Main content area */
+        #contentArea { 
+            flex-grow: 1; 
+            padding: 20px; 
+            background-color: white; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            overflow-y: auto; 
+            height: 500px; 
+        }
+
+        #contentArea h1 { 
+            margin-top: 0; 
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) { 
+            .container { 
+                flex-direction: column; 
+                height: auto; 
+            }
+
+            #pythonTopics { 
+                width: 100%; 
+                box-shadow: none; 
+            }
+
+            #contentArea { 
+                width: 100%; 
+            }
+        }
+
+        /* Code block styles */
+        pre { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            overflow-x: auto; 
+        }
+
+        .desc { 
+            line-height: 1.5; 
+        }
+
+        .block { 
+            background-color: #ffeb3b; 
+            padding: 10px; 
+            margin-bottom: 20px; 
+        }
+
+        .inline { 
+            background-color: #4caf50; 
+            padding: 5px; 
+            display: inline-block; 
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+        }
+
+        table, th, td { 
+            border: 1px solid #333; 
+        }
+
+        th, td { 
+            padding: 10px; 
+            text-align: left; 
+        }
+
+        th { 
+            background-color: #333; 
+            color: #fff; 
+        }
+    </style> 
+</head> 
+<body> 
+
+    <!-- Header -->
+    <header id="header"> 
+        <h1>Skill Craft</h1> 
+        <nav id="nav"> 
+           <a href="index.html">Home</a>
+            <a href="reg-home.html">Register</a>
+            <a href="login-home">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+            <form action="session.html"  id="live-form">
+                <button type="submit" id="live">Upload Live Session</button>
+            </form>
+        </nav> 
+    </header>
+
+    <!-- Navigation bar for learning sections -->
+    <nav id="navBar"> 
+        <a href="contents.jsp" class="page">Basics</a>
+        <a href="html.html" class="page">HTML</a>
+        <a href="css.html" class="page">CSS</a>
+        <a href="js.html" class="page">JS</a>
+        <a href="python.html" class="page">Python</a>
+        <a href="java.html" class="page">Java</a>
+        <a href="sql.html" class="page">SQL</a> 
+    </nav>
+
+    <!-- Main container for aside and content -->
+    <div class="container"> 
+        <!-- Sidebar with Python topics -->
+         <aside id="pythonTopics">
+            <h2>Python Topics</h2>
+            <a href="#" onclick="loadContent('intro')">Introduction to Python</a>
+            <a href="#" onclick="loadContent('syntax')">Syntax and Structure</a>
+            <a href="#" onclick="loadContent('variables')">Variables </a>
+            <a href="#" onclick="loadContent('input&output')">Input & Output</a>
+            <a href="#" onclick="loadContent('datatypes')">Data Types</a>
+            <a href="#" onclick="loadContent('operators')">Operators</a>
+            <a href="#" onclick="loadContent('conditions')">Conditional Statements</a>
+            <a href="#" onclick="loadContent('loops')">Loops</a>
+            <a href="#" onclick="loadContent('functions')">Functions</a>
+            <a href="#" onclick="loadContent('lists')">Lists</a>
+            <a href="#" onclick="loadContent('tuples')">Tuples</a>
+            <a href="#" onclick="loadContent('dictionaries')">Dictionaries</a>
+            <a href="#" onclick="loadContent('sets')">Sets</a>
+            <a href="#" onclick="loadContent('modules')">Modules</a>
+            <a href="#" onclick="loadContent('packages')">Packages</a>
+            <a href="#" onclick="loadContent('files')">File Handling</a>
+            <a href="#" onclick="loadContent('exceptions')">Exception Handling</a>
+            <a href="#" onclick="loadContent('class')">Classes & Objects</a>
+            <a href="#" onclick="loadContent('abstract')">Abstraction</a>
+            <a href="#" onclick="loadContent('encapsulation')">Encapsulation</a>
+            <a href="#" onclick="loadContent('inheritance')">Inheritance</a>
+            <a href="#" onclick="loadContent('polymorphism')">Polymorphism</a>
+            <a href="#" onclick="loadContent('decorators')">Decorators</a>
+            <a href="#" onclick="loadContent('exceptions')">Exceptions</a>
+        </aside>
+
+        <!-- Main content area for Python details -->
+        <main id="contentArea"> 
+            <h1>Python Learning Page</h1> 
+            <p>Welcome to Python Learning. Click on the topics from the left sidebar to view content.</p> 
+        </main> 
+    </div> 
+
+    <!-- Footer -->
+    <footer id="footer"> 
+        <div id="footer-container"> 
+            <div> 
+                <h1>Contact Us</h1> 
+                <h2>Skill Craft Academy, Hyderabad, India</h2> 
+                <h2>Email: support@skillcraft.com</h2> 
+                <h2>Phone: +91 1234567890</h2> 
+            </div> 
+            <div id="footer-links"> 
+                <h1>Connect with Us</h1> 
+                <a href="#">LinkedIn</a> 
+                <a href="#">Instagram</a> 
+                <a href="#">Twitter</a> 
+            </div> 
+        </div> 
+        <div id="footer-bottom"> 
+            &copy; 2024 Skill Craft Academy. All rights reserved. 
+        </div> 
+    </footer> 
+    <script src="python.js"></script>
+
+</body> 
+</html>

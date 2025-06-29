@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Craft - Learn Python</title>
+    <style>
+        /* Full-page layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            font-family: Arial, sans-serif; /* Default font */
+            background-color: #f9f9f9;
+        }
+
+        /* Header styles */
+        #header {
+            background-color: lightgrey;
+            padding-top: 0;
+            padding-bottom: 10px;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-bottom: 10px;
+            margin-left: 100px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 0;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        #nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* Footer styles */
+        #footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        #footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        #footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+        #footer-container h1, #footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        #footer-container h1 {
+            font-size: 24px;
+        }
+        #footer-container h2 {
+            font-size: 18px;
+        }
+        #footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        #footer-links a:hover {
+            color: lightblue;
+        }
+        #footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Style for the main navigation bar */
+        #navBar {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        #navBar a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px 10px;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        #navBar a:hover {
+            background-color: rgb(16, 16, 140);
+            color: white;
+        }
+
+        /* Container for aside and main content */
+        .container {
+            display: flex;
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        /* Style for the aside sidebar */
+        #pythonTopics {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        #pythonTopics h2 {
+            margin-top: 0;
+        }
+        #pythonTopics a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+        #pythonTopics a:hover {
+            background-color: #ddd;
+        }
+
+        /* Main content area */
+        #mainContent {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            width: 700px;
+        }
+        #mainContent h1 {
+            margin-top: 0;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            #pythonTopics {
+                width: 100%;
+                box-shadow: none;
+            }
+            #mainContent {
+                width: 100%;
+            }
+        }
+
+        /* Code block styles */
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        .desc {
+            line-height: 1.5;
+        }
+        .block {
+            background-color: #ffeb3b;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .inline {
+            background-color: #4caf50;
+            padding: 5px;
+            display: inline-block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <h1>Skill Craft</h1>
+        <nav id="nav">
+            <a href="#">Home</a>
+            <a href="#">Register</a>
+            <a href="#">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+        </nav>
+    </header>
+
+    <!-- Navigation bar for learning sections -->
+    <nav id="navBar">
+        <a href="#" class="page">Basics</a>
+        <a href="#" class="page">HTML</a>
+        <a href="#" class="page">CSS</a>
+        <a href="#" class="page">JS</a>
+        <a href="#" class="page">Python</a>
+        <a href="#" class="page">Java</a>
+        <a href="#" class="page">SQL</a>
+    </nav>
+
+    <!-- Main container for aside and content -->
+    <div class="container">
+        <!-- Sidebar with Python topics -->
+        <aside id="pythonTopics">
+            <h2>Python Topics</h2>
+            <a href="#" onclick="loadContent('intro')">Introduction to Python</a>
+            <a href="#" onclick="loadContent('syntax')">Syntax and Structure</a>
+            <a href="#" onclick="loadContent('variables')">Variables </a>
+            <a href="#" onclick="loadContent('input&output')">Input & Output</a>
+            <a href="#" onclick="loadContent('datatypes')">Data Types</a>
+            <a href="#" onclick="loadContent('operators')">Operators</a>
+            <a href="#" onclick="loadContent('conditions')">Conditional Statements</a>
+            <a href="#" onclick="loadContent('loops')">Loops</a>
+            <a href="#" onclick="loadContent('functions')">Functions</a>
+            <a href="#" onclick="loadContent('lists')">Lists</a>
+            <a href="#" onclick="loadContent('tuples')">Tuples</a>
+            <a href="#" onclick="loadContent('dictionaries')">Dictionaries</a>
+            <a href="#" onclick="loadContent('sets')">Sets</a>
+            <a href="#" onclick="loadContent('modules')">Modules</a>
+            <a href="#" onclick="loadContent('packages')">Packages</a>
+            <a href="#" onclick="loadContent('files')">File Handling</a>
+            <a href="#" onclick="loadContent('exceptions')">Exception Handling</a>
+            <a href="#" onclick="loadContent('class')">Classes & Objects</a>
+            <a href="#" onclick="loadContent('abstract')">Abstraction</a>
+            <a href="#" onclick="loadContent('encapsulation')">Encapsulation</a>
+            <a href="#" onclick="loadContent('inheritance')">Inheritance</a>
+            <a href="#" onclick="loadContent('polymorphism')">Polymorphism</a>
+            <a href="#" onclick="loadContent('decorators')">Decorators</a>
+        </aside>
+
+        <!-- Main content area for displaying Python content -->
+        <main id="mainContent">
+            <h1>Welcome to Python Learning</h1>
+            <p>Select a topic from the left sidebar to learn more.</p>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div id="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <p>Skill Craft, Main Office</p>
+                <p>Email: support@skillcraft.com</p>
+                <p>Phone: +1234567890</p>
+            </div>
+            <div id="footer-links">
+                <h2>Connect with Us</h2>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+        <div id="footer-bottom">
+            <p>&copy; 2024 Skill Craft. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script sre="python.js"></script>
+</body>
+</html>

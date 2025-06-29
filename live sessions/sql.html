@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Craft - Learn SQL</title>
+    <link rel="stylesheet" href="sql.css"> <!-- Link to external CSS file -->
+    <style>
+        /* Header styles */
+        #header {
+            background-color: lightgrey;
+            padding-top: 0;
+            padding-bottom: 10px;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-bottom: 10px;
+            margin-left: 100px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 0;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        #nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* Full-page layout */
+        #bodyWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation bar */
+        #navbar {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        #navbar a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px 10px;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #navbar a:hover {
+            background-color: rgb(16, 16, 140);
+            color: white;
+        }
+
+        /* Main container */
+        #mainContainer {
+            display: flex;
+            width: 100%;
+            height: calc(100% - 50px);
+            margin-top: 20px;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        #sidebar h2 {
+            margin-top: 0;
+        }
+
+        #sidebar a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #sidebar a:hover {
+            background-color: #ddd;
+        }
+
+        /* Content */
+        #contentArea {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            width: 700px;
+        }
+
+        #contentArea h1 {
+            margin-top: 0;
+        }
+        #nav {
+            display: flex;
+            align-items: center; /* Center align items vertically */
+        }
+        #live-form {
+            margin-left: 10px; /* Space between the last link and the button */
+            animation: fadeIn 0.5s; /* Add fade-in animation to the form */
+        }
+        #live {
+            background-color: #4c9ecd; /* Bright attention-grabbing color */
+            color: white;
+            padding: 12px 18px; /* Increased padding for a larger button */
+            border: none;
+            border-radius: 8px; /* More rounded corners */
+            font-size: 22px; /* Slightly larger font */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, border 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+        #live:hover {
+            background-color: #271e23; /* Darker red on hover */
+            transform: scale(1.05); /* Grow the button on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow effect */
+        }
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px); /* Slide in from above */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Original position */
+            }
+        }
+
+        /* Footer styles */
+        #footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+            width:100%;
+        }
+        #footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        #footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+        #footer-container h1, #footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        #footer-container h1 {
+            font-size: 24px;
+        }
+        #footer-container h2 {
+            font-size: 18px;
+        }
+        #footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        #footer-links a:hover {
+            color: lightblue;
+        }
+        #footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            #mainContainer {
+                flex-direction: column;
+                height: auto;
+            }
+
+            #sidebar {
+                width: 100%;
+                box-shadow: none;
+            }
+
+            #contentArea {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body id="bodyWrapper">
+    <header id="header">
+        <h1>Skill Craft</h1>
+        <nav id="nav">
+            <a href="#">Home</a>
+            <a href="#">Register</a>
+            <a href="#">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+            <form action="DisplaySession" method="get" id="live-form">
+                <button type="submit" id="live"> Live Sessions</button>
+            </form>
+        </nav>
+    </header>
+
+    <!-- Navigation bar for SQL topics -->
+    <nav id="navbar">
+        <a href="contents.jsp" class="page">Basics</a>
+        <a href="html.html" class="page">HTML</a>
+        <a href="css.html" class="page">CSS</a>
+        <a href="js.html" class="page">JS</a>
+        <a href="python.html" class="page">Python</a>
+        <a href="java.html" class="page">Java</a>
+        <a href="sql.html" class="page">SQL</a>
+    </nav>
+
+    <!-- Main container for aside and content -->
+    <div id="mainContainer">
+        <!-- Sidebar with SQL topics -->
+        <aside id="sidebar">
+            <h2>SQL Topics</h2>
+            <a href="#" onclick="loadContent('intro')">Introduction to SQL</a>
+            <a href="#" onclick="loadContent('datatypes')">SQL Data Types</a>
+            <a href="#" onclick="loadContent('constraints')">CONSTRAINTS</a>
+            <a href="#" onclick="loadContent('ddl')">DDL COMMANDS</a>
+            <a href="#" onclick="loadContent('create')">CREATE</a>
+            <a href="#" onclick="loadContent('alter')">ALTER</a>
+            <a href="#" onclick="loadContent('drop')">DROP</a>
+            <a href="#" onclick="loadContent('truncate')">TRUNCATE</a>
+            <a href="#" onclick="loadContent('comment')">COMMENT</a>
+            <a href="#" onclick="loadContent('dml')">DML</a>
+            <a href="#" onclick="loadContent('dql')">DQL</a>
+            <a href="#" onclick="loadContent('tcl')">TCL</a>
+            <a href="#" onclick="loadContent('joins')">SQL Joins</a>
+            <a href="#" onclick="loadContent('functions')">SQL Functions</a>
+            <a href="#" onclick="loadContent('subqueries')">Subqueries</a>
+            <a href="#" onclick="loadContent('indexes')">SQL Indexes</a>
+            <a href="#" onclick="loadContent('transactions')">SQL Transactions</a>
+            <a href="#" onclick="loadContent('views')">SQL Views</a>
+            <a href="#" onclick="loadContent('rank')">SQL RANK</a>
+            <a href="#" onclick="loadContent('triggers')">SQL Triggers</a>
+            <a href="#" onclick="loadContent('procedures')">Stored Procedures</a>
+            <a href="#" onclick="loadContent('normalization')">Database Normalization</a>
+            <a href="#" onclick="loadContent('backups')">Database Backups</a>
+            <a href="#" onclick="loadContent('security')">SQL Security</a>
+            <a href="#" onclick="loadContent('performance')">SQL Performance Tuning</a>
+            <a href="#" onclick="loadContent('advancedfunctions')">Advanced SQL Functions</a>
+            <a href="#" onclick="loadContent('optimization')">SQL Optimization</a>
+            <a href="#" onclick="loadContent('acl')">Access Control (ACL)</a>
+        </aside>
+
+        <!-- Main content area -->
+        <div class="content" id="contentArea">
+            <h1>Welcome to SQL Learning</h1>
+            <p>Select a SQL topic from the left to get started.</p>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div id="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Email: abcd@gmail.com</h2>
+                <h2>Phone: +1234567890</h2>
+            </div>
+            <div>
+                <h1>Connect with Us</h1>
+                <div id="footer-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div id="footer-bottom">© 2024 Skill Craft. All rights reserved.</div>
+    </footer>
+
+    <script src="sql.js">
+      
+    </script>
+</body>
+</html>

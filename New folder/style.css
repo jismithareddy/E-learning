@@ -1,0 +1,127 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center nav bar horizontally */
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Light Theme Styles */
+.light-theme {
+    background-color: white;
+    color: black;
+}
+
+/* Dark Theme Styles */
+.dark-theme {
+    background-color: #333;
+    color: white;
+}
+
+/* Button Styles */
+.theme-toggle {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Light Theme Button Styles */
+.light-theme .theme-toggle {
+    background-color: lightgray;
+    color: black;
+}
+
+/* Dark Theme Button Styles */
+.dark-theme .theme-toggle {
+    background-color: gray;
+    color: white;
+}
+
+/* Style for the navigation bar (centered at the top) */
+nav {
+    background-color: rgb(196, 117, 117);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Navigation link styles */
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    border: 2px solid rgb(16, 16, 140);
+    padding: 5px;
+    color: white;
+}
+
+/* Container for the aside and main content */
+.container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 60px); /* Adjust for nav height */
+    margin-top: 20px;
+}
+
+/* Style for the aside sidebar (under the nav, on the left) */
+aside {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto; /* Make the sidebar scrollable if content overflows */
+}
+
+aside a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Main content area (next to aside) */
+.content {
+    width: 500px;  
+    flex-grow: 1; /* Take up remaining space */
+    padding: 20px;
+    overflow-y: auto; /* Make the content scrollable */
+    max-height: 80vh; /* Scrollable content area */
+}
+
+.content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.content p, li {
+    font-size: 16px;
+    line-height: 1.6;
+    width: 800px;
+}
+
+img {
+    width: 800px;
+    height: 500px;
+}
+
+nav a:hover {
+    background-color: aqua;
+}
+
+.page:active {
+    color: green;
+    background-color: orange;
+}
+
+.link:active {
+    color: rgb(255, 141, 10);
+    background-color: azure;
+}
+
+.link {
+    border: 2px solid transparent;
+    background-color: rgb(12, 239, 163);
+    border-radius: 4px;
+}

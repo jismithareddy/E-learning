@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploads Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        h2 {
+            text-align: center;
+            color: #ff6f61;
+            margin-top: 20px;
+        }
+        .upload-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .upload-table th, .upload-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .upload-table th {
+            background-color: #ff6f61;
+            color: white;
+            text-transform: uppercase;
+        }
+        .upload-table tr:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Uploaded Sessions</h2>
+<table class="upload-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Session Link</th>
+            <th>Upload Time (+2 Hours)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="upload" items="${uploads}">
+            <tr>
+                <td>${upload.name}</td>
+                <td>${upload.email}</td>
+                <td>${upload.subject}</td>
+                <td><a href="${upload.link}" target="_blank">Join Session</a></td>
+                <td>${upload.displayTime}</td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
+
+</body>
+</html>

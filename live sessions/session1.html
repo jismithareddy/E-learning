@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Attractive Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f9f9f9, #d4d4d4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form container */
+        form {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 30px;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            border-left: 6px solid #ff5722;
+            transition: all 0.3s ease-in-out;
+            animation: slideIn 1s ease;
+        }
+
+        /* Animation on form load */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hover effects */
+        form:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-left-color: #ff9800;
+        }
+
+        form legend {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff5722, #ff9800);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+
+        form label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+            display: block;
+        }
+
+        /* Input fields */
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ff5722;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        /* Input focus */
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form textarea:focus {
+            border-color: #ff9800;
+            box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+            outline: none;
+        }
+
+        /* Submit button */
+        form input[type="submit"] {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Submit button hover */
+        form input[type="submit"]:hover {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            form {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 0 auto;
+            }
+
+            body {
+                justify-content: center;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            form legend {
+                font-size: 20px;
+            }
+
+            form input[type="text"],
+            form input[type="email"],
+            form textarea {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            form input[type="submit"] {
+                font-size: 16px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <form action="">
+        <legend>Upload Session</legend>
+
+        <label for="name">Enter Your Name</label>
+        <input type="text" name="name" placeholder="Your name" required>
+
+        <label for="email">Enter Your Email</label>
+        <input type="email" name="email" placeholder="Your email" required>
+
+        <label for="subject">Subject Name</label>
+        <input type="text" name="subject" placeholder="Enter the subject" required>
+
+        <label for="link">Live Session Link</label>
+        <textarea name="link" rows="4" placeholder="Enter session link" required></textarea>
+
+        <input type="submit" value="Post">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Craft - Learn JavaScript</title>
+    <style>
+        /* Full-page layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center nav bar horizontally */
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif; /* Default font */
+            background-color: #f9f9f9;
+        }
+
+        /* Header style */
+        #header {
+            background-color: lightgrey;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #header h1 {
+            color: orangered;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-bottom: 10px;
+            margin-left: 100px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(238, 17, 202);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 0;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        #nav a:hover {
+            background-color: black;
+            color: yellow;
+            padding: 2px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* Style for the navigation bar */
+        #navBar {
+            background-color: rgb(196, 117, 117);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        #navBar a {
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid rgb(16, 16, 140);
+            padding: 5px 10px;
+            color: white;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+        #navBar a:hover {
+            background-color: rgb(16, 16, 140); /* Background change on hover */
+            color: white;
+        }
+
+        /* Container for the aside and main content */
+        #mainContainer {
+            display: flex;
+            width: 100%;
+            height: calc(100% - 50px); /* Adjust height based on nav bar */
+            margin-top: 20px;
+        }
+
+        /* Style for the aside sidebar */
+        #sideBar {
+            width: 250px;
+            background-color: #f4f4f4; /* Light gray background */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            overflow-y: auto;
+        }
+        #sideBar h2 {
+            margin-top: 0; /* Remove top margin for heading */
+        }
+        #sideBar a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+        #sideBar a:hover {
+            background-color: #ddd; /* Light gray on hover */
+        }
+
+        /* Main content area */
+        #contentArea {
+            flex-grow: 1; /* Take up remaining space */
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            overflow-y: auto;
+            width: 700px; /* Enable scrolling */
+        }
+        #contentArea h1 {
+            margin-top: 0; /* Remove top margin for heading */
+        }
+
+        /* Footer styles */
+        #footer {
+            background-color: black;
+            color: rgb(212, 124, 15);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        #footer-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        #footer-container > div {
+            flex: 1;
+            padding: 0 15px;
+        }
+        #footer-container h1, #footer-container h2 {
+            color: white;
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        #footer-container h1 {
+            font-size: 24px;
+        }
+        #footer-container h2 {
+            font-size: 18px;
+        }
+        #footer-links a {
+            text-decoration: none;
+            color: aqua;
+            margin: 10px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        #footer-links a:hover {
+            color: lightblue;
+        }
+        #footer-bottom {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            #mainContainer {
+                flex-direction: column; /* Stack the sidebar and content */
+                height: auto; /* Allow height to be based on content */
+            }
+        
+            #sideBar {
+                width: 100%; /* Full width for sidebar on smaller screens */
+                box-shadow: none; /* Remove shadow for a cleaner look */
+            }
+        
+            #contentArea {
+                width: 100%; /* Full width for content on smaller screens */
+            }
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        .desc {
+            line-height: 1.5;
+        }
+        .block {
+            background-color: #ffeb3b;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .inline {
+            background-color: #4caf50;
+            padding: 5px;
+            display: inline-block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <h1>Skill Craft</h1>
+        <nav id="nav">
+            <a href="#">Home</a>
+            <a href="#">Register</a>
+            <a href="#">Login</a>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+        </nav>
+    </header>
+
+    <!-- Navigation bar -->
+    <nav id="navBar">
+        <a href="#" class="page">Basics</a>
+        <a href="#" class="page">HTML</a>
+        <a href="#" class="page">CSS</a>
+        <a href="#" class="page">JS</a>
+        <a href="#" class="page">Python</a>
+        <a href="#" class="page">Java</a>
+        <a href="#" class="page">SQL</a>
+    </nav>
+
+    <!-- Main container for aside and content -->
+    <div id="mainContainer">
+        <!-- Sidebar with JavaScript topics -->
+        <aside id="sideBar">
+            
+            <h2>CSS Topics</h2>
+            <a href="#" onclick="loadContent('intro')">Introduction</a>
+            <a href="#" onclick="loadContent('syntax')">CSS Syntax</a>
+            <a href="#" onclick="loadContent('selectors')">CSS Selectors</a>
+            <a href="#" onclick="loadContent('box-model')">Box Model</a>
+            <a href="#" onclick="loadContent('display')">Display & Positioning</a>
+            <a href="#" onclick="loadContent('flexbox')">Flexbox</a>
+            <a href="#" onclick="loadContent('grid')">CSS Grid</a>
+            <a href="#" onclick="loadContent('responsive')">Responsive Design</a>
+            <a href="#" onclick="loadContent('media-queries')">Media Queries</a>
+            <a href="#" onclick="loadContent('pseudo')">Pseudo-Classes</a>
+            <a href="#" onclick="loadContent('animations')">CSS Animations</a>
+            <a href="#" onclick="loadContent('transitions')">Transitions</a>
+            <a href="#" onclick="loadContent('variables')">CSS Variables</a>
+            <a href="#" onclick="loadContent('selectors-advanced')">Advanced Selectors</a>
+            <a href="#" onclick="loadContent('units')">CSS Units</a>
+            <a href="#" onclick="loadContent('typography')">Typography</a>
+            <a href="#" onclick="loadContent('colors')">Colors & Backgrounds</a>
+            <a href="#" onclick="loadContent('shadows')">Shadows</a>
+            <a href="#" onclick="loadContent('frameworks')">CSS Frameworks</a>
+            <a href="#" onclick="loadContent('reset')">CSS Reset/Normalization</a>
+        </aside>
+
+        <!-- Main content area -->
+        <main id="contentArea">
+            <h1>Welcome to JavaScript Learning!</h1>
+            <div id="content">
+                <h2>Introduction to JavaScript</h2>
+                <p class="desc">JavaScript is a programming language that allows you to implement complex features on web pages. It enables interactive web pages and is an essential part of web applications.</p>
+                <h3>Example:</h3>
+                <pre><code>console.log('Hello, World!');</code></pre>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div id="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Phone: 123-456-7890</h2>
+                <h2>Email: info@skillcraft.com</h2>
+            </div>
+            <div>
+                <h1>Connect with Us</h1>
+                <div id="footer-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            <div>
+                <h1>About Us</h1>
+                <h2>Our mission is to provide quality education to everyone.</h2>
+            </div>
+        </div>
+        <div id="footer-bottom">© 2024 Skill Craft. All Rights Reserved.</div>
+    </footer>
+
+    <script src="css.js"></script>
+    
+</body>
+</html>

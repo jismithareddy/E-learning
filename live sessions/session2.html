@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Session</title>
+    <style>
+        /* Header Styling */
+      /* Header Styling */
+header {
+    background-color: lightgrey;
+    padding-bottom: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    color: orangered;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    margin-left: 100px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(238, 17, 202);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+nav a:hover {
+    background-color: black;
+    color: yellow;
+    padding: 2px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Form Container Styling */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+/* Animated Form Styling */
+.upload-form {
+    background: linear-gradient(135deg, #ffefba, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    font-family: Arial, sans-serif;
+    animation: formFadeIn 1.2s ease-out;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.upload-form:hover {
+    transform: scale(1.03);
+    animation: formGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes formFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes formGlow {
+    from {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 111, 97, 0.5);
+    }
+    to {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 111, 97, 1);
+    }
+}
+
+.upload-form legend {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff6f61;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 8px rgba(255, 111, 97, 0.8);
+}
+
+/* Input Styling */
+.upload-form label {
+    font-size: 16px;
+    color: #f46d6d;
+    margin-top: 15px;
+    display: block;
+}
+
+.upload-form input[type="text"],
+.upload-form input[type="email"],
+.upload-form textarea {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #24a6cd;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form input[type="text"]:focus,
+.upload-form input[type="email"]:focus,
+.upload-form textarea:focus {
+    border-color: #61ffa8;
+    box-shadow: 0 0 10px rgba(97, 255, 168, 0.7);
+    outline: none;
+    background-color: #f9fdfc;
+}
+
+/* Submit Button with Animation */
+.upload-form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #11e959, #debb77);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(255, 111, 97, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(255, 111, 97, 0.5);
+    }
+}
+
+.upload-form input[type="submit"]:hover {
+    background: linear-gradient(90deg, #debb77, #ff6f61);
+    transform: scale(1.08);
+    animation: none;
+}
+
+/* Footer Styling */
+footer {
+    background-color: black;
+    color: rgb(212, 124, 15);
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.footer-container h1, .footer-container h2 {
+    color: white;
+    margin: 5px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: aqua;
+    margin: 10px;
+    font-size: 18px;
+}
+
+.footer-links a:hover {
+    color: lightblue;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Skill Craft</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="reg-home.html">Register</a>
+            <a href="login-home.html">Login</a>
+            <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <form class="upload-form" action="uploadSession" method="post">
+            <legend>Upload Session</legend>
+            
+            <label for="name">Enter Your Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+            
+            <label for="email">Enter Your Email</label>
+            <input type="email" name="email" placeholder="Your email" required>
+            
+            <label for="subject">Subject Name</label>
+            <input type="text" name="subject" placeholder="Enter the subject" required>
+            
+            <label for="link">Live Session Link</label>
+            <textarea name="link" rows="4" placeholder="Enter session link" required></textarea>
+            
+            <input type="submit" value="Post">
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h1>Contact Us</h1>
+                <h2>Email: abcd@gmail.com</h2>
+                <h2>Mobile: +91 1234567890</h2>
+                <h2>WhatsApp: +91 1234567890</h2>
+            </div>
+            <div class="footer-links">
+                <h1>Connect with Us</h1>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Skill Craft. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
